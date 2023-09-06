@@ -1,0 +1,40 @@
+.nav {
+  @apply relative;
+  @apply py-9 flex gap-12 justify-between;
+}
+
+.img {
+  @apply shrink pl-7;
+}
+
+.ul {
+  @apply flex items-center justify-center gap-[4rem] font-bold;
+}
+
+@media (max-width: 768px) {
+  .ul {
+    @apply hidden;
+    @apply flex-col;
+    @apply absolute;
+    @apply top-[3.125rem];
+    @apply right-0;
+    @apply bg-primary;
+    @apply p-3;
+  }
+}
+
+.showMenu {
+  @apply flex;
+}
+
+.hamburger {
+  @apply tablet:hidden flex absolute top-0 right-0 cursor-pointer;
+}
+
+.logoWrap {
+  @apply flex pr-7 gap-4;
+}
+
+.logo {
+  @apply border-[0.1875rem] rounded-full border-black p-[0.1875rem];
+}

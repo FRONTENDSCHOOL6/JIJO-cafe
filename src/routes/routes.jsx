@@ -6,6 +6,8 @@ import Event from "@/views/Event";
 import Faq from "@/views/Faq";
 import FindStore from "@/views/FindStore";
 import Food from "@/views/Food";
+import IntroduceMenu from "@/views/IntroduceMenu";
+import JijoNews from "@/views/JijoNews";
 import Main from "@/views/Main";
 import Notice from "@/views/Notice";
 import Product from "@/views/Product";
@@ -19,14 +21,20 @@ const router = createBrowserRouter(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Main />} />
       <Route path="/signUp" element={<SignUp />} />
+
       <Route path="/findStore" element={<FindStore />} />
-      <Route path="/notice" element={<Notice />} />
-      <Route path="/faq" element={<Faq />} />
-      <Route path="/customer" element={<Customer />} />
-      <Route path="/event" element={<Event />} />
-      <Route path="/drink" element={<Drink />} />
-      <Route path="/food" element={<Food />} />
-      <Route path="/product" element={<Product />} />
+
+      <Route path="/menu" element={<IntroduceMenu />} />
+      <Route path="/menu:drink" element={<Drink />} />
+      <Route path="/menu/food" element={<Food />} />
+      <Route path="/menu/product" element={<Product />} />
+
+      <Route path="/bbs" element={<JijoNews />} />
+      <Route path="/bbs/notice" element={<Notice />} />
+      <Route path="/bbs/faq" element={<Faq />} />
+      <Route path="/bbs/customer" element={<Customer />} />
+      <Route path="/bbs/event" element={<Event />} />
+
       <Route path="/cart" element={<Cart />} />
     </Route>
   )
