@@ -1,9 +1,9 @@
-function SignIn() {
+function SignUp() {
   return (
     <>
-      <div>SignIn</div>
+      <div>SignUp</div>
     </>
   );
 }
 
-export default SignIn;
+export default SignUp;
