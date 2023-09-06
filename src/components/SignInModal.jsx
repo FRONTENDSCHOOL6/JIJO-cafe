@@ -1,7 +1,7 @@
-function SignInModal() {
+function SignInModal({...restProps}) {
   return (
     <>
-      <div>SignInModal</div>
+      <div {...restProps}>SignInModal</div>
     </>
   );
 }
