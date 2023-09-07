@@ -1,9 +1,16 @@
+import { Helmet } from 'react-helmet-async'
+
 function Faq() {
   return (
     <>
-      <div>Faq</div>
+      <section>
+        <Helmet>
+          <title>지조소식 - FAQ</title>
+        </Helmet>
+        <h2></h2>
+      </section>
     </>
-  );
+  )
 }
 
-export default Faq;
+export default Faq
