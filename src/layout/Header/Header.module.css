@@ -1,10 +1,11 @@
 .nav {
   @apply relative;
   @apply py-9 flex gap-12 justify-between;
+  @apply bg-transparent;
 }
 
 .img {
-  @apply shrink pl-7;
+  @apply pl-7;
 }
 
 .ul {
@@ -13,13 +14,36 @@
 
 @media (max-width: 768px) {
   .ul {
+    @apply hidden  
+    flex-col
+    absolute
+    top-0
+    overflow-y-auto
+    min-h-screen
+    right-0
+    w-full
+    bg-[#222222]
+    p-3
+    text-white;
+  }
+
+  .logo {
     @apply hidden;
-    @apply flex-col;
-    @apply absolute;
-    @apply top-[3.125rem];
-    @apply right-0;
-    @apply bg-primary;
-    @apply p-3;
+  }
+}
+
+@media (max-width: 390px) {
+  .ul {
+    @apply hidden  
+    flex-col
+    absolute
+    top-0
+    overflow-y-auto
+    min-h-screen
+    right-0
+    w-1/2
+    items-start
+    pl-3;
   }
 }
 
@@ -27,14 +51,6 @@
   @apply flex;
 }
 
-.hamburger {
-  @apply tablet:hidden flex absolute top-0 right-0 cursor-pointer;
-}
-
 .logoWrap {
-  @apply flex pr-7 gap-4;
-}
-
-.logo {
-  @apply border-[0.1875rem] rounded-full border-black p-[0.1875rem];
+  @apply flex pr-7 gap-2 cursor-pointer items-center justify-center;
 }
