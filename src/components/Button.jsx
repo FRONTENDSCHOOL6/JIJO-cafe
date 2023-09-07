@@ -1,9 +1,6 @@
-function Button({ width, color = 'text-white', type = 'button', bg, border, children, ...restProps }) {
-  // color 값을 'bg-' 클래스로 변환
-  // const bg = `bg-${color}`
-
+function Button({ type, children, className }) {
   return (
-    <button type={type} className={`${bg} ${width} ${color} ${border} mb-2 font-bold h-[2.8125rem] rounded-md `} {...restProps}>
+    <button type={type} className={`${className} font-mb-2 h-[2.8125rem] rounded-sm`}>
       {children}
     </button>
   )
