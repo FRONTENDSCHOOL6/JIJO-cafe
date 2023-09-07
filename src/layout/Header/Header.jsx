@@ -1,6 +1,5 @@
 import SignInModal from "@/components/SignInModal";
 import useToggle from "@/hooks/useToggle";
-import {Link} from "react-router-dom";
 import styles from "./Header.module.css";
 import Hamburger from "@/components/Hamburger";
 import logoTitle from "@/assets/images/logoTitle.png";
@@ -20,9 +19,9 @@ function Header() {
           <img src={logoTitle} alt="지조카페 로고" className={styles.img} />
         </LinkList>
         <ul className={`${styles.ul} ${isChangedStatus ? styles.showMenu : ""}`}>
-          <LinkList pageLink="/menu" children="메뉴 소개" />
+          <LinkList pageLink="/menu/drink">메뉴소개</LinkList>
           <LinkList pageLink="/findStore" children="매장" />
-          <LinkList pageLink="/bbs" children="지조소식" />
+          <LinkList pageLink="/bbs/faq" children="지조소식" />
           <li onClick={setIsChangedStatus}>{isChangedStatus ? <SignInModal /> : "로그인"}</li>
           <LinkList pageLink="/cart" children="장바구니" />
         </ul>
