@@ -1,17 +1,17 @@
+import CloseButton from "@/components/CloseButton";
+import DropDownLinkList from "@/components/DropDownLinkList";
+import Hamburger from "@/components/Hamburger/Hamburger";
+import JijoCafeLogoTitle from "@/components/JijoCafeLogoTitle";
+import LinkList from "@/components/LinkList";
+import LogoLinks from "@/components/LogoLinks";
 import SignInModal from "@/components/SignInModal";
 import useToggle from "@/hooks/useToggle";
-import styles from "./Header.module.css";
-import Hamburger from "@/components/Hamburger/Hamburger";
-import LinkList from "@/components/LinkList";
-import JijoCafeLogoTitle from "@/components/JijoCafeLogoTitle";
-import LogoLinks from "@/components/LogoLinks";
-import CloseButton from "@/components/CloseButton";
 import {useState} from "react";
-import DropDownLinkList from "@/components/DropDownLinkList";
+import styles from "./Header.module.css";
 
 function Header() {
+  /* 마우스 접근/떠남에 따른 서브메뉴리스트 렌더링 */
   const [isChangedStatus, setIsChangedStatus] = useToggle(false);
-
   const [isDropdownVisiable, setIsDropdownVisialbe] = useState(false);
   const handleMouseEnter = () => {
     setIsDropdownVisialbe(true);
@@ -20,8 +20,9 @@ function Header() {
     setIsDropdownVisialbe(false);
   };
 
+  /* 클릭시 로그인모달 렌더링 */
   const [isClickedSignin, setIsClickedSignin] = useState(false);
-  const handleClickSignIn = (e) => {
+  const handleClickSignIn = () => {
     setIsClickedSignin(!isClickedSignin);
   };
 
@@ -43,7 +44,7 @@ function Header() {
         {isChangedStatus ? (
           <CloseButton
             fillColor="#fff"
-            className="top-4 right-4 absolute z-10 cursor-pointer"
+            className="top-4 right-4 absolute z-10 cursor-pointer desktop:hidden"
             onClick={setIsChangedStatus}
           />
         ) : (
