@@ -10,5 +10,13 @@
   html {
     font-family: Pretendard;
     font-size: 1rem;
+
+    @screen tablet {
+      font-size: 0.875rem;
+    }
+
+    @screen mobile {
+      font-size: 0.75rem;
+    }
   }
 }

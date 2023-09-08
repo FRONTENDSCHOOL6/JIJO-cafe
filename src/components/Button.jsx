@@ -1,12 +1,29 @@
-function Button({ type, children, className }) {
+function Button({type = "button", color, children, className}) {
+  let buttonStyle;
+
+  switch (color) {
+    case "primary":
+      buttonStyle = "bg-primary hover:bg-[#C7B08E]";
+      break;
+    case "secondary":
+      buttonStyle = "bg-secondary text-white hover:bg-[#645B4B]";
+      break;
+    case "white":
+      buttonStyle = "bg-white border border-black";
+      break;
+
+    default:
+      buttonStyle = "bg-primary";
+      break;
+  }
+
   return (
-    <button type={type} className={`${className} font-mb-2 h-[2.8125rem] rounded-sm`}>
+    <button
+      type={type}
+      className={`${buttonStyle} ${className} font-medium h-[2.8125rem] rounded-sm`}>
       {children}
     </button>
-  )
+  );
 }
 
-export default Button
-
-// 사용시
-//<Button type="submit" color="text-black" width="w-[100px]" bg="bg-white" border="border-black border">
+export default Button;
