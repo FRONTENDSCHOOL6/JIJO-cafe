@@ -3,12 +3,6 @@ export default {
   // content: ['.index.html', '.src/**/*.jsx'],
   content: ['./index.html', './src/**/*.jsx'],
   theme: {
-    // screens: {
-    //   sm: '390px',
-    //   md: '728px',
-    //   lg: '1280px',
-    //   xl: '1920px',
-    // },
     extend: {
       fontFamily: {
         pretendard: ['Pretendard-Regular'],
@@ -21,12 +15,11 @@ export default {
         black: '#252323',
         white: '#FFFFFF',
         darkGray: '#b7b7b7',
-        yellow: '#FEE500',
       },
       screens: {
-        mobile: { min: '390px', max: '727px' },
+        mobile: { max: '760px' },
         tablet: { min: '728px', max: '1280px' },
-        desktop: { min: '1281px', max: '1920px' },
+        desktop: { min: '1281px' },
       },
       fontSize: {
         jj_60: '3.75rem',
@@ -52,4 +45,4 @@ export default {
     },
   },
   plugins: [],
-};
+}
