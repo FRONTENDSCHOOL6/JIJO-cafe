@@ -1,9 +1,9 @@
 import {Link} from "react-router-dom";
 
-function LinkList({pageLink, children}) {
+function LinkList({pageLink, children, className}) {
   return (
     <>
-      <li className="list-none">
+      <li className={`${className} list-none`}>
         <Link to={`${pageLink}`}>{children}</Link>
       </li>
     </>

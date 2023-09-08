@@ -1,5 +1,5 @@
 .hamburger {
-  @apply tablet:hidden relative w-[1.875rem] h-[1.875rem] cursor-pointer;
+  @apply flex relative w-[1.875rem] h-[1.875rem] cursor-pointer;
 
   & span,
   & span::before,
@@ -9,7 +9,7 @@
 }
 
 .hamburger span {
-  @apply top-1/2  -translate-y-1/2;
+  @apply top-1/2 -translate-y-1/2;
 }
 
 .hamburger span::before,
@@ -25,8 +25,14 @@
   top: 0.9375rem;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .hamburger {
-    @apply flex absolute top-[2.1875rem] right-0 cursor-pointer;
+    @apply hidden;
+  }
+}
+
+@media (max-width: 767px) {
+  .hamburger {
+    @apply flex absolute top-[2.1875rem] right-[2.1875rem] cursor-pointer;
   }
 }
