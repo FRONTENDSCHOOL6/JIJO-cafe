@@ -20,6 +20,11 @@ function Header() {
     setIsDropdownVisialbe(false);
   };
 
+  const [isClickedSignin, setIsClickedSignin] = useState(false);
+  const handleClickSignIn = (e) => {
+    setIsClickedSignin(!isClickedSignin);
+  };
+
   return (
     <header onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <h2 className="sr-only">JIJO-cafe Header</h2>
@@ -29,7 +34,10 @@ function Header() {
           <LinkList pageLink="/menu/drink" children="메뉴소개" />
           <LinkList pageLink="/findStore" children="매장" />
           <LinkList pageLink="/bbs/faq" children="지조소식" />
-          <li>로그인</li>
+          <li onClick={handleClickSignIn} className="cursor-pointer">
+            로그인
+          </li>
+          {isClickedSignin && <SignInModal />}
           <LinkList pageLink="/cart" children="장바구니" />
         </ul>
         {isChangedStatus ? (

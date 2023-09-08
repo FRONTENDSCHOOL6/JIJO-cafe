@@ -1,31 +1,31 @@
-import Button from '@/components/Button'
-import { Helmet } from 'react-helmet-async'
-import Input from '@/components/Input'
-import { useId } from 'react'
-import { useEffect } from 'react'
-import { useState } from 'react'
-import pb from '@/api/pocketbase'
+import Button from "@/components/Button";
+import {Helmet} from "react-helmet-async";
+import Input from "@/components/Input";
+import {useId} from "react";
+import {useEffect} from "react";
+import {useState} from "react";
+import pb from "@/api/pocketbase";
 
 function Notice() {
-  const id = useId()
-  const [data, setData] = useState(null)
-  const [status, setStatus] = useState('pending')
+  const id = useId();
+  const [data, setData] = useState(null);
+  const [status, setStatus] = useState("pending");
 
   useEffect(() => {
     const fetchData = async () => {
-      setStatus('loading')
+      setStatus("loading");
       try {
-        const noticeItems = await pb.collection('notices').getFullList()
-        console.log(noticeItems)
-        setData(noticeItems)
-        setStatus('success')
+        const noticeItems = await pb.collection("notices").getFullList();
+        // console.log(noticeItems)
+        setData(noticeItems);
+        setStatus("success");
       } catch (error) {
-        setStatus('error')
+        setStatus("error");
         // console.error('Error fetching data:', error)
       }
-    }
-    fetchData()
-  }, [])
+    };
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -41,16 +41,25 @@ function Notice() {
           <label htmlFor={id} className="sr-only">
             검색창
           </label>
-          <select id={id} name="notice" className="border px-jj_15 mr-[0.3125rem] rounded-sm h-[2.8125rem]">
+          <select
+            id={id}
+            name="notice"
+            className="border px-jj_15 mr-[0.3125rem] rounded-sm h-[2.8125rem]">
             <option value="noticeTitle">제목</option>
             <option value="noticeDescription">내용</option>
             <option value="noticeWriter">작성자</option>
           </select>
-          <Input placeholder="검색어를 입력하세요" className="bg-white mr-[0.3125rem] border px-jj_15 w-fit"></Input>
-          <Button color="primary" className="px-5 py-[0.625rem] mr-[0.3125rem] mobile:mt-[0.9375rem] mobile:w-full">
+          <Input
+            placeholder="검색어를 입력하세요"
+            className="bg-white mr-[0.3125rem] border px-jj_15 w-fit"></Input>
+          <Button
+            color="primary"
+            className="px-5 py-[0.625rem] mr-[0.3125rem] mobile:mt-[0.9375rem] mobile:w-full">
             검색
           </Button>
-          <Button color="primary" className="px-5  mobile:w-full mobile:my-[0.9375rem]">
+          <Button
+            color="primary"
+            className="px-5  mobile:w-full mobile:my-[0.9375rem]">
             등록
           </Button>
         </form>
@@ -93,7 +102,7 @@ function Notice() {
         </table>
       </section>
     </>
-  )
+  );
 }
 
-export default Notice
+export default Notice;

@@ -63,8 +63,6 @@ function Drink() {
             <CheckBox text="신상품" value="true" name="" id="" />
           </div>
         </div>
-
-        <Products />
       </section>
     </div>
   );

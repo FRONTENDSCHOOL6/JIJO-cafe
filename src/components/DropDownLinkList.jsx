@@ -16,7 +16,7 @@ function DropDownLinkList() {
   ];
 
   return (
-    <ul className="flex py-12 items-center justify-center gap-6">
+    <ul className="flex py-12 items-center justify-center gap-6 tablet:hidden mobile:hidden">
       {linkItems.map((item, index) => {
         return (
           <LinkList
