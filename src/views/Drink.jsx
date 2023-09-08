@@ -64,7 +64,7 @@ function Drink() {
           </div>
         </div>
 
-        <Products />
+
       </section>
     </div>
   );

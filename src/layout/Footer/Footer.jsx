@@ -5,8 +5,8 @@ function Footer() {
     <footer className="bg-secondary">
       <div className="terms bg-primary py-5">
         <ul className="flex max-w-7xl mx-auto gap-5 tablet:justify-center mobile:justify-center">
-          <li><a class="font-bold hover:underline" href="#">이용약관</a></li>
-          <li><a class="font-bold hover:underline" href="#">개인정보취급방침</a></li>
+          <li><a className="font-bold hover:underline" href="#">이용약관</a></li>
+          <li><a className="font-bold hover:underline" href="#">개인정보취급방침</a></li>
         </ul>
       </div>
       <div className="footerInner max-w-7xl mx-auto flex justify-between py-jj_60 tablet:justify-center">
