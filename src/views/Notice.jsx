@@ -5,11 +5,14 @@ import { useId } from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
 import pb from '@/api/pocketbase'
+import MenuTitle from '@/components/MenuTitle'
+import yyyymmddDate from '@/utils/yyyymmddDate'
 
 function Notice() {
   const id = useId()
   const [data, setData] = useState(null)
   const [status, setStatus] = useState('pending')
+  // const [views, setViews] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,10 +21,10 @@ function Notice() {
         const noticeItems = await pb.collection('notices').getFullList()
         console.log(noticeItems)
         setData(noticeItems)
+        console.log(data)
         setStatus('success')
       } catch (error) {
         setStatus('error')
-        // console.error('Error fetching data:', error)
       }
     }
     fetchData()
@@ -29,6 +32,8 @@ function Notice() {
 
   return (
     <>
+      <MenuTitle title="JIJO NEWS"> JIJO NOTICE</MenuTitle>
+
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60">
         <Helmet>
           <title>지조소식 - 공지사항</title>
@@ -66,29 +71,34 @@ function Notice() {
             </tr>
           </thead>
           <tbody className="text-gray-600 text-sm font-light border-t">
-            <tr className="border-b border-gray-200 hover:bg-gray-100">
-              <td className="py-3 px-6 whitespace-nowrap">
-                <div className="text-center">
-                  <span className="mobile:hidden font-medium">1</span>
-                </div>
-              </td>
-              <td className="py-3 px-6 text-left">
-                <div>
-                  <span>카페 지조 원두 관련 공지</span>
-                </div>
-              </td>
-              <td className="py-3 px-6 ">
-                <div className=" mobile:hidden text-center">
-                  <span>카페 지조</span>
-                </div>
-              </td>
-              <td className="py-3 px-6 text-center">
-                <span>2023-09-07</span>
-              </td>
-              <td className=" mobile:hidden py-3 px-6 text-center">
-                <span>0</span>
-              </td>
-            </tr>
+            {data &&
+              data.map((item, index) => {
+                return (
+                  <tr key={item.id} className="border-b border-gray-200 hover:bg-gray-100">
+                    <td className="py-3 px-6 whitespace-nowrap">
+                      <div className="text-center">
+                        <span className="mobile:hidden font-medium">{data.length - index}</span>
+                      </div>
+                    </td>
+                    <td className="py-3 px-6 text-left">
+                      <div>
+                        <span>{item.noticeTitle}</span>
+                      </div>
+                    </td>
+                    <td className="py-3 px-6 ">
+                      <div className=" mobile:hidden text-center">
+                        <span>{item.noticeWriter}</span>
+                      </div>
+                    </td>
+                    <td className="py-3 px-6 text-center">
+                      <span>{yyyymmddDate(item.noticeDate)}</span>
+                    </td>
+                    <td className=" mobile:hidden py-3 px-6 text-center">
+                      <span>{item.noticeViews}</span>
+                    </td>
+                  </tr>
+                )
+              })}
           </tbody>
         </table>
       </section>
