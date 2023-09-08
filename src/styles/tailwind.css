@@ -20,3 +20,16 @@
     }
   }
 }
+
+@layer components {
+  .PaginationButton {
+    width: 3.9375rem;
+    height: 2.5rem;
+    border: 1px solid #e0e3e6;
+    border-radius: 4px;
+    margin-left: 0.375rem;
+  }
+  .PaginationButton:hover {
+    background-color: #f4f6f8;
+  }
+}
