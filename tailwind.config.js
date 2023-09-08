@@ -47,6 +47,8 @@ export default {
         jj_13: '0.8125rem',
       },
       padding: {
+        jj_5: '0.3125rem',
+        jj_15: '0.9375rem',
         jj_50: '3.125rem',
         jj_60: '3.75rem',
         jj_100: '6.25rem',
