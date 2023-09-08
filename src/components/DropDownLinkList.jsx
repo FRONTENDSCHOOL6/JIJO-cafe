@@ -10,7 +10,7 @@ function DropDownLinkList() {
     {pageLink: "/bbs/notice", children: "Notice"},
     {pageLink: "/bbs/faq", children: "FAQ"},
     {pageLink: "/bbs/customer", children: "고객센터"},
-    {pageLink: "/bbs/customer", children: "회원가입"},
+    {pageLink: "/signUp", children: "회원가입"},
     {pageLink: "/bbs/event", children: "이벤트"},
     {pageLink: "/cart", children: "장바구니"},
   ];
