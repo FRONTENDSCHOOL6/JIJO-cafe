@@ -66,33 +66,20 @@ function SignUp() {
             <hr className="w-full" />
             <CheckboxButton
               inputClassName="mr-1"
-              labelText="개인정보 수집 및 이용 동의"
+              labelText="서비스 이용약관 동의 (필수)"
             />
-            <CheckboxButton inputClassName="mr-1" labelText="전체동의" />
-            <CheckboxButton inputClassName="mr-1" labelText="전체동의" />
-            <CheckboxButton inputClassName="mr-1" labelText="전체동의" />
-
-            {/* <div className="buttonInner">
-              <input className="pl-4" type="checkbox" />
-              <span>전체동의</span>
-            </div>
-            <hr className="w-full" />
-            <div className="buttonInner">
-              <input type="checkbox" />
-              <span className="pl-1">개인정보 수집 및 이용 동의</span>
-            </div>
-            <div className="buttonInner">
-              <input type="checkbox" />
-              <span>개인정보 수집 및 이용 동의 (필수)</span>
-            </div>
-            <div className="buttonInner">
-              <input type="checkbox" />
-              <span>만 14세 이상 입니다 (필수)</span>
-            </div>
-            <div className="buttonInner">
-              <input type="checkbox" />
-              <label htmlFor="">광고성 정보 수신 동의</label>
-            </div> */}
+            <CheckboxButton
+              inputClassName="mr-1"
+              labelText="개인정보 수집 및 이용 동의 (필수)"
+            />
+            <CheckboxButton
+              inputClassName="mr-1"
+              labelText="만 14세 이상 입니다 (필수)"
+            />
+            <CheckboxButton
+              inputClassName="mr-1"
+              labelText="광고성 정보 수신 동의 (선택)"
+            />
           </div>
 
           <Button
