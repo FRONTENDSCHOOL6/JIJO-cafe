@@ -1,7 +1,8 @@
 import Button from "@/components/Button";
 import CheckboxButton from "@/components/CheckboxButton";
 import Input from "@/components/Input";
-import TextHorizen from "@/components/TextHorizen";
+import PageMainTitle from "@/components/PageMainTitle";
+import SignUpFormWrapper from "@/layout/Wrapper/SignUpFormWrapper";
 import {useId} from "react";
 import {Helmet} from "react-helmet-async";
 
@@ -35,23 +36,22 @@ function SignUp() {
   return (
     <>
       <Helmet>
-        <title>Cafe-Jijo 회원가입 페이지</title>
+        <title>지조 회원가입</title>
       </Helmet>
 
       <section>
         <h2 className="sr-only">회원가입 페이지</h2>
-        <form className="w-fit m-auto pt-[2.125rem] pb-[14.625rem]">
-          <div className="text-center">
-            <h2 className="font-bold text-[36px] pb-3">화원가입</h2>
-            <span className="pb-[2.625rem] font-light text-[#1c1c1b]">
-              카페 지조 소식을 알려드립니다.
-            </span>
-          </div>
+        <SignUpFormWrapper>
+          <PageMainTitle
+            pageTitleText="회원가입"
+            pageSubTitleText="카페 지조 소식을 알려드립니다"
+          />
           <div className="inputWrap flex flex-col gap-2 pt-[2.6rem]">
             {inputProps?.map(({label, type, placeholder, name}) => {
               const id = useId();
               return (
                 <Input
+                  inputClassName="mobile:text-center mobile:placeholder:text-center"
                   label={label}
                   key={id}
                   type={type}
@@ -65,14 +65,17 @@ function SignUp() {
             <CheckboxButton inputClassName="mr-1" labelText="전체동의" />
             <hr className="w-full" />
             <CheckboxButton
+              required={true}
               inputClassName="mr-1"
               labelText="서비스 이용약관 동의 (필수)"
             />
             <CheckboxButton
+              required={true}
               inputClassName="mr-1"
               labelText="개인정보 수집 및 이용 동의 (필수)"
             />
             <CheckboxButton
+              required={true}
               inputClassName="mr-1"
               labelText="만 14세 이상 입니다 (필수)"
             />
@@ -88,7 +91,7 @@ function SignUp() {
             className="w-full h-fit mt-16 py-4 text-center">
             가입하기🥳
           </Button>
-        </form>
+        </SignUpFormWrapper>
       </section>
     </>
   );

@@ -66,7 +66,6 @@ function SignInModal() {
             name="email"
             defaultValue={formData.email}
             onChange={handleInput}
-            className="focus:border-primary"
             placeholder="이메일을 입력해주세요"
             label="이메일"
             type="email"
