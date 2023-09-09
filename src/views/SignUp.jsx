@@ -62,7 +62,17 @@ function SignUp() {
             })}
           </div>
           <div className="checkBoxWrap pt-[2.9375rem] flex flex-col gap-3 ">
-            <div className="buttonInner">
+            <CheckboxButton inputClassName="mr-1" labelText="전체동의" />
+            <hr className="w-full" />
+            <CheckboxButton
+              inputClassName="mr-1"
+              labelText="개인정보 수집 및 이용 동의"
+            />
+            <CheckboxButton inputClassName="mr-1" labelText="전체동의" />
+            <CheckboxButton inputClassName="mr-1" labelText="전체동의" />
+            <CheckboxButton inputClassName="mr-1" labelText="전체동의" />
+
+            {/* <div className="buttonInner">
               <input className="pl-4" type="checkbox" />
               <span>전체동의</span>
             </div>
@@ -82,7 +92,7 @@ function SignUp() {
             <div className="buttonInner">
               <input type="checkbox" />
               <label htmlFor="">광고성 정보 수신 동의</label>
-            </div>
+            </div> */}
           </div>
 
           <Button
