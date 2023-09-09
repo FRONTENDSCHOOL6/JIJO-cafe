@@ -1,5 +1,6 @@
 import React from "react";
 import LinkList from "./LinkList";
+import {motion} from "framer-motion";
 
 function DropDownLinkList() {
   const linkItems = [
@@ -15,20 +16,41 @@ function DropDownLinkList() {
     {pageLink: "/cart", children: "장바구니"},
   ];
 
+  const dropDownVariants = {
+    open: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        type: "tween",
+        duration: 0.7,
+        delayChildren: 0.5,
+      },
+    },
+    closed: {
+      opacity: 0,
+      y: -10,
+      transition: {
+        duration: 0.2,
+      },
+    },
+  };
+
   return (
     <>
-      <ul className="flex py-12 items-center justify-center gap-6 tablet:hidden mobile:hidden">
-        {linkItems.map((item, index) => {
-          return (
-            <LinkList
-              className="flex flex-col"
-              pageLink={item.pageLink}
-              key={index}
-              children={item.children}
-            />
-          );
-        })}
-      </ul>
+      <motion.ul
+        variants={dropDownVariants}
+        initial="closed"
+        animate="open"
+        className="flex py-12 items-center justify-center gap-6  mobile:hidden">
+        {linkItems.map((item, index) => (
+          <LinkList
+            className="flex flex-col"
+            pageLink={item.pageLink}
+            key={index}
+            children={item.children}
+          />
+        ))}
+      </motion.ul>
     </>
   );
 }

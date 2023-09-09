@@ -8,6 +8,8 @@ import SignInModal from "@/components/SignInModal";
 import useToggle from "@/hooks/useToggle";
 import {useState} from "react";
 import styles from "./Header.module.css";
+import {useNavigate} from "react-router-dom";
+import {useEffect} from "react";
 
 function Header() {
   /* 마우스 접근/떠남에 따른 서브메뉴리스트 렌더링 */
@@ -25,6 +27,8 @@ function Header() {
   const handleClickSignIn = () => {
     setIsClickedSignin(!isClickedSignin);
   };
+
+  /* 링크이동 시 해당 탭메뉴가 닫히는 기능 */
 
   return (
     <header onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
