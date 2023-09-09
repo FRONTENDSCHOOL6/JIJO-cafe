@@ -31,6 +31,7 @@ function SignUp() {
       <Helmet>
         <title>Cafe-Jijo 회원가입 페이지</title>
       </Helmet>
+
       <form>
         <div>
           <h2>화원가입</h2>
