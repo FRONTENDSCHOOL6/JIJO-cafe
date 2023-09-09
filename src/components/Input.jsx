@@ -18,7 +18,7 @@ function Input({
       <input
         id={id}
         type={type}
-        className={`${className} bg-[#f8f8f8] h-[2.8125rem] w-[25.75rem] pl-4 rounded placeholder:text-[#828282]`}
+        className={`${className} bg-[#f8f8f8] h-[2.8125rem] w-[25.75rem] pl-4 text-black rounded placeholder:text-[#828282]`}
         placeholder={placeholder}
         name={name}
         {...restProps}

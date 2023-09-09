@@ -8,6 +8,8 @@ import Input from "./Input";
 import KakaoTalkSignInButton from "./KakaoTalkSignInButton";
 import SignInForm from "./SignInForm";
 import TextHorizen from "./TextHorizen";
+import JijoCafeLogoTitle from "./JijoCafeLogoTitle";
+import useOutsideClickClose from "@/hooks/useOutsideClickClose";
 
 function SignInModal() {
   /* Email과 Password 유효성 검사 및 조건부 렌더링 함수 */
@@ -34,25 +36,32 @@ function SignInModal() {
   const formRef = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  useEffect(() => {
-    const handleOutsideClick = (e) => {
-      if (!formRef.current || formRef.current.contains(e.target)) {
-        return;
-      }
-      setIsModalOpen(!isModalOpen);
-    };
+  // useEffect(() => {
+  //   const handleOutsideClick = (e) => {
+  //     if (!formRef.current || formRef.current.contains(e.target)) {
+  //       return;
+  //     }
+  //     setIsModalOpen((prev) => !prev);
+  //   };
 
-    document.addEventListener("mousedown", handleOutsideClick);
+  //   document.addEventListener("mousedown", handleOutsideClick);
 
-    return () => {
-      document.removeEventListener("mousedown", handleOutsideClick);
-    };
-  }, [isModalOpen]);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleOutsideClick);
+  //   };
+  // }, [isModalOpen]);
+
+  const handleModalClose = () => {
+    setIsModalOpen((prev) => !prev);
+  };
+
+  useOutsideClickClose(formRef, handleModalClose);
 
   return (
     !isModalOpen && (
       <div className="w-full h-screen bg-[rgba(0,0,0,0.4)] fixed z-40 left-0 top-0">
-        <SignInForm ref={formRef} className="relative">
+        <SignInForm ref={formRef}>
+          <JijoCafeLogoTitle />
           <Input
             name="email"
             defaultValue={formData.email}

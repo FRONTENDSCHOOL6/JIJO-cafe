@@ -18,8 +18,8 @@
     flex-col
     absolute
     top-0
-    overflow-y-auto
     min-h-screen
+    overflow-y-hidden
     right-0
     w-full
     bg-[#222222]

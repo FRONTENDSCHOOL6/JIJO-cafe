@@ -16,18 +16,20 @@ function DropDownLinkList() {
   ];
 
   return (
-    <ul className="flex py-12 items-center justify-center gap-6 tablet:hidden mobile:hidden">
-      {linkItems.map((item, index) => {
-        return (
-          <LinkList
-            className="flex flex-col"
-            pageLink={item.pageLink}
-            key={index}
-            children={item.children}
-          />
-        );
-      })}
-    </ul>
+    <>
+      <ul className="flex py-12 items-center justify-center gap-6 tablet:hidden mobile:hidden">
+        {linkItems.map((item, index) => {
+          return (
+            <LinkList
+              className="flex flex-col"
+              pageLink={item.pageLink}
+              key={index}
+              children={item.children}
+            />
+          );
+        })}
+      </ul>
+    </>
   );
 }
 
