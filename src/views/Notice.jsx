@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async'
-
+import { useEffect } from 'react'
+import pb from '@/api/pocketbase'
 import MenuTitle from '@/components/MenuTitle'
-
 import NoticeList from '@/components/Notice/NoticeList'
 import { useState } from 'react'
 import NoticeSearchFilter from '@/components/Notice/NoticeSearchFilter'
@@ -9,10 +9,27 @@ import NoticeSearchFilter from '@/components/Notice/NoticeSearchFilter'
 function Notice() {
   const [searchOption, setSearchOption] = useState('noticeTitle') //select 태그
   const [searchText, setSearchText] = useState('') //input 창
+  const [data, setData] = useState(null)
+  const [status, setStatus] = useState('pending')
+
+  useEffect(() => {
+    const fetchData = async () => {
+      setStatus('loading')
+      try {
+        const noticeItems = await pb.collection('notices').getFullList()
+        // console.log(noticeItems)
+        setData(noticeItems)
+        // console.log(data)
+        setStatus('success')
+      } catch (error) {
+        setStatus('error')
+      }
+    }
+    fetchData()
+  }, [])
 
   // const [views, setViews] = useState(0);
   // error 상태 사용?
-
   const handleViewClick = () => {
     // 조회수+1 증가
     setViews(views + 1)
@@ -32,7 +49,7 @@ function Notice() {
         </div>
         <NoticeSearchFilter option={searchOption} onChangeOption={setSearchOption} text={searchText} onChangeText={setSearchText}></NoticeSearchFilter>
         {/* 상태를 props로 NoticeSearchFilter에 전달 */}
-        <NoticeList option={searchOption} text={searchText}></NoticeList>
+        <NoticeList data={data}></NoticeList>
       </section>
     </>
   )

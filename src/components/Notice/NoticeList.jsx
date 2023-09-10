@@ -1,30 +1,7 @@
 import yyyymmddDate from '@/utils/yyyymmddDate'
 import { Link } from 'react-router-dom'
-import { useEffect } from 'react'
-import pb from '@/api/pocketbase'
-import { useState } from 'react'
 
-function NoticeList({ option, text }) {
-  // option, text Notice 상태를 전달받음
-  const [data, setData] = useState(null)
-  const [status, setStatus] = useState('pending')
-  useEffect(() => {
-    console.log(text)
-    const fetchData = async () => {
-      setStatus('loading')
-      try {
-        const noticeItems = await pb.collection('notices').getFullList()
-        // console.log(noticeItems)
-        setData(noticeItems)
-        // console.log(data)
-        setStatus('success')
-      } catch (error) {
-        setStatus('error')
-      }
-    }
-    fetchData()
-  }, [option, text])
-
+function NoticeList({ data }) {
   return (
     <>
       <table className="min-w-max w-full table-auto bg-white my-6 border-t">
