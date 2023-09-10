@@ -2,22 +2,21 @@ import React from "react";
 
 function Pagination({ total, postsPerPage, currentPage, setcurrentPage, offset }) {
   const PagesNumber = Math.ceil(total / postsPerPage);
-
-  function handleFirstButton() {
+  const handleFirstButton = () => {
     setcurrentPage(offset * 0 + 1);
-  }
-  function handlePrevButton() {
+  };
+  const handlePrevButton = () => {
     setcurrentPage(currentPage - 1);
-  }
-  function handleNextButton() {
+  };
+  const handleNextButton = () => {
     setcurrentPage(currentPage + 1);
-  }
-  function handleLastButton() {
+  };
+  const handleLastButton = () => {
     setcurrentPage(PagesNumber);
-  }
+  };
 
   return (
-    <>
+    <div className="flex">
       <button className="PaginationButton" onClick={handleFirstButton} disabled={currentPage === 1}>
         처음
       </button>
@@ -44,7 +43,7 @@ function Pagination({ total, postsPerPage, currentPage, setcurrentPage, offset }
       <button className="PaginationButton" onClick={handleLastButton}>
         마지막
       </button>
-    </>
+    </div>
   );
 }
 
