@@ -2,15 +2,14 @@ import Button from '@/components/Button'
 import Input from '@/components/Input'
 import { useId } from 'react'
 
-function NoticeSearchFilter({ option, text, onChangeOption, onChangeText }) {
+function NoticeSearchFilter({ option, text, onChangeOption, onChangeText, handleReload }) {
   //  Notice state, setState (option, text)상태를 전달받음
+  // handleReload 검색 버튼 클릭시 reload 상태를 true로 변경
   const id = useId()
 
   const handleInput = (e) => {
     onChangeText(e.target.value)
   }
-
-  const handleSearchButton = () => {}
 
   return (
     <form>
@@ -32,7 +31,7 @@ function NoticeSearchFilter({ option, text, onChangeOption, onChangeText }) {
       </select>
       <Input value={text} type="search" onChange={handleInput} placeholder="검색어를 입력하세요" className="bg-white mr-[0.3125rem] border px-jj_15 w-fit"></Input>
       {/* input type search value입력시 x 표시 나오고 클릭시 텍스트 삭제  */}
-      <Button onClick={handleSearchButton} color="primary" className="px-5 py-[0.625rem] mr-[0.3125rem] mobile:mt-[0.9375rem] mobile:w-full">
+      <Button onClick={handleReload} color="primary" className="px-5 py-[0.625rem] mr-[0.3125rem] mobile:mt-[0.9375rem] mobile:w-full">
         검색
       </Button>
 
