@@ -21,9 +21,9 @@ function Footer() {
         <div className="footerLeft w-1/2 tablet:w-full mobile:w-full">
           <div className="footerLogoArea flex items-center tablet:justify-center mobile:justify-center">
             <figure className="footerLogo">
-              <img src="/logo_white.svg" width="80px" className="mr-4" alt="카페지조" />
+              <img width="80px" className="mr-4" src="/logo_white.svg" alt="카페지조" />
             </figure>
-            <ul className="snsIcon flex gap-2 ">
+            <ul className="snsIcon flex gap-2 mt-2">
               <li>
                 <a href="https://github.com/FRONTENDSCHOOL6/JIJO-cafe">
                   <img src="/src/assets/images/github.svg" alt="카페지조 깃허브" />

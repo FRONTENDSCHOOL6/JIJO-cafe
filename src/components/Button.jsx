@@ -13,7 +13,7 @@ function Button({ type = 'button', color, children, className, ...restProps }) {
       break
 
     default:
-      buttonStyle = 'bg-primary'
+      buttonStyle = ''
       break
   }
 

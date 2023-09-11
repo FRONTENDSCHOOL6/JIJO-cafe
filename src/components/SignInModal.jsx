@@ -1,29 +1,31 @@
+import ButtonWrapper from "@/layout/Wrapper/ButtonWrapper";
+import {emailReg, pwReg} from "@/utils/Validation";
+import debounce from "@/utils/debounce";
+import {useEffect, useRef, useState} from "react";
 import {Link} from "react-router-dom";
 import Button from "./Button";
 import Input from "./Input";
-import TextHorizen from "./TextHorizen";
-import SignInForm from "./SignInForm";
 import KakaoTalkSignInButton from "./KakaoTalkSignInButton";
-import ButtonWrapper from "@/layout/Wrapper/ButtonWrapper";
-import {emailReg, pwReg} from "@/utils/Validation";
-import {useState} from "react";
-import debounce from "@/utils/debounce";
+import SignInForm from "./SignInForm";
+import TextHorizen from "./TextHorizen";
+import JijoCafeLogoTitle from "./JijoCafeLogoTitle";
+import useOutsideClickClose from "@/hooks/useOutsideClickClose";
 
-function SignInModal() {
+function SignInModal({isClickedSignin, setIsClickedSignin}) {
+  console.log(isClickedSignin);
+  /* Email과 Password 유효성 검사 및 조건부 렌더링 함수 */
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isPasswordValid, setIsPasswordValid] = useState(true);
-
   const handleInput = debounce((e) => {
     const {value, name} = e.target;
     setFormData({
       ...formData,
       [name]: value,
     });
-
     if (name === "email") {
       setIsEmailValid(emailReg(value));
     } else if (name === "password") {
@@ -31,52 +33,65 @@ function SignInModal() {
     }
   });
 
-  // <div className="w-full h-screen bg-[rgba(0,0,0,0.2)] fixed z-40 left-0 top-0">
+  /* 모달창 외부 클릭 시 로그인모달 닫기 */
+  const formRef = useRef(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  console.log(isModalOpen);
+
+  const handleModalClose = () => {
+    // setIsModalOpen((prev) => !prev);
+    setIsClickedSignin();
+  };
+
+  useOutsideClickClose(formRef, handleModalClose);
 
   return (
-    <div>
-      <SignInForm>
-        <Input
-          name="email"
-          defaultValue={formData.email}
-          onChange={handleInput}
-          className="focus:border-primary"
-          placeholder="이메일을 입력해주세요"
-          label="이메일"
-          type="email"
-        />
-        {!isEmailValid && (
-          <span className="text-red-600">
-            올바른 이메일 형식을 입력해주세요😅
-          </span>
-        )}
-        <Input
-          name="password"
-          defaultValue={formData.password}
-          onChange={handleInput}
-          placeholder="비밀번호를 입력해주세요"
-          label="비밀번호"
-          type="password"
-        />
-        {!isPasswordValid && (
-          <span className="text-red-600">
-            비밀번호는 10자 이상 입력 해주세요!
-          </span>
-        )}
-        <ButtonWrapper>
-          <Button className="bg-secondary text-white grow" color="primary">
-            로그인
-          </Button>
-          <Link to="/signUp">
-            <Button className="bg-white border text-black px-[1.75rem] py-[0.75rem]">
-              회원가입
+    !isModalOpen && (
+      <div className="w-full h-screen bg-[rgba(0,0,0,0.4)] fixed z-40 left-0 top-0">
+        <SignInForm ref={formRef}>
+          <JijoCafeLogoTitle />
+          <Input
+            name="email"
+            defaultValue={formData.email}
+            onChange={handleInput}
+            placeholder="이메일을 입력해주세요"
+            label="이메일"
+            type="email"
+          />
+          {!isEmailValid && (
+            <span className="text-red-600">
+              올바른 이메일 형식을 입력해주세요😅
+            </span>
+          )}
+          <Input
+            name="password"
+            defaultValue={formData.password}
+            onChange={handleInput}
+            placeholder="비밀번호를 입력해주세요"
+            label="비밀번호"
+            type="password"
+          />
+          {!isPasswordValid && (
+            <span className="text-red-600">
+              비밀번호는 10자 이상 그리고 특수문자 하나이상을 입력 해주세요!
+            </span>
+          )}
+          <ButtonWrapper>
+            <Button className="bg-secondary text-white grow" color="primary">
+              로그인
             </Button>
-          </Link>
-        </ButtonWrapper>
-        <TextHorizen>간편 로그인</TextHorizen>
-        <KakaoTalkSignInButton />
-      </SignInForm>
-    </div>
+            <Link to="/signUp">
+              <Button className="bg-white border text-black px-[1.75rem] py-[0.75rem]">
+                회원가입
+              </Button>
+            </Link>
+          </ButtonWrapper>
+          <TextHorizen>간편 로그인</TextHorizen>
+          <KakaoTalkSignInButton />
+        </SignInForm>
+      </div>
+    )
   );
 }
 
