@@ -8,6 +8,10 @@
   @apply flex items-center justify-center gap-[4rem] font-bold;
 }
 
+.mobileTab {
+  @apply hidden;
+}
+
 @media (max-width: 768px) {
   .ul {
     @apply hidden  

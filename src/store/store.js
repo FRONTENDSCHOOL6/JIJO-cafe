@@ -2,7 +2,7 @@ import pb from "@/api/pocketbase";
 import {create} from "zustand";
 import {devtools} from "zustand/middleware";
 
-const USER_COLLECECTION = "user";
+const USER_COLLECECTION = "users";
 
 const initalAuthState = {
   isAuth: false,
@@ -10,7 +10,7 @@ const initalAuthState = {
   token: "",
 };
 
-const authStore = create((set) => ({
+const authStore = (set) => ({
   ...initalAuthState,
 
   /* Pb SDK를 사용한 회원가입 */
@@ -70,7 +70,7 @@ const authStore = create((set) => ({
 
     return response;
   },
-}));
+});
 
 const useAuthStore = create(devtools(authStore));
 
