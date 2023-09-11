@@ -1,5 +1,6 @@
 .nav {
   @apply relative;
+  @apply px-10;
   @apply py-9 flex gap-12 justify-between;
   @apply bg-transparent;
 }
@@ -58,7 +59,7 @@
 }
 
 .logoWrap {
-  @apply flex pr-7 gap-2 cursor-pointer items-center justify-center;
+  @apply flex  gap-2 cursor-pointer items-center justify-center;
 }
 
 .logoLink:hover {

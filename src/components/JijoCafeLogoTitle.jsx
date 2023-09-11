@@ -6,7 +6,7 @@ function JijoCafeLogoTitle({ ...restProps }) {
   return (
     <>
       <LinkList pageLink="/" {...restProps}>
-        <img src="/logo_black.svg" alt="지조카페" className={`${styles.img} desktop:w-[120px] tablet:w-[110px] mobile:w-[100px]`} />
+        <img src="/logo_black.svg" alt="지조카페" className={`${styles.img} desktop:w-[120px] tablet:w-[100px] mobile:w-[90px]`} />
       </LinkList>
     </>
   )
