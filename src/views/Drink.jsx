@@ -2,10 +2,11 @@ import {Helmet} from "react-helmet-async";
 import MenuTitle from "@/components/MenuTitle";
 import MenuBubble from "@/components/MenuBubble";
 import CheckBox from "@/components/CheckBox";
+import Products from "@/components/Products";
 
 function Drink() {
   return (
-    <div className="">
+    <div>
       <Helmet>
         <title>메뉴소개 - 음료</title>
       </Helmet>
@@ -15,7 +16,7 @@ function Drink() {
         <br />
         행복을 선사하는 다양한 음료
       </MenuBubble>
-      <section className="mx-auto max-w-7xl flex justify-between items-center gap-[3.125rem]">
+      <section className="mx-auto max-w-7xl flex justify-between items-center gap-[3.125rem] pt-[6.25rem]">
         <div>
           <p className="text-jj_24 font-light">카페 지조 가을시즌 신메뉴</p>
           <h2 className="text-jj_60 font-bold break-keep leading-tight">
@@ -64,7 +65,7 @@ function Drink() {
           </div>
         </div>
 
-
+        <Products/>
       </section>
     </div>
   );
