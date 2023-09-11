@@ -1,7 +1,7 @@
 import {Helmet} from "react-helmet-async";
 import MenuTitle from "@/components/MenuTitle";
 import MenuBubble from "@/components/MenuBubble";
-import CheckBox from "@/components/CheckBox";
+import CheckBox from "@/components/CheckBox/CheckBox";
 import Products from "@/components/Products";
 
 function Drink() {
@@ -54,18 +54,18 @@ function Drink() {
             분류보기
           </p>
           <div className="checkboxWrap flex gap-[.625rem]">
-            <CheckBox text="전체 상품보기" value="true" name="" id="" />
-            <CheckBox text="커피" value="true" name="" id="" />
-            <CheckBox text="티" value="true" name="" id="" />
-            <CheckBox text="에이드&주스" value="true" name="" id="" />
-            <CheckBox text="스무디&프라페" value="true" name="" id="" />
-            <CheckBox text="디카페인" value="true" name="" id="" />
-            <CheckBox text="음료" value="true" name="" id="" />
-            <CheckBox text="신상품" value="true" name="" id="" />
+            <CheckBox text="전체 상품보기" checked="checked"/>
+            <CheckBox text="커피" />
+            <CheckBox text="티" />
+            <CheckBox text="에이드&주스" />
+            <CheckBox text="스무디&프라페" />
+            <CheckBox text="디카페인" />
+            <CheckBox text="음료" />
+            <CheckBox text="신상품" />
           </div>
         </div>
 
-        <Products/>
+        <Products sub="beverage"/>
       </section>
     </div>
   );

@@ -4,20 +4,45 @@ import { useState } from 'react'
 import pb from '@/api/pocketbase'
 import { getPbImageURL } from '@/utils/getPbImageURL';
 import ProductModal from './ProductModal';
-import { numberWithComma } from './../utils/numberWithComma';
+import { numberWithComma } from '@/utils/numberWithComma';
 
 
-function Products() {
+function Products({sub}) {
   const [data, setData] = useState([]);
-
 
 useEffect(() => {
   const getData = async () => {
-    try {
-    const beverageItem = await pb.collection('beverage').getFullList();
-    setData(beverageItem)
-    } catch (error) {
-      console.error(error);
+    switch(sub) {
+      case "beverage": 
+        try {
+        const beverageItem = await pb.collection('beverage').getFullList({
+          sort: '-created'
+        });
+        setData(beverageItem)
+        } catch (error) {
+          console.error(error);
+        }
+        break;
+      case "foods": 
+        try {
+        const foodsItem = await pb.collection('foods').getFullList({
+          sort: '-created'
+        });
+        setData(foodsItem)
+        } catch (error) {
+          console.error(error);
+        }
+        break;
+      case "products": 
+        try {
+        const productsItem = await pb.collection('products').getFullList({
+          sort: 'created'
+        });
+        setData(productsItem)
+        } catch (error) {
+          console.error(error);
+        }
+        break;
     }
   };
 
@@ -40,11 +65,10 @@ if(data){
 export default Products;
 
 function ProductItem({item, ...restProps}) {
-  const handleClick = (e) => {
-    e.preventDefault;
-    this.ProductModal.className = "block";
-    console.log(this);
-  }
+  const [isClicked, setIsClicked] = useState(false);
+  const handleClick = () => {
+    setIsClicked(!isClicked);
+  };
 
   return (
     <li
@@ -53,18 +77,18 @@ function ProductItem({item, ...restProps}) {
       className='relative cursor-pointer'
       onClick={handleClick}
     >  
-      <a href="#">
+      <div>
         <div className='imgFrame relative w-80 h-80 overflow-hidden'>
-          <img src={getPbImageURL(item, 'beverageImage')} className='w-full transition-all ease-in hover:scale-110' alt={item.beverageTitle}/>
+          <img src={getPbImageURL(item, 'image')} className='w-full transition-all ease-in hover:scale-110' alt={item.title}/>
           <a href="/cart"><img src="/src/assets/images/menu/cart.svg" className='absolute bottom-0 right-0' alt="" /></a>
         </div>
         <div className='text py-6'>
-          <p className='title text-jj_22 pb-5 mb-[.3125rem] border-b'>{item.beverageTitle}</p>
-          <span className='price text-[#1c1c1b] opacity-70 text-jj_14 leading-none'>{numberWithComma(item.beveragePrice)}</span>
-          <p className='desc text-[#1c1c1b] opacity-70 text-jj_14 mt-5 overflow-hidden text-ellipsis line-clamp-2'>{item.beverageDescription}</p>
+          <p className='title text-jj_22 pb-5 mb-[.3125rem] border-b overflow-hidden text-ellipsis whitespace-nowrap'>{item.title}</p>
+          <span className='price text-[#1c1c1b] opacity-70 text-jj_14 leading-none'>{numberWithComma(item.price)}</span>
+          <p className='desc text-[#1c1c1b] opacity-70 text-jj_14 mt-5 overflow-hidden text-ellipsis line-clamp-2'>{item.description}</p>
         </div>
-      </a>
-      <ProductModal/>
+      </div>
+      {isClicked && <ProductModal key={item.id} item={item}/>}
     </li>
   )
 }
