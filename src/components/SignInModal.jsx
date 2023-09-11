@@ -11,7 +11,8 @@ import TextHorizen from "./TextHorizen";
 import JijoCafeLogoTitle from "./JijoCafeLogoTitle";
 import useOutsideClickClose from "@/hooks/useOutsideClickClose";
 
-function SignInModal() {
+function SignInModal({isClickedSignin, setIsClickedSignin}) {
+  console.log(isClickedSignin);
   /* Email과 Password 유효성 검사 및 조건부 렌더링 함수 */
   const [formData, setFormData] = useState({
     email: "",
@@ -36,23 +37,11 @@ function SignInModal() {
   const formRef = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  // useEffect(() => {
-  //   const handleOutsideClick = (e) => {
-  //     if (!formRef.current || formRef.current.contains(e.target)) {
-  //       return;
-  //     }
-  //     setIsModalOpen((prev) => !prev);
-  //   };
-
-  //   document.addEventListener("mousedown", handleOutsideClick);
-
-  //   return () => {
-  //     document.removeEventListener("mousedown", handleOutsideClick);
-  //   };
-  // }, [isModalOpen]);
+  console.log(isModalOpen);
 
   const handleModalClose = () => {
-    setIsModalOpen((prev) => !prev);
+    // setIsModalOpen((prev) => !prev);
+    setIsClickedSignin();
   };
 
   useOutsideClickClose(formRef, handleModalClose);

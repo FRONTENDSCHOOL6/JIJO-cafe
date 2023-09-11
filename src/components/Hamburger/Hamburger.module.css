@@ -6,8 +6,6 @@
   & span::after {
     @apply block absolute w-full h-[0.3125rem] bg-[#2d2d2d];
   }
-
-  @apply tablet:hidden mobile:hidden;
 }
 
 .hamburger span {
@@ -25,10 +23,4 @@
 
 .hamburger span::after {
   top: 0.9375rem;
-}
-
-@media (max-width: 767px) {
-  .hamburger {
-    @apply flex absolute top-[2.1875rem] right-[2.1875rem] cursor-pointer;
-  }
 }
