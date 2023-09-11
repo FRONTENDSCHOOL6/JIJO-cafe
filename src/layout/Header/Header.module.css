@@ -4,10 +4,6 @@
   @apply bg-transparent;
 }
 
-.img {
-  @apply pl-7;
-}
-
 .ul {
   @apply flex items-center justify-center gap-[4rem] font-bold;
 }

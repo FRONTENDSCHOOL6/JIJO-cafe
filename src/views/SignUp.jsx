@@ -3,6 +3,7 @@ import CheckboxButton from "@/components/CheckboxButton";
 import Input from "@/components/Input";
 import PageMainTitle from "@/components/PageMainTitle";
 import SignUpFormWrapper from "@/layout/Wrapper/SignUpFormWrapper";
+import {useEffect} from "react";
 import {useId} from "react";
 import {Helmet} from "react-helmet-async";
 
