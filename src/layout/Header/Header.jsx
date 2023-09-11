@@ -1,17 +1,19 @@
+import CloseButton from "@/components/CloseButton";
+import DropDownLinkList from "@/components/DropDownLinkList";
+import Hamburger from "@/components/Hamburger/Hamburger";
+import JijoCafeLogoTitle from "@/components/JijoCafeLogoTitle";
+import LinkList from "@/components/LinkList";
+import LogoLinks from "@/components/LogoLinks";
 import SignInModal from "@/components/SignInModal";
 import useToggle from "@/hooks/useToggle";
-import styles from "./Header.module.css";
-import Hamburger from "@/components/Hamburger/Hamburger";
-import LinkList from "@/components/LinkList";
-import JijoCafeLogoTitle from "@/components/JijoCafeLogoTitle";
-import LogoLinks from "@/components/LogoLinks";
-import CloseButton from "@/components/CloseButton";
 import {useState} from "react";
-import DropDownLinkList from "@/components/DropDownLinkList";
+import styles from "./Header.module.css";
+import {useNavigate} from "react-router-dom";
+import {useEffect} from "react";
 
 function Header() {
+  /* 마우스 접근/떠남에 따른 서브메뉴리스트 렌더링 */
   const [isChangedStatus, setIsChangedStatus] = useToggle(false);
-
   const [isDropdownVisiable, setIsDropdownVisialbe] = useState(false);
   const handleMouseEnter = () => {
     setIsDropdownVisialbe(true);
@@ -19,6 +21,14 @@ function Header() {
   const handleMouseLeave = () => {
     setIsDropdownVisialbe(false);
   };
+
+  /* 클릭시 로그인모달 렌더링 */
+  const [isClickedSignin, setIsClickedSignin] = useState(false);
+  const handleClickSignIn = () => {
+    setIsClickedSignin(!isClickedSignin);
+  };
+
+  /* 링크이동 시 해당 탭메뉴가 닫히는 기능 */
 
   return (
     <header onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
@@ -29,13 +39,16 @@ function Header() {
           <LinkList pageLink="/menu/drink" children="메뉴소개" />
           <LinkList pageLink="/findStore" children="매장" />
           <LinkList pageLink="/bbs/faq" children="지조소식" />
-          <li>로그인</li>
+          <li onClick={handleClickSignIn} className="cursor-pointer">
+            로그인
+          </li>
+          {isClickedSignin && <SignInModal />}
           <LinkList pageLink="/cart" children="장바구니" />
         </ul>
         {isChangedStatus ? (
           <CloseButton
             fillColor="#fff"
-            className="top-4 right-4 absolute z-10 cursor-pointer"
+            className="top-4 right-4 absolute z-10 cursor-pointer desktop:hidden"
             onClick={setIsChangedStatus}
           />
         ) : (
