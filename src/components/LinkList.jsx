@@ -1,13 +1,14 @@
+import {forwardRef} from "react";
 import {Link} from "react-router-dom";
 
-function LinkList({pageLink, children, className}) {
+function LinkList({pageLink, children, className, ...restProps}, ref) {
   return (
     <>
-      <li className={`${className} list-none`}>
+      <li ref={ref} className={`${className} list-none`} {...restProps}>
         <Link to={`${pageLink}`}>{children}</Link>
       </li>
     </>
   );
 }
 
-export default LinkList;
+export default forwardRef(LinkList);

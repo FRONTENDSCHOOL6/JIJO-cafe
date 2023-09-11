@@ -4,8 +4,10 @@
   & span,
   & span::before,
   & span::after {
-    @apply block absolute left-0 w-full h-[0.3125rem] bg-[#2d2d2d];
+    @apply block absolute w-full h-[0.3125rem] bg-[#2d2d2d];
   }
+
+  @apply tablet:hidden mobile:hidden;
 }
 
 .hamburger span {
@@ -23,12 +25,6 @@
 
 .hamburger span::after {
   top: 0.9375rem;
-}
-
-@media (min-width: 768px) {
-  .hamburger {
-    @apply hidden;
-  }
 }
 
 @media (max-width: 767px) {
