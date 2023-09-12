@@ -10,44 +10,44 @@ import { numberWithComma } from '@/utils/numberWithComma';
 function Products({sub}) {
   const [data, setData] = useState([]);
 
-useEffect(() => {
-  const getData = async () => {
-    switch(sub) {
-      case "beverage": 
-        try {
-        const beverageItem = await pb.collection('beverage').getFullList({
-          sort: '-created'
-        });
-        setData(beverageItem)
-        } catch (error) {
-          console.error(error);
-        }
-        break;
-      case "foods": 
-        try {
-        const foodsItem = await pb.collection('foods').getFullList({
-          sort: '-created'
-        });
-        setData(foodsItem)
-        } catch (error) {
-          console.error(error);
-        }
-        break;
-      case "products": 
-        try {
-        const productsItem = await pb.collection('products').getFullList({
-          sort: 'created'
-        });
-        setData(productsItem)
-        } catch (error) {
-          console.error(error);
-        }
-        break;
-    }
-  };
+  useEffect(() => {
+    const getData = async () => {
+      switch(sub) {
+        case "beverage": 
+          try {
+          const beverageItem = await pb.collection('beverage').getFullList({
+            sort: '-created'
+          });
+          setData(beverageItem)
+          } catch (error) {
+            console.error(error);
+          }
+          break;
+        case "foods": 
+          try {
+          const foodsItem = await pb.collection('foods').getFullList({
+            sort: '-created'
+          });
+          setData(foodsItem)
+          } catch (error) {
+            console.error(error);
+          }
+          break;
+        case "products": 
+          try {
+          const productsItem = await pb.collection('products').getFullList({
+            sort: 'created'
+          });
+          setData(productsItem)
+          } catch (error) {
+            console.error(error);
+          }
+          break;
+      }
+    };
 
-  getData();
-}, []);
+    getData();
+  }, []);
 
 if(data){
   return (

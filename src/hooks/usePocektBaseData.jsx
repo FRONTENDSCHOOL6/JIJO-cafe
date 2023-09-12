@@ -4,11 +4,11 @@ import {useEffect} from "react";
 
 export const usePocektBaseDataList = (collection) => {
   const [data, setData] = useState([]);
-
+s
   useEffect(() => {
     const fetchData = async () => {
       const records = await pb.collection(collection).getFullList({
-        sort: "-createe",
+        sort: "-created",
       });
       setData(records);
     };
