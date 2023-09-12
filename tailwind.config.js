@@ -3,12 +3,6 @@ export default {
   // content: ['.index.html', '.src/**/*.jsx'],
   content: ["./index.html", "./src/**/*.jsx"],
   theme: {
-    // screens: {
-    //   sm: '390px',
-    //   md: '728px',
-    //   lg: '1280px',
-    //   xl: '1920px',
-    // },
     extend: {
       fontFamily: {
         pretendard: ["Pretendard-Regular"],
@@ -16,6 +10,11 @@ export default {
         // GmarketSansMedium: ['GmarketSansMedium'],
       },
       colors: {
+        primary: "#DBC8AB",
+        secondary: "#3E3526",
+        black: "#252323",
+        white: "#FFFFFF",
+        darkGray: "#b7b7b7",
         primary: "#DBC8AB",
         secondary: "#3E3526",
         black: "#252323",
@@ -45,6 +44,8 @@ export default {
         jj_13: "0.8125rem",
       },
       padding: {
+        jj_5: "0.3125rem",
+        jj_15: "0.9375rem",
         jj_50: "3.125rem",
         jj_60: "3.75rem",
         jj_100: "6.25rem",
