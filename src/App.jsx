@@ -1,9 +1,10 @@
-import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
-import {Suspense} from "react";
-import {RouterProvider} from "react-router-dom";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Suspense } from "react";
+import { RouterProvider } from "react-router-dom";
 import router from "./routes/routes";
-import {HelmetProvider} from "react-helmet-async";
-import {Toaster} from "react-hot-toast";
+import { HelmetProvider } from "react-helmet-async";
+import { Toaster } from "react-hot-toast";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 // 쿼리 클라이언트 객체 생성
 const queryClient = new QueryClient({
   // 모든 쿼리에 사용되는 기본 옵션
@@ -26,6 +27,7 @@ function App() {
               <h1 className="bg-zinc-200">151515지조</h1>
             </Suspense>
           </RouterProvider>
+          <ReactQueryDevtools initialIsOpen={true} />
         </QueryClientProvider>
       </HelmetProvider>
       <Toaster />
