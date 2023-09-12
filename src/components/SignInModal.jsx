@@ -85,6 +85,9 @@ function SignInModal({setIsClickedSignin}) {
         <SignInForm ref={formRef} onSubmit={handleSignIn}>
           <JijoCafeLogoTitle />
           <Input
+            inputClassName={
+              isEmailValid ? "" : "border-2 border-red-300 focus:border-red-300"
+            }
             name="email"
             defaultValue={formData.email}
             onChange={handleInput}
@@ -97,7 +100,11 @@ function SignInModal({setIsClickedSignin}) {
           )}
           <div className="pwWrap flex flex-col relative">
             <Input
-              inputClassName=""
+              inputClassName={
+                isPasswordValid
+                  ? ""
+                  : "border-2 border-red-300 focus:border-red-300"
+              }
               name="password"
               defaultValue={formData.password}
               onChange={handleInput}
