@@ -3,6 +3,7 @@ import {Suspense} from "react";
 import {RouterProvider} from "react-router-dom";
 import router from "./routes/routes";
 import {HelmetProvider} from "react-helmet-async";
+import {Toaster} from "react-hot-toast";
 // 쿼리 클라이언트 객체 생성
 const queryClient = new QueryClient({
   // 모든 쿼리에 사용되는 기본 옵션
@@ -27,6 +28,7 @@ function App() {
           </RouterProvider>
         </QueryClientProvider>
       </HelmetProvider>
+      <Toaster />
     </>
   );
 }
