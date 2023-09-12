@@ -10,9 +10,13 @@ import SignInForm from "./SignInForm";
 import TextHorizen from "./TextHorizen";
 import JijoCafeLogoTitle from "./JijoCafeLogoTitle";
 import useOutsideClickClose from "@/hooks/useOutsideClickClose";
+import useAuthStore from "@/store/store";
+import {useNavigate} from "react-router-dom";
+import {toast} from "react-hot-toast";
+import {ClientResponseError} from "pocketbase";
+import InValidErrorMessage from "./InValidErrorMessage";
 
-function SignInModal({isClickedSignin, setIsClickedSignin}) {
-  console.log(isClickedSignin);
+function SignInModal({setIsClickedSignin}) {
   /* Email과 Password 유효성 검사 및 조건부 렌더링 함수 */
   const [formData, setFormData] = useState({
     email: "",
@@ -36,20 +40,41 @@ function SignInModal({isClickedSignin, setIsClickedSignin}) {
   /* 모달창 외부 클릭 시 로그인모달 닫기 */
   const formRef = useRef(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  console.log(isModalOpen);
-
   const handleModalClose = () => {
-    // setIsModalOpen((prev) => !prev);
-    setIsClickedSignin();
+    setIsModalOpen((prev) => !prev);
   };
 
   useOutsideClickClose(formRef, handleModalClose);
 
+  /* PB Data 접근 및 해당 로그인 */
+  const navigate = useNavigate();
+  const user = useAuthStore((state) => state.user);
+  const signIn = useAuthStore((state) => state.signIn);
+  const handleSignIn = (e) => {
+    try {
+      e.preventDefault();
+      const {email, password} = formData;
+      signIn(email, password);
+      toast.success(`${user.username}님 환영해요😁`, {icon: "👋"});
+      navigate("/");
+      setIsClickedSignin(false);
+    } catch (error) {
+      if (error instanceof ClientResponseError) {
+        toast.error("로그인에 실패했습니다😥", {icon: "😥"});
+        return;
+      }
+    }
+  };
+
+  /* 회원가입 페이지 이동 */
+  const handleMoveSignUp = () => {
+    navigate("/signUp");
+  };
+
   return (
     !isModalOpen && (
       <div className="w-full h-screen bg-[rgba(0,0,0,0.4)] fixed z-40 left-0 top-0">
-        <SignInForm ref={formRef}>
+        <SignInForm ref={formRef} onSubmit={handleSignIn}>
           <JijoCafeLogoTitle />
           <Input
             name="email"
@@ -60,9 +85,7 @@ function SignInModal({isClickedSignin, setIsClickedSignin}) {
             type="email"
           />
           {!isEmailValid && (
-            <span className="text-red-600">
-              올바른 이메일 형식을 입력해주세요😅
-            </span>
+            <InValidErrorMessage errorText="올바른 이메일 형식을 입력해주세요😅" />
           )}
           <Input
             name="password"
@@ -73,16 +96,19 @@ function SignInModal({isClickedSignin, setIsClickedSignin}) {
             type="password"
           />
           {!isPasswordValid && (
-            <span className="text-red-600">
-              비밀번호는 10자 이상 그리고 특수문자 하나이상을 입력 해주세요!
-            </span>
+            <InValidErrorMessage errorText="비밀번호는 10자 이상 그리고 특수문자 하나이상을 입력 해주세요!" />
           )}
           <ButtonWrapper>
-            <Button className="bg-secondary text-white grow" color="primary">
+            <Button
+              className="bg-secondary text-white grow"
+              color="primary"
+              onClick={handleSignIn}>
               로그인
             </Button>
             <Link to="/signUp">
-              <Button className="bg-white border text-black px-[1.75rem] py-[0.75rem]">
+              <Button
+                className="bg-white border text-black px-[1.75rem] py-[0.75rem]"
+                onClick={handleMoveSignUp}>
                 회원가입
               </Button>
             </Link>
