@@ -19,8 +19,8 @@ function NoticeList({ data }) {
             data.map((item, index) => {
               return (
                 <tr key={item.id} className="border-b border-gray-200 hover:bg-gray-100">
-                  <td className="py-3 px-6 whitespace-nowrap text-center">
-                    <span className="mobile:hidden font-medium">{data.length - index}</span>
+                  <td className="py-3 px-6 whitespace-nowrap text-center mobile:hidden">
+                    <span className=" font-medium">{data.length - index}</span>
                   </td>
                   <td className="py-3 px-6 text-left">
                     <Link to={`/bbs/notice/detail/${item.id}`}>
