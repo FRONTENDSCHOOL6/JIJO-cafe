@@ -19,6 +19,7 @@ function Button({type = "button", color, children, className, ...restProps}) {
 
   return (
     <button
+      {...restProps}
       type={type}
       className={`${buttonStyle} ${className} font-medium h-[2.8125rem] rounded-sm`}>
       {children}

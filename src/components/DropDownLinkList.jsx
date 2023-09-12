@@ -17,20 +17,32 @@ function DropDownLinkList() {
   ];
 
   const dropDownVariants = {
+    initial: {
+      opacity: 0,
+      height: 0,
+      padding: 0,
+    },
     open: {
       opacity: 1,
       y: 0,
+      height: 100,
+      padding: "3rem 0",
       transition: {
         type: "tween",
-        duration: 0.7,
-        delayChildren: 0.5,
+        duration: 0.5,
+        delayChildren: 0.4,
       },
     },
     closed: {
       opacity: 0,
       y: -10,
+      height: 0,
+      padding: 0,
       transition: {
+        type: "tween",
         duration: 0.2,
+        delayChildren: 0.4,
+        delay: 0.7,
       },
     },
   };
@@ -41,7 +53,7 @@ function DropDownLinkList() {
         variants={dropDownVariants}
         initial="closed"
         animate="open"
-        className="flex py-12 items-center justify-center gap-6  mobile:hidden">
+        className="flex py-12 items-center justify-center gap-6 tablet:hidden">
         {linkItems.map((item, index) => (
           <LinkList
             className="flex flex-col"

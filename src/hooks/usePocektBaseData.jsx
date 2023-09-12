@@ -31,8 +31,8 @@ export const usePocketBaseFilteredData = (
   collection,
   page,
   perPage,
-  filterOption,
-  dependency
+  filterOption = "",
+  dependency = ""
 ) => {
   const [data, setData] = useState([]);
   const [status, setStatus] = useState("pending");
@@ -54,7 +54,7 @@ export const usePocketBaseFilteredData = (
       }
     };
     fetchData();
-  }, [dependency]);
+  }, []);
   return {data, status};
 };
 

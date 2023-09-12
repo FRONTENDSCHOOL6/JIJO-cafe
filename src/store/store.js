@@ -1,6 +1,6 @@
 import pb from "@/api/pocketbase";
 import {create} from "zustand";
-import {devtools} from "zustand/middleware";
+import {devtools, persist} from "zustand/middleware";
 
 const USER_COLLECECTION = "users";
 
@@ -72,6 +72,6 @@ const authStore = (set) => ({
   },
 });
 
-const useAuthStore = create(devtools(authStore));
+const useAuthStore = create(persist(devtools(authStore), {name: "auth"}));
 
 export default useAuthStore;

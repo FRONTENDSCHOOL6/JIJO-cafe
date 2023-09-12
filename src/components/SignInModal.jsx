@@ -15,6 +15,8 @@ import {useNavigate} from "react-router-dom";
 import {toast} from "react-hot-toast";
 import {ClientResponseError} from "pocketbase";
 import InValidErrorMessage from "./InValidErrorMessage";
+import EyeOpen from "./EyeOpen";
+import EyeClosed from "./EyeClosed";
 
 function SignInModal({setIsClickedSignin}) {
   /* Email과 Password 유효성 검사 및 조건부 렌더링 함수 */
@@ -71,6 +73,12 @@ function SignInModal({setIsClickedSignin}) {
     navigate("/signUp");
   };
 
+  /* Eye Component 상태에 따른 비밀번호 보이기 */
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const handlePasswordVisible = () => {
+    setIsPasswordVisible((prev) => !prev);
+  };
+
   return (
     !isModalOpen && (
       <div className="w-full h-screen bg-[rgba(0,0,0,0.4)] fixed z-40 left-0 top-0">
@@ -87,14 +95,29 @@ function SignInModal({setIsClickedSignin}) {
           {!isEmailValid && (
             <InValidErrorMessage errorText="올바른 이메일 형식을 입력해주세요😅" />
           )}
-          <Input
-            name="password"
-            defaultValue={formData.password}
-            onChange={handleInput}
-            placeholder="비밀번호를 입력해주세요"
-            label="비밀번호"
-            type="password"
-          />
+          <div className="pwWrap flex flex-col relative">
+            <Input
+              inputClassName=""
+              name="password"
+              defaultValue={formData.password}
+              onChange={handleInput}
+              placeholder="비밀번호를 입력해주세요"
+              label="비밀번호"
+              type={isPasswordVisible ? "text" : "password"}
+            />
+            {isPasswordVisible ? (
+              <EyeClosed
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 -translate-x-1/2 mt-3"
+                onClick={handlePasswordVisible}
+              />
+            ) : (
+              <EyeOpen
+                className="absolute right-0 top-1/2 transform -translate-y-1/2 -translate-x-1/2 mt-3"
+                onClick={handlePasswordVisible}
+              />
+            )}
+          </div>
+
           {!isPasswordValid && (
             <InValidErrorMessage errorText="비밀번호는 10자 이상 그리고 특수문자 하나이상을 입력 해주세요!" />
           )}
@@ -107,7 +130,7 @@ function SignInModal({setIsClickedSignin}) {
             </Button>
             <Link to="/signUp">
               <Button
-                className="bg-white border text-black px-[1.75rem] py-[0.75rem]"
+                className="bg-white border text-black px-[1.75rem] py-[0.75rem] hover:#181818 hover:bg-gray-100 grow"
                 onClick={handleMoveSignUp}>
                 회원가입
               </Button>
