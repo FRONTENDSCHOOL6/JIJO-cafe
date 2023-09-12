@@ -23,13 +23,13 @@ function NoticeSearchFilter({ option, text, onChangeOption, onChangeText, handle
         }}
         id={id}
         name="notice"
-        className="border px-jj_15 mr-[0.3125rem] rounded-sm h-[2.8125rem]"
+        className="border px-jj_15 mr-[0.3125rem] bg-[#f8f8f8] h-[2.8125rem] pl-4 text-black rounded focus:border-2 focus:outline-none focus:border-primary"
       >
         <option value="noticeTitle">제목</option>
         <option value="noticeDescription">내용</option>
         <option value="noticeWriter">작성자</option>
       </select>
-      <Input value={text} type="search" onChange={handleInput} placeholder="검색어를 입력하세요" className="bg-white mr-[0.3125rem] border px-jj_15 w-fit"></Input>
+      <Input value={text} type="search" onChange={handleInput} placeholder="검색어를 입력하세요" inputClassName=" mr-[0.3125rem] border px-jj_15 w-fit"></Input>
       {/* input type search value입력시 x 표시 나오고 클릭시 텍스트 삭제  */}
       <Button onClick={handleReload} color="primary" className="px-5 py-[0.625rem] mr-[0.3125rem] mobile:mt-[0.9375rem] mobile:w-full">
         검색
