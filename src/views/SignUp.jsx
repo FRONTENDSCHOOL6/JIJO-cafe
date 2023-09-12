@@ -36,9 +36,6 @@ const inputProps = [
 ];
 
 function SignUp() {
-  const userData = usePocektBaseDataList("users");
-  console.log(userData);
-
   return (
     <>
       <Helmet>

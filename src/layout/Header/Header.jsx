@@ -7,6 +7,9 @@ import LogoLinks from "@/components/LogoLinks";
 import SignInModal from "@/components/SignInModal";
 import useToggle from "@/hooks/useToggle";
 import styles from "./Header.module.css";
+import useAuthStore from "@/store/store";
+import {toast} from "react-hot-toast";
+import {ToastIcon} from "react-hot-toast";
 
 function Header() {
   /* 마우스 클릭에 따른 햄버거 탭과 닫기 탭 렌더링 여부를 관리하는 상태 */
@@ -20,6 +23,18 @@ function Header() {
 
   /* 링크이동 시 해당 탭메뉴가 닫히는 기능 */
 
+  /* 인증 정보에 따른 로그인 ➡️ 로그아웃으로 변경 */
+  const isAuth = useAuthStore((state) => state.isAuth);
+
+  /* 로그아웃 기능 */
+  const signOut = useAuthStore((state) => state.signOut);
+  const handleSignOut = () => {
+    toast.success("정상적으로 로그아웃 되었습니다.", {icon: "👋"});
+    signOut();
+  };
+
+  console.log(isAuth);
+
   return (
     <header
       onMouseEnter={setIsDropdownVisialbe}
@@ -31,9 +46,19 @@ function Header() {
           <LinkList pageLink="/menu/drink">메뉴 소개</LinkList>
           <LinkList pageLink="/findStore">매장</LinkList>
           <LinkList pageLink="/bbs/faq">지조소식</LinkList>
-          <li onClick={setIsClickedSignin} className="cursor-pointer">
+          {isAuth ? (
+            <li onClick={handleSignOut} className="cursor-pointer">
+              로그아웃
+            </li>
+          ) : (
+            <li onClick={setIsClickedSignin} className="cursor-pointer">
+              로그인
+            </li>
+          )}
+
+          {/* <li onClick={setIsClickedSignin} className="cursor-pointer">
             로그인
-          </li>
+          </li> */}
           {isClickedSignin && (
             <SignInModal
               isClickedSignin={isClickedSignin}

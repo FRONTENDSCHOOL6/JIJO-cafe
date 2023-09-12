@@ -1,4 +1,4 @@
-function Button({type = "button", color, children, className}) {
+function Button({type = "button", color, children, className, ...props}) {
   let buttonStyle;
 
   switch (color) {
@@ -20,6 +20,7 @@ function Button({type = "button", color, children, className}) {
   return (
     <button
       type={type}
+      {...props}
       className={`${buttonStyle} ${className} font-medium h-[2.8125rem] rounded-sm`}>
       {children}
     </button>
