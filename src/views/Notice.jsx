@@ -1,108 +1,73 @@
-import Button from "@/components/Button";
-import {Helmet} from "react-helmet-async";
-import Input from "@/components/Input";
-import {useId} from "react";
-import {useEffect} from "react";
-import {useState} from "react";
-import pb from "@/api/pocketbase";
+import pb from '@/api/pocketbase'
+import { Helmet } from 'react-helmet-async'
+import { useState, useEffect } from 'react'
+import MenuTitle from '@/components/MenuTitle'
+import NoticeList from '@/components/Notice/NoticeList'
+import JijoSpinner from '@/components/JijoSpinner'
+import PageMainTitle from '@/components/PageMainTitle'
+import NoticeSearchFilter from '@/components/Notice/NoticeSearchFilter'
 
 function Notice() {
-  const id = useId();
-  const [data, setData] = useState(null);
-  const [status, setStatus] = useState("pending");
+  const [data, setData] = useState(null)
+  const [status, setStatus] = useState('pending')
+  const [searchOption, setSearchOption] = useState('noticeTitle') //select 태그
+  const [searchText, setSearchText] = useState('') //input 창
+  const [reload, setReload] = useState(true) //검색버튼 클릭시 pb 다시 작동하도록
+  // error 상태 사용?
 
   useEffect(() => {
     const fetchData = async () => {
-      setStatus("loading");
+      setStatus('loading')
       try {
-        const noticeItems = await pb.collection("notices").getFullList();
-        // console.log(noticeItems)
-        setData(noticeItems);
-        setStatus("success");
+        let noticeItems
+        if (!searchText) {
+          const response = await pb.collection('notices').getList(1, 10)
+          noticeItems = response.items
+          console.log(noticeItems)
+        } else {
+          const response = await pb.collection('notices').getList(1, 10, {
+            filter: `(${searchOption} ~ '${searchText}')`,
+          })
+          noticeItems = response.items
+          console.log(noticeItems)
+        }
+        setData(noticeItems)
+        setStatus('success')
       } catch (error) {
-        setStatus("error");
-        // console.error('Error fetching data:', error)
+        setStatus('error')
+        console.error('error')
       }
-    };
-    fetchData();
-  }, []);
+    }
+    if (reload) {
+      fetchData()
+      setReload(false) //  fetchdata가 실행되면 flase로 바꿔줘서 리랜더를 막아주기 , 버튼 눌렀을때맏 다시 검색을 하게 되는중
+    }
+  }, [reload])
+
+  if (status === 'loading') {
+    return <JijoSpinner />
+  }
+  // 스피너를 로딩 중일 때만 렌더링
+
+  const handleReload = () => {
+    setReload(true)
+  }
 
   return (
     <>
+      <Helmet>
+        <title>지조소식 - 공지사항</title>
+      </Helmet>
+      <MenuTitle title="JIJO NEWS"> JIJO NOTICE</MenuTitle>
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60">
-        <Helmet>
-          <title>지조소식 - 공지사항</title>
-        </Helmet>
-        <div className="text-center ">
-          <h2 className="text-jj_43 font-bold ">카페 지조 공지사항</h2>
-          <p className="m-10"> 카페 지조 소식을 알려드립니다.</p>
-        </div>
-        <form>
-          <label htmlFor={id} className="sr-only">
-            검색창
-          </label>
-          <select
-            id={id}
-            name="notice"
-            className="border px-jj_15 mr-[0.3125rem] rounded-sm h-[2.8125rem]">
-            <option value="noticeTitle">제목</option>
-            <option value="noticeDescription">내용</option>
-            <option value="noticeWriter">작성자</option>
-          </select>
-          <Input
-            placeholder="검색어를 입력하세요"
-            className="bg-white mr-[0.3125rem] border px-jj_15 w-fit"></Input>
-          <Button
-            color="primary"
-            className="px-5 py-[0.625rem] mr-[0.3125rem] mobile:mt-[0.9375rem] mobile:w-full">
-            검색
-          </Button>
-          <Button
-            color="primary"
-            className="px-5  mobile:w-full mobile:my-[0.9375rem]">
-            등록
-          </Button>
-        </form>
+        <PageMainTitle pageTitleText="카페 지조 공지사항" pageSubTitleText="카페 지조 소식을 알려드립니다."></PageMainTitle>
 
-        <table className="min-w-max w-full table-auto bg-white my-6 border-t">
-          <thead>
-            <tr className="text-jj_15 leading-normal">
-              <th className="mobile:hidden py-3 px-6 items-center">번호</th>
-              <th className="py-3 px-6 ">제목</th>
-              <th className="mobile:hidden py-3 px-6 ">글쓴이</th>
-              <th className="py-3 px-6 text-center">날짜</th>
-              <th className="mobile:hidden py-3 px-6 ">조회</th>
-            </tr>
-          </thead>
-          <tbody className="text-gray-600 text-sm font-light border-t">
-            <tr className="border-b border-gray-200 hover:bg-gray-100">
-              <td className="py-3 px-6 whitespace-nowrap">
-                <div className="text-center">
-                  <span className="mobile:hidden font-medium">1</span>
-                </div>
-              </td>
-              <td className="py-3 px-6 text-left">
-                <div>
-                  <span>카페 지조 원두 관련 공지</span>
-                </div>
-              </td>
-              <td className="py-3 px-6 ">
-                <div className=" mobile:hidden text-center">
-                  <span>카페 지조</span>
-                </div>
-              </td>
-              <td className="py-3 px-6 text-center">
-                <span>2023-09-07</span>
-              </td>
-              <td className=" mobile:hidden py-3 px-6 text-center">
-                <span>0</span>
-              </td>
-            </tr>
-          </tbody>
-        </table>
+        <NoticeSearchFilter handleReload={handleReload} option={searchOption} onChangeOption={setSearchOption} text={searchText} onChangeText={setSearchText}></NoticeSearchFilter>
+        {/* 상태를 props로 NoticeSearchFilter에 전달 */}
+        <NoticeList data={data} />
       </section>
     </>
-  );
+  )
 }
 
-export default Notice;
+export default Notice
