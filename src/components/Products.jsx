@@ -8,6 +8,7 @@ import { numberWithComma } from '@/utils/numberWithComma';
 
 
 function Products({sub}) {
+  pb.autoCancellation(false);
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -73,7 +74,7 @@ function ProductItem({item, ...restProps}) {
   return (
     <li
       key={item.id}
-      {...restProps}s
+      {...restProps}
       className='relative cursor-pointer'
       onClick={handleClick}
     >  
