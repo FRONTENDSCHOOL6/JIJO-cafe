@@ -1,7 +1,14 @@
 import yyyymmddDate from '@/utils/yyyymmddDate'
+import pb from '@/api/pocketbase'
 import { Link } from 'react-router-dom'
 
 function NoticeList({ data }) {
+  const handleUpViews = async (item) => {
+    console.log(item)
+    const record = await pb.collection('notices').update(item.id, { noticeViews: item.noticeViews + 1 })
+    console.log(record)
+  }
+
   return (
     <>
       <table className="min-w-max w-full table-auto bg-white my-6 border-t">
@@ -24,7 +31,13 @@ function NoticeList({ data }) {
                   </td>
                   <td className="py-3 px-6 text-left">
                     <Link to={`/bbs/notice/detail/${item.id}`}>
-                      <p>{item.noticeTitle}</p>
+                      <p
+                        onClick={() => {
+                          handleUpViews(item)
+                        }}
+                      >
+                        {item.noticeTitle}
+                      </p>
                     </Link>
                   </td>
                   <td className="py-3 px-6 mobile:hidden text-center">

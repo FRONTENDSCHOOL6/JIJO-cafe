@@ -1,7 +1,7 @@
 import pb from '@/api/pocketbase'
-import Button from '@/components/Button'
+import JijoSpinner from '@/components/JijoSpinner'
 import MenuTitle from '@/components/MenuTitle'
-import yyyymmddDate from '@/utils/yyyymmddDate'
+import Detail from '@/components/Notice/Detail'
 import { useState } from 'react'
 import { useEffect } from 'react'
 import { Helmet } from 'react-helmet-async'
@@ -11,6 +11,9 @@ function NoticeDetail() {
   const { noticeId } = useParams()
   const [data, setData] = useState(null)
   const [status, setStatus] = useState('pending')
+  const [error, setError] = useState(null)
+
+  pb.autoCancellation(false) // 오토캔슬 false
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,17 +21,31 @@ function NoticeDetail() {
       try {
         const noticeItems = await pb.collection('notices').getOne(noticeId) //단일 데이터 가져올때 getOne
         console.log(noticeItems)
-        console.log(noticeId)
+        // console.log(noticeId)
         setData(noticeItems)
-        console.log(data)
+        // console.log(data)
         setStatus('success')
       } catch (error) {
         setStatus('error')
-        console.error(error)
+        setError(error)
       }
     }
     fetchData()
   }, [noticeId])
+
+  if (status === 'loading') {
+    return <JijoSpinner />
+  }
+  // 데이터 가져오는 중(로딩)일 때 표시할 화면
+
+  if (status === 'error') {
+    return (
+      <div role="alert" className="flex flex-col h-[calc(100vh_-_70px)] w-auto justify-center items-center ">
+        <p>{error.toString()}</p>
+        <p>알 수 없는 오류가 발생했습니다.</p>
+      </div>
+    )
+  }
 
   return (
     <>
@@ -36,33 +53,7 @@ function NoticeDetail() {
         <title>지조소식 - 공지사항</title>
       </Helmet>
       <MenuTitle title="JIJO NEWS"> JIJO NOTICE</MenuTitle>
-      <section className="max-w-screen-xl mx-auto px-5 py-jj_60">
-        <div className=" border-y pt-[2rem] flex flex-col">
-          <h3 className="text-jj_24 font-[350] ">카페 지조 원두 관련 공지</h3>
-          <div className="ml-auto font-light text-[#313131]">
-            작성자 작성일 조회수
-            {/* <p>{item.noticeWriter}</p>
-          <time>{yyyymmddDate(item.noticeDate)}</time>
-          <span>{item.noticeViews}</span> */}
-          </div>
-        </div>
-        <p className="my-[1.875rem] font-light text-jj_18">내용 Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis similique laboriosam dicta facere nisi corrupti, odit qui debitis commodi quos natus quod rem ad provident rerum harum est quisquam. Architecto.</p>
-        <div className="my-[1.875rem] py-4 border-y font-light flex gap-[3.4375rem]">
-          <p>다음글</p>
-          <p>카페 지조 영양성분표</p>
-        </div>
-        <div className="flex-row flex gap-2 justify-end">
-          <Button color="primary" className="mr-auto px-[1.875rem]">
-            목록으로
-          </Button>
-          <Button color="primary" className="px-[1.875rem]">
-            수정
-          </Button>
-          <Button color="primary" className="px-[1.875rem]">
-            삭제
-          </Button>
-        </div>
-      </section>
+      <Detail data={data}></Detail>
     </>
   )
 }
