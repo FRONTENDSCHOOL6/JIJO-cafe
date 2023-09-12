@@ -10,6 +10,7 @@ import NoticeSearchFilter from '@/components/Notice/NoticeSearchFilter'
 function Notice() {
   const [data, setData] = useState(null)
   const [status, setStatus] = useState('pending')
+  const [error, setError] = useState(null)
   const [searchOption, setSearchOption] = useState('noticeTitle') //select 태그
   const [searchText, setSearchText] = useState('') //input 창
   const [reload, setReload] = useState(true) //검색버튼 클릭시 pb 다시 작동하도록
@@ -21,6 +22,7 @@ function Notice() {
       try {
         let noticeItems
         if (!searchText) {
+          pb.autoCancellation(false) // 오토캔슬 false
           const response = await pb.collection('notices').getList(1, 10)
           noticeItems = response.items
           console.log(noticeItems)
@@ -34,8 +36,11 @@ function Notice() {
         setData(noticeItems)
         setStatus('success')
       } catch (error) {
-        setStatus('error')
-        console.error('error')
+        console.log(error.constructor)
+        if (error) {
+          setStatus('error')
+          setError(error)
+        }
       }
     }
     if (reload) {
@@ -47,7 +52,17 @@ function Notice() {
   if (status === 'loading') {
     return <JijoSpinner />
   }
-  // 스피너를 로딩 중일 때만 렌더링
+  // 데이터 가져오는 중(로딩)일 때 표시할 화면
+
+  if (status === 'error') {
+    return (
+      <div role="alert" className="flex flex-col h-[calc(100vh_-_70px)] w-auto justify-center items-center ">
+        <p>{error.toString()}</p>
+        <p>알 수 없는 오류가 발생했습니다.</p>
+      </div>
+    )
+  }
+  // 데이터 가져오기 실패한 경우 표시할 화면
 
   const handleReload = () => {
     setReload(true)
