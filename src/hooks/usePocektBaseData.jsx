@@ -5,17 +5,25 @@ import {useEffect} from "react";
 /* 콜렉션의 FullList 제공 */
 export const usePocektBaseDataList = (collection) => {
   const [data, setData] = useState([]);
+  const [status, setStatus] = useState("pending");
 
   useEffect(() => {
     const fetchData = async () => {
-      const records = await pb.collection(collection).getFullList({
-        sort: "-created",
-      });
-      setData(records);
+      setStatus("loading");
+      try {
+        const records = await pb.collection(collection).getFullList({
+          sort: "-created",
+        });
+        setData(records);
+        setStatus("success");
+      } catch (error) {
+        setStatus("error");
+        console.error("error");
+      }
     };
     fetchData();
   }, []);
-  return data;
+  return {data, status};
 };
 
 /* 콜렉션의 특정 리스트 제공 */
@@ -23,22 +31,31 @@ export const usePocketBaseFilteredData = (
   collection,
   page,
   perPage,
-  filterOption
+  filterOption,
+  dependency
 ) => {
   const [data, setData] = useState([]);
+  const [status, setStatus] = useState("pending");
 
   useEffect(() => {
     const fetchData = async () => {
-      const filteredRecord = await pb
-        .collection(collection)
-        .getList(page, perPage, {
-          filterOption,
-        });
-      setData(filteredRecord);
+      setStatus("loading");
+      try {
+        const filteredRecord = await pb
+          .collection(collection)
+          .getList(page, perPage, {
+            filterOption,
+          });
+        setData(filteredRecord);
+        setStatus("success");
+      } catch (error) {
+        setStatus("error");
+        console.error("error");
+      }
     };
     fetchData();
-  }, []);
-  return data;
+  }, [dependency]);
+  return {data, status};
 };
 
 /* 콜렉션의 업데이트 */

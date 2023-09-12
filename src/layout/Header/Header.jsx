@@ -33,8 +33,6 @@ function Header() {
     signOut();
   };
 
-  console.log(isAuth);
-
   return (
     <header
       onMouseEnter={setIsDropdownVisialbe}

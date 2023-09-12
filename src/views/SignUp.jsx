@@ -2,7 +2,10 @@ import Button from "@/components/Button";
 import CheckboxButton from "@/components/CheckboxButton";
 import Input from "@/components/Input";
 import PageMainTitle from "@/components/PageMainTitle";
-import {usePocektBaseDataList} from "@/hooks/usePocektBaseData";
+import {
+  usePocektBaseDataList,
+  usePocketBaseFilteredData,
+} from "@/hooks/usePocektBaseData";
 import SignUpFormWrapper from "@/layout/Wrapper/SignUpFormWrapper";
 import useAuthStore from "@/store/store";
 import {useEffect} from "react";
