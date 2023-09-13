@@ -17,5 +17,5 @@
   @apply block;
 }
 .checkText {
-  @apply pl-[.3125rem] text-secondary font-light;
+  @apply pl-[.3125rem] text-secondary text-inherit;
 }

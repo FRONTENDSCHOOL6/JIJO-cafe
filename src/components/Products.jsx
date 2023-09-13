@@ -5,55 +5,19 @@ import pb from "@/api/pocketbase";
 import {getPbImageURL} from "@/utils/getPbImageURL";
 import ProductModal from "./ProductModal";
 import {numberWithComma} from "@/utils/numberWithComma";
+import {usePocketBaseFilteredData} from "@/hooks/usePocektBaseData";
 
-function Products({sub}) {
+function Products({collection}) {
   pb.autoCancellation(false);
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const getData = async () => {
-      switch (sub) {
-        case "beverage":
-          try {
-            const beverageItem = await pb.collection("beverage").getFullList({
-              sort: "-created",
-            });
-            setData(beverageItem);
-          } catch (error) {
-            console.error(error);
-          }
-          break;
-        case "foods":
-          try {
-            const foodsItem = await pb.collection("foods").getFullList({
-              sort: "-created",
-            });
-            setData(foodsItem);
-          } catch (error) {
-            console.error(error);
-          }
-          break;
-        case "products":
-          try {
-            const productsItem = await pb.collection("products").getFullList({
-              sort: "created",
-            });
-            setData(productsItem);
-          } catch (error) {
-            console.error(error);
-          }
-          break;
-      }
-    };
-
-    getData();
-  }, []);
+  const {data, status} = usePocketBaseFilteredData(collection, 1, 20, {
+    filterOption: "sort: '-created'",
+  });
 
   if (data) {
     return (
       <div className="itemWrap">
-        <ul className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-          {data?.items.map((item) => (
+        <ul className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mobile:grid-cols-2">
+          {data?.items?.map((item) => (
             <ProductItem key={item.id} item={item} />
           ))}
         </ul>
@@ -98,7 +62,7 @@ function ProductItem({item, ...restProps}) {
           <span className="price text-[#1c1c1b] opacity-70 text-jj_14 leading-none">
             {numberWithComma(item.price)}
           </span>
-          <p className="desc text-[#1c1c1b] opacity-70 text-jj_14 mt-5 overflow-hidden text-ellipsis line-clamp-2">
+          <p className="desc text-[#1c1c1b] opacity-70 text-jj_14 mobile:text-sm mt-5 overflow-hidden text-ellipsis line-clamp-2">
             {item.description}
           </p>
         </div>
