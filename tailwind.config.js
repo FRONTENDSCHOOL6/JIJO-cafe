@@ -7,13 +7,8 @@ export default {
       fontFamily: {
         pretendard: ['Pretendard-Regular'],
         Roboto: ['Roboto-Variable'],
-        // GmarketSansMedium: ['GmarketSansMedium'],
       },
       colors: {
-        primary: '#DBC8AB',
-        secondary: '#3E3526',
-        black: '#252323',
-        white: '#FFFFFF',
         darkGray: '#b7b7b7',
         primary: '#DBC8AB',
         secondary: '#3E3526',
