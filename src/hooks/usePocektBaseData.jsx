@@ -44,7 +44,7 @@ export const usePocketBaseFilteredData = (
         const filteredRecord = await pb
           .collection(collection)
           .getList(page, perPage, {
-            filterOption,
+            filter: filterOption,
           });
         setData(filteredRecord);
         setStatus("success");
@@ -54,7 +54,7 @@ export const usePocketBaseFilteredData = (
       }
     };
     fetchData();
-  }, []);
+  }, [dependency]);
   return {data, status};
 };
 

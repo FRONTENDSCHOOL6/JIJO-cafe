@@ -54,7 +54,7 @@ function Drink() {
             분류보기
           </p>
           <div className="checkboxWrap flex gap-[.625rem]">
-            <CheckBox text="전체 상품보기" defaultChecked="checked"/>
+            <CheckBox text="전체 상품보기" defaultChecked="checked" />
             <CheckBox text="커피" />
             <CheckBox text="티" />
             <CheckBox text="에이드&주스" />
@@ -65,7 +65,7 @@ function Drink() {
           </div>
         </div>
 
-        <Products sub="beverage"/>
+        <Products sub="beverage" />
       </section>
     </div>
   );

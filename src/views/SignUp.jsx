@@ -1,19 +1,14 @@
+import pb from "@/api/pocketbase";
 import Button from "@/components/Button";
-import CheckboxButton from "@/components/CheckboxButton";
-import InValidErrorMessage from "@/components/InValidErrorMessage";
+import CheckBox from "@/components/CheckBox/CheckBox";
 import Input from "@/components/Input";
 import PageMainTitle from "@/components/PageMainTitle";
-import {
-  usePocektBaseDataList,
-  usePocketBaseFilteredData,
-} from "@/hooks/usePocektBaseData";
 import SignUpFormWrapper from "@/layout/Wrapper/SignUpFormWrapper";
 import useAuthStore from "@/store/store";
 import {engReg, pwReg} from "@/utils/Validation";
 import debounce from "@/utils/debounce";
-import {set} from "ramda";
-import {useState} from "react";
 import {useEffect} from "react";
+import {useState} from "react";
 import {useId} from "react";
 import {Helmet} from "react-helmet-async";
 import {toast} from "react-hot-toast";
@@ -60,75 +55,94 @@ function SignUp() {
   const handleInput = debounce((e) => {
     const {name, value} = e.target;
     setFormState({...formState, [name]: value});
-    if (name === "password") {
-      validateSignUp();
-    }
   });
 
-  /* PassWord Validation */
-  const [isValid, setIsValid] = useState(true);
+  /* 비밀번호 유효성 검사 */
   const validateSignUp = () => {
     if (!pwReg(password)) {
-      setIsValid(false);
-      return;
+      toast.error(
+        "비밀번호는 10자리 이상, 14자리이하 하나의 알파벳 문자를 포함하는 특수문자를 입력해주세요!",
+        {icon: "😡"}
+      );
+      throw new Error(
+        "비밀번호는 10자리 이상, 14자리이하 하나의 알파벳 문자를 포함하는 특수문자를 입력해주세요!"
+      );
     }
     if (name === "name" && !engReg(value)) {
       toast.error("닉네임은 영문으로만 입력해주세요!", {icon: "😡"});
-      setIsValid(false);
+      throw new Error("닉네임은 영문으로만 입력해주세요!");
     }
-    setIsValid(true);
+    if (password !== passwordConfirm) {
+      toast.error("비밀번호가 일치하지 않습니다!", {icon: "😡"});
+      throw new Error("비밀번호가 일치하지 않습니다!");
+    }
   };
 
   /* 가입하기 버튼을 통한 회원가입 및 가입한 id로 로그인 */
   const signUp = useAuthStore((state) => state.signUp);
   const signIn = useAuthStore((state) => state.signIn);
   const navigate = useNavigate();
-  const handleSignUp = () => {
-    if (password !== passwordConfirm) {
-      toast.error("비밀번호가 일치하지 않습니다.", {icon: "😡"});
+  const handleSignUp = (e) => {
+    try {
+      e.preventDefault();
+      validateSignUp();
+      signUp(formState);
+      toast.success(
+        `반갑습니다 ${name} 님! 회원가입이 완료되었습니다! 메인화면으로 이동합니다`,
+        {
+          icon: "🥳",
+          duration: 5000,
+        }
+      );
+      signIn(email, password);
+      navigate("/");
+    } catch (error) {
+      throw new Error(error);
     }
-    signUp(formState);
-    toast.success(
-      `반갑습니다 ${name} 님! 회원가입이 완료되었습니다! 메인화면으로 이동합니다`,
-      {
-        icon: "🥳",
-        duration: 3000,
-      }
-    );
-    signIn(email, password);
-    navigate("/");
   };
 
   /* 체크 박스 전체동의 클릭 시 하위 체크박스 전체 선택 */
-  const checkBoxItems = [
+  const [checkBoxItems, setCheckBoxItems] = useState([
     {
       labelText: "서비스 이용약관 동의 (필수)",
       inputClassName: "mr-1",
       required: true,
+      checked: false,
     },
     {
       labelText: "개인정보 수집 및 이용 동의 (필수)",
       inputClassName: "mr-1",
       required: true,
+      checked: false,
     },
     {
       labelText: "만 14세 이상 입니다 (필수)",
       inputClassName: "mr-1",
       required: true,
+      checked: false,
     },
     {
       labelText: "광고성 정보 수신 동의 (선택)",
       inputClassName: "mr-1",
+      checked: false,
     },
-  ];
-  const [checkedItems, setCheckedItems] = useState([]);
-  const handleAllCheck = (e) => {
-    if (e.target.checked) {
-      setCheckedItems(checkBoxItems.map((item) => item.labelText));
-    }
-  };
+  ]);
 
-  console.log(checkedItems);
+  /* 테스트 */
+  // const [kakaoUser, setKakaoUser] = useState([]);
+
+  // useEffect(() => {
+  //   pb.autoCancellation(false);
+  //   const getKakao = async () => {
+  //     const user = await pb
+  //       .collection("users")
+  //       .authWithOAuth2({provider: "kakao"});
+  //     setKakaoUser(user);
+  //   };
+  //   getKakao();
+  // }, []);
+
+  // console.log(kakaoUser);
 
   return (
     <>
@@ -159,24 +173,17 @@ function SignUp() {
                 />
               );
             })}
-            {!isValid && (
-              <InValidErrorMessage errorText="비밀번호 입력서식을 다시 한번 확인해주세요!" />
-            )}
           </div>
           <div className="checkBoxWrap pt-[2.9375rem] flex flex-col gap-3 ">
-            <CheckboxButton
-              inputClassName="mr-1"
-              labelText="전체동의"
-              onClick={handleAllCheck}
-            />
+            <CheckBox inputClassName="mr-1" text="전체동의" />
             <hr className="w-full" />
             {checkBoxItems.map(({labelText, inputClassName, required}) => {
               const id = useId();
               return (
-                <CheckboxButton
+                <CheckBox
                   required={required}
                   inputClassName={inputClassName}
-                  labelText={labelText}
+                  text={labelText}
                   key={id}
                 />
               );

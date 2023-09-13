@@ -42,7 +42,7 @@ function Header() {
     signOut();
   };
 
-  /* 로그인 시 userName 렌더링 */
+  /* 로그인 시 userName || name렌더링 */
   const user = useAuthStore((state) => state.user);
 
   return (
@@ -65,10 +65,6 @@ function Header() {
               로그인
             </li>
           )}
-
-          {/* <li onClick={setIsClickedSignin} className="cursor-pointer">
-            로그인
-          </li> */}
           {isClickedSignin && (
             <SignInModal
               isClickedSignin={isClickedSignin}
@@ -77,7 +73,7 @@ function Header() {
           )}
           <LinkList pageLink="/cart">장바구니</LinkList>
 
-          {user && <li>{user.name}님</li>}
+          {user && <li>{user.name || user.username}님</li>}
         </ul>
         {isToggleTabButton ? (
           <CloseButton
@@ -98,29 +94,3 @@ function Header() {
 }
 
 export default Header;
-
-// <nav className={styles.nav}>
-//   <ul className="desktop:flex tablet:hidden mobile:hidden">
-//     <JijoCafeLogoTitle />
-
-//     <LinkList pageLink="/menu/drink">메뉴 소개</LinkList>
-//     <LinkList pageLink="/findStore">매장</LinkList>
-//     <LinkList pageLink="/bbs/faq">지조소식</LinkList>
-//     <li onClick={setIsClickedSignin} className="cursor-pointer">
-//       로그인
-//     </li>
-//     {isClickedSignin && (
-//       <SignInModal
-//         isClickedSignin={isClickedSignin}
-//         setIsClickedSignin={setIsClickedSignin}
-//       />
-//     )}
-//     <LinkList pageLink="/cart">장바구니</LinkList>
-//   </ul>
-//   <ul>
-//     <li className="hidden tablet:flex mobile:flex" onClick={handleClick}>
-//       {click ? <Hamburger /> : <CloseButton />}
-//     </li>
-//   </ul>
-//   {isDropdownVisiable && <DropDownLinkList />}
-// </nav>

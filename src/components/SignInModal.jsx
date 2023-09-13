@@ -1,22 +1,23 @@
+import useOutsideClickClose from "@/hooks/useOutsideClickClose";
 import ButtonWrapper from "@/layout/Wrapper/ButtonWrapper";
+import useAuthStore from "@/store/store";
 import {emailReg, pwReg} from "@/utils/Validation";
 import debounce from "@/utils/debounce";
-import {useEffect, useRef, useState} from "react";
-import {Link} from "react-router-dom";
+import {ClientResponseError} from "pocketbase";
+import {useRef, useState} from "react";
+import {toast} from "react-hot-toast";
+import {Link, useNavigate} from "react-router-dom";
 import Button from "./Button";
+import EyeClosed from "./EyeClosed";
+import EyeOpen from "./EyeOpen";
+import InValidErrorMessage from "./InValidErrorMessage";
 import Input from "./Input";
+import JijoCafeLogoTitle from "./JijoCafeLogoTitle";
 import KakaoTalkSignInButton from "./KakaoTalkSignInButton";
 import SignInForm from "./SignInForm";
 import TextHorizen from "./TextHorizen";
-import JijoCafeLogoTitle from "./JijoCafeLogoTitle";
-import useOutsideClickClose from "@/hooks/useOutsideClickClose";
-import useAuthStore from "@/store/store";
-import {useNavigate} from "react-router-dom";
-import {toast} from "react-hot-toast";
-import {ClientResponseError} from "pocketbase";
-import InValidErrorMessage from "./InValidErrorMessage";
-import EyeOpen from "./EyeOpen";
-import EyeClosed from "./EyeClosed";
+import {useEffect} from "react";
+import pb from "@/api/pocketbase";
 
 function SignInModal({setIsClickedSignin}) {
   /* Email과 Password 유효성 검사 및 조건부 렌더링 함수 */
@@ -45,13 +46,13 @@ function SignInModal({setIsClickedSignin}) {
   const handleModalClose = () => {
     setIsModalOpen((prev) => !prev);
   };
-
   useOutsideClickClose(formRef, handleModalClose);
 
   /* PB Data 접근 및 해당 로그인 */
   const navigate = useNavigate();
-  const user = useAuthStore((state) => state.user);
   const signIn = useAuthStore((state) => state.signIn);
+  const user = useAuthStore((state) => state.user);
+
   const handleSignIn = (e) => {
     try {
       e.preventDefault();
@@ -61,10 +62,11 @@ function SignInModal({setIsClickedSignin}) {
       navigate("/");
       setIsClickedSignin(false);
     } catch (error) {
-      if (error instanceof ClientResponseError) {
-        toast.error("로그인에 실패했습니다😥", {icon: "😥"});
-        return;
-      }
+      toast.error(
+        "로그인에 실패했습니다. 아이디와 패스워드를 다시 확인해주세요",
+        {icon: "😥"}
+      );
+      throw new Error(error);
     }
   };
 
@@ -73,7 +75,13 @@ function SignInModal({setIsClickedSignin}) {
     navigate("/signUp");
   };
 
-  /* Eye Component 상태에 따른 비밀번호 보이기 */
+  /* KaKao 사용자 로그인 */
+  const kakaoSignIn = useAuthStore((state) => state.SignWithKaKao);
+  const handleSigninKakao = async () => {
+    await kakaoSignIn();
+  };
+
+  /* Eye Component 상태에 따른 비밀번호 보이기/보이지 않기 */
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const handlePasswordVisible = () => {
     setIsPasswordVisible((prev) => !prev);
@@ -82,7 +90,7 @@ function SignInModal({setIsClickedSignin}) {
   return (
     !isModalOpen && (
       <div className="w-full h-screen bg-[rgba(0,0,0,0.4)] fixed z-40 left-0 top-0">
-        <SignInForm ref={formRef} onSubmit={handleSignIn}>
+        <SignInForm ref={formRef}>
           <JijoCafeLogoTitle />
           <Input
             inputClassName={
@@ -144,7 +152,7 @@ function SignInModal({setIsClickedSignin}) {
             </Link>
           </ButtonWrapper>
           <TextHorizen>간편 로그인</TextHorizen>
-          <KakaoTalkSignInButton />
+          <KakaoTalkSignInButton onClick={handleSigninKakao} />
         </SignInForm>
       </div>
     )
