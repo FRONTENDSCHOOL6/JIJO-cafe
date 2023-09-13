@@ -18,8 +18,8 @@ function Detail({ data }) {
           </div>
         </div>
         <div className="my-[1.875rem] font-light text-jj_18">
+          {data.noticeImage && <img src={getPbImageURL(data, 'noticeImage')} className="w-auto" alt={data.noticeTitle} />}
           {data.noticeDescription}
-          <img src={getPbImageURL(data, 'noticeImage')} className=" w-auto" alt={data.noticeTitle} />
         </div>
         <div className="my-[1.875rem] py-4 border-y font-light flex gap-[3.4375rem]">
           <p>다음글</p>
