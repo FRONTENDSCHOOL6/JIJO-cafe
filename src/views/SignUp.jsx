@@ -82,11 +82,21 @@ function SignUp() {
   const signUp = useAuthStore((state) => state.signUp);
   const signIn = useAuthStore((state) => state.signIn);
   const navigate = useNavigate();
+  const user = useAuthStore((state) => state.user);
   const handleSignUp = (e) => {
     try {
       e.preventDefault();
       validateSignUp();
       signUp(formState);
+
+      signIn(email, password);
+    } catch (error) {
+      throw new Error(error);
+    }
+  };
+
+  useEffect(() => {
+    if (user) {
       toast.success(
         `반갑습니다 ${name} 님! 회원가입이 완료되었습니다! 메인화면으로 이동합니다`,
         {
@@ -94,55 +104,36 @@ function SignUp() {
           duration: 5000,
         }
       );
-      signIn(email, password);
       navigate("/");
-    } catch (error) {
-      throw new Error(error);
     }
-  };
+  }, [user]);
 
   /* 체크 박스 전체동의 클릭 시 하위 체크박스 전체 선택 */
   const [checkBoxItems, setCheckBoxItems] = useState([
     {
       labelText: "서비스 이용약관 동의 (필수)",
-      inputClassName: "mr-1",
+      className: "mr-1",
       required: true,
       checked: false,
     },
     {
       labelText: "개인정보 수집 및 이용 동의 (필수)",
-      inputClassName: "mr-1",
+      className: "mr-1",
       required: true,
       checked: false,
     },
     {
       labelText: "만 14세 이상 입니다 (필수)",
-      inputClassName: "mr-1",
+      className: "mr-1",
       required: true,
       checked: false,
     },
     {
       labelText: "광고성 정보 수신 동의 (선택)",
-      inputClassName: "mr-1",
+      className: "mr-1",
       checked: false,
     },
   ]);
-
-  /* 테스트 */
-  // const [kakaoUser, setKakaoUser] = useState([]);
-
-  // useEffect(() => {
-  //   pb.autoCancellation(false);
-  //   const getKakao = async () => {
-  //     const user = await pb
-  //       .collection("users")
-  //       .authWithOAuth2({provider: "kakao"});
-  //     setKakaoUser(user);
-  //   };
-  //   getKakao();
-  // }, []);
-
-  // console.log(kakaoUser);
 
   return (
     <>
@@ -175,14 +166,14 @@ function SignUp() {
             })}
           </div>
           <div className="checkBoxWrap pt-[2.9375rem] flex flex-col gap-3 ">
-            <CheckBox inputClassName="mr-1" text="전체동의" />
+            <CheckBox className="mr-1" text="전체동의" />
             <hr className="w-full" />
-            {checkBoxItems.map(({labelText, inputClassName, required}) => {
+            {checkBoxItems.map(({labelText, className, required}) => {
               const id = useId();
               return (
                 <CheckBox
                   required={required}
-                  inputClassName={inputClassName}
+                  className={className}
                   text={labelText}
                   key={id}
                 />

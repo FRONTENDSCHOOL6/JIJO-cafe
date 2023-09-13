@@ -12,6 +12,7 @@ import {toast} from "react-hot-toast";
 import {AnimatePresence} from "framer-motion";
 import {useLocation} from "react-router-dom";
 import {useRef} from "react";
+import {kakaoLogout} from "@/utils/kakaoLogout";
 
 function Header() {
   const prevPathName = useRef(null);
@@ -40,6 +41,7 @@ function Header() {
   const handleSignOut = () => {
     toast.success("정상적으로 로그아웃 되었습니다.", {icon: "👋"});
     signOut();
+    kakaoLogout();
   };
 
   /* 로그인 시 userName || name렌더링 */

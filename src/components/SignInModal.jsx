@@ -53,14 +53,19 @@ function SignInModal({setIsClickedSignin}) {
   const signIn = useAuthStore((state) => state.signIn);
   const user = useAuthStore((state) => state.user);
 
-  const handleSignIn = (e) => {
-    try {
-      e.preventDefault();
-      const {email, password} = formData;
-      signIn(email, password);
+  useEffect(() => {
+    if (user) {
       toast.success(`${user.username}님 환영해요😁`, {icon: "👋"});
       navigate("/");
       setIsClickedSignin(false);
+    }
+  }, [user]);
+
+  const handleSignIn = async (e) => {
+    try {
+      e.preventDefault();
+      const {email, password} = formData;
+      await signIn(email, password);
     } catch (error) {
       toast.error(
         "로그인에 실패했습니다. 아이디와 패스워드를 다시 확인해주세요",
@@ -93,7 +98,7 @@ function SignInModal({setIsClickedSignin}) {
         <SignInForm ref={formRef}>
           <JijoCafeLogoTitle />
           <Input
-            inputClassName={
+            inputClassname={
               isEmailValid ? "" : "border-2 border-red-300 focus:border-red-300"
             }
             name="email"
@@ -108,7 +113,7 @@ function SignInModal({setIsClickedSignin}) {
           )}
           <div className="pwWrap flex flex-col relative">
             <Input
-              inputClassName={
+              inputClassname={
                 isPasswordValid
                   ? ""
                   : "border-2 border-red-300 focus:border-red-300"
