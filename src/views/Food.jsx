@@ -16,10 +16,10 @@ function Food() {
         <br />
         다양한 디저트
       </MenuBubble>
-      <section className="mx-auto max-w-7xl flex justify-between items-center gap-[3.125rem] pt-[6.25rem]">
+      <section className="bg-white mx-auto max-w-7xl mobile:w-full flex mobile:flex-col justify-between items-center mobile:items-start gap-[3.125rem] pt-[6.25rem] mobile:px-5">
         <div>
           <p className="text-jj_24 font-light">카페 지조 가을시즌 신메뉴</p>
-          <h2 className="text-jj_60 font-bold break-keep leading-tight">
+          <h2 className="text-jj_60 font-bold break-keep leading-tight my-10">
             풍요로운 가을이 만든 달콤함
           </h2>
           <div className="text">
@@ -33,14 +33,14 @@ function Food() {
             </p>
           </div>
         </div>
-        <figure className="shrink-0">
+        <figure className="shrink-0 tablet:shrink mobile:w-full">
           <img
             src="/src/assets/images/menu/food/food_image01.jpg"
             alt="가을을 닮은 풍요로운 보름달 한 상"
           />
         </figure>
       </section>
-      <section className="mx-auto max-w-7xl mt-[6.25rem]">
+      <section className="bg-white mx-auto max-w-7xl mt-[6.25rem] mobile:px-5">
         <div className="titleArea text-center">
           <p className="text-jj_24 font-light">카페 지조의 엄선된 메뉴</p>
           <h2 className="text-jj_60 font-black">JIJO MENU</h2>
@@ -54,13 +54,13 @@ function Food() {
             분류보기
           </p>
           <div className="checkboxWrap flex gap-[.625rem]">
-            <CheckBox text="전체 상품보기" checked="checked"/>
+            <CheckBox text="전체 상품보기" defaultChecked="checked"/>
             <CheckBox text="디저트" />
             <CheckBox text="상품" />
           </div>
         </div>
 
-        <Products sub="foods" />
+        <Products collection="foods" />
       </section>
     </div>
   );

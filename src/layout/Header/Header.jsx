@@ -9,9 +9,19 @@ import useToggle from "@/hooks/useToggle";
 import styles from "./Header.module.css";
 import useAuthStore from "@/store/store";
 import {toast} from "react-hot-toast";
-import {ToastIcon} from "react-hot-toast";
+import {AnimatePresence} from "framer-motion";
+import {useLocation} from "react-router-dom";
+import {useRef} from "react";
+import {kakaoLogout} from "@/utils/kakaoLogout";
 
 function Header() {
+  const prevPathName = useRef(null);
+  //useChangePathName
+
+  //useViewport
+
+  const location = useLocation();
+
   /* 마우스 클릭에 따른 햄버거 탭과 닫기 탭 렌더링 여부를 관리하는 상태 */
   const [isToggleTabButton, setIsToggleTabButton] = useToggle(false);
 
@@ -31,7 +41,11 @@ function Header() {
   const handleSignOut = () => {
     toast.success("정상적으로 로그아웃 되었습니다.", {icon: "👋"});
     signOut();
+    kakaoLogout();
   };
+
+  /* 로그인 시 userName || name렌더링 */
+  const user = useAuthStore((state) => state.user);
 
   return (
     <header
@@ -53,10 +67,6 @@ function Header() {
               로그인
             </li>
           )}
-
-          {/* <li onClick={setIsClickedSignin} className="cursor-pointer">
-            로그인
-          </li> */}
           {isClickedSignin && (
             <SignInModal
               isClickedSignin={isClickedSignin}
@@ -64,6 +74,8 @@ function Header() {
             />
           )}
           <LinkList pageLink="/cart">장바구니</LinkList>
+
+          {user && <li>{user.name || user.username}님</li>}
         </ul>
         {isToggleTabButton ? (
           <CloseButton
@@ -74,38 +86,13 @@ function Header() {
         ) : (
           <Hamburger onClick={setIsToggleTabButton} />
         )}
-
         <LogoLinks />
       </nav>
-      {isDropdownVisiable && <DropDownLinkList />}
+      <AnimatePresence>
+        {isDropdownVisiable && <DropDownLinkList />}
+      </AnimatePresence>
     </header>
   );
 }
 
 export default Header;
-
-// <nav className={styles.nav}>
-//   <ul className="desktop:flex tablet:hidden mobile:hidden">
-//     <JijoCafeLogoTitle />
-
-//     <LinkList pageLink="/menu/drink">메뉴 소개</LinkList>
-//     <LinkList pageLink="/findStore">매장</LinkList>
-//     <LinkList pageLink="/bbs/faq">지조소식</LinkList>
-//     <li onClick={setIsClickedSignin} className="cursor-pointer">
-//       로그인
-//     </li>
-//     {isClickedSignin && (
-//       <SignInModal
-//         isClickedSignin={isClickedSignin}
-//         setIsClickedSignin={setIsClickedSignin}
-//       />
-//     )}
-//     <LinkList pageLink="/cart">장바구니</LinkList>
-//   </ul>
-//   <ul>
-//     <li className="hidden tablet:flex mobile:flex" onClick={handleClick}>
-//       {click ? <Hamburger /> : <CloseButton />}
-//     </li>
-//   </ul>
-//   {isDropdownVisiable && <DropDownLinkList />}
-// </nav>
