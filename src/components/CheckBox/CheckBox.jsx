@@ -2,8 +2,8 @@ import {useId} from "react";
 import styles from "./CheckBox.module.css";
 
 function CheckBox({
-  value = "true", 
-  text, 
+  value = "true",
+  text,
   name,
   className,
   checked,

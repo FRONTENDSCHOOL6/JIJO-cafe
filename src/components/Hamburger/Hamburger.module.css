@@ -1,5 +1,6 @@
 .hamburger {
-  @apply flex relative w-[1.875rem] h-[1.875rem] cursor-pointer;
+  @apply flex absolute w-[1.875rem] h-[1.875rem] cursor-pointer;
+  @apply top-0 right-0 mt-4 mr-4;
 
   & span,
   & span::before,
@@ -8,7 +9,7 @@
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1281px) {
   .hamburger {
     @apply hidden;
   }

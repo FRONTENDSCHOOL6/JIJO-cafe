@@ -54,7 +54,11 @@ function Drink() {
             분류보기
           </p>
           <div className="checkboxWrap flex gap-[.625rem] mobile:flex-wrap">
-            <CheckBox className="mobile:basis-1/4" text="전체 상품보기" defaultChecked="checked"/>
+            <CheckBox
+              className="mobile:basis-1/4"
+              text="전체 상품보기"
+              defaultChecked="checked"
+            />
             <CheckBox className="mobile:basis-1/4" text="커피" />
             <CheckBox className="mobile:basis-1/4" text="티" />
             <CheckBox className="mobile:basis-1/4" text="에이드&주스" />
