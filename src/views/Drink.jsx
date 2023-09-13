@@ -16,10 +16,10 @@ function Drink() {
         <br />
         행복을 선사하는 다양한 음료
       </MenuBubble>
-      <section className="mx-auto max-w-7xl flex justify-between items-center gap-[3.125rem] pt-[6.25rem]">
+      <section className="bg-white mx-auto max-w-7xl mobile:w-full flex mobile:flex-col justify-between items-center mobile:items-start gap-[3.125rem] pt-[6.25rem] mobile:px-5">
         <div>
           <p className="text-jj_24 font-light">카페 지조 가을시즌 신메뉴</p>
-          <h2 className="text-jj_60 font-bold break-keep leading-tight">
+          <h2 className="text-jj_60 font-bold break-keep leading-tight my-10">
             풍요로운 가을이 만든 달콤함
           </h2>
           <div className="text">
@@ -33,14 +33,14 @@ function Drink() {
             </p>
           </div>
         </div>
-        <figure className="shrink-0">
+        <figure className="shrink-0 tablet:shrink mobile:w-full">
           <img
             src="/src/assets/images/menu/drink/drink_image01.jpg"
             alt="가을이 키운 달콤한 청송사과 한 잔"
           />
         </figure>
       </section>
-      <section className="mx-auto max-w-7xl mt-[6.25rem]">
+      <section className="bg-white mx-auto max-w-7xl mt-[6.25rem] mobile:px-5">
         <div className="titleArea text-center">
           <p className="text-jj_24 font-light">카페 지조의 엄선된 메뉴</p>
           <h2 className="text-jj_60 font-black">JIJO MENU</h2>
@@ -53,19 +53,19 @@ function Drink() {
           <p className="title text-jj_22 leading-tight pb-5 mb-5 border-b border-b-gray-200">
             분류보기
           </p>
-          <div className="checkboxWrap flex gap-[.625rem]">
-            <CheckBox text="전체 상품보기" defaultChecked="checked"/>
-            <CheckBox text="커피" />
-            <CheckBox text="티" />
-            <CheckBox text="에이드&주스" />
-            <CheckBox text="스무디&프라페" />
-            <CheckBox text="디카페인" />
-            <CheckBox text="음료" />
-            <CheckBox text="신상품" />
+          <div className="checkboxWrap flex gap-[.625rem] mobile:flex-wrap">
+            <CheckBox className="mobile:basis-1/4" text="전체 상품보기" defaultChecked="checked"/>
+            <CheckBox className="mobile:basis-1/4" text="커피" />
+            <CheckBox className="mobile:basis-1/4" text="티" />
+            <CheckBox className="mobile:basis-1/4" text="에이드&주스" />
+            <CheckBox className="mobile:basis-1/4" text="스무디&프라페" />
+            <CheckBox className="mobile:basis-1/4" text="디카페인" />
+            <CheckBox className="mobile:basis-1/4" text="음료" />
+            <CheckBox className="mobile:basis-1/4" text="신상품" />
           </div>
         </div>
 
-        <Products sub="beverage"/>
+        <Products collection="beverage" />
       </section>
     </div>
   );
