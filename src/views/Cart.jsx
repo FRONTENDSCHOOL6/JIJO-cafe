@@ -3,9 +3,8 @@ import useToggle from "@/hooks/useToggle";
 import PageMainTitle from "@/components/PageMainTitle";
 import { numberWithComma } from "@/utils/numberWithComma";
 import CheckBox from "@/components/CheckBox/CheckBox";
-import CloseButton from "@/components/CloseButton";
 import Button from "@/components/Button";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import OrderList from "@/components/Cart/OrderList";
 
 function Cart() {

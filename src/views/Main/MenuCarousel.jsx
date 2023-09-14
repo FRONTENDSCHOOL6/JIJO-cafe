@@ -5,8 +5,8 @@ import pb from "@/api/pocketbase";
 import { getPbImageURL } from "@/utils/getPbImageURL";
 import { usePocketBaseFilteredData } from "@/hooks/usePocektBaseData";
 import "swiper/css";
-import "@/styles/Carousel.css";
-import { PrevButton, NextButton } from "@/styles/NevigationArrowButton";
+// import "@/styles/Carousel.css";
+// import { PrevButton, NextButton } from "@/styles/NevigationArrowButton";
 
 export default function MenuCarousel() {
   pb.autoCancellation(false);
