@@ -1,7 +1,9 @@
+import MenuTitle from "@/components/MenuTitle";
+
 function FindStore() {
   return (
     <>
-      <div>FindStore</div>
+      <MenuTitle title="STORE">JIJO STORE</MenuTitle>
     </>
   );
 }
