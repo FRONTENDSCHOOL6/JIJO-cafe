@@ -57,7 +57,7 @@ function SignUp() {
     setFormState({...formState, [name]: value});
   });
 
-  /* 비밀번호 유효성 검사 */
+  /* 회원가입 시 유효성 검사 */
   const validateSignUp = () => {
     if (!pwReg(password)) {
       toast.error(

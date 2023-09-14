@@ -92,15 +92,16 @@ function SignInModal({setIsClickedSignin}) {
     setIsPasswordVisible((prev) => !prev);
   };
 
+  /* 이메일 및 비밀번호 형식에 유효하지않을때 덮여씌워질 tailwindcss className */
+  const inValidBorder = "border-2 border-red-300 focus:border-red-300";
+
   return (
     !isModalOpen && (
       <div className="w-full h-screen bg-[rgba(0,0,0,0.4)] fixed z-40 left-0 top-0">
         <SignInForm ref={formRef}>
           <JijoCafeLogoTitle />
           <Input
-            inputClassname={
-              isEmailValid ? "" : "border-2 border-red-300 focus:border-red-300"
-            }
+            className={isEmailValid || inValidBorder}
             name="email"
             defaultValue={formData.email}
             onChange={handleInput}
@@ -113,11 +114,7 @@ function SignInModal({setIsClickedSignin}) {
           )}
           <div className="pwWrap flex flex-col relative">
             <Input
-              inputClassname={
-                isPasswordValid
-                  ? ""
-                  : "border-2 border-red-300 focus:border-red-300"
-              }
+              className={isPasswordValid || inValidBorder}
               name="password"
               defaultValue={formData.password}
               onChange={handleInput}
