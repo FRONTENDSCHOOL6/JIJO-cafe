@@ -1,27 +1,38 @@
+import useCurrnetLocation from "@/hooks/useCurrnetLocation";
+import {useRef} from "react";
+import {useState} from "react";
 import {useEffect} from "react";
 
 const {kakao} = window;
 
 function KakaoMap() {
+  const {location} = useCurrnetLocation();
+
+  const {latitude: currentLat, longitude: currentLon} = location;
+
+  /* 카카오 맵 불러오기 */
+  const mapContainer = useRef(null);
+  const [kakaoMap, setKaKaoMap] = useState(null);
   useEffect(() => {
-    const container = document.getElementById("map");
-    const options = {
-      center: new kakao.maps.LatLng(37.506502, 127.053617),
-      level: 3,
-    };
-    const map = new kakao.maps.Map(container, options);
-  }, []);
+    if (mapContainer.current) {
+      const options = {
+        center: new kakao.maps.LatLng(currentLat, currentLon),
+        level: 3,
+      };
+      const mapInstance = new kakao.maps.Map(mapContainer.current, options);
+      setKaKaoMap(mapInstance);
+    }
+  }, [location]);
 
   return (
     <>
       <div
-        id="map"
+        className="my-8"
+        ref={mapContainer}
         style={{
-          width: "500px",
-          height: "500px",
-        }}>
-        KakaoMap
-      </div>
+          width: "100%",
+          height: "31.25rem",
+        }}></div>
     </>
   );
 }
