@@ -16,7 +16,7 @@
     }
 
     @screen mobile {
-      font-size: 0.75rem;
+      font-sizep: 0.75rem;
     }
   }
 }
@@ -27,5 +27,21 @@
   }
   .PaginationButton:hover {
     @apply bg-[#f4f6f8];
+  }
+
+  .titleHighlight::before {
+    content: "";
+    width: 101%;
+    height: 50%;
+    background-color: #dbc8ab;
+    position: absolute;
+    top: 50px;
+    left: -5px;
+    z-index: -1;
+    @apply tablet:h-[40%];
+    @apply mobile:max-w-[145px] mobile:h-[40%];
+  }
+  .storeImage {
+    background: url("../assets/images/main/cafe-jj-coffee.jpg") no-repeat 50% / cover;
   }
 }
