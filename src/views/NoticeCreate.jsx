@@ -10,15 +10,16 @@ import Button from "@/components/Button"
 import { useState } from "react"
 
 import { useNavigate } from "react-router-dom"
+import { useEffect } from "react"
 
 function NoticeCreate() {
-  const Navigate = useNavigate()
-  const id = useId()
-  const [fileName, setFileName] = useState("파일이름")
-  pb.autoCancellation(false) // 오토캔슬 false
   // const { noticeId } = useParams()
+  const id = useId()
+  const Navigate = useNavigate()
+  const [fileName, setFileName] = useState("파일이름")
 
   const handleFileChange = (event) => {
+    //업로드시 input에 파일명 추가
     const selectedFile = event.target.files[0]
     if (selectedFile) {
       setFileName(selectedFile.name)
@@ -29,14 +30,13 @@ function NoticeCreate() {
     return <JijoSpinner />
   }
 
+  pb.autoCancellation(false)
+
   const handleCreate = async (e) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
-    // const noticeWriter = formData.get("noticeWriter")
+    console.log(formData)
     const data = Object.fromEntries(formData.entries())
-    console.log(data)
-
-    // const record = usePocketBaseDataCreate("notices", data)
     const record = await pb.collection("notices").create(data)
     Navigate("/bbs/notice")
   }
@@ -50,8 +50,8 @@ function NoticeCreate() {
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60">
         <PageMainTitle pageTitleText="공지사항 등록" pageSubTitleText="카페 지조 관리자 페이지 입니다."></PageMainTitle>
         <form onSubmit={handleCreate} className="border flex gap-5 flex-col w-[53.75rem] mx-auto px-[5.625rem] py-[3.125rem]">
-          <div className="flex justify-between items-center mt-[3.75rem]">
-            <Input label="관리자" name="noticeWriter" placeholder="카페 지조" labelClassName="w-[7.8125rem]" className="bg-white mr-[0.3125rem] border px-jj_15 w-full"></Input>
+          <div className="flex justify-between items-center mt-[3.75rem] ">
+            <Input label="관리자" name="noticeWriter" placeholder="카페 지조" labelClassName="w-[7.8125rem] " className="bg-white block mr-[0.3125rem] border px-jj_15 w-full"></Input>
           </div>
           <div className="flex justify-between items-center">
             <Input label="제목" name="noticeTitle" placeholder="제목을 입력하세요" labelClassName="w-[7.8125rem]" className="bg-white mr-[0.3125rem] border px-jj_15 w-full"></Input>
@@ -63,13 +63,13 @@ function NoticeCreate() {
             <textarea id={id} name="noticeDescription" className="border rounded w-full" rows="5" cols="33"></textarea>
           </div>
           <div>
-            <div className="flex  items-center ">
-              <span className="w-[7.8125rem]">파일첨부</span>
+            <div className="flex items-center">
+              <span className="w-[6.5rem]">파일첨부</span>
               <div>
                 <div>
-                  <input className="hidden" type="file" id="file" onChange={handleFileChange} />
-                  <input className="upload-name h-10 px-4 border border-gray-300  text-gray-500" value={fileName} readOnly />
-                  <label htmlFor="file" className="cursor-pointer bg-primary px-4 py-2 h-10">
+                  <input className="hidden" name="noticeImage" type="file" id="fileInput" onChange={handleFileChange} />
+                  <input className="h-[2.8125rem] px-4 border border-gray-300  text-gray-500" value={fileName} readOnly />
+                  <label htmlFor="fileInput" className="cursor-pointer font-medium ml-1 py-[0.8rem] px-10  rounded-sm bg-primary">
                     업로드
                   </label>
                 </div>
