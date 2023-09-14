@@ -29,7 +29,7 @@ function NoticeSearchFilter({ option, text, onChangeOption, onChangeText, handle
         <option value="noticeDescription">내용</option>
         <option value="noticeWriter">작성자</option>
       </select>
-      <Input value={text} type="search" onChange={handleInput} placeholder="검색어를 입력하세요" inputClassName=" mr-[0.3125rem] border px-jj_15 w-fit"></Input>
+      <Input value={text} type="search" onChange={handleInput} placeholder="검색어를 입력하세요" className="mr-[0.3125rem] border px-jj_15 w-fit"></Input>
       {/* input type search value입력시 x 표시 나오고 클릭시 텍스트 삭제  */}
       <Button onClick={handleReload} color="primary" className="px-5 py-[0.625rem] mr-[0.3125rem] mobile:mt-[0.9375rem] mobile:w-full">
         검색
