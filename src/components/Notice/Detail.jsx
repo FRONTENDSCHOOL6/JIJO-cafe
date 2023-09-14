@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom'
-import { getPbImageURL } from '@/utils/getPbImageURL'
-import Button from '@/components/Button'
-import yyyymmddDate from '@/utils/yyyymmddDate'
+import { Link } from "react-router-dom"
+import { getPbImageURL } from "@/utils/getPbImageURL"
+import Button from "@/components/Button"
+import yyyymmddDate from "@/utils/yyyymmddDate"
 
 function Detail({ data }) {
-  console.log(data)
+  // console.log(data)
 
   return (
     data && (
@@ -18,7 +18,7 @@ function Detail({ data }) {
           </div>
         </div>
         <div className="my-[1.875rem] font-light text-jj_18">
-          {data.noticeImage && <img src={getPbImageURL(data, 'noticeImage')} className="w-auto" alt={data.noticeTitle} />}
+          {data.noticeImage && <img src={getPbImageURL(data, "noticeImage")} className="w-auto" alt={data.noticeTitle} />}
           {data.noticeDescription}
         </div>
         <div className="my-[1.875rem] py-4 border-y font-light flex gap-[3.4375rem]">

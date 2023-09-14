@@ -9,7 +9,10 @@ import { useId } from "react"
 import Button from "@/components/Button"
 import { useState } from "react"
 
+import { useNavigate } from "react-router-dom"
+
 function NoticeCreate() {
+  const Navigate = useNavigate()
   const id = useId()
   const [fileName, setFileName] = useState("파일이름")
   pb.autoCancellation(false) // 오토캔슬 false
@@ -35,7 +38,7 @@ function NoticeCreate() {
 
     // const record = usePocketBaseDataCreate("notices", data)
     const record = await pb.collection("notices").create(data)
-    console.log(record)
+    Navigate("/bbs/notice")
   }
 
   return (
