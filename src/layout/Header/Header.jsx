@@ -6,13 +6,13 @@ import LinkList from "@/components/LinkList";
 import LogoLinks from "@/components/LogoLinks";
 import SignInModal from "@/components/SignInModal";
 import useToggle from "@/hooks/useToggle";
-import styles from "./Header.module.css";
 import useAuthStore from "@/store/store";
-import {toast} from "react-hot-toast";
-import {AnimatePresence} from "framer-motion";
-import {useLocation} from "react-router-dom";
-import {useRef} from "react";
 import {kakaoLogout} from "@/utils/kakaoLogout";
+import {AnimatePresence} from "framer-motion";
+import {useRef} from "react";
+import {toast} from "react-hot-toast";
+import {useLocation} from "react-router-dom";
+import styles from "./Header.module.css";
 
 function Header() {
   const prevPathName = useRef(null);
@@ -36,7 +36,7 @@ function Header() {
   /* 인증 정보에 따른 로그인 ➡️ 로그아웃으로 변경 */
   const isAuth = useAuthStore((state) => state.isAuth);
 
-  /* 로그아웃 기능 */
+  /* 일반사용자 로그아웃 및 카카오 사용자 로그아웃 */
   const signOut = useAuthStore((state) => state.signOut);
   const handleSignOut = () => {
     toast.success("정상적으로 로그아웃 되었습니다.", {icon: "👋"});
@@ -56,8 +56,26 @@ function Header() {
         <JijoCafeLogoTitle className={styles.cafeLogoTitle} />
         <ul className={`${styles.ul} ${isToggleTabButton && styles.showMenu}`}>
           <LinkList pageLink="/menu/drink">메뉴 소개</LinkList>
+          <div className="subMenuWrap">
+            {isDropdownVisiable && (
+              <>
+                <LinkList pageLink="/menu/drink">음료</LinkList>
+                <LinkList pageLink="/menu/food">푸드</LinkList>
+                <LinkList pageLink="/menu/product">상품</LinkList>
+              </>
+            )}
+          </div>
           <LinkList pageLink="/findStore">매장</LinkList>
           <LinkList pageLink="/bbs/faq">지조소식</LinkList>
+          <div>
+            {isDropdownVisiable && (
+              <>
+                <LinkList pageLink="/bbs/notice">Notice</LinkList>
+                <LinkList pageLink="/bbs/faq">FAQ</LinkList>
+                <LinkList pageLink="/bbs/customer">고객센터</LinkList>
+              </>
+            )}
+          </div>
           {isAuth ? (
             <li onClick={handleSignOut} className="cursor-pointer">
               로그아웃
@@ -73,7 +91,9 @@ function Header() {
               setIsClickedSignin={setIsClickedSignin}
             />
           )}
-          <LinkList pageLink="/cart">장바구니</LinkList>
+          {isDropdownVisiable && (
+            <LinkList pageLink="/signUp">회원가입</LinkList>
+          )}
 
           {user && <li>{user.name || user.username}님</li>}
         </ul>
@@ -88,9 +108,9 @@ function Header() {
         )}
         <LogoLinks />
       </nav>
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {isDropdownVisiable && <DropDownLinkList />}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </header>
   );
 }

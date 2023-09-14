@@ -54,7 +54,7 @@ export const usePocketBaseFilteredData = (
       }
     };
     fetchData();
-  }, [dependency ]);
+  }, [dependency]);
   return {data, status};
 };
 
