@@ -1,5 +1,5 @@
-import Button from "../../components/Button";
-import MainpageTitle from "../../components/MainpageTitle";
+import Button from "@/components/Button";
+import MainpageTitle from "@/components/MainpageTitle";
 
 function MainShopingMall() {
   return (
