@@ -31,8 +31,8 @@ export const usePocketBaseFilteredData = (
   collection,
   page,
   perPage,
-  filterOption,
-  dependency
+  filterOption = "",
+  dependency = ""
 ) => {
   const [data, setData] = useState([]);
   const [status, setStatus] = useState("pending");
@@ -44,7 +44,7 @@ export const usePocketBaseFilteredData = (
         const filteredRecord = await pb
           .collection(collection)
           .getList(page, perPage, {
-            filterOption,
+            filter: filterOption,
           });
         setData(filteredRecord);
         setStatus("success");
@@ -54,7 +54,7 @@ export const usePocketBaseFilteredData = (
       }
     };
     fetchData();
-  }, [dependency]);
+  }, [dependency ]);
   return {data, status};
 };
 

@@ -2,25 +2,24 @@ import {useId} from "react";
 import styles from "./CheckBox.module.css";
 
 function CheckBox({
-  value = "true", 
-  text, 
+  value = "true",
+  text,
   name,
-  labelClassName,
-  inputClassName,
+  className,
   checked,
   ...restProps
 }) {
   const id = useId();
 
   return (
-    <label className={`${styles.checkbox} ${labelClassName}`} htmlFor={id}>
+    <label className={`${styles.checkbox} ${className}`} htmlFor={id}>
       <input
         type="checkbox"
         value={value}
         name={name}
         id={id}
         checked={checked}
-        className={`checkboxInput ${styles.checkboxInput} ${inputClassName}`}
+        className={`checkboxInput ${styles.checkboxInput} ${className}`}
         {...restProps}
       />
       <span className={`${styles.checkMark}`}></span>

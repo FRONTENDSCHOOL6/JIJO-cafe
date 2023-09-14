@@ -1,65 +1,28 @@
-import { useId } from 'react'
-import { useEffect } from 'react'
-import { useState } from 'react'
-import pb from '@/api/pocketbase'
-import { getPbImageURL } from '@/utils/getPbImageURL';
-import ProductModal from './ProductModal';
-import { numberWithComma } from '@/utils/numberWithComma';
+import {useId} from "react";
+import {useEffect} from "react";
+import {useState} from "react";
+import pb from "@/api/pocketbase";
+import {getPbImageURL} from "@/utils/getPbImageURL";
+import ProductModal from "./ProductModal";
+import {numberWithComma} from "@/utils/numberWithComma";
+import {usePocketBaseFilteredData} from "@/hooks/usePocektBaseData";
 
-
-function Products({sub}) {
+function Products({collection}) {
   pb.autoCancellation(false);
-  const [data, setData] = useState([]);
+  const {data, status} = usePocketBaseFilteredData(collection, 1, 20, {
+    filterOption: "sort: '-created'",
+  });
 
-  useEffect(() => {
-    const getData = async () => {
-      switch(sub) {
-        case "beverage": 
-          try {
-          const beverageItem = await pb.collection('beverage').getFullList({
-            sort: '-created'
-          });
-          setData(beverageItem)
-          } catch (error) {
-            console.error(error);
-          }
-          break;
-        case "foods": 
-          try {
-          const foodsItem = await pb.collection('foods').getFullList({
-            sort: '-created'
-          });
-          setData(foodsItem)
-          } catch (error) {
-            console.error(error);
-          }
-          break;
-        case "products": 
-          try {
-          const productsItem = await pb.collection('products').getFullList({
-            sort: 'created'
-          });
-          setData(productsItem)
-          } catch (error) {
-            console.error(error);
-          }
-          break;
-      }
-    };
-
-    getData();
-  }, []);
-
-if(data){
-  return (
-    <div className='itemWrap'>
-      <ul className='grid gap-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'>
-        {data.map((item) => (
-          <ProductItem key={item.id} item={item}/>
-        ))}
-      </ul>
-    </div>
-    )
+  if (data) {
+    return (
+      <div className="itemWrap">
+        <ul className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mobile:grid-cols-2">
+          {data?.items?.map((item) => (
+            <ProductItem key={item.id} item={item} />
+          ))}
+        </ul>
+      </div>
+    );
   }
 }
 
@@ -75,21 +38,36 @@ function ProductItem({item, ...restProps}) {
     <li
       key={item.id}
       {...restProps}
-      className='relative cursor-pointer'
-      onClick={handleClick}
-    >  
+      className="relative cursor-pointer"
+      onClick={handleClick}>
       <div>
-        <div className='imgFrame relative w-80 h-80 overflow-hidden'>
-          <img src={getPbImageURL(item, 'image')} className='w-full transition-all ease-in hover:scale-110' alt={item.title}/>
-          <a href="/cart"><img src="/src/assets/images/menu/cart.svg" className='absolute bottom-0 right-0' alt="" /></a>
+        <div className="imgFrame relative w-80 h-80 overflow-hidden">
+          <img
+            src={getPbImageURL(item, "image")}
+            className="w-full transition-all ease-in hover:scale-110"
+            alt={item.title}
+          />
+          <a href="/cart">
+            <img
+              src="/src/assets/images/menu/cart.svg"
+              className="absolute bottom-0 right-0"
+              alt=""
+            />
+          </a>
         </div>
-        <div className='text py-6'>
-          <p className='title text-jj_22 pb-5 mb-[.3125rem] border-b overflow-hidden text-ellipsis whitespace-nowrap'>{item.title}</p>
-          <span className='price text-[#1c1c1b] opacity-70 text-jj_14 leading-none'>{numberWithComma(item.price)}</span>
-          <p className='desc text-[#1c1c1b] opacity-70 text-jj_14 mt-5 overflow-hidden text-ellipsis line-clamp-2'>{item.description}</p>
+        <div className="text py-6">
+          <p className="title text-jj_22 pb-5 mb-[.3125rem] border-b overflow-hidden text-ellipsis whitespace-nowrap">
+            {item.title}
+          </p>
+          <span className="price text-[#1c1c1b] opacity-70 text-jj_14 leading-none">
+            {numberWithComma(item.price)}
+          </span>
+          <p className="desc text-[#1c1c1b] opacity-70 text-jj_14 mobile:text-sm mt-5 overflow-hidden text-ellipsis line-clamp-2">
+            {item.description}
+          </p>
         </div>
       </div>
-      {isClicked && <ProductModal key={item.id} item={item}/>}
+      {isClicked && <ProductModal key={item.id} item={item} />}
     </li>
-  )
+  );
 }

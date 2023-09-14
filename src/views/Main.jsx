@@ -1,11 +1,9 @@
 import SignInModal from "@/components/SignInModal";
+import {usePocketBaseFilteredData} from "@/hooks/usePocektBaseData";
+import useAuthStore from "@/store/store";
 
 function Main() {
-  return (
-    <>
-      <div className="bg-slate-700 h-screen w-full"></div>
-    </>
-  );
+  return <></>;
 }
 
 export default Main;
