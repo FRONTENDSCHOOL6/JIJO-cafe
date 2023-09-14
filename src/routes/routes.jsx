@@ -6,14 +6,14 @@ import Event from "@/views/Event";
 import Faq from "@/views/Faq";
 import FindStore from "@/views/FindStore";
 import Food from "@/views/Food";
-import Main from "@/views/Main";
+import Main from "@/views/Main/Main";
 import Notice from "@/views/Notice";
 import NoticeDetail from "@/views/NoticeDetail";
 import Product from "@/views/Product";
 import SignUp from "@/views/SignUp";
-import {Route} from "react-router-dom";
-import {createRoutesFromElements} from "react-router-dom";
-import {createBrowserRouter} from "react-router-dom";
+import { Route } from "react-router-dom";
+import { createRoutesFromElements } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
