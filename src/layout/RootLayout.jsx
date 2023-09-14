@@ -5,7 +5,7 @@ import Header from "./Header/Header";
 function RootLayout() {
   return (
     <>
-      {/* <Header /> */}
+      <Header />
       <main>
         <Outlet />
       </main>
