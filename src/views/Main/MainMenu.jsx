@@ -1,7 +1,7 @@
 import React from "react";
 import Button from "./../../components/Button";
 import MenuCarousel from "./MenuCarousel";
-import MainTitle from "./MainTitle";
+import MainpageTitle from "../../components/MainpageTitle";
 
 function MainMenu() {
   return (
@@ -9,7 +9,7 @@ function MainMenu() {
       <h2 className="sr-only">메인페이지 메뉴</h2>
       <div className="flex justify-center w-1/2  mr-[20px] ml-[5rem]">
         <div className=" text-deepDarkGray">
-          <MainTitle subHeading="CAFE JIJO 가을시즌 신메뉴" mainHeading="풍요로운 가을이 만든 달콤함"></MainTitle>
+          <MainpageTitle subHeading="CAFE JIJO 가을시즌 신메뉴" mainHeading="풍요로운 가을이 만든 달콤함"></MainpageTitle>
           <p className="text-jj_22 mobile:text-jj_18">청송 사과 한 잔, 보름달 한 상</p>
           <p className="flex flex-col py-5 font-light whitespace-nowrap mobile:text-jj_13">
             <span>가을이 키운 달콤한 청송 사과 신메뉴와</span>
