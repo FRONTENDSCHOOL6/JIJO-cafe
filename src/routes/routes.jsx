@@ -1,19 +1,20 @@
-import RootLayout from '@/layout/RootLayout'
-import Cart from '@/views/Cart'
-import Customer from '@/views/Customer'
-import Drink from '@/views/Drink'
-import Event from '@/views/Event'
-import Faq from '@/views/Faq'
-import FindStore from '@/views/FindStore'
-import Food from '@/views/Food'
-import Main from '@/views/Main'
-import Notice from '@/views/Notice'
-import NoticeDetail from '@/views/NoticeDetail'
-import Product from '@/views/Product'
-import SignUp from '@/views/SignUp'
-import { Route } from 'react-router-dom'
-import { createRoutesFromElements } from 'react-router-dom'
-import { createBrowserRouter } from 'react-router-dom'
+import RootLayout from "@/layout/RootLayout"
+import Cart from "@/views/Cart"
+import Customer from "@/views/Customer"
+import Drink from "@/views/Drink"
+import Event from "@/views/Event"
+import Faq from "@/views/Faq"
+import FindStore from "@/views/FindStore"
+import Food from "@/views/Food"
+import Main from "@/views/Main"
+import Notice from "@/views/Notice"
+import NoticeCreate from "@/views/NoticeCreate"
+import NoticeDetail from "@/views/NoticeDetail"
+import Product from "@/views/Product"
+import SignUp from "@/views/SignUp"
+import { Route } from "react-router-dom"
+import { createRoutesFromElements } from "react-router-dom"
+import { createBrowserRouter } from "react-router-dom"
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -28,6 +29,7 @@ const router = createBrowserRouter(
       <Route path="/menu/product" element={<Product />} />
 
       <Route path="/bbs/notice" element={<Notice />} />
+      <Route path="/bbs/notice/create" element={<NoticeCreate />} />
       <Route path="/bbs/notice/detail/:noticeId" element={<NoticeDetail />} />
       <Route path="/bbs/faq" element={<Faq />} />
       <Route path="/bbs/customer" element={<Customer />} />

@@ -1,10 +1,10 @@
-import Button from '@/components/Button'
-import Input from '@/components/Input'
-import { useId } from 'react'
+import Button from "@/components/Button"
+import Input from "@/components/Input"
+import { useId } from "react"
+import { Link } from "react-router-dom"
 
 function NoticeSearchFilter({ option, text, onChangeOption, onChangeText, handleReload }) {
   //  Notice state, setState (option, text)상태를 전달받음
-  // handleReload 검색 버튼 클릭시 reload 상태를 true로 변경
   const id = useId()
 
   const handleInput = (e) => {
@@ -35,9 +35,11 @@ function NoticeSearchFilter({ option, text, onChangeOption, onChangeText, handle
         검색
       </Button>
 
-      <Button color="primary" className="px-5  mobile:w-full mobile:my-[0.9375rem]">
-        등록
-      </Button>
+      <Link to="/bbs/notice/create">
+        <Button color="primary" className="px-5  mobile:w-full mobile:my-[0.9375rem]">
+          등록
+        </Button>
+      </Link>
     </form>
   )
 }
