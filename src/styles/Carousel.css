@@ -1,0 +1,16 @@
+/* 메인메이지 - 메인 Swiper CSS */
+
+.mainSwiper .swiper-pagination-bullet {
+  width: 1.75rem;
+  height: 0.5rem;
+  border-radius: 10px;
+  background-color: #fff;
+}
+.mainSwiper .swiper-pagination-bullet-active {
+  width: 3rem;
+  height: 0.5rem;
+}
+.mainSwiper .swiper-pagination-bullet + .mainSwiper .swiper-pagination-bullet-active {
+  width: 3rem;
+  height: 0.5rem;
+}
