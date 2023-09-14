@@ -19,6 +19,7 @@
 
 .menuSwiper {
   overflow: visible;
+  position: relative;
 }
 
 .menuSwiper .swiper-slide {
@@ -48,4 +49,10 @@
 
 .menuSwiper .swiper-slide-active .titleSection {
   display: block;
+}
+
+.buttonCss {
+  width: 30px;
+  height: 30px;
+  border: 1px solid;
 }
