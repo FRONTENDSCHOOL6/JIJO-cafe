@@ -20,6 +20,9 @@ dependencies:
   immer:
     specifier: ^10.0.2
     version: 10.0.2
+  pnpm:
+    specifier: ^8.7.4
+    version: 8.7.4
   pocketbase:
     specifier: ^0.17.3
     version: 0.17.3
@@ -44,6 +47,9 @@ dependencies:
   react-router-dom:
     specifier: ^6.15.0
     version: 6.15.0(react-dom@18.2.0)(react@18.2.0)
+  swiper:
+    specifier: ^10.2.0
+    version: 10.2.0
   vite-plugin-html:
     specifier: ^3.2.0
     version: 3.2.0(vite@4.4.5)
@@ -3426,6 +3432,12 @@ packages:
       execa: 4.1.0
     dev: true
 
+  /pnpm@8.7.4:
+    resolution: {integrity: sha512-/bQ5bXp8l7krhm2QXQVGuPjzNC/Z/p0fK4kw8aIrqG0YthTS9akRKGHiWyaHX623lntCriHBZZPqhbXczqSNVg==}
+    engines: {node: '>=16.14'}
+    hasBin: true
+    dev: false
+
   /pocketbase@0.17.3:
     resolution: {integrity: sha512-tqtk7kd8K4/5BspCzqf8DcbjS+iCBLFdpC7s/d6hAuxeoqP5MH6llRICm22dldJDFcTa1chuCfyeeKoU5mYaHQ==}
     dev: false
@@ -4163,6 +4175,11 @@ packages:
       picocolors: 1.0.0
       stable: 0.1.8
     dev: true
+
+  /swiper@10.2.0:
+    resolution: {integrity: sha512-nktQsOtBInJjr3f5DicxC8eHYGcLXDVIGPSon0QoXRaO6NjKnATCbQ8SZsD3dN1Ph1RH4EhVPwSYCcuDRFWHGQ==}
+    engines: {node: '>= 4.7.0'}
+    dev: false
 
   /tailwindcss@3.3.3:
     resolution: {integrity: sha512-A0KgSkef7eE4Mf+nKJ83i75TMyq8HqY3qmFIJSWy8bNt0v1lG7jUcpGpoTFxAwYcWOphcTBLPPJg+bDfhDf52w==}
