@@ -6,7 +6,7 @@ import MainMenu from "./MainMenu";
 import MainShopingMall from "./MainShopingMall";
 import MainEvent from "./MainEvent";
 import MainStore from "./MainStore";
-import "@/styles/Main.module.css";
+// import "@/styles/Main.module.css";
 
 const DIVIDER_HEIGHT = 5;
 

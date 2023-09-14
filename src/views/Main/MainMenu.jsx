@@ -1,7 +1,7 @@
 import React from "react";
-import Button from "./../../components/Button";
+import Button from "@/components/Button";
 import MenuCarousel from "./MenuCarousel";
-import MainpageTitle from "../../components/MainpageTitle";
+import MainpageTitle from "@/components/MainpageTitle";
 
 function MainMenu() {
   return (

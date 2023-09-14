@@ -1,5 +1,5 @@
 import React from "react";
-import MainpageTitle from "../../components/MainpageTitle";
+import MainpageTitle from "@/components/MainpageTitle";
 import Button from "@/components/Button";
 
 function MainStore() {
