@@ -9,9 +9,7 @@ import {usePocketBaseFilteredData} from "@/hooks/usePocektBaseData";
 
 function Products({collection}) {
   pb.autoCancellation(false);
-  const {data, status} = usePocketBaseFilteredData(collection, 1, 20, {
-    filterOption: "sort: '-created'",
-  });
+  const {data, status} = usePocketBaseFilteredData(collection, 1, 20);
 
   if (data) {
     return (

@@ -1,12 +1,22 @@
 import {Helmet} from "react-helmet-async";
+import useToggle from "@/hooks/useToggle";
 import PageMainTitle from "@/components/PageMainTitle";
-import RadioButton from "@/components/RadioButton/RadioButton";
+import { numberWithComma } from "@/utils/numberWithComma";
 import CheckBox from "@/components/CheckBox/CheckBox";
 import CloseButton from "@/components/CloseButton";
-import { numberWithComma } from "@/utils/numberWithComma";
 import Button from "@/components/Button";
+import { useCallback, useState } from "react";
+import OrderList from "@/components/Cart/OrderList";
 
 function Cart() {
+  const [toggleDropDown, setToggleDropDown] = useToggle(true);
+  const [value, setValue] = useState(1);
+  // const handleCount = (e) => {
+  //   e.preventDefault();
+  //   setValue((prev) => prev + 1) ;
+  // }
+
+
   return (
     <>
       <Helmet>
@@ -21,46 +31,13 @@ function Cart() {
             <CheckBox text="전체선택(3/3) " defaultChecked="checked" />
             <button>| 선택삭제</button>
           </div>
-          <div className="orderList border-t border-b border-secondary my-4">
+          <div className="orderListWrap border-t bg-white border-secondary my-4 overflow-hidden">
             <div className="titleButtonArea flex justify-between py-4">
               <p className="title font-semibold">주문상품</p>
-              <button className="p-2"><img src="/src/assets/images/arrow_down.svg" alt="아래화살표 버튼" /></button>
+              <button onClick={setToggleDropDown} className="p-2"><img src="/src/assets/images/arrow_down.svg" alt="아래화살표 버튼" /></button>
             </div>
-            <ul>
-              <li className="border-b border-gray-200">
-                <a href="" className="flex items-center py-4">
-                  <CheckBox className="mr-[1.375rem]"/>
-                  <figure className="shrink-0">
-                    <img src="http://via.placeholder.com/73x95" alt="" />
-                  </figure>
-                  <p className="productTitle basis-[32rem] ml-6 font-semibold">에스프레소 피에노</p>
-                  <div className="countBtn basis-[5.5rem] border border-gray-200 p-1 rounded-sm flex justify-between">
-
-                    <button>-</button>
-                    <span>1</span>
-                    <button>+</button>
-                  </div>
-                  <p className="productprice basis-[9.6875rem] font-semibold text-right mr-4">{`${numberWithComma(4980)}원`}</p>
-                  <CloseButton fillColor="gray"/>
-                </a>
-              </li>
-              <li className="border-b border-gray-200">
-                <a href="" className="flex items-center py-4">
-                  <CheckBox className="mr-[1.375rem]"/>
-                  <figure className="shrink-0">
-                    <img src="http://via.placeholder.com/73x95" alt="" />
-                  </figure>
-                  <p className="productTitle basis-[32rem] ml-6 font-semibold">수박화채 스무디</p>
-                  <div className="countBtn basis-[5.5rem] border border-gray-200 p-1 rounded-sm flex justify-between">
-                    <button>-</button>
-                    <span>1</span>
-                    <button>+</button>
-                  </div>
-                  <p className="productprice basis-[9.6875rem] font-semibold text-right mr-4">{`${numberWithComma(4980)}원`}</p>
-                  <CloseButton fillColor="gray"/>
-                </a>
-              </li>
-            </ul>
+            {toggleDropDown && <OrderList value={value} setValue={setValue}/>}
+            
           </div>
           <div className="selectArea font-semibold">
             <CheckBox text="전체선택(3/3) " defaultChecked="checked" />
