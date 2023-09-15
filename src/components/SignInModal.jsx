@@ -17,7 +17,6 @@ import KakaoTalkSignInButton from "./KakaoTalkSignInButton";
 import SignInForm from "./SignInForm";
 import TextHorizen from "./TextHorizen";
 import {useEffect} from "react";
-import pb from "@/api/pocketbase";
 
 function SignInModal({setIsClickedSignin}) {
   /* Email과 Password 유효성 검사 및 조건부 렌더링 함수 */
@@ -97,7 +96,7 @@ function SignInModal({setIsClickedSignin}) {
 
   return (
     !isModalOpen && (
-      <div className="w-full h-screen bg-[rgba(0,0,0,0.4)] fixed z-40 left-0 top-0">
+      <div className="w-full h-screen bg-[rgba(0,0,0,0.4)] fixed z-50 left-0 top-0">
         <SignInForm ref={formRef}>
           <JijoCafeLogoTitle />
           <Input
