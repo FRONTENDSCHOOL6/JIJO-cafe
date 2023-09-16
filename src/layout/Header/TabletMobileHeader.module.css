@@ -11,7 +11,7 @@
 }
 
 .linkWrap {
-  @apply flex items-center pb-8 border-b-[1px] border-darkGray;
+  @apply flex items-center pb-8  border-b-[1px] border-darkGray;
 }
 
 .titleLink {
@@ -19,7 +19,7 @@
 }
 
 .subLinkWrap {
-  @apply text-base text-left pl-16 mt-4  flex flex-col gap-2;
+  @apply text-base text-left pl-16 mt-4 flex flex-col gap-2;
 
   & li {
     @apply hover:text-white;

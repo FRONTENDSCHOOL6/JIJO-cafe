@@ -155,7 +155,7 @@ function SignUp() {
                 <Input
                   defaultValue={formState[name]}
                   onChange={handleInput}
-                  inputClassName="mobile:text-center mobile:placeholder:text-center placeholder:text-[11px]"
+                  className="mobile:text-center mobile:placeholder:text-center placeholder:text-[11px]"
                   label={label}
                   key={id}
                   type={type}

@@ -111,7 +111,9 @@ function DesktopHeader() {
             )}
             {!isAuth && <LinkList pageLink="/signUp">회원가입</LinkList>}
             {isAuth && user && <li>{user.name || user.username}님</li>}
-            <CartLinkList />
+            <div className={S.LinkWrap}>
+              <CartLinkList />
+            </div>
           </ul>
           <LogoLinks />
         </nav>
