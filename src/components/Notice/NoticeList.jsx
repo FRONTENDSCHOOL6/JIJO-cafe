@@ -1,11 +1,11 @@
-import yyyymmddDate from '@/utils/yyyymmddDate'
-import pb from '@/api/pocketbase'
-import { Link } from 'react-router-dom'
+import yyyymmddDate from "@/utils/yyyymmddDate"
+import pb from "@/api/pocketbase"
+import { Link } from "react-router-dom"
 
 function NoticeList({ data }) {
   const handleUpViews = async (item) => {
     console.log(item)
-    const record = await pb.collection('notices').update(item.id, { noticeViews: item.noticeViews + 1 })
+    const record = await pb.collection("notices").update(item.id, { noticeViews: item.noticeViews + 1 })
     console.log(record)
   }
 
@@ -44,7 +44,7 @@ function NoticeList({ data }) {
                     <p>{item.noticeWriter}</p>
                   </td>
                   <td className="py-3 px-6 text-center">
-                    <time>{yyyymmddDate(item.noticeDate)}</time>
+                    <time>{yyyymmddDate(item.created)}</time>
                   </td>
                   <td className=" mobile:hidden py-3 px-6 text-center">
                     <span>{item.noticeViews}</span>
