@@ -1,6 +1,5 @@
-import Input from "@/components/Input"
-
 import { useId } from "react"
+import Input from "@/components/Input"
 
 function DataForm({ handleCreate, handleFileChange, fileName, data, onDataChange, setFileName }) {
   const id = useId()
@@ -12,12 +11,6 @@ function DataForm({ handleCreate, handleFileChange, fileName, data, onDataChange
   const handleDescriptionChange = (event) => {
     const newDescription = event.target.value
     onDataChange({ ...data, noticeDescription: newDescription })
-  }
-
-  const handleImgChange = (event) => {
-    const newImage = event.target.value
-    onDataChange({ ...data, noticeImage: newImage })
-    // setFileName(fileName)
   }
 
   return (
@@ -40,8 +33,7 @@ function DataForm({ handleCreate, handleFileChange, fileName, data, onDataChange
           <div>
             <div>
               <input className="hidden" name="noticeImage" type="file" id="fileInput" onChange={handleFileChange} />
-              {/* <input className="h-[2.8125rem] px-4 border border-gray-300  text-gray-500" /> */}
-              <input className="h-[2.8125rem] px-4 border border-gray-300  text-gray-500" onChange={handleImgChange} value={data?.noticeImage || { fileName }} />
+              <input className="h-[2.8125rem] px-4 border border-gray-300  text-gray-500" readOnly value={data?.noticeImage || { fileName }} />
               <label htmlFor="fileInput" className="cursor-pointer font-medium ml-1 py-[0.8rem] px-10  rounded-sm bg-primary">
                 업로드
               </label>
