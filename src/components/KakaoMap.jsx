@@ -5,7 +5,7 @@ import {useEffect} from "react";
 
 const {kakao} = window;
 
-function KakaoMap() {
+function KakaoMap({keyword}) {
   const {location} = useCurrnetLocation();
 
   const {latitude: currentLat, longitude: currentLon} = location;
@@ -42,6 +42,18 @@ function KakaoMap() {
       const marker = new kakao.maps.Marker({
         map,
         position: new kakao.maps.LatLng(place.y, place.x),
+      });
+
+      kakao.maps.event.addListener(marker, "click", () => {
+        const content = `<div class="infoWindow">
+      <h4>${place.place_name}</h4>
+      <p>${place.address_name}</p>
+      <p>Phone: ${place.phone || "N/A"}</p>
+    </div>`;
+        const infowindow = new kakao.maps.InfoWindow({
+          content,
+        });
+        infowindow.open(map, marker);
       });
     };
   }, [location]);
