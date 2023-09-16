@@ -6,7 +6,6 @@ import { Helmet } from "react-helmet-async"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import DataForm from "@/components/Notice/DataForm"
-import Button from "@/components/Button"
 
 function NoticeCreate() {
   const Navigate = useNavigate()
@@ -46,10 +45,9 @@ function NoticeCreate() {
       <MenuTitle title="JIJO NEWS"> JIJO NOTICE</MenuTitle>
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60">
         <PageMainTitle pageTitleText="공지사항 등록" pageSubTitleText="카페 지조 관리자 페이지 입니다."></PageMainTitle>
-        <DataForm handleCreate={handleCreate} handleFileChange={handleFileChange} fileName={fileName}></DataForm>
-        <Button type="submit" color="primary" className="mt-[3.75rem] mx-auto">
+        <DataForm handleCreate={handleCreate} handleFileChange={handleFileChange} fileName={fileName}>
           등록하기
-        </Button>
+        </DataForm>
       </section>
     </>
   )

@@ -1,5 +1,4 @@
 import pb from "@/api/pocketbase"
-import Button from "@/components/Button"
 import DataForm from "@/components/Notice/DataForm"
 import MenuTitle from "@/components/MenuTitle"
 import JijoSpinner from "@/components/JijoSpinner"
@@ -73,10 +72,9 @@ function NoticeUpdate() {
       <MenuTitle title="JIJO NEWS"> JIJO NOTICE</MenuTitle>
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60">
         <PageMainTitle pageTitleText="공지사항 수정" pageSubTitleText="카페 지조 관리자 페이지 입니다."></PageMainTitle>
-        <DataForm data={data} onDataChange={setData} handleCreate={handleCreate} handleFileChange={handleFileChange} fileName={fileName} setFileName={setFileName}></DataForm>
-        <Button type="submit" color="primary" className="mt-[3.75rem]">
+        <DataForm data={data} onDataChange={setData} handleCreate={handleCreate} handleFileChange={handleFileChange} fileName={fileName} setFileName={setFileName}>
           수정하기
-        </Button>
+        </DataForm>
       </section>
     </>
   )

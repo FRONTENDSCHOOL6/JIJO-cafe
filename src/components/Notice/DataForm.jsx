@@ -1,7 +1,8 @@
 import { useId } from "react"
 import Input from "@/components/Input"
+import Button from "@/components/Button"
 
-function DataForm({ handleCreate, handleFileChange, fileName, data, onDataChange, setFileName }) {
+function DataForm({ handleCreate, handleFileChange, fileName, data, onDataChange, setFileName, children }) {
   const id = useId()
   const handleTitleChange = (event) => {
     const newTitle = event.target.value
@@ -42,6 +43,9 @@ function DataForm({ handleCreate, handleFileChange, fileName, data, onDataChange
           </div>
         </div>
       </div>
+      <Button type="submit" color="primary" className="mt-[3.75rem]">
+        {children}
+      </Button>
     </form>
   )
 }
