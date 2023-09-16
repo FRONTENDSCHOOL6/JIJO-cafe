@@ -21,8 +21,8 @@ function MainMenu() {
           </Button>
         </div>
       </div>
-      <div className="relative">
-        <div className="max-w-[1000px] overflow-hidden absolute">
+      <div className="relative w-1/2">
+        <div className="absolute overflow-hidden">
           <MenuCarousel />
         </div>
       </div>
