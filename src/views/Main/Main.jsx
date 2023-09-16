@@ -1,7 +1,7 @@
 // import { useState, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet-async";
 // import PostItem from "../PostItem";
-import MainBanner from "./MainBanner ";
+import MainBanner from "./MainBanner";
 import MainMenu from "./MainMenu";
 import MainShopingMall from "./MainShopingMall";
 import MainEvent from "./MainEvent";
