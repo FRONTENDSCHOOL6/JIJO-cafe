@@ -29,9 +29,11 @@ function Detail({ data }) {
           <Button color="primary" className="mr-auto px-[1.875rem]">
             <Link to="/bbs/notice">목록으로</Link>
           </Button>
-          <Button color="primary" className="px-[1.875rem]">
-            수정
-          </Button>
+          <Link to={`/bbs/notice/update/${data.id}`}>
+            <Button color="primary" className="px-[1.875rem]">
+              수정
+            </Button>
+          </Link>
           <Button color="primary" className="px-[1.875rem]">
             삭제
           </Button>
