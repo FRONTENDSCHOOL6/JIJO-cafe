@@ -54,14 +54,15 @@ function NoticeUpdate() {
 
   pb.autoCancellation(false)
 
-  const handleCreate = async (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
     console.log(formData)
     const data = Object.fromEntries(formData.entries())
-    const record = await pb.collection("notices").create(data)
-    Navigate("/bbs/notice/")
-    // 수정예정
+    console.log(data)
+    console.log(noticeId)
+    const record = await pb.collection("notices").update(noticeId, data)
+    Navigate(`/bbs/notice/detail/${noticeId}`)
   }
 
   return (
@@ -72,7 +73,7 @@ function NoticeUpdate() {
       <MenuTitle title="JIJO NEWS"> JIJO NOTICE</MenuTitle>
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60">
         <PageMainTitle pageTitleText="공지사항 수정" pageSubTitleText="카페 지조 관리자 페이지 입니다."></PageMainTitle>
-        <DataForm data={data} onDataChange={setData} handleCreate={handleCreate} handleFileChange={handleFileChange} fileName={fileName} setFileName={setFileName}>
+        <DataForm data={data} onDataChange={setData} handleSubmit={handleUpdate} handleFileChange={handleFileChange} fileName={fileName} setFileName={setFileName}>
           수정하기
         </DataForm>
       </section>

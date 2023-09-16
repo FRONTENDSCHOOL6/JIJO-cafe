@@ -2,7 +2,7 @@ import { useId } from "react"
 import Input from "@/components/Input"
 import Button from "@/components/Button"
 
-function DataForm({ handleCreate, handleFileChange, fileName, data, onDataChange, setFileName, children }) {
+function DataForm({ handleSubmit, handleFileChange, fileName, data, onDataChange, setFileName, children }) {
   const id = useId()
   const handleTitleChange = (event) => {
     const newTitle = event.target.value
@@ -15,7 +15,7 @@ function DataForm({ handleCreate, handleFileChange, fileName, data, onDataChange
   }
 
   return (
-    <form onSubmit={handleCreate} className="border flex gap-5 flex-col w-[53.75rem] mx-auto px-[5.625rem] py-[3.125rem]">
+    <form onSubmit={handleSubmit} className="border flex gap-5 flex-col w-[53.75rem] mx-auto px-[5.625rem] py-[3.125rem]">
       <div className="flex justify-between items-center mt-[3.75rem] ">
         <Input label="관리자" value="카페 지조" readOnly required name="noticeWriter" placeholder="카페 지조" labelClassName="w-[7.8125rem] " className="bg-white block mr-[0.3125rem] border px-jj_15 w-full"></Input>
       </div>
