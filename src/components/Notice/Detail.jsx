@@ -3,7 +3,7 @@ import { getPbImageURL } from "@/utils/getPbImageURL"
 import Button from "@/components/Button"
 import yyyymmddDate from "@/utils/yyyymmddDate"
 
-function Detail({ data }) {
+function Detail({ data, handleDelete }) {
   // console.log(data)
 
   return (
@@ -34,7 +34,7 @@ function Detail({ data }) {
               수정
             </Button>
           </Link>
-          <Button color="primary" className="px-[1.875rem]">
+          <Button color="primary" className="px-[1.875rem]" onClick={handleDelete}>
             삭제
           </Button>
         </div>
