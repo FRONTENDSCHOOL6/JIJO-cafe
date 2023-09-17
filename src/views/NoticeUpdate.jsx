@@ -73,7 +73,7 @@ function NoticeUpdate() {
       <MenuTitle title="JIJO NEWS"> JIJO NOTICE</MenuTitle>
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60">
         <PageMainTitle pageTitleText="공지사항 수정" pageSubTitleText="카페 지조 관리자 페이지 입니다."></PageMainTitle>
-        <DataForm data={data} onDataChange={setData} handleSubmit={handleUpdate} handleFileChange={handleFileChange} fileName={fileName} setFileName={setFileName}>
+        <DataForm data={data} setData={setData} handleSubmit={handleUpdate} handleFileChange={handleFileChange} fileName={fileName} setFileName={setFileName}>
           수정하기
         </DataForm>
       </section>

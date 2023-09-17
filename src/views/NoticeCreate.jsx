@@ -9,6 +9,7 @@ import DataForm from "@/components/Notice/DataForm"
 
 function NoticeCreate() {
   const Navigate = useNavigate()
+  const [data, setData] = useState(null)
   const [fileName, setFileName] = useState("파일이름")
 
   const handleFileChange = (event) => {
@@ -37,6 +38,11 @@ function NoticeCreate() {
   // const today = new Date()
   // console.log(today)
 
+  const onDataChange = {
+    noticeTitle: "",
+    noticeDescription: "",
+  }
+
   return (
     <>
       <Helmet>
@@ -45,7 +51,7 @@ function NoticeCreate() {
       <MenuTitle title="JIJO NEWS"> JIJO NOTICE</MenuTitle>
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60">
         <PageMainTitle pageTitleText="공지사항 등록" pageSubTitleText="카페 지조 관리자 페이지 입니다."></PageMainTitle>
-        <DataForm handleSubmit={handleCreate} handleFileChange={handleFileChange} fileName={fileName}>
+        <DataForm data={data} setData={setData} onDataChange={onDataChange} handleSubmit={handleCreate} handleFileChange={handleFileChange} fileName={fileName}>
           등록하기
         </DataForm>
       </section>
