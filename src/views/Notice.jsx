@@ -61,9 +61,9 @@ function Notice() {
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60">
         <PageMainTitle pageTitleText="카페 지조 공지사항" pageSubTitleText="카페 지조 소식을 알려드립니다."></PageMainTitle>
 
-        <NoticeSearchFilter handleReload={handleClickRefetch} option={searchOption} onChangeOption={setSearchOption} text={searchText} onChangeText={setSearchText}></NoticeSearchFilter>
+        <NoticeSearchFilter Collection="notice" handleReload={handleClickRefetch} option={searchOption} onChangeOption={setSearchOption} text={searchText} onChangeText={setSearchText}></NoticeSearchFilter>
         {/* 상태를 props로 NoticeSearchFilter에 전달 , handleReload 핸들러전달*/}
-        <NoticeList data={data} />
+        <NoticeList Collection="notices" field="notice" data={data} />
       </section>
     </>
   )

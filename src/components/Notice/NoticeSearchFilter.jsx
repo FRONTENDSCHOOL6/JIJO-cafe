@@ -3,7 +3,7 @@ import Input from "@/components/Input"
 import { useId } from "react"
 import { Link } from "react-router-dom"
 
-function NoticeSearchFilter({ option, text, onChangeOption, onChangeText, handleReload }) {
+function NoticeSearchFilter({ Collection, option, text, onChangeOption, onChangeText, handleReload }) {
   //  Notice state, setState (option, text)상태를 전달받음
   const id = useId()
 
@@ -22,12 +22,12 @@ function NoticeSearchFilter({ option, text, onChangeOption, onChangeText, handle
           onChangeOption(e.target.value)
         }}
         id={id}
-        name="notice"
+        name={Collection}
         className="border px-jj_15 mr-[0.3125rem] bg-[#f8f8f8] h-[2.8125rem] pl-4 text-black rounded focus:border-2 focus:outline-none focus:border-primary"
       >
-        <option value="noticeTitle">제목</option>
-        <option value="noticeDescription">내용</option>
-        <option value="noticeWriter">작성자</option>
+        <option value={`${Collection}Title`}>제목</option>
+        <option value={`${Collection}Description`}>내용</option>
+        <option value={`${Collection}Writer`}>작성자</option>
       </select>
       <Input value={text} type="search" onChange={handleInput} placeholder="검색어를 입력하세요" className="mr-[0.3125rem] border px-jj_15 w-fit"></Input>
       {/* input type search value입력시 x 표시 나오고 클릭시 텍스트 삭제  */}
@@ -35,7 +35,8 @@ function NoticeSearchFilter({ option, text, onChangeOption, onChangeText, handle
         검색
       </Button>
 
-      <Link to="/bbs/notice/create">
+      {/* <Link to="/bbs/notice/create"> */}
+      <Link to={`/bbs/${Collection}`}>
         <Button color="primary" className="px-5  mobile:w-full mobile:my-[0.9375rem]">
           등록
         </Button>
