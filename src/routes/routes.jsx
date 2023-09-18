@@ -4,6 +4,8 @@ import Customer from "@/views/Customer"
 import Drink from "@/views/Drink"
 import Event from "@/views/Event"
 import Faq from "@/views/Faq"
+import FaqCreate from "@/views/FaqCreate"
+import FaqDetail from "@/views/FaqDetail"
 import FindStore from "@/views/FindStore"
 import Food from "@/views/Food"
 import Main from "@/views/Main/Main"
@@ -34,6 +36,9 @@ const router = createBrowserRouter(
       <Route path="/bbs/notice/update/:noticeId" element={<NoticeUpdate />} />
       <Route path="/bbs/notice/detail/:noticeId" element={<NoticeDetail />} />
       <Route path="/bbs/faq" element={<Faq />} />
+      <Route path="/bbs/faq/create" element={<FaqCreate />} />
+      <Route path="/bbs/faq/detail/:FaqId" element={<FaqDetail />} />
+      {/* <Route path="/bbs/faq/update/:FaqId" element={<FaqUpdate />} /> */}
       <Route path="/bbs/customer" element={<Customer />} />
       <Route path="/bbs/event" element={<Event />} />
 

@@ -8,21 +8,21 @@ import { Helmet } from "react-helmet-async"
 import { useNavigate } from "react-router-dom"
 import { useParams } from "react-router-dom"
 
-function NoticeDetail() {
-  const { noticeId } = useParams()
+function FaqDetail() {
+  const { FaqId } = useParams()
   const [data, setData] = useState(null)
   const [status, setStatus] = useState("pending")
   const [error, setError] = useState(null)
   const Navigate = useNavigate()
-
+  console.log(FaqId)
   pb.autoCancellation(false) // 오토캔슬 false
 
   useEffect(() => {
     const fetchData = async () => {
       setStatus("loading")
       try {
-        const noticeItems = await pb.collection("notices").getOne(noticeId) //단일 데이터 가져올때 getOne
-        setData(noticeItems)
+        const faqItems = await pb.collection("faq").getOne(FaqId) //단일 데이터 가져올때 getOne
+        setData(faqItems)
         setStatus("success")
       } catch (error) {
         setStatus("error")
@@ -30,7 +30,7 @@ function NoticeDetail() {
       }
     }
     fetchData()
-  }, [noticeId])
+  }, [FaqId])
 
   if (status === "loading") {
     return <JijoSpinner />
@@ -48,13 +48,13 @@ function NoticeDetail() {
 
   const handleDelete = async () => {
     try {
-      // 공지사항 삭제 함수
-      await pb.collection("notices").delete(noticeId) // PocketBase를 사용하여 공지사항을 삭제
+      // 삭제 함수
+      await pb.collection("faq").delete(FaqId) // PocketBase를 사용하여 삭제
       // 삭제가 성공적으로 이루어졌을 때 실행할 코드
       console.log("게시글이 삭제되었습니다.") // 삭제 완료 메시지 출력 또는 다른 작업 수행 가능
 
       // 삭제 후 특정 페이지로 리다이렉트
-      Navigate("/bbs/notice") // 삭제 후 공지사항 목록 페이지로 이동
+      Navigate("/bbs/faq") // 삭제 후 faq 목록 페이지로 이동
     } catch (error) {
       // 삭제 중에 오류가 발생했을 때 실행
       console.error("게시글 삭제 중 오류 발생:", error)
@@ -65,12 +65,12 @@ function NoticeDetail() {
   return (
     <>
       <Helmet>
-        <title>지조소식 - 공지사항</title>
+        <title>지조소식 - FAQ</title>
       </Helmet>
-      <MenuTitle title="JIJO NEWS"> JIJO NOTICE</MenuTitle>
-      <Detail field="notice" handleDelete={handleDelete} data={data}></Detail>
+      <MenuTitle title="JIJO NEWS"> JIJO FAQ</MenuTitle>
+      <Detail field="faq" handleDelete={handleDelete} data={data}></Detail>
     </>
   )
 }
 
-export default NoticeDetail
+export default FaqDetail

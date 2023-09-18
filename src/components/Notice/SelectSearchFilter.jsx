@@ -36,7 +36,7 @@ function NoticeSearchFilter({ Collection, option, text, onChangeOption, onChange
       </Button>
 
       {/* <Link to="/bbs/notice/create"> */}
-      <Link to={`/bbs/${Collection}`}>
+      <Link to={`/bbs/${Collection}/create`}>
         <Button color="primary" className="px-5  mobile:w-full mobile:my-[0.9375rem]">
           등록
         </Button>

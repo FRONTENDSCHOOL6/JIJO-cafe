@@ -7,7 +7,7 @@ import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import DataForm from "@/components/Notice/DataForm"
 
-function NoticeCreate() {
+function FaqCreate() {
   const Navigate = useNavigate()
   const [data, setData] = useState(null)
   const [fileName, setFileName] = useState("파일이름")
@@ -19,7 +19,6 @@ function NoticeCreate() {
       setFileName(selectedFile.name)
     }
   }
-
   if (status === "loading") {
     return <JijoSpinner />
   }
@@ -31,27 +30,23 @@ function NoticeCreate() {
     const formData = new FormData(e.currentTarget)
     console.log(formData)
     const data = Object.fromEntries(formData.entries())
-    const record = await pb.collection("notices").create(data)
-    Navigate("/bbs/notice")
+    const record = await pb.collection("faq").create(data)
+    Navigate("/bbs/faq")
   }
-
-  // const today = new Date()
-  // console.log(today)
-
   const onDataChange = {
-    noticeTitle: "",
-    noticeDescription: "",
+    faqTitle: "",
+    faqDescription: "",
   }
 
   return (
     <>
       <Helmet>
-        <title>지조소식 - 공지사항</title>
+        <title>지조소식 - FAQ</title>
       </Helmet>
-      <MenuTitle title="JIJO NEWS"> JIJO NOTICE</MenuTitle>
+      <MenuTitle title="JIJO NEWS"> JIJO FAQ</MenuTitle>
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60">
-        <PageMainTitle pageTitleText="공지사항 등록" pageSubTitleText="카페 지조 관리자 페이지 입니다."></PageMainTitle>
-        <DataForm collection="notice" data={data} setData={setData} onDataChange={onDataChange} handleSubmit={handleCreate} handleFileChange={handleFileChange} fileName={fileName}>
+        <PageMainTitle pageTitleText="FAQ 등록" pageSubTitleText="카페 지조 관리자 페이지 입니다."></PageMainTitle>
+        <DataForm collection="faq" data={data} setData={setData} onDataChange={onDataChange} handleSubmit={handleCreate} handleFileChange={handleFileChange} fileName={fileName}>
           등록하기
         </DataForm>
       </section>
@@ -59,4 +54,4 @@ function NoticeCreate() {
   )
 }
 
-export default NoticeCreate
+export default FaqCreate

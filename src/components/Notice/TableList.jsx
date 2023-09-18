@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"
 
 function TableList({ data, Collection, field }) {
   const handleUpViews = async (item) => {
-    console.log(item)
+    // console.log(item)
     // const record = await pb.collection({Collection}).update(item.id, { noticeViews: item.noticeViews + 1 })
     const record = await pb.collection(`${field}`).update(item.id, { [`${field}Views`]: item[`${field}Views`] + 1 })
 
