@@ -49,7 +49,7 @@ function NoticeCreate() {
         <title>지조소식 - 공지사항</title>
       </Helmet>
       <MenuTitle title="JIJO NEWS"> JIJO NOTICE</MenuTitle>
-      <section className="max-w-screen-xl mx-auto px-5 py-jj_60">
+      <section className="max-w-screen-xl mx-auto px-5 py-jj_60 text-deepDarkGray">
         <PageMainTitle pageTitleText="공지사항 등록" pageSubTitleText="카페 지조 관리자 페이지 입니다."></PageMainTitle>
         <DataForm collection="notice" data={data} setData={setData} onDataChange={onDataChange} handleSubmit={handleCreate} handleFileChange={handleFileChange} fileName={fileName}>
           등록하기

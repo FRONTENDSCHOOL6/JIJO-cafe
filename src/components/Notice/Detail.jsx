@@ -8,7 +8,7 @@ function Detail({ data, handleDelete, field }) {
 
   return (
     data && (
-      <section className="max-w-screen-xl mx-auto px-5 py-jj_60">
+      <section className="max-w-screen-xl mx-auto px-5 py-jj_60 text-deepDarkGray">
         <div className=" border-y pt-[2rem] flex flex-col">
           {/* <h3 className="text-jj_24 font-[350] "> {data.noticeTitle}</h3> */}
           <h3 className="text-jj_24 font-[350] "> {data?.[`${field}Title`]}</h3>

@@ -58,7 +58,7 @@ function Faq() {
         <title>지조소식 - FAQ</title>
       </Helmet>
       <MenuTitle title="JIJO NEWS"> JIJO FAQ</MenuTitle>
-      <section className="max-w-screen-xl mx-auto px-5 py-jj_60">
+      <section className="max-w-screen-xl mx-auto px-5 py-jj_60 text-deepDarkGray">
         <PageMainTitle pageTitleText="자주하는 질문" pageSubTitleText="궁금하신 내용을 검색해 주세요."></PageMainTitle>
         <NoticeSearchFilter Collection="faq" handleReload={handleClickRefetch} option={searchOption} onChangeOption={setSearchOption} text={searchText} onChangeText={setSearchText}></NoticeSearchFilter>
         <TableList Collection="faq" field="faq" data={data} />

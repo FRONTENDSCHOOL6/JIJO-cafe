@@ -59,7 +59,7 @@ function Notice() {
         <title>지조소식 - 공지사항</title>
       </Helmet>
       <MenuTitle title="JIJO NEWS"> JIJO NOTICE</MenuTitle>
-      <section className="max-w-screen-xl mx-auto px-5 py-jj_60">
+      <section className="max-w-screen-xl mx-auto px-5 py-jj_60 text-deepDarkGray">
         <PageMainTitle pageTitleText="카페 지조 공지사항" pageSubTitleText="카페 지조 소식을 알려드립니다."></PageMainTitle>
 
         <NoticeSearchFilter Collection="notice" handleReload={handleClickRefetch} option={searchOption} onChangeOption={setSearchOption} text={searchText} onChangeText={setSearchText}></NoticeSearchFilter>

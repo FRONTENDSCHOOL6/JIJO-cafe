@@ -13,7 +13,7 @@ function TableList({ data, Collection, field }) {
 
   return (
     <>
-      <table className="min-w-max w-full table-auto bg-white my-6 border-t">
+      <table className="min-w-max w-full table-auto bg-white my-6 border-t text-deepDarkGray">
         <thead>
           <tr className="text-jj_15 leading-normal">
             <th className="mobile:hidden py-3 px-6 items-center">번호</th>
@@ -34,6 +34,7 @@ function TableList({ data, Collection, field }) {
                   <td className="py-3 px-6 text-left">
                     <Link to={`/bbs/${field}/detail/${item.id}`}>
                       <p
+                        className="text-deepDarkGray"
                         onClick={() => {
                           handleUpViews(item)
                         }}
@@ -43,12 +44,12 @@ function TableList({ data, Collection, field }) {
                     </Link>
                   </td>
                   <td className="py-3 px-6 mobile:hidden text-center">
-                    <p> {item[field + "Writer"]}</p>
+                    <p className="text-deepDarkGray"> {item[field + "Writer"]}</p>
                   </td>
-                  <td className="py-3 px-6 text-center">
+                  <td className="py-3 px-6 text-center text-deepDarkGray">
                     <time>{yyyymmddDate(item.created)}</time>
                   </td>
-                  <td className=" mobile:hidden py-3 px-6 text-center">
+                  <td className=" mobile:hidden py-3 px-6 text-center text-deepDarkGray">
                     <span>{item[field + "Views"]}</span>
                   </td>
                 </tr>

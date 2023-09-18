@@ -12,7 +12,7 @@ function NoticeSearchFilter({ Collection, option, text, onChangeOption, onChange
   }
 
   return (
-    <form>
+    <form className="text-deepDarkGray">
       <label htmlFor={id} className="sr-only">
         검색창
       </label>
