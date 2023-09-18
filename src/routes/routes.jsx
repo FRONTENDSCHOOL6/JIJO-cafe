@@ -6,6 +6,7 @@ import Event from "@/views/Event"
 import Faq from "@/views/Faq"
 import FaqCreate from "@/views/FaqCreate"
 import FaqDetail from "@/views/FaqDetail"
+import FaqUpdate from "@/views/FaqUpdate"
 import FindStore from "@/views/FindStore"
 import Food from "@/views/Food"
 import Main from "@/views/Main/Main"
@@ -38,7 +39,7 @@ const router = createBrowserRouter(
       <Route path="/bbs/faq" element={<Faq />} />
       <Route path="/bbs/faq/create" element={<FaqCreate />} />
       <Route path="/bbs/faq/detail/:FaqId" element={<FaqDetail />} />
-      {/* <Route path="/bbs/faq/update/:FaqId" element={<FaqUpdate />} /> */}
+      <Route path="/bbs/faq/update/:FaqId" element={<FaqUpdate />} />
       <Route path="/bbs/customer" element={<Customer />} />
       <Route path="/bbs/event" element={<Event />} />
 
