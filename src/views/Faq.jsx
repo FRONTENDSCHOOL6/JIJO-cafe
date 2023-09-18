@@ -1,13 +1,14 @@
 import pb from "@/api/pocketbase"
 import { Helmet } from "react-helmet-async"
 import MenuTitle from "@/components/MenuTitle"
-import NoticeList from "@/components/Notice/NoticeList"
+
 import JijoSpinner from "@/components/JijoSpinner"
 import PageMainTitle from "@/components/PageMainTitle"
-import NoticeSearchFilter from "@/components/Notice/NoticeSearchFilter"
+import NoticeSearchFilter from "@/components/Notice/SelectSearchFilter"
 import { useState, useEffect } from "react"
 import { useQuery } from "@tanstack/react-query"
 import { useCallback } from "react"
+import TableList from "@/components/Notice/TableList"
 
 async function fetchFaq(searchOption, searchText) {
   const response = await pb.collection("faq").getList(1, 10, {
@@ -57,7 +58,7 @@ function Faq() {
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60">
         <PageMainTitle pageTitleText="자주하는 질문" pageSubTitleText="궁금하신 내용을 검색해 주세요."></PageMainTitle>
         <NoticeSearchFilter Collection="faq" handleReload={handleClickRefetch} option={searchOption} onChangeOption={setSearchOption} text={searchText} onChangeText={setSearchText}></NoticeSearchFilter>
-        <NoticeList Collection="faq" field="faq" data={data} />
+        <TableList Collection="faq" field="faq" data={data} />
       </section>
     </>
   )

@@ -1,14 +1,15 @@
 import pb from "@/api/pocketbase"
 import { Helmet } from "react-helmet-async"
 import MenuTitle from "@/components/MenuTitle"
-import NoticeList from "@/components/Notice/NoticeList"
+
 import JijoSpinner from "@/components/JijoSpinner"
 import PageMainTitle from "@/components/PageMainTitle"
-import NoticeSearchFilter from "@/components/Notice/NoticeSearchFilter"
+import NoticeSearchFilter from "@/components/Notice/SelectSearchFilter"
 import { useState, useEffect } from "react"
 import { useQuery } from "@tanstack/react-query"
 // import { usePocketBaseFilteredData } from "@/hooks/usePocektBaseData"
 import { useCallback } from "react"
+import TableList from "@/components/Notice/TableList"
 
 async function fetchNotices(searchOption, searchText) {
   const response = await pb.collection("notices").getList(1, 10, {
@@ -63,7 +64,7 @@ function Notice() {
 
         <NoticeSearchFilter Collection="notice" handleReload={handleClickRefetch} option={searchOption} onChangeOption={setSearchOption} text={searchText} onChangeText={setSearchText}></NoticeSearchFilter>
         {/* 상태를 props로 NoticeSearchFilter에 전달 , handleReload 핸들러전달*/}
-        <NoticeList Collection="notices" field="notice" data={data} />
+        <TableList Collection="notices" field="notice" data={data} />
       </section>
     </>
   )

@@ -2,7 +2,7 @@ import yyyymmddDate from "@/utils/yyyymmddDate"
 import pb from "@/api/pocketbase"
 import { Link } from "react-router-dom"
 
-function NoticeList({ data, Collection, field }) {
+function TableList({ data, Collection, field }) {
   const handleUpViews = async (item) => {
     console.log(item)
     // const record = await pb.collection({Collection}).update(item.id, { noticeViews: item.noticeViews + 1 })
@@ -60,4 +60,4 @@ function NoticeList({ data, Collection, field }) {
   )
 }
 
-export default NoticeList
+export default TableList
