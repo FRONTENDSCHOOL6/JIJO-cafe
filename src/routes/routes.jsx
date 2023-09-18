@@ -1,6 +1,7 @@
 import RootLayout from "@/layout/RootLayout"
 import Cart from "@/views/Cart"
 import Customer from "@/views/Customer"
+import CustomerCreate from "@/views/CustomerCreate"
 import Drink from "@/views/Drink"
 import Event from "@/views/Event"
 import Faq from "@/views/Faq"
@@ -41,6 +42,7 @@ const router = createBrowserRouter(
       <Route path="/bbs/faq/detail/:FaqId" element={<FaqDetail />} />
       <Route path="/bbs/faq/update/:FaqId" element={<FaqUpdate />} />
       <Route path="/bbs/customer" element={<Customer />} />
+      <Route path="/bbs/customer/create" element={<CustomerCreate />} />
       <Route path="/bbs/event" element={<Event />} />
 
       <Route path="/cart" element={<Cart />} />
