@@ -32,6 +32,9 @@ function Faq() {
     queryFn: () => fetchFaq(searchOption, searchText),
     staleTime: 1 * 1000 * 60 * 60 * 24 * 7,
   })
+  useEffect(() => {
+    refetch() // 삭제시 데이터를 다시 로드하는 함수를 호출
+  }, [])
 
   const handleClickRefetch = useCallback(() => {
     refetch()

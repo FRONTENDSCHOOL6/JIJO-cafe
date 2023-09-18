@@ -71,9 +71,9 @@ function FaqUpdate() {
       <Helmet>
         <title>지조소식 - 공지사항</title>
       </Helmet>
-      <MenuTitle title="JIJO NEWS"> JIJO NOTICE</MenuTitle>
+      <MenuTitle title="JIJO NEWS"> JIJO FAQ</MenuTitle>
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60">
-        <PageMainTitle pageTitleText="공지사항 수정" pageSubTitleText="카페 지조 관리자 페이지 입니다."></PageMainTitle>
+        <PageMainTitle pageTitleText="FAQ 수정" pageSubTitleText="카페 지조 관리자 페이지 입니다."></PageMainTitle>
         <DataForm collection="faq" data={data} setData={setData} handleSubmit={handleUpdate} handleFileChange={handleFileChange} fileName={fileName} setFileName={setFileName}>
           수정하기
         </DataForm>

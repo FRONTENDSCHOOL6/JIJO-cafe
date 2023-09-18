@@ -25,6 +25,7 @@ function FaqCreate() {
 
   pb.autoCancellation(false)
 
+  // 등록하기 버튼 클릭시 pb에 등록후 페이지이동
   const handleCreate = async (e) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
