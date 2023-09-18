@@ -1,0 +1,21 @@
+.section {
+  @apply max-w-screen-xl mx-auto px-5 py-jj_60 text-deepDarkGray;
+}
+
+.wrapper {
+  @apply max-w-[53.75rem] p-7% mx-auto border mobile:p-0 mobile:border-none w-full;
+}
+.label {
+  @apply w-[7.8125rem] mobile:w-full mobile:block;
+}
+.input {
+  @apply border w-full pl-2 h-[2.8125rem];
+}
+
+.inputWrapper {
+  @apply flex mobile:block mb-5 items-center;
+}
+
+.checkbox {
+  @apply text-blue-500;
+}
