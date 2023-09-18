@@ -10,6 +10,7 @@ import Main from "@/views/Main/Main"
 import Notice from "@/views/Notice"
 import NoticeCreate from "@/views/NoticeCreate"
 import NoticeDetail from "@/views/NoticeDetail"
+import NoticeUpdate from "@/views/NoticeUpdate"
 import Product from "@/views/Product"
 import SignUp from "@/views/SignUp"
 import { Route } from "react-router-dom"
@@ -30,6 +31,7 @@ const router = createBrowserRouter(
 
       <Route path="/bbs/notice" element={<Notice />} />
       <Route path="/bbs/notice/create" element={<NoticeCreate />} />
+      <Route path="/bbs/notice/update/:noticeId" element={<NoticeUpdate />} />
       <Route path="/bbs/notice/detail/:noticeId" element={<NoticeDetail />} />
       <Route path="/bbs/faq" element={<Faq />} />
       <Route path="/bbs/customer" element={<Customer />} />
