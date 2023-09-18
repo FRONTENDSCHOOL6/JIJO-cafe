@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay, Keyboard } from "swiper/modules";
+import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css/pagination";
 import "@/styles/Carousel.css";
 import pb from "@/api/pocketbase";
@@ -24,8 +24,7 @@ export default function MainBanner() {
       }}
       keyboard={{ enabled: true }}
       grabCursor={true}
-      Keyboard={true}
-      id="mainSwiper"
+      className="mainSwiper"
     >
       {data &&
         data?.map((item) => {
