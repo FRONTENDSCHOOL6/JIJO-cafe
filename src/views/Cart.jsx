@@ -53,8 +53,7 @@ function Cart() {
               </p>
               <Button
                 className="w-full bg-white text-secondary border border-secondary hover:border-primary hover:text-white grow my-4"
-                color="primary"
-                onClick="">
+                color="primary">
                 매장변경
               </Button>
             </div>
@@ -83,8 +82,7 @@ function Cart() {
             </div>
             <Button
               className="w-full bg-secondary text-white grow my-4"
-              color="primary"
-              onClick="">
+              color="primary">
               주문하기
             </Button>
             <div className="notice">

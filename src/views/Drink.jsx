@@ -1,8 +1,10 @@
 import {Helmet} from "react-helmet-async";
 import MenuTitle from "@/components/MenuTitle";
 import MenuBubble from "@/components/MenuBubble";
-import CheckBox from "@/components/CheckBox/CheckBox";
 import Products from "@/components/Products";
+import Categories from "@/components/Categories";
+import { useParams } from "react-router-dom";
+import { useState } from "react";
 
 function Drink() {
   return (
@@ -53,20 +55,7 @@ function Drink() {
           <p className="title text-jj_22 leading-tight pb-5 mb-5 border-b border-b-gray-200">
             분류보기
           </p>
-          <div className="checkboxWrap flex gap-[.625rem] mobile:flex-wrap">
-            <CheckBox
-              className="mobile:basis-1/4"
-              text="전체 상품보기"
-              defaultChecked="checked"
-            />
-            <CheckBox className="mobile:basis-1/4" text="커피" />
-            <CheckBox className="mobile:basis-1/4" text="티" />
-            <CheckBox className="mobile:basis-1/4" text="에이드&주스" />
-            <CheckBox className="mobile:basis-1/4" text="스무디&프라페" />
-            <CheckBox className="mobile:basis-1/4" text="디카페인" />
-            <CheckBox className="mobile:basis-1/4" text="음료" />
-            <CheckBox className="mobile:basis-1/4" text="신상품" />
-          </div>
+          <Categories />
         </div>
 
         <Products collection="beverage" />
