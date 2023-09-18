@@ -22,7 +22,12 @@ function Footer() {
         <div className="footerLeft w-1/2 tablet:w-full mobile:w-full">
           <div className="footerLogoArea flex items-center tablet:justify-center mobile:justify-center">
             <figure className="footerLogo">
-              <img width="80px" className="mr-4" src="/logo_white.svg" alt="카페지조" />
+              <img
+                width="80px"
+                className="mr-4"
+                src="/logo_white.svg"
+                alt="카페지조"
+              />
             </figure>
             <ul className="snsIcon flex gap-2 mt-2">
               <li>
@@ -48,12 +53,22 @@ function Footer() {
                 <strong>주식회사 앤하우스</strong>
               </li>
               <li className="whitespace-nowrap opacity-70">대표자 김대영</li>
-              <li className="whitespace-nowrap opacity-70">창업상담 1588-0656</li>
-              <li className="whitespace-nowrap opacity-70">고객센터 1588-8298</li>
+              <li className="whitespace-nowrap opacity-70">
+                창업상담 1588-0656
+              </li>
+              <li className="whitespace-nowrap opacity-70">
+                고객센터 1588-8298
+              </li>
               <li className="whitespace-nowrap opacity-70">FAX 02-325-5199</li>
-              <li className="whitespace-nowrap opacity-70">사업자등록번호 105-87-51367</li>
-              <li className="whitespace-nowrap opacity-70">서울특별시 강남구 강남대로 518 11층, 13층 (주)앤하우스</li>
-              <li className="whitespace-nowrap opacity-70">개인정보보호 관리책임자 이호민</li>
+              <li className="whitespace-nowrap opacity-70">
+                사업자등록번호 105-87-51367
+              </li>
+              <li className="whitespace-nowrap opacity-70">
+                서울특별시 강남구 강남대로 518 11층, 13층 (주)앤하우스
+              </li>
+              <li className="whitespace-nowrap opacity-70">
+                개인정보보호 관리책임자 이호민
+              </li>
             </ul>
           </div>
         </div>
@@ -118,7 +133,7 @@ function Footer() {
         </div>
       </div>
     </footer>
-  )
+  );
 }
 
-export default Footer
+export default Footer;
