@@ -1,15 +1,17 @@
-import LinkList from './LinkList'
-// import logoTitle from '@/assets/images/logoTitle.png'
-import styles from '@/layout/Header/Header.module.css'
+import LinkList from "./LinkList";
 
-function JijoCafeLogoTitle({ ...restProps }) {
+function JijoCafeLogoTitle({...restProps}) {
   return (
     <>
       <LinkList pageLink="/" {...restProps}>
-        <img src="/logo_black.svg" alt="지조카페" className={`${styles.img} desktop:w-[120px] tablet:w-[100px] mobile:w-[90px]`} />
+        <img
+          src="/logo_black.svg"
+          alt="지조카페"
+          className={`desktop:w-[10rem] h-8 tablet:w-[6.25rem] mobile:w-[5.625rem]`}
+        />
       </LinkList>
     </>
-  )
+  );
 }
 
-export default JijoCafeLogoTitle
+export default JijoCafeLogoTitle;
