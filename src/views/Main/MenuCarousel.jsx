@@ -1,15 +1,22 @@
-import { useState, useRef, useCallback } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Navigation } from "swiper/modules";
+import {useState, useRef, useCallback} from "react";
+import {Swiper, SwiperSlide} from "swiper/react";
+import {Autoplay, Navigation} from "swiper/modules";
 import pb from "@/api/pocketbase";
-import { getPbImageURL } from "@/utils/getPbImageURL";
-import { usePocketBaseFilteredData } from "@/hooks/usePocektBaseData";
+import {getPbImageURL} from "@/utils/getPbImageURL";
+import {usePocketBaseFilteredData} from "@/hooks/usePocektBaseData";
 import "swiper/css";
 import "@/styles/Carousel.css";
+// import {PrevButton, NextButton} from "@/styles/NevigationArrowButton";
 
 export default function MenuCarousel() {
   pb.autoCancellation(false);
-  const { data } = usePocketBaseFilteredData("beverage", 1, 5, 'created >= "2023-09-08 00:00:00"', "beverage");
+  const {data} = usePocketBaseFilteredData(
+    "beverage",
+    1,
+    5,
+    'created >= "2023-09-08 00:00:00"',
+    "beverage"
+  );
 
   const sliderRef = useRef(null);
   // const navigationPrevRef = useRef(null);
