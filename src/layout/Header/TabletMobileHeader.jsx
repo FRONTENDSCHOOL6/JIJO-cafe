@@ -10,7 +10,7 @@ import {useState} from "react";
 import toast from "react-hot-toast";
 import {kakaoLogout} from "@/utils/kakaoLogout";
 
-function TabletMobileHeader() {
+function TabletMobileHeader({siginInView, siginViewHandler}) {
   /* 마우스 클릭에 따른 햄버거 탭과 닫기 탭 렌더링 여부를 관리하는 상태 */
   const [isToggleTabButton, setIsToggleTabButton] = useToggle(false);
 
@@ -19,11 +19,11 @@ function TabletMobileHeader() {
   /* 인증 정보에 따른 로그인 ➡️ 로그아웃으로 변경 */
   const isAuth = useAuthStore((state) => state.isAuth);
 
-  /* 클릭시 로그인모달 렌더링 */
-  const [isClickedSignin, setIsClickedSignin] = useState(false);
-  const handleClickSignin = () => {
-    setIsClickedSignin(!isClickedSignin);
-  };
+  // /* 클릭시 로그인모달 렌더링 */
+  // const [isClickedSignin, setIsClickedSignin] = useState(false);
+  // const handleClickSignin = () => {
+  //   setIsClickedSignin(!isClickedSignin);
+  // };
 
   /* 일반사용자 로그아웃 및 카카오 사용자 로그아웃 */
   const signOut = useAuthStore((state) => state.signOut);
@@ -98,7 +98,7 @@ function TabletMobileHeader() {
                   </div>
                 ) : (
                   <div className={S.titleLink}>
-                    <li onClick={handleClickSignin} className="cursor-pointer">
+                    <li onClick={siginViewHandler} className="cursor-pointer">
                       로그인
                     </li>
                   </div>
@@ -109,11 +109,11 @@ function TabletMobileHeader() {
                       로그아웃
                     </li>
                   ) : (
-                    <li onClick={handleClickSignin} className="cursor-pointer">
+                    <li onClick={siginViewHandler} className="cursor-pointer">
                       로그인
                     </li>
                   )}
-                  {isClickedSignin && <SignInModal />}
+                  {siginInView && <SignInModal />}
                 </div>
               </div>
             </ul>

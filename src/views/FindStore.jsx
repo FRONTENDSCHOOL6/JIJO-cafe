@@ -27,7 +27,6 @@ function FindStore() {
   /* 제출한 검색어 관리 */
   const [keyword, setKeyword] = useState("");
   const handleSubmitKeyword = (e) => {
-    e.preventDefault();
     setKeyword(searchData);
   };
 

@@ -7,19 +7,19 @@
 }
 
 .ul {
-  @apply h-screen fixed w-full top-0 left-0 bg-[#181818] z-10 text-darkGray flex flex-col justify-center px-jj_100 text-2xl gap-12;
+  @apply h-screen fixed w-full top-0 left-0 bg-[#181818] z-10 text-darkGray  px-jj_100 text-2xl gap-12;
 }
 
 .linkWrap {
-  @apply flex items-center pb-8  border-b-[1px] border-darkGray;
+  @apply flex items-center border-b-[1px] p-12 border-darkGray;
 }
 
 .titleLink {
-  @apply text-white font-semibold;
+  @apply text-white font-semibold w-[12.5rem];
 }
 
 .subLinkWrap {
-  @apply text-base text-left pl-16 mt-4 flex flex-col gap-2;
+  @apply text-base text-left pl-16;
 
   & li {
     @apply hover:text-white;
