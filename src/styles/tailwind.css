@@ -57,7 +57,55 @@
     @apply mobile:max-w-[145px] mobile:h-[40%];
   }
   .storeImage {
-    background: url("../assets/images/main/cafe-jj-coffee.jpg") no-repeat 50% / cover;
+    background: url("../assets/images/main/cafe-jj-coffee.jpg") no-repeat 50% /
+      cover;
+  }
+}
+
+/* 매장 찾기 페이지 인포 윈도우 */
+
+.infoWindow {
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  & h4 {
+    padding: 0.5rem;
+
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+  }
+  & p {
+    padding: 0.5rem;
+    width: max-content;
+    font-size: 0.875rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+  & .infoWindow__address {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #999999;
+  }
+  & .infoWindow__phone {
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: #999999;
+  }
+
+  & button {
+    width: 100%;
+    height: 2.5rem;
+    background-color: #dbc8ab;
+    font-size: 0.875rem;
+    color: #ffffff;
+    margin-top: 0.5rem;
+    padding: 0 1rem;
+  }
+  & button:hover {
+    background-color: #c5b49a;
   }
 
   .select {

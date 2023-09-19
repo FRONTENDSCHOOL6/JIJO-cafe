@@ -14,9 +14,9 @@ import NoticeDetail from "@/views/NoticeDetail";
 import NoticeUpdate from "@/views/NoticeUpdate";
 import Product from "@/views/Product";
 import SignUp from "@/views/SignUp";
-import { Route } from "react-router-dom";
-import { createRoutesFromElements } from "react-router-dom";
-import { createBrowserRouter } from "react-router-dom";
+import {Route} from "react-router-dom";
+import {createRoutesFromElements} from "react-router-dom";
+import {createBrowserRouter} from "react-router-dom";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
