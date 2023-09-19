@@ -1,0 +1,31 @@
+.header {
+  @apply bg-white h-[5.625rem] w-full flex items-center justify-between;
+}
+
+.closeButton {
+  @apply top-4 right-4 absolute z-20 cursor-pointer;
+}
+
+.ul {
+  @apply h-screen fixed w-full top-0 left-0 bg-[#181818] z-10 text-darkGray  px-jj_100 text-2xl gap-12;
+}
+
+.linkWrap {
+  @apply flex items-center border-b-[1px] p-12 border-darkGray;
+}
+
+.titleLink {
+  @apply text-white font-semibold w-[12.5rem];
+}
+
+.subLinkWrap {
+  @apply text-base text-left pl-16;
+
+  & li {
+    @apply hover:text-white;
+  }
+
+  & li:hover {
+    text-decoration: underline;
+  }
+}
