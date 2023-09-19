@@ -6,7 +6,9 @@ import { Helmet } from "react-helmet-async"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import DataForm from "@/components/Notice/DataForm"
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
+import JiJoHelmet from "@/utils/JiJoHelmet"
+
 function NoticeCreate() {
   const Navigate = useNavigate()
   const [data, setData] = useState(null)
@@ -37,8 +39,6 @@ function NoticeCreate() {
     }
   }
 
-  pb.autoCancellation(false)
-
   const handleCreate = async (e) => {
     e.preventDefault()
     //폼데이터 정보를 data에 담고 mutate로 데이터 생성함수 실행
@@ -55,9 +55,7 @@ function NoticeCreate() {
 
   return (
     <>
-      <Helmet>
-        <title>지조소식 - 공지사항</title>
-      </Helmet>
+      <JiJoHelmet pageTitle="지조소식 - 공지사항" />
       <MenuTitle title="JIJO NEWS"> JIJO NOTICE</MenuTitle>
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60 text-deepDarkGray">
         <PageMainTitle pageTitleText="공지사항 등록" pageSubTitleText="카페 지조 관리자 페이지 입니다."></PageMainTitle>

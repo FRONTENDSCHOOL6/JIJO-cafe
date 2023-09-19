@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet-async"
 import { useNavigate } from "react-router-dom"
 import { useParams } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
+import JiJoHelmet from "@/utils/JiJoHelmet"
 
 async function fetchFaqDetail(FaqId) {
   const response = await pb.collection("faq").getOne(FaqId)
@@ -16,7 +17,6 @@ async function fetchFaqDetail(FaqId) {
 function FaqDetail() {
   const { FaqId } = useParams()
   const Navigate = useNavigate()
-  pb.autoCancellation(false) // 오토캔슬 false
 
   const { isLoading, data, isError, error } = useQuery({
     //리액트 쿼리 사용
@@ -55,9 +55,7 @@ function FaqDetail() {
 
   return (
     <>
-      <Helmet>
-        <title>지조소식 - FAQ</title>
-      </Helmet>
+      <JiJoHelmet pageTitle="지조소식 - FAQ" />
       <MenuTitle title="JIJO NEWS"> JIJO FAQ</MenuTitle>
       <Detail field="faq" handleDelete={handleDelete} data={data}></Detail>
     </>

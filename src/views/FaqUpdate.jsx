@@ -6,6 +6,7 @@ import PageMainTitle from "@/components/PageMainTitle"
 import { Helmet } from "react-helmet-async"
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import JiJoHelmet from "@/utils/JiJoHelmet"
 
 function FaqUpdate() {
   const { FaqId } = useParams()
@@ -14,8 +15,6 @@ function FaqUpdate() {
   const [status, setStatus] = useState("pending")
   const [error, setError] = useState(null)
   const [fileName, setFileName] = useState("파일이름")
-  pb.autoCancellation(false)
-  console.log(FaqId)
 
   useEffect(() => {
     const fetchData = async () => {
@@ -53,8 +52,6 @@ function FaqUpdate() {
     }
   }
 
-  pb.autoCancellation(false)
-
   const handleUpdate = async (e) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
@@ -68,9 +65,7 @@ function FaqUpdate() {
 
   return (
     <>
-      <Helmet>
-        <title>지조소식 - 공지사항</title>
-      </Helmet>
+      <JiJoHelmet pageTitle="지조소식 - FAQ" />
       <MenuTitle title="JIJO NEWS"> JIJO FAQ</MenuTitle>
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60 text-deepDarkGray">
         <PageMainTitle pageTitleText="FAQ 수정" pageSubTitleText="카페 지조 관리자 페이지 입니다."></PageMainTitle>

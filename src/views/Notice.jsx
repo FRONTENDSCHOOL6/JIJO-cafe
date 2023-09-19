@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query"
 import { useCallback } from "react"
 import TableList from "@/components/Notice/TableList"
 import SelectSearchFilter from "@/components/Notice/SelectSearchFilter"
+import JiJoHelmet from "@/utils/JiJoHelmet"
 
 async function fetchNotices(searchOption, searchText) {
   //pb에서 데이터불러오기
@@ -21,9 +22,6 @@ async function fetchNotices(searchOption, searchText) {
 function Notice() {
   const [searchOption, setSearchOption] = useState("noticeTitle") //select 태그
   const [searchText, setSearchText] = useState("") //input 검색어를 입력하세요 창
-  // const [reload, setReload] = useState(true) //검색버튼 클릭시 [reload] 리렌더링
-
-  pb.autoCancellation(false)
   // const { data, status } = usePocketBaseFilteredData("notices", 1, 20, `(${searchOption} ~ '${searchText}')`, reload)  //기존 훅 사용코드
 
   const { isLoading, data, isError, error, refetch } = useQuery({
@@ -33,10 +31,6 @@ function Notice() {
     staleTime: 1 * 1000 * 60 * 60 * 24 * 7,
     // enabled: false,
   })
-
-  // useEffect(() => {
-  //   refetch() // 삭제시 데이터를 다시 로드하는 함수를 호출 컴포넌트가 처음 마운트될 때 한 번 실행
-  // }, [])
 
   const handleClickRefetch = useCallback(() => {
     console.log(searchText)
@@ -57,9 +51,7 @@ function Notice() {
 
   return (
     <>
-      <Helmet>
-        <title>지조소식 - 공지사항</title>
-      </Helmet>
+      <JiJoHelmet pageTitle="지조소식 - 공지사항" />
       <MenuTitle title="JIJO NEWS"> JIJO NOTICE</MenuTitle>
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60 text-deepDarkGray">
         <PageMainTitle pageTitleText="카페 지조 공지사항" pageSubTitleText="카페 지조 소식을 알려드립니다."></PageMainTitle>

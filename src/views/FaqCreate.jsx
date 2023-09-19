@@ -6,6 +6,7 @@ import { Helmet } from "react-helmet-async"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
 import DataForm from "@/components/Notice/DataForm"
+import JiJoHelmet from "@/utils/JiJoHelmet"
 
 function FaqCreate() {
   const Navigate = useNavigate()
@@ -23,8 +24,6 @@ function FaqCreate() {
     return <JijoSpinner />
   }
 
-  pb.autoCancellation(false)
-
   // 등록하기 버튼 클릭시 pb에 등록후 페이지이동
   const handleCreate = async (e) => {
     e.preventDefault()
@@ -41,9 +40,7 @@ function FaqCreate() {
 
   return (
     <>
-      <Helmet>
-        <title>지조소식 - FAQ</title>
-      </Helmet>
+      <JiJoHelmet pageTitle="지조소식 - FAQ" />
       <MenuTitle title="JIJO NEWS"> JIJO FAQ</MenuTitle>
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60 text-deepDarkGray">
         <PageMainTitle pageTitleText="FAQ 등록" pageSubTitleText="카페 지조 관리자 페이지 입니다."></PageMainTitle>

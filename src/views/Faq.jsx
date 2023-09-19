@@ -8,6 +8,7 @@ import { useQuery } from "@tanstack/react-query"
 import { useCallback } from "react"
 import TableList from "@/components/Notice/TableList"
 import SelectSearchFilter from "@/components/Notice/SelectSearchFilter"
+import JiJoHelmet from "@/utils/JiJoHelmet"
 
 async function fetchFaq(searchOption, searchText) {
   const response = await pb.collection("faq").getList(1, 10, {
@@ -21,8 +22,6 @@ function Faq() {
   const [searchOption, setSearchOption] = useState("faqTitle") //select 태그
   const [searchText, setSearchText] = useState("") //input 검색어를 입력하세요 창
   const [reload, setReload] = useState(true) //검색버튼 클릭시 [reload] 리렌더링
-
-  pb.autoCancellation(false)
   // const { data, status } = usePocketBaseFilteredData("notices", 1, 20, `(${searchOption} ~ '${searchText}')`, reload)  //usepb훅 사용 -> 리액트쿼리 리팩토링
 
   const { isLoading, data, isError, error, refetch } = useQuery({
@@ -52,9 +51,7 @@ function Faq() {
 
   return (
     <>
-      <Helmet>
-        <title>지조소식 - FAQ</title>
-      </Helmet>
+      <JiJoHelmet pageTitle="지조소식 - FAQ" />
       <MenuTitle title="JIJO NEWS"> JIJO FAQ</MenuTitle>
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60 text-deepDarkGray">
         <PageMainTitle pageTitleText="자주하는 질문" pageSubTitleText="궁금하신 내용을 검색해 주세요."></PageMainTitle>

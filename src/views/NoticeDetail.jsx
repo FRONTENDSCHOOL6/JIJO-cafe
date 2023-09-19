@@ -6,10 +6,10 @@ import { Helmet } from "react-helmet-async"
 import { useNavigate } from "react-router-dom"
 import { useParams } from "react-router-dom"
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
+import JiJoHelmet from "@/utils/JiJoHelmet"
 
 async function fetchNoticesDetail(noticeId) {
   const response = await pb.collection("notices").getOne(noticeId)
-  // console.log(response)
   return response
 }
 
@@ -30,8 +30,6 @@ function NoticeDetail() {
       Navigate("/bbs/notice") // 삭제 후 공지사항 목록 페이지로 이동
     },
   })
-
-  pb.autoCancellation(false) // 오토캔슬 false
 
   const { isLoading, data, isError, error } = useQuery({
     //리액트 쿼리 사용
@@ -84,9 +82,7 @@ function NoticeDetail() {
 
   return (
     <>
-      <Helmet>
-        <title>지조소식 - 공지사항</title>
-      </Helmet>
+      <JiJoHelmet pageTitle="지조소식 - 공지사항" />
       <MenuTitle title="JIJO NEWS"> JIJO NOTICE</MenuTitle>
       <Detail field="notice" handleDelete={handleDelete} data={data}></Detail>
     </>
