@@ -57,10 +57,7 @@ function NoticeUpdate() {
   const handleUpdate = async (e) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
-    console.log(formData)
     const data = Object.fromEntries(formData.entries())
-    console.log(data)
-    console.log(noticeId)
     const record = await pb.collection("notices").update(noticeId, data)
     Navigate(`/bbs/notice/detail/${noticeId}`)
   }
