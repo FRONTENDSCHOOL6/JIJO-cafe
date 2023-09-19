@@ -6,10 +6,10 @@
   @apply max-w-[53.75rem] p-7% mx-auto border mobile:p-0 mobile:border-none w-full;
 }
 .label {
-  @apply w-[7.8125rem] mobile:w-full mobile:block;
+  @apply font-medium w-[7.8125rem] mobile:w-full mobile:block block flex-shrink-0 mobile:text-jj_13 mobile:py-[0.9375rem] mobile:border-t;
 }
 .input {
-  @apply border w-full pl-2 h-[2.8125rem];
+  @apply mobile:text-jj_13 border w-full px-3 h-[2.8125rem] block;
 }
 
 .inputWrapper {
@@ -17,5 +17,5 @@
 }
 
 .checkbox {
-  @apply text-blue-500;
+  @apply mx-2;
 }
