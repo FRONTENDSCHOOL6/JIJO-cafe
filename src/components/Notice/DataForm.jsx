@@ -16,7 +16,7 @@ function DataForm({ collection, handleSubmit, handleFileChange, fileName, data, 
     setData({ ...data, [`${collection}Description`]: newDescription })
   }
 
-  console.log(fileName)
+  // console.log(fileName)
   return (
     <form onSubmit={handleSubmit} className="border text-deepDarkGray flex gap-5 flex-col w-[53.75rem] mx-auto px-[5.625rem] py-[3.125rem]">
       <div className="flex justify-between items-center mt-[3.75rem] ">

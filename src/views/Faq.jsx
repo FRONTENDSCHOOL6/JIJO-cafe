@@ -15,7 +15,6 @@ async function fetchFaq(searchOption, searchText) {
     filter: `(${searchOption} ~ '${searchText}')`,
   })
   return response.items
-  console.log(response)
 }
 
 function Faq() {
@@ -27,7 +26,7 @@ function Faq() {
   // const { data, status } = usePocketBaseFilteredData("notices", 1, 20, `(${searchOption} ~ '${searchText}')`, reload)  //usepb훅 사용 -> 리액트쿼리 리팩토링
 
   const { isLoading, data, isError, error, refetch } = useQuery({
-    queryKey: ["faq"],
+    queryKey: ["faq", searchText],
     queryFn: () => fetchFaq(searchOption, searchText),
     staleTime: 1 * 1000 * 60 * 60 * 24 * 7,
   })
