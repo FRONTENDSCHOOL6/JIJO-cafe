@@ -8,13 +8,11 @@ import MainEvent from "./MainEvent";
 import MainStore from "./MainStore";
 // import "@/styles/Main.module.css";
 
-const DIVIDER_HEIGHT = 5;
-
 function Main() {
   return (
     <div>
       <Helmet>
-        <title>메인페이지</title>
+        <title>카페지조-메인페이지</title>
       </Helmet>
       <h1 className="sr-only">메인페이지</h1>
       <MainBanner />

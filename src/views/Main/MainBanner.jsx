@@ -6,23 +6,23 @@ import pb from "@/api/pocketbase";
 import { getPbImageURL } from "@/utils/getPbImageURL";
 import { usePocektBaseDataList } from "@/hooks/usePocektBaseData";
 import { useState, useEffect } from "react";
+import JijoSpinner from "@/components/JijoSpinner";
 
 export default function MainBanner() {
   pb.autoCancellation(false);
-  const { data } = usePocektBaseDataList("mainBanner");
-  const [mediaQuery, setMediaQuery] = useState(window.innerWidth < 760);
+  const { data, status } = usePocektBaseDataList("mainBanner");
+  const [mobileView, setMobileView] = useState(window.innerWidth < 760);
 
   const screenChange = (e) => {
-    const matches = e.matches;
-    setMediaQuery(matches);
+    const matches = e.matches; //현재 화면의 너비와 미디어쿼리의 범위의 일치 여부를 boolean 값으로 반환
+    setMobileView(matches);
   };
 
   useEffect(() => {
-    let matchMedia = window.matchMedia("screen and (max-width:760px)");
+    let matchMedia = window.matchMedia("screen and (max-width:760px)"); // 미디어 쿼리 문자열의 분석 결과를 나타내는 객체를 반환하는 메서드
     matchMedia.addEventListener("change", screenChange);
     return () => matchMedia.removeEventListener("change", screenChange);
   }, []);
-  console.log(data);
 
   return (
     <Swiper
@@ -40,12 +40,12 @@ export default function MainBanner() {
       grabCursor={true}
       id="mainSwiper"
     >
-      {mediaQuery
+      {mobileView
         ? data &&
           data?.map((item) => {
             return (
               <SwiperSlide key={item.id}>
-                <img src={getPbImageURL(item, "mobileImage")} alt={item.title} className="block object-fill w-full h-screen" />
+                <img src={getPbImageURL(item, "mobileImage")} alt={item.title} className="block object-cover w-full h-screen" />
               </SwiperSlide>
             );
           })
@@ -53,7 +53,7 @@ export default function MainBanner() {
           data?.map((item) => {
             return (
               <SwiperSlide key={item.id}>
-                <img src={getPbImageURL(item, "pcTabletImage")} alt={item.title} className="block object-fill w-full h-screen" />
+                <img src={getPbImageURL(item, "pcTabletImage")} alt={item.title} className="block object-cover w-full h-screen" />
               </SwiperSlide>
             );
           })}
