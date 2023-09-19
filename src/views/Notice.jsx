@@ -63,7 +63,7 @@ function Notice() {
 
         <SelectSearchFilter Collection="notice" handleReload={handleClickRefetch} option={searchOption} onChangeOption={setSearchOption} text={searchText} onChangeText={setSearchText}></SelectSearchFilter>
         {/* 상태를 props로 SelectSearchFilter 전달 , handleReload 핸들러전달*/}
-        <TableList Collection="notices" field="notice" data={data} />
+        <TableList collection="notices" field="notice" data={data} />
       </section>
     </>
   )

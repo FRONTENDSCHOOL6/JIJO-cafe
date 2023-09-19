@@ -60,7 +60,7 @@ function Faq() {
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60 text-deepDarkGray">
         <PageMainTitle pageTitleText="자주하는 질문" pageSubTitleText="궁금하신 내용을 검색해 주세요."></PageMainTitle>
         <SelectSearchFilter Collection="faq" handleReload={handleClickRefetch} option={searchOption} onChangeOption={setSearchOption} text={searchText} onChangeText={setSearchText}></SelectSearchFilter>
-        <TableList Collection="faq" field="faq" data={data} />
+        <TableList collection="faq" field="faq" data={data} />
       </section>
     </>
   )

@@ -2,13 +2,13 @@ import yyyymmddDate from "@/utils/yyyymmddDate"
 import pb from "@/api/pocketbase"
 import { Link } from "react-router-dom"
 
-function TableList({ data, Collection, field }) {
+function TableList({ collection, data, field }) {
   const handleUpViews = async (item) => {
     // console.log(item)
     // const record = await pb.collection({Collection}).update(item.id, { noticeViews: item.noticeViews + 1 })
-    const record = await pb.collection(`${field}`).update(item.id, { [`${field}Views`]: item[`${field}Views`] + 1 })
-
-    console.log(record)
+    console.log(field, item)
+    const record = await pb.collection(`${collection}`).update(item.id, { [`${field}Views`]: item[`${field}Views`] + 1 })
+    // const record = await pb.collection('notice').update(item.id, noticeViews: item noticeViews+ 1 )
   }
 
   return (
