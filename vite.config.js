@@ -1,19 +1,16 @@
 // import * as path from 'node:path'
-import react from "@vitejs/plugin-react";
-import {defineConfig} from "vite";
-import {env} from "node:process";
-import viteImagemin from "@vheemstra/vite-plugin-imagemin";
-import imageminGifSicle from "imagemin-gifsicle";
-import imageminMozjpeg from "imagemin-mozjpeg";
-import imageminPngQuant from "imagemin-pngquant";
-import imageminSvgo from "imagemin-svgo";
-import imageminWebp from "imagemin-webp";
-import {splitVendorChunkPlugin} from "vite";
-import jsconfigPath from "vite-jsconfig-paths";
-import {createHtmlPlugin} from "vite-plugin-html";
-import {loadEnv} from "vite";
-const isDev = env.NODE_ENV === "development";
-const envLoad = loadEnv(isDev, process.cwd());
+import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite'
+import { env } from 'node:process'
+import viteImagemin from '@vheemstra/vite-plugin-imagemin'
+import imageminGifSicle from 'imagemin-gifsicle'
+import imageminMozjpeg from 'imagemin-mozjpeg'
+import imageminPngQuant from 'imagemin-pngquant'
+import imageminSvgo from 'imagemin-svgo'
+import imageminWebp from 'imagemin-webp'
+import { splitVendorChunkPlugin } from 'vite'
+import jsconfigPath from 'vite-jsconfig-paths'
+const isDev = env.NODE_ENV === 'development'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -37,23 +34,12 @@ export default defineConfig({
         },
       },
     }),
-    // HTML 플러그인 구성
-    createHtmlPlugin({
-      minify: !isDev,
-      inject: {
-        data: {
-          kakaoJsKey: envLoad.VITE_KAKAO_JS_KEY,
-        },
-      },
-    }),
   ],
 
   css: {
     devSourcemap: true,
     modules: {
-      generateScopedName: isDev
-        ? "[name]_[local]__[hash:base64:5]"
-        : "[hash:base64:4]",
+      generateScopedName: isDev ? '[name]_[local]__[hash:base64:5]' : '[hash:base64:4]',
     },
   },
 
@@ -62,11 +48,11 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          react: ["react", "react-dom"],
-          reactRouter: ["react-router-dom", "react-router"],
-          animations: ["framer-motion", "gsap"],
+          react: ['react', 'react-dom'],
+          reactRouter: ['react-router-dom', 'react-router'],
+          animations: ['framer-motion', 'gsap'],
         },
       },
     },
   },
-});
+})

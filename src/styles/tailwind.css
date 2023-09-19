@@ -1,69 +1,7 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
 /* 
 @tailwind base;
 @tailwind components;
 @tailwind utilities; */
-
-@layer base {
-  html {
-    font-family: Pretendard;
-    font-size: 1rem;
-
-    @screen tablet {
-      font-size: 0.875rem;
-    }
-
-    @screen mobile {
-      font-sizep: 0.75rem;
-    }
-  }
-}
-
-@layer components {
-  /* .PaginationButton {
-    @apply w-[3.9375rem] h-[2.5rem] border border-[##e0e3e6] rounded ml-[0.375rem];
-  }
-  .PaginationButton:hover {
-    @apply bg-[#f4f6f8];
-  }
-  */
-
-  .primaryHighlight::before {
-    content: "";
-    width: 101%;
-    height: 30%;
-    background-color: #dbc8ab;
-    position: absolute;
-    top: 50px;
-    left: -5px;
-    z-index: -1;
-    @apply tablet:h-[40%];
-    @apply mobile:max-w-[145px] mobile:h-[40%];
-  }
-
-  .secondaryHighlight::before {
-    content: "";
-    width: 101%;
-    height: 30%;
-    background-color: #f8f2e7;
-    position: absolute;
-    top: 50px;
-    left: -5px;
-    z-index: -1;
-
-    @apply tablet:h-[40%];
-    @apply mobile:max-w-[145px] mobile:h-[40%];
-  }
-  .storeImage {
-    background: url("../assets/images/main/cafe-jj-coffee.jpg") no-repeat 50% / cover;
-  }
-
-  .select {
-    @apply bg-[#ffffff] border-t border-r border-l;
-  }
-  .default {
-    @apply bg-[#F4F6F8] border;
-  }
-}

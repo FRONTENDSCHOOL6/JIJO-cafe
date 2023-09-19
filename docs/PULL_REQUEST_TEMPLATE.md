@@ -2,6 +2,8 @@
 
 ## 개요
 
+<!---- Resolves: #(Isuue Number) -->
+
 ## PR 유형
 
 어떤 변경 사항이 있나요?
