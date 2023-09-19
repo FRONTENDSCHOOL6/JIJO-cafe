@@ -11,7 +11,6 @@ function SelectSearchFilter({ Collection, option, text, onChangeOption, onChange
   const isAdmin = user && user.role === "admin" // isAdmin을 user.role이 "admin"일 때 true로 설정
 
   // 검색어 입력시 핸들러
-  console.log()
   const handleInput = (e) => {
     onChangeText(e.target.value)
   }
