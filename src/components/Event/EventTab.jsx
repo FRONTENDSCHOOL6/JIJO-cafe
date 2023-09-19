@@ -37,7 +37,6 @@ function EventTab() {
     return select === "total" || undefined || null ? "" : `category = "${select}"`;
   }
 
-  console.log(select);
   useEffect(() => {
     const handleData = async () => {
       const resultList = await pb.collection("events").getList(
