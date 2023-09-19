@@ -1,21 +1,22 @@
-import RootLayout from "@/layout/RootLayout"
-import Cart from "@/views/Cart"
-import Customer from "@/views/Customer"
-import Drink from "@/views/Drink"
-import Event from "@/views/Event"
-import Faq from "@/views/Faq"
-import FindStore from "@/views/FindStore"
-import Food from "@/views/Food"
-import Main from "@/views/Main/Main"
-import Notice from "@/views/Notice"
-import NoticeCreate from "@/views/NoticeCreate"
-import NoticeDetail from "@/views/NoticeDetail"
-import NoticeUpdate from "@/views/NoticeUpdate"
-import Product from "@/views/Product"
-import SignUp from "@/views/SignUp"
-import { Route } from "react-router-dom"
-import { createRoutesFromElements } from "react-router-dom"
-import { createBrowserRouter } from "react-router-dom"
+import RootLayout from "@/layout/RootLayout";
+import Cart from "@/views/Cart";
+import Customer from "@/views/Customer";
+import Drink from "@/views/Drink";
+import Event from "@/views/Event";
+import EventDetail from "@/views/EventDetail";
+import Faq from "@/views/Faq";
+import FindStore from "@/views/FindStore";
+import Food from "@/views/Food";
+import Main from "@/views/Main/Main";
+import Notice from "@/views/Notice";
+import NoticeCreate from "@/views/NoticeCreate";
+import NoticeDetail from "@/views/NoticeDetail";
+import NoticeUpdate from "@/views/NoticeUpdate";
+import Product from "@/views/Product";
+import SignUp from "@/views/SignUp";
+import { Route } from "react-router-dom";
+import { createRoutesFromElements } from "react-router-dom";
+import { createBrowserRouter } from "react-router-dom";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -36,10 +37,11 @@ const router = createBrowserRouter(
       <Route path="/bbs/faq" element={<Faq />} />
       <Route path="/bbs/customer" element={<Customer />} />
       <Route path="/bbs/event" element={<Event />} />
+      <Route path="/bbs/event/detail/:eventId" element={<EventDetail />} />
 
       <Route path="/cart" element={<Cart />} />
     </Route>
   )
-)
+);
 
-export default router
+export default router;
