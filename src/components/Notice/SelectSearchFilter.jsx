@@ -7,8 +7,8 @@ import useAuthStore from "@/store/store"
 function SelectSearchFilter({ Collection, option, text, onChangeOption, onChangeText, handleReload }) {
   //   state, setState (option, text)상태를 전달받음
   const id = useId()
-  const user = useAuthStore((state) => state.user) // useAuthStore를 통해 user 정보를 가져옵니다.
-  const isAdmin = user && user.role === "admin" // isAdmin을 user.role이 "admin"일 때 true로 설정합니다.
+  const user = useAuthStore((state) => state.user) // useAuthStore를 통해 user 정보를 가져오기
+  const isAdmin = user && user.role === "admin" // isAdmin을 user.role이 "admin"일 때 true로 설정
 
   // 검색어 입력시 핸들러
   console.log()
@@ -43,7 +43,7 @@ function SelectSearchFilter({ Collection, option, text, onChangeOption, onChange
         검색
       </Button>
 
-      {/* 등록 버튼 (링크) */}
+      {/* 등록 버튼 (링크) admin만 버튼 나타나게하기 */}
       {isAdmin && (
         <Link to={`/bbs/${Collection}/create`}>
           <Button color="primary" className="px-5  mobile:w-full mobile:my-[0.9375rem]">

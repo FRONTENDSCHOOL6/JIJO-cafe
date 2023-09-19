@@ -2,8 +2,12 @@ import { Link } from "react-router-dom"
 import { getPbImageURL } from "@/utils/getPbImageURL"
 import Button from "@/components/Button"
 import yyyymmddDate from "@/utils/yyyymmddDate"
+import useAuthStore from "@/store/store"
 
 function Detail({ data, handleDelete, field }) {
+  const user = useAuthStore((state) => state.user) // useAuthStore를 통해 user 정보를 가져오기
+  const isAdmin = user && user.role === "admin" // isAdmin을 user.role이 "admin"일 때 true로 설정
+
   return (
     data && (
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60 text-deepDarkGray">
@@ -24,17 +28,23 @@ function Detail({ data, handleDelete, field }) {
           <p>{data?.[`${field}Title`]}</p>
         </div>
         <div className="flex-row flex gap-2 justify-end">
-          <Button color="primary" className="mr-auto px-[1.875rem]">
-            <Link to={`/bbs/${field}`}>목록으로</Link>
-          </Button>
-          <Link to={`/bbs/${field}/update/${data.id}`}>
+          <Link to={`/bbs/${field}`} className="mr-auto ">
             <Button color="primary" className="px-[1.875rem]">
-              수정
+              목록으로
             </Button>
           </Link>
-          <Button color="primary" className="px-[1.875rem]" onClick={handleDelete}>
-            삭제
-          </Button>
+          {isAdmin && (
+            <>
+              <Link to={`/bbs/${field}/update/${data.id}`}>
+                <Button color="primary" className="px-6">
+                  수정
+                </Button>
+              </Link>
+              <Button color="primary" className="px-6" onClick={handleDelete}>
+                삭제
+              </Button>
+            </>
+          )}
         </div>
       </section>
     )
