@@ -1,5 +1,5 @@
 .header {
-  @apply py-6 my-4 sticky top-0  font-semibold  bg-white text-[18px];
+  @apply bg-white py-6 fixed w-full top-0 font-semibold text-[18px] z-50;
 
   & h2 {
     @apply sr-only;
