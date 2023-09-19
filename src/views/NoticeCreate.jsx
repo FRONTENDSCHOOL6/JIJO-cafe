@@ -35,9 +35,6 @@ function NoticeCreate() {
     Navigate("/bbs/notice")
   }
 
-  // const today = new Date()
-  // console.log(today)
-
   const onDataChange = {
     noticeTitle: "",
     noticeDescription: "",

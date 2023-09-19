@@ -2,7 +2,7 @@ import { useId } from "react"
 import Input from "@/components/Input"
 import Button from "@/components/Button"
 
-function DataForm({ collection, handleSubmit, handleFileChange, fileName, data, setData, setFileName, children }) {
+function DataForm({ collection, handleSubmit, handleFileChange, fileName, data, setData, children }) {
   const id = useId()
   // 제목 변경 onChange 핸들러
   const handleTitleChange = (event) => {
@@ -16,6 +16,7 @@ function DataForm({ collection, handleSubmit, handleFileChange, fileName, data, 
     setData({ ...data, [`${collection}Description`]: newDescription })
   }
 
+  console.log(fileName)
   return (
     <form onSubmit={handleSubmit} className="border text-deepDarkGray flex gap-5 flex-col w-[53.75rem] mx-auto px-[5.625rem] py-[3.125rem]">
       <div className="flex justify-between items-center mt-[3.75rem] ">
@@ -40,8 +41,7 @@ function DataForm({ collection, handleSubmit, handleFileChange, fileName, data, 
           <div>
             <div>
               <input className="hidden" name={`${collection}Image`} type="file" id="fileInput" onChange={handleFileChange} />
-
-              <input className="h-[2.8125rem] px-4 border border-gray-300  text-gray-500" readOnly value={data?.[`${collection}Image`] || { fileName }} />
+              <input className="h-[2.8125rem] px-4 border border-gray-300 text-gray-500" readOnly value={data?.[`${collection}Image`] || fileName} />
               <label htmlFor="fileInput" className="cursor-pointer font-medium ml-1 py-[0.8rem] px-10  rounded-sm bg-primary">
                 업로드
               </label>

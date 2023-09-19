@@ -1,14 +1,13 @@
 import pb from "@/api/pocketbase"
 import { Helmet } from "react-helmet-async"
 import MenuTitle from "@/components/MenuTitle"
-
 import JijoSpinner from "@/components/JijoSpinner"
 import PageMainTitle from "@/components/PageMainTitle"
-import NoticeSearchFilter from "@/components/Notice/SelectSearchFilter"
 import { useState, useEffect } from "react"
 import { useQuery } from "@tanstack/react-query"
 import { useCallback } from "react"
 import TableList from "@/components/Notice/TableList"
+import SelectSearchFilter from "@/components/Notice/SelectSearchFilter"
 
 async function fetchFaq(searchOption, searchText) {
   const response = await pb.collection("faq").getList(1, 10, {
@@ -25,7 +24,7 @@ function Faq() {
   const [reload, setReload] = useState(true) //검색버튼 클릭시 [reload] 리렌더링
 
   pb.autoCancellation(false)
-  // const { data, status } = usePocketBaseFilteredData("notices", 1, 20, `(${searchOption} ~ '${searchText}')`, reload)
+  // const { data, status } = usePocketBaseFilteredData("notices", 1, 20, `(${searchOption} ~ '${searchText}')`, reload)  //usepb훅 사용 -> 리액트쿼리 리팩토링
 
   const { isLoading, data, isError, error, refetch } = useQuery({
     queryKey: ["faq"],
@@ -60,7 +59,7 @@ function Faq() {
       <MenuTitle title="JIJO NEWS"> JIJO FAQ</MenuTitle>
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60 text-deepDarkGray">
         <PageMainTitle pageTitleText="자주하는 질문" pageSubTitleText="궁금하신 내용을 검색해 주세요."></PageMainTitle>
-        <NoticeSearchFilter Collection="faq" handleReload={handleClickRefetch} option={searchOption} onChangeOption={setSearchOption} text={searchText} onChangeText={setSearchText}></NoticeSearchFilter>
+        <SelectSearchFilter Collection="faq" handleReload={handleClickRefetch} option={searchOption} onChangeOption={setSearchOption} text={searchText} onChangeText={setSearchText}></SelectSearchFilter>
         <TableList Collection="faq" field="faq" data={data} />
       </section>
     </>
