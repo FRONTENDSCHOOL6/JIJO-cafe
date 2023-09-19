@@ -1,5 +1,9 @@
 /* 메인메이지 - 메인 Swiper CSS */
 
+#mainSwiper {
+  z-index: 0;
+}
+
 #mainSwiper .swiper-pagination-bullet {
   width: 1.75rem;
   height: 0.5rem;
@@ -16,6 +20,10 @@
 }
 
 /* 메인페이지 - 메뉴 Swiper CSS */
+
+#menuSwiper {
+  z-index: 0;
+}
 
 #menuSwiper {
   --swiper-navigation-size: 1.6rem;
@@ -40,8 +48,8 @@
   border-radius: 10px 10px 0px 0;
 }
 
-div.swiper-button-prev,
-div.swiper-button-next {
+#menuSwiper div.swiper-button-prev,
+#menuSwiper div.swiper-button-next {
   /* border: 1px solid; */
   top: 0;
   right: 0;
@@ -49,23 +57,21 @@ div.swiper-button-next {
   height: 100px;
   margin-top: calc(5% - (var(--swiper-navigation-size) / 2));
 }
-div.swiper-button-prev {
+#menuSwiper div.swiper-button-prev {
   margin-left: calc(55% - (var(--swiper-navigation-size) / 2));
 }
-div.swiper-button-next {
+#menuSwiper div.swiper-button-next {
   margin-right: calc(35% - (var(--swiper-navigation-size) / 2));
 }
-div.swiper-button-prev::after,
-div.swiper-button-next::after {
+#menuSwiper div.swiper-button-prev::after,
+#menuSwiper div.swiper-button-next::after {
   font-size: 4rem;
   color: #dddddd;
 }
-div.swiper-button-prev:hover,
-div.swiper-button-next:hover {
+#menuSwiper div.swiper-button-prev:hover,
+#menuSwiper div.swiper-button-next:hover {
   color: #161616 !important;
 }
-
-/* 메인페이지 - 메뉴 타이틀 */
 
 #menuSwiper .menutitleSection {
   display: none;
@@ -78,3 +84,46 @@ div.swiper-button-next:hover {
 #menuSwiper .swiper-slide-active .menutitleSection {
   display: block;
 }
+
+/* 메인페이지 - 쇼핑몰 Swiper CSS */
+
+#shopingMallSwiper {
+  z-index: 0;
+  overflow: visible;
+  max-width: 700px;
+  position: relative;
+}
+
+#shopingMallSwiper .swiper-pagination {
+  position: absolute;
+  bottom: -30px;
+}
+#shopingMallSwiper .swiper-pagination-bullet {
+  width: 1rem;
+  height: 0.5rem;
+  border-radius: 10px;
+  background-color: #fff;
+}
+#shopingMallSwiper .swiper-pagination-bullet-active {
+  width: 2rem;
+  height: 0.5rem;
+}
+#shopingMallSwiper .swiper-pagination-bullet + #shopingMallSwiper .swiper-pagination-bullet-active {
+  width: 3rem;
+  height: 0.5rem;
+}
+
+/* .swiper-button-next {
+  background: url() no-repeat;
+  background-size: 50% auto;
+  background-position: center;
+}
+
+.swiper-button-prev {
+  background: url() no-repeat;
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
+} */

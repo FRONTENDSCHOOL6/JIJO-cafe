@@ -6,7 +6,6 @@ import { usePocketBaseFilteredData } from "@/hooks/usePocektBaseData";
 import "swiper/css";
 import "swiper/css/navigation";
 import "@/styles/Carousel.css";
-// import {PrevButton, NextButton} from "@/styles/NevigationArrowButton";
 
 export default function MenuCarousel() {
   pb.autoCancellation(false);
