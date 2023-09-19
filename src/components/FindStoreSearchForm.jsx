@@ -1,13 +1,15 @@
+import {useEffect} from "react";
 import Button from "./Button";
 import Input from "./Input";
 import ReadingGlassesButton from "./ReadingGlassesButton";
 const {kakao} = window;
 
 function FindStoreSearchForm({
+  inputRef,
   searchedResult,
   handleInputChange,
   handleSearchSubmit,
-  kakaoPlaceResult = {kakaoPlaceResult},
+  kakaoPlaceResult,
 }) {
   /* FormListWrap 메가MGC커피 -> 지조커피로 반환하는 함수 */
   const modifyAddressName = (addressName) => {
@@ -32,6 +34,7 @@ function FindStoreSearchForm({
           <span className="font-thin">함께하는 카페지조</span>
           <div className="inputWrap relative">
             <Input
+              ref={inputRef}
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   handleSearchSubmit();

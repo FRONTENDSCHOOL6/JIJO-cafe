@@ -15,10 +15,10 @@ function KakaoMap({setKakaoPlaceResult, searchedResult}) {
     const mapContainer = mapRef.current;
     const options = {
       center: new kakao.maps.LatLng(currentLat, currentLon),
-      level: 3,
+      level: 5,
     };
 
-    const map = new kakao.maps.Map(mapContainer, options, {});
+    const map = new kakao.maps.Map(mapContainer, options);
 
     /* 장소 검색 객체 생성 & 키워드로 마커 생성  */
     const places = new kakao.maps.services.Places(map);
@@ -37,15 +37,15 @@ function KakaoMap({setKakaoPlaceResult, searchedResult}) {
       }
     };
 
+    /* 검색 키워드 */
     const KEYWORD = `${searchedResult} 메가커피`;
-
     places.keywordSearch(KEYWORD, placesSearchCallBack);
 
+    /* 마커와 마커 내부 인포윈도우를 생성하는 함수 */
     let infowindow = null;
-
     const displayMarker = (place) => {
       const markerImage = "/JijoMarker.png";
-      const markerImageSize = new kakao.maps.Size(40, 45);
+      const markerImageSize = new kakao.maps.Size(35, 40);
 
       const marker = new kakao.maps.Marker({
         map,

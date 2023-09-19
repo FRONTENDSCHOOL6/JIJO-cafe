@@ -6,7 +6,6 @@ import useToggle from "@/hooks/useToggle";
 import S from "./TabletMobileHeader.module.css";
 import useAuthStore from "@/store/store";
 import SignInModal from "@/components/SignInModal";
-import {useState} from "react";
 import toast from "react-hot-toast";
 import {kakaoLogout} from "@/utils/kakaoLogout";
 
