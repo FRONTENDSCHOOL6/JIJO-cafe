@@ -22,22 +22,37 @@
 }
 
 @layer components {
-  .PaginationButton {
+  /* .PaginationButton {
     @apply w-[3.9375rem] h-[2.5rem] border border-[##e0e3e6] rounded ml-[0.375rem];
   }
   .PaginationButton:hover {
     @apply bg-[#f4f6f8];
   }
+  */
 
-  .titleHighlight::before {
+  .primaryHighlight::before {
     content: "";
     width: 101%;
-    height: 50%;
+    height: 30%;
     background-color: #dbc8ab;
     position: absolute;
     top: 50px;
     left: -5px;
     z-index: -1;
+    @apply tablet:h-[40%];
+    @apply mobile:max-w-[145px] mobile:h-[40%];
+  }
+
+  .secondaryHighlight::before {
+    content: "";
+    width: 101%;
+    height: 30%;
+    background-color: #f8f2e7;
+    position: absolute;
+    top: 50px;
+    left: -5px;
+    z-index: -1;
+
     @apply tablet:h-[40%];
     @apply mobile:max-w-[145px] mobile:h-[40%];
   }
@@ -91,5 +106,12 @@
   }
   & button:hover {
     background-color: #c5b49a;
+  }
+
+  .select {
+    @apply bg-[#ffffff] border-t border-r border-l;
+  }
+  .default {
+    @apply bg-[#F4F6F8] border;
   }
 }

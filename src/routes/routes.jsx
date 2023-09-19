@@ -3,6 +3,7 @@ import Cart from "@/views/Cart";
 import Customer from "@/views/Customer";
 import Drink from "@/views/Drink";
 import Event from "@/views/Event";
+import EventDetail from "@/views/EventDetail";
 import Faq from "@/views/Faq";
 import FindStore from "@/views/FindStore";
 import Food from "@/views/Food";
@@ -36,6 +37,7 @@ const router = createBrowserRouter(
       <Route path="/bbs/faq" element={<Faq />} />
       <Route path="/bbs/customer" element={<Customer />} />
       <Route path="/bbs/event" element={<Event />} />
+      <Route path="/bbs/event/detail/:eventId" element={<EventDetail />} />
 
       <Route path="/cart" element={<Cart />} />
     </Route>
