@@ -1,11 +1,10 @@
 import useCurrnetLocation from "@/hooks/useCurrnetLocation";
 import {useRef} from "react";
-import {useState} from "react";
 import {useEffect} from "react";
 
 const {kakao} = window;
 
-function KakaoMap({keyword}) {
+function KakaoMap({setKakaoPlaceResult, searchedResult}) {
   const {location} = useCurrnetLocation();
 
   const {latitude: currentLat, longitude: currentLon} = location;
@@ -16,47 +15,76 @@ function KakaoMap({keyword}) {
     const mapContainer = mapRef.current;
     const options = {
       center: new kakao.maps.LatLng(currentLat, currentLon),
-      level: 5,
+      level: 3,
     };
 
-    const map = new kakao.maps.Map(mapContainer, options);
+    const map = new kakao.maps.Map(mapContainer, options, {});
 
     /* 장소 검색 객체 생성 & 키워드로 마커 생성  */
     const places = new kakao.maps.services.Places(map);
 
     const placesSearchCallBack = (data, status) => {
       if (status === kakao.maps.services.Status.OK) {
+        setKakaoPlaceResult(data);
+        const bounds = new kakao.maps.LatLngBounds();
+
         for (let i = 0; i < data.length; i++) {
           displayMarker(data[i]);
+          bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
         }
+
+        map.setBounds(bounds);
       }
     };
 
-    const KEYWORD = "메가커피";
+    const KEYWORD = `${searchedResult} 메가커피`;
 
-    places.keywordSearch(KEYWORD, placesSearchCallBack, {
-      useMapBounds: true,
-    });
+    places.keywordSearch(KEYWORD, placesSearchCallBack);
+
+    let infowindow = null;
 
     const displayMarker = (place) => {
+      const markerImage = "/JijoMarker.png";
+      const markerImageSize = new kakao.maps.Size(40, 45);
+
       const marker = new kakao.maps.Marker({
         map,
         position: new kakao.maps.LatLng(place.y, place.x),
+        image: new kakao.maps.MarkerImage(markerImage, markerImageSize),
       });
 
       kakao.maps.event.addListener(marker, "click", () => {
-        const content = `<div class="infoWindow">
-      <h4>${place.place_name}</h4>
-      <p>${place.address_name}</p>
-      <p>Phone: ${place.phone || "N/A"}</p>
-    </div>`;
-        const infowindow = new kakao.maps.InfoWindow({
-          content,
-        });
-        infowindow.open(map, marker);
+        const modifedAddressName = place.place_name.replace(
+          /메가MGC커피/g,
+          "지조커피"
+        );
+
+        const content = `
+                <div class="infoWindow">
+                  <h4>${modifedAddressName}</h4>
+                  <p className="infoWindow__address">${
+                    place.road_address_name
+                  }</p>
+                  <a href="tel:${
+                    place.phone
+                  }" className="infoWindow__phone">번호: ${
+                    place.phone || "N/A"
+                  }</a >
+                  <button>자세히 보기</button>
+                </div>`;
+
+        if (infowindow) {
+          infowindow.close();
+          infowindow = null;
+        } else {
+          infowindow = new kakao.maps.InfoWindow({
+            content,
+          });
+          infowindow.open(map, marker);
+        }
       });
     };
-  }, [location]);
+  }, [location, searchedResult]);
 
   return (
     <>

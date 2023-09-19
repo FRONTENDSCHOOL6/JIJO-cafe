@@ -13,7 +13,7 @@ import S from "./DesktopHeader.module.css";
 import {useEffect} from "react";
 import {useRef} from "react";
 
-function DesktopHeader({siginInView, siginViewHandler}) {
+function DesktopHeader({siginInView, siginViewHandler, setIsClickedSignin}) {
   /* 마우스 접근/떠남에 따른 서브메뉴리스트 렌더링 */
   const [isDropdownVisiable, setIsDropdownVisialbe] = useState(false);
   const handleMouseEnter = () => {
@@ -45,18 +45,6 @@ function DesktopHeader({siginInView, siginViewHandler}) {
 
   /* 스크롤 높이가 0일때 헤더 배경색 투명하게 */
   const headerRef = useRef(null);
-  useEffect(() => {
-    const header = headerRef.current;
-    const handleScroll = () => {
-      if (window.scrollY === 0) {
-        header.style.backgroundColor = "trnsparent";
-      } else {
-        header.style.backgroundColor = "#fff";
-      }
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <>
@@ -94,6 +82,7 @@ function DesktopHeader({siginInView, siginViewHandler}) {
                   <LinkList pageLink="/bbs/notice">Notice</LinkList>
                   <LinkList pageLink="/bbs/faq">FAQ</LinkList>
                   <LinkList pageLink="/bbs/customer">고객센터</LinkList>
+                  <LinkList pageLink="/bbs/event">이벤트</LinkList>
                 </>
               )}
             </div>

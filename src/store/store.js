@@ -27,12 +27,15 @@ const authStore = (set) => ({
 
     const {isValid, model, token} = pb.authStore;
 
+    const isAdmin = model.role === "admin";
+
     set(
       (state) => ({
         ...state,
         isAuth: isValid,
         user: model,
         token,
+        isAdmin,
       }),
       false,
       "auth/signin"
