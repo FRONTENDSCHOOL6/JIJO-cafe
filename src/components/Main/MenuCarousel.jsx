@@ -24,6 +24,14 @@ export default function MenuCarousel() {
         spaceBetween={15}
         slidesPerView={2}
         autoHeight={false}
+        breakpoints={{
+          390: {
+            slidesPerView: 4,
+          },
+          768: {
+            slidesPerView: 3,
+          },
+        }}
         id="menuSwiper"
       >
         {data &&
