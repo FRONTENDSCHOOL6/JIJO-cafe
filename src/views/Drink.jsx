@@ -51,7 +51,7 @@ function Drink() {
           </div>
         </div>
         <figure className="shrink-0 tablet:shrink mobile:w-full">
-          <img
+          <LazyImage
             src="/src/assets/images/menu/drink/drink_image01.jpg"
             alt="가을이 키운 달콤한 청송사과 한 잔"
           />

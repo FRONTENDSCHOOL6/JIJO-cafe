@@ -19,18 +19,21 @@ function Header() {
         <DesktopHeader
           siginInView={isClickedSignin}
           siginViewHandler={handleClickSignin}
+          setIsClickedSignin={setIsClickedSignin}
         />
       </Desktop>
       <Tablet>
         <TabletMobileHeader
           siginInView={isClickedSignin}
           siginViewHandler={handleClickSignin}
+          setIsClickedSignin={setIsClickedSignin}
         />
       </Tablet>
       <Mobile>
         <TabletMobileHeader
           siginInView={isClickedSignin}
           siginViewHandler={handleClickSignin}
+          setIsClickedSignin={setIsClickedSignin}
         />
       </Mobile>
     </>

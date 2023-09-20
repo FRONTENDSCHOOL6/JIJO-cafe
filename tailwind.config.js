@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  // content: ['.index.html', '.src/**/*.jsx'],
   content: ["./index.html", "./src/**/*.jsx"],
   theme: {
     extend: {
@@ -18,9 +17,9 @@ export default {
         yellow: "#FEE500",
       },
       screens: {
-        mobile: { min: "390px", max: "727px" },
-        tablet: { min: "728px", max: "1280px" },
-        desktop: { min: "1281px" },
+        mobile: {min: "390px", max: "727px"},
+        tablet: {min: "728px", max: "1280px"},
+        desktop: {min: "1281px"},
       },
       fontSize: {
         jj_60: "3.75rem",
@@ -44,8 +43,9 @@ export default {
         jj_50: "3.125rem",
         jj_60: "3.75rem",
         jj_100: "6.25rem",
+        "7%": "7%",
       },
     },
   },
   plugins: [],
-};
+}

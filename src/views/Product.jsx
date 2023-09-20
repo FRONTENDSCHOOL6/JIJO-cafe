@@ -3,6 +3,7 @@ import MenuTitle from "@/components/MenuTitle";
 import MenuBubble from "@/components/MenuBubble";
 import CheckBox from "@/components/CheckBox/CheckBox";
 import Products from "@/components/Products";
+import LazyImage from "@/utils/LazyImage";
 function Product() {
   return (
     <div>
@@ -17,12 +18,12 @@ function Product() {
         <div>
           <p className="text-jj_24 font-light">지조로운 일상의 커피</p>
           <h2 className="text-jj_60 font-bold break-keep leading-tight my-10">
-          JIJO STICK
+            JIJO STICK
           </h2>
           <div className="text">
             <p className="title text-jj_22 border-b pb-5">
-            하루에 하나로 충분 ! 메가로운 대용량 아메리카노<br />
-            당 걱정 없는 당 충전! 건강한 단맛, 스테비아 믹스커피
+              하루에 하나로 충분 ! 메가로운 대용량 아메리카노
+              <br />당 걱정 없는 당 충전! 건강한 단맛, 스테비아 믹스커피
             </p>
             <p className="desc text-[#1c1c1b] opacity-70 pt-5">
               #지조루틴 #지조스틱
@@ -31,9 +32,9 @@ function Product() {
           </div>
         </div>
         <figure className="shrink-0 tablet:shrink mobile:w-full">
-          <img
+          <LazyImage
             src="/src/assets/images/menu/product/product_image01.jpg"
-            alt="메가로운 일상의 커피"
+            alt="지조로운 일상의 커피"
           />
         </figure>
       </section>
@@ -51,7 +52,7 @@ function Product() {
             분류보기
           </p>
           <div className="checkboxWrap flex gap-[.625rem]">
-            <CheckBox text="전체 상품보기" defaultChecked="checked"/>
+            <CheckBox text="전체 상품보기" defaultChecked="checked" />
             <CheckBox text="MD" />
           </div>
         </div>

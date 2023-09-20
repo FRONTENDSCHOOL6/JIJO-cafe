@@ -1,21 +1,28 @@
-import RootLayout from "@/layout/RootLayout"
-import Cart from "@/views/Cart"
-import Customer from "@/views/Customer"
-import Drink from "@/views/Drink"
-import Event from "@/views/Event"
-import Faq from "@/views/Faq"
-import FindStore from "@/views/FindStore"
-import Food from "@/views/Food"
-import Main from "@/views/Main/Main"
-import Notice from "@/views/Notice"
-import NoticeCreate from "@/views/NoticeCreate"
-import NoticeDetail from "@/views/NoticeDetail"
-import NoticeUpdate from "@/views/NoticeUpdate"
-import Product from "@/views/Product"
-import SignUp from "@/views/SignUp"
-import { Route } from "react-router-dom"
-import { createRoutesFromElements } from "react-router-dom"
-import { createBrowserRouter } from "react-router-dom"
+import {lazy} from "react";
+const RootLayout = lazy(() => import("@/layout/RootLayout"));
+const Cart = lazy(() => import("@/views/Cart"));
+const Customer = lazy(() => import("@/views/Customer/Customer"));
+const Drink = lazy(() => import("@/views/Drink"));
+const Event = lazy(() => import("@/views/Event"));
+const EventDetail = lazy(() => import("@/views/EventDetail"));
+const Faq = lazy(() => import("@/views/Faq"));
+const FindStore = lazy(() => import("@/views/FindStore"));
+const Food = lazy(() => import("@/views/Food"));
+const Main = lazy(() => import("@/views/Main/Main"));
+const Notice = lazy(() => import("@/views/Notice"));
+const NoticeCreate = lazy(() => import("@/views/NoticeCreate"));
+const NoticeDetail = lazy(() => import("@/views/NoticeDetail"));
+const NoticeUpdate = lazy(() => import("@/views/NoticeUpdate"));
+const Product = lazy(() => import("@/views/Product"));
+const SignUp = lazy(() => import("@/views/SignUp"));
+const FaqDetail = lazy(() => import("@/views/FaqDetail"));
+const FaqCreate = lazy(() => import("@/views/FaqCreate"));
+const FaqUpdate = lazy(() => import("@/views/FaqUpdate"));
+const CustomerCreate = lazy(() => import("@/views/Customer/CustomerCreate"));
+
+import {Route} from "react-router-dom";
+import {createRoutesFromElements} from "react-router-dom";
+import {createBrowserRouter} from "react-router-dom";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -34,12 +41,17 @@ const router = createBrowserRouter(
       <Route path="/bbs/notice/update/:noticeId" element={<NoticeUpdate />} />
       <Route path="/bbs/notice/detail/:noticeId" element={<NoticeDetail />} />
       <Route path="/bbs/faq" element={<Faq />} />
+      <Route path="/bbs/faq/create" element={<FaqCreate />} />
+      <Route path="/bbs/faq/detail/:FaqId" element={<FaqDetail />} />
+      <Route path="/bbs/faq/update/:FaqId" element={<FaqUpdate />} />
       <Route path="/bbs/customer" element={<Customer />} />
+      <Route path="/bbs/customer/create" element={<CustomerCreate />} />
       <Route path="/bbs/event" element={<Event />} />
+      <Route path="/bbs/event/detail/:eventId" element={<EventDetail />} />
 
       <Route path="/cart" element={<Cart />} />
     </Route>
   )
-)
+);
 
-export default router
+export default router;

@@ -35,8 +35,8 @@ function ProductItem({ collection, item, id, name, price, ...restProps }) {
     >
       <div>
         <div className="imgFrame relative w-80 h-80 overflow-hidden">
-          <img
-            src={getPbImageURL(item, 'image')}
+          <LazyImage
+            src={getPbImageURL(item, "image")}
             className="w-full transition-all ease-in hover:scale-110"
             alt={item.title}
           />

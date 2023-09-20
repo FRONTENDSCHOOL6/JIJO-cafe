@@ -5,6 +5,7 @@ import Input from "@/components/Input";
 import PageMainTitle from "@/components/PageMainTitle";
 import SignUpFormWrapper from "@/layout/Wrapper/SignUpFormWrapper";
 import useAuthStore from "@/store/store";
+import JiJoHelmet from "@/utils/JiJoHelmet";
 import {engReg, pwReg} from "@/utils/Validation";
 import debounce from "@/utils/debounce";
 import {useEffect} from "react";
@@ -137,10 +138,7 @@ function SignUp() {
 
   return (
     <>
-      <Helmet>
-        <title>지조 회원가입</title>
-      </Helmet>
-
+      <JiJoHelmet pageTitle="지조 회원가입" />
       <section>
         <h2 className="sr-only">회원가입 페이지</h2>
         <SignUpFormWrapper>

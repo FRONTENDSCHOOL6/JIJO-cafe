@@ -51,7 +51,7 @@ function Food() {
           </div>
         </div>
         <figure className="shrink-0 tablet:shrink mobile:w-full">
-          <img
+          <LazyImage
             src="/src/assets/images/menu/food/food_image01.jpg"
             alt="가을을 닮은 풍요로운 보름달 한 상"
           />

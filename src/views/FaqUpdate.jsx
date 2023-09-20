@@ -1,15 +1,15 @@
 import pb from "@/api/pocketbase"
 import DataForm from "@/components/Notice/DataForm"
 import MenuTitle from "@/components/MenuTitle"
+import JiJoHelmet from "@/utils/JiJoHelmet"
 import JijoSpinner from "@/components/JijoSpinner"
 import PageMainTitle from "@/components/PageMainTitle"
-import JiJoHelmet from "@/utils/JiJoHelmet"
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 
-function NoticeUpdate() {
+function FaqUpdate() {
+  const { FaqId } = useParams()
   const Navigate = useNavigate()
-  const { noticeId } = useParams()
   const [data, setData] = useState(null)
   const [status, setStatus] = useState("pending")
   const [error, setError] = useState(null)
@@ -19,8 +19,8 @@ function NoticeUpdate() {
     const fetchData = async () => {
       setStatus("loading")
       try {
-        const noticeItems = await pb.collection("notices").getOne(noticeId) //단일 데이터 가져올때 getOne
-        setData(noticeItems)
+        const faqItems = await pb.collection("faq").getOne(FaqId) //단일 데이터 가져올때 getOne
+        setData(faqItems)
         setStatus("success")
       } catch (error) {
         setStatus("error")
@@ -28,7 +28,7 @@ function NoticeUpdate() {
       }
     }
     fetchData()
-  }, [noticeId])
+  }, [FaqId])
 
   if (status === "loading") {
     return <JijoSpinner />
@@ -55,17 +55,17 @@ function NoticeUpdate() {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
     const data = Object.fromEntries(formData.entries())
-    await pb.collection("notices").update(noticeId, data)
-    Navigate(`/bbs/notice/detail/${noticeId}`)
+    await pb.collection("faq").update(FaqId, data)
+    Navigate(`/bbs/faq/detail/${FaqId}`)
   }
 
   return (
     <>
-      <JiJoHelmet pageTitle="지조소식 - 공지사항" />
-      <MenuTitle title="JIJO NEWS"> JIJO NOTICE</MenuTitle>
+      <JiJoHelmet pageTitle="지조소식 - FAQ" />
+      <MenuTitle title="JIJO NEWS"> JIJO FAQ</MenuTitle>
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60 text-deepDarkGray">
-        <PageMainTitle pageTitleText="공지사항 수정" pageSubTitleText="카페 지조 관리자 페이지 입니다."></PageMainTitle>
-        <DataForm collection="notice" data={data} setData={setData} handleSubmit={handleUpdate} handleFileChange={handleFileChange} fileName={fileName} setFileName={setFileName}>
+        <PageMainTitle pageTitleText="FAQ 수정" pageSubTitleText="카페 지조 관리자 페이지 입니다."></PageMainTitle>
+        <DataForm collection="faq" data={data} setData={setData} handleSubmit={handleUpdate} handleFileChange={handleFileChange} fileName={fileName} setFileName={setFileName}>
           수정하기
         </DataForm>
       </section>
@@ -73,4 +73,4 @@ function NoticeUpdate() {
   )
 }
 
-export default NoticeUpdate
+export default FaqUpdate

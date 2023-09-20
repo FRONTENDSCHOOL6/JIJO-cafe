@@ -18,7 +18,7 @@ import SignInForm from "./SignInForm";
 import TextHorizen from "./TextHorizen";
 import {useEffect} from "react";
 
-function SignInModal({siginViewHandler}) {
+function SignInModal() {
   /* Email과 Password 유효성 검사 및 조건부 렌더링 함수 */
   const [formData, setFormData] = useState({
     email: "",
@@ -44,7 +44,6 @@ function SignInModal({siginViewHandler}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleModalClose = () => {
     setIsModalOpen((prev) => !prev);
-    siginViewHandler(false);
   };
   useOutsideClickClose(formRef, handleModalClose);
 
@@ -57,7 +56,6 @@ function SignInModal({siginViewHandler}) {
     if (user) {
       toast.success(`${user.username}님 환영해요😁`, {icon: "👋"});
       navigate("/");
-      siginViewHandler(false);
     }
   }, [user]);
 
