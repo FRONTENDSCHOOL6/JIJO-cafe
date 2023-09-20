@@ -2,17 +2,11 @@ import pb from "@/api/pocketbase"
 import JijoSpinner from "@/components/JijoSpinner"
 import MenuTitle from "@/components/MenuTitle"
 import Detail from "@/components/Notice/Detail"
-import { Helmet } from "react-helmet-async"
+
 import { useNavigate } from "react-router-dom"
 import { useParams } from "react-router-dom"
 import { useQuery } from "@tanstack/react-query"
 import JiJoHelmet from "@/utils/JiJoHelmet"
-
-async function fetchFaqDetail(FaqId) {
-  const response = await pb.collection("faq").getOne(FaqId)
-  console.log(response)
-  return response
-}
 
 function FaqDetail() {
   const { FaqId } = useParams()
@@ -21,7 +15,31 @@ function FaqDetail() {
   const { isLoading, data, isError, error } = useQuery({
     //리액트 쿼리 사용
     queryKey: ["faqDetail", FaqId],
-    queryFn: () => fetchFaqDetail(FaqId),
+    queryFn: async () => {
+      // eslint-disable-next-line no-useless-catch
+      try {
+        // 현재 공지 가져오기
+        const currentFaq = await pb.collection("faq").getOne(FaqId)
+
+        // 공지 글 가져오기(created 내림차순 정럴 (최신순) / id, noticeTitle 포함 / 빠른 가져오기를 위해 skipTotal 설정)
+        const faqList = await pb.collection("faq").getFullList({
+          sort: "-created",
+          fields: "id,faqTitle",
+          skipTotal: true,
+        })
+
+        // 현재 공지 인덱스
+        const currentFaqIndex = faqList.findIndex((n) => n.id === currentFaq.id)
+        // 이전 공지 제목
+        const previousFaqTitle = faqList[currentFaqIndex - 1]?.faqTitle
+        // 다음 공지 제목
+        const nextFaqTitle = faqList[currentFaqIndex + 1]?.faqTitle
+
+        return { ...currentFaq, previousFaqTitle, nextFaqTitle }
+      } catch (error) {
+        throw error
+      }
+    },
     staleTime: 1 * 1000 * 60 * 60 * 24 * 7,
   })
 
@@ -57,7 +75,7 @@ function FaqDetail() {
     <>
       <JiJoHelmet pageTitle="지조소식 - FAQ" />
       <MenuTitle title="JIJO NEWS"> JIJO FAQ</MenuTitle>
-      <Detail field="faq" handleDelete={handleDelete} data={data}></Detail>
+      <Detail field="faq" Field="Faq" handleDelete={handleDelete} data={data}></Detail>
     </>
   )
 }
