@@ -110,7 +110,7 @@
   margin-left: 1%;
 }
 #shopingMallSwiper .swiper-pagination-bullet-active {
-  /* width: 3rem; */
+  width: 2rem;
   height: 0.5rem;
 }
 #shopingMallSwiper .swiper-pagination-bullet + #shopingMallSwiper .swiper-pagination-bullet-active {

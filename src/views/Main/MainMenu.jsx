@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 
 function MainMenu() {
   return (
-    <section className="grid grid-cols-2 h-screen overflow-hidden mobile:grid-cols-1 bg-white pt-[10%] pl-[5%]">
+    <section className="grid grid-cols-2 h-screen overflow-hidden  bg-white pt-[10%] pl-[5%]">
       <h2 className="sr-only">메인페이지 메뉴</h2>
       <div className="flex justify-center mr-[1.25rem] ml-[5rem]">
         <div className=" text-deepDarkGray">
