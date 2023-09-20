@@ -44,8 +44,9 @@ export default {
         jj_50: "3.125rem",
         jj_60: "3.75rem",
         jj_100: "6.25rem",
+        "7%": "7%",
       },
     },
   },
   plugins: [],
-};
+}
