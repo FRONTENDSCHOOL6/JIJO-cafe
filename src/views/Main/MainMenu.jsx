@@ -6,9 +6,9 @@ import { Link } from "react-router-dom";
 
 function MainMenu() {
   return (
-    <section className="flex h-screen py-[10%] overflow-hidden">
+    <section className="grid grid-cols-2 h-screen overflow-hidden mobile:grid-cols-1 bg-white pt-[10%] pl-[5%]">
       <h2 className="sr-only">메인페이지 메뉴</h2>
-      <div className="flex justify-center w-1/2 mr-[1.25rem] ml-[5rem]">
+      <div className="flex justify-center mr-[1.25rem] ml-[5rem]">
         <div className=" text-deepDarkGray">
           <MainpageTitle highLight="primaryHighlight" subHeading="CAFE JIJO 가을시즌 신메뉴" mainHeading="풍요로운 가을이 만든 달콤함"></MainpageTitle>
           <p className="text-jj_22 mobile:text-jj_18">청송 사과 한 잔, 보름달 한 상</p>
@@ -24,7 +24,7 @@ function MainMenu() {
           </Link>
         </div>
       </div>
-      <div className="relative w-1/2">
+      <div className="relative">
         <div className="absolute overflow-hidden">
           <MenuCarousel />
         </div>

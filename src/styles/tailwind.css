@@ -30,40 +30,64 @@
   }
   */
 
-  .primaryHighlight::before {
-    content: "";
-    width: 101%;
-    height: 30%;
-    background-color: #dbc8ab;
-    position: absolute;
-    top: 50px;
-    left: -5px;
-    z-index: -1;
-    @apply tablet:h-[40%];
-    @apply mobile:max-w-[145px] mobile:h-[40%];
+  /* 메인페이지 */
+
+  .fullpage {
+    height: 100vh;
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
   }
 
-  .secondaryHighlight::before {
-    content: "";
-    width: 101%;
-    height: 30%;
-    background-color: #f8f2e7;
-    position: absolute;
-    top: 50px;
-    left: -5px;
-    z-index: -1;
-
-    @apply tablet:h-[40%];
-    @apply mobile:max-w-[145px] mobile:h-[40%];
+  .fullpage::-webkit-scrollbar {
+    display: none;
   }
+
+  .section {
+    scroll-snap-align: start;
+  }
+
+  .primaryHighlight {
+    background: linear-gradient(to top, #dbc8ab 50%, transparent 50%);
+  }
+
+  .secondaryHighlight {
+    background: linear-gradient(to top, #f8f2e7 50%, transparent 50%);
+  }
+
+  /* 메인-mainStor css */
+
   .storeImage {
     background: url("../assets/images/main/cafe-jj-coffee.jpg") no-repeat 50% / cover;
   }
+
+  .mobileSection {
+    @apply mobile:gird;
+  }
+  .mobileTitle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* @apply mobile:absolute mobile:top-1/2 mobile:left-1/2; */
+  }
+
+  /* 이벤트 페이지 tab css */
 
   .select {
     @apply bg-[#ffffff] border-t border-r border-l;
   }
   .default {
     @apply bg-[#F4F6F8] border;
+  }
+
+  .fullpageControl {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    bottom: 5%;
+    left: 0;
+    font-size: 2rem;
+    line-height: 2rem;
+    z-index: 1;
   }
 }

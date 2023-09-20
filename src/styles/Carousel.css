@@ -13,6 +13,7 @@
 #mainSwiper .swiper-pagination-bullet-active {
   width: 3rem;
   height: 0.5rem;
+  background-color: #fff;
 }
 #mainSwiper .swiper-pagination-bullet + #mainSwiper .swiper-pagination-bullet-active {
   width: 3rem;
@@ -23,34 +24,38 @@
 
 #menuSwiper {
   z-index: 0;
-}
-
-#menuSwiper {
-  --swiper-navigation-size: 1.6rem;
   max-width: 56.25rem;
   overflow: visible;
+  /* border: 1px solid #000; */
 }
 
 #menuSwiper .swiper-slide {
+  border-radius: 10px;
+}
+
+#menuSwiper .swiper-slide-prev,
+#menuSwiper .swiper-slide-next {
+  /* transform: translateY(45%); */
+  height: 100%;
+}
+
+#menuSwiper .swiper-slide-active {
+  border: 1px solid #dddddd;
+}
+
+#menuSwiper .swiper-slide-prev img,
+#menuSwiper .swiper-slide-next img {
+  transform: translateY(39%);
   border: 1px solid #dddddd;
   border-radius: 10px;
 }
-
-#menuSwiper .swiper-slide-next {
-  margin-top: 19%;
-}
-
-#menuSwiper .swiper-slide-next img {
-  border-radius: 10px;
-}
-
 #menuSwiper .swiper-slide-active img {
   border-radius: 10px 10px 0px 0;
 }
 
 #menuSwiper div.swiper-button-prev,
 #menuSwiper div.swiper-button-next {
-  /* border: 1px solid; */
+  --swiper-navigation-size: 1.6rem;
   top: 0;
   right: 0;
   width: fit-content;
@@ -63,14 +68,12 @@
 #menuSwiper div.swiper-button-next {
   margin-right: calc(35% - (var(--swiper-navigation-size) / 2));
 }
+
 #menuSwiper div.swiper-button-prev::after,
 #menuSwiper div.swiper-button-next::after {
+  display: block;
   font-size: 4rem;
   color: #dddddd;
-}
-#menuSwiper div.swiper-button-prev:hover,
-#menuSwiper div.swiper-button-next:hover {
-  color: #161616 !important;
 }
 
 #menuSwiper .menutitleSection {
@@ -92,6 +95,8 @@
   overflow: visible;
   max-width: 700px;
   position: relative;
+  margin-top: 50px;
+  margin-left: 0;
 }
 
 #shopingMallSwiper .swiper-pagination {
@@ -99,31 +104,16 @@
   bottom: -30px;
 }
 #shopingMallSwiper .swiper-pagination-bullet {
-  width: 1rem;
-  height: 0.5rem;
+  /* width: 1.5rem; */
   border-radius: 10px;
   background-color: #fff;
+  margin-left: 1%;
 }
 #shopingMallSwiper .swiper-pagination-bullet-active {
-  width: 2rem;
+  /* width: 3rem; */
   height: 0.5rem;
 }
 #shopingMallSwiper .swiper-pagination-bullet + #shopingMallSwiper .swiper-pagination-bullet-active {
   width: 3rem;
   height: 0.5rem;
 }
-
-/* .swiper-button-next {
-  background: url() no-repeat;
-  background-size: 50% auto;
-  background-position: center;
-}
-
-.swiper-button-prev {
-  background: url() no-repeat;
-}
-
-.swiper-button-next::after,
-.swiper-button-prev::after {
-  display: none;
-} */

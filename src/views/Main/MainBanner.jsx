@@ -28,7 +28,7 @@ export default function MainBanner() {
     <Swiper
       modules={[Pagination, Autoplay, Keyboard]}
       autoplay={{
-        delay: 3000,
+        delay: 5000,
         disableOnInteraction: true,
       }}
       spaceBetween={0}
