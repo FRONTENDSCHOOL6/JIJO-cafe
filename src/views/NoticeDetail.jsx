@@ -44,11 +44,13 @@ function NoticeDetail() {
         // 현재 공지 인덱스
         const currentNoticeIndex = noticeList.findIndex((n) => n.id === currentNotice.id)
         // 이전 공지 제목
-        const previousNoticeTitle = noticeList[currentNoticeIndex - 1]?.noticeTitle
+        const previousNoticeTitle = noticeList[currentNoticeIndex + 1]?.noticeTitle
+        const previousNoticeId = noticeList[currentNoticeIndex + 1]?.id
         // 다음 공지 제목
-        const nextNoticeTitle = noticeList[currentNoticeIndex + 1]?.noticeTitle
+        const nextNoticeTitle = noticeList[currentNoticeIndex - 1]?.noticeTitle
+        const nextNoticeId = noticeList[currentNoticeIndex - 1]?.id
 
-        return { ...currentNotice, previousNoticeTitle, nextNoticeTitle }
+        return { ...currentNotice, previousNoticeTitle, nextNoticeTitle, nextNoticeId, previousNoticeId }
       } catch (error) {
         throw error
       }

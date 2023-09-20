@@ -31,11 +31,13 @@ function FaqDetail() {
         // 현재 공지 인덱스
         const currentFaqIndex = faqList.findIndex((n) => n.id === currentFaq.id)
         // 이전 공지 제목
-        const previousFaqTitle = faqList[currentFaqIndex - 1]?.faqTitle
+        const previousFaqTitle = faqList[currentFaqIndex + 1]?.faqTitle
+        const previousFaqId = faqList[currentFaqIndex + 1]?.id
         // 다음 공지 제목
-        const nextFaqTitle = faqList[currentFaqIndex + 1]?.faqTitle
+        const nextFaqTitle = faqList[currentFaqIndex - 1]?.faqTitle
+        const nextFaqId = faqList[currentFaqIndex - 1]?.id
 
-        return { ...currentFaq, previousFaqTitle, nextFaqTitle }
+        return { ...currentFaq, previousFaqTitle, nextFaqTitle, nextFaqId, previousFaqId }
       } catch (error) {
         throw error
       }

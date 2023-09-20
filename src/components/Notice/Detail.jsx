@@ -7,7 +7,6 @@ import useAuthStore from "@/store/store"
 function Detail({ data, handleDelete, field, Field }) {
   const user = useAuthStore((state) => state.user) // useAuthStore를 통해 user 정보를 가져오기
   const isAdmin = user && user.role === "admin" // isAdmin을 user.role이 "admin"일 때 true로 설정
-  console.log(isAdmin)
 
   return (
     data && (
@@ -27,11 +26,15 @@ function Detail({ data, handleDelete, field, Field }) {
 
         <div className="mt-[1.875rem] py-4 border-y font-light flex gap-[3.4375rem]">
           <p>다음글</p>
-          <p>{data[`next${Field}Title`] || "다음 글이 없습니다."}</p>
+          <Link to={`/bbs/${field}/detail/${data[`next${Field}Id`]}`}>
+            <p>{data[`next${Field}Title`] || "다음 글이 없습니다."}</p>
+          </Link>
         </div>
         <div className="mb-[1.875rem] py-4 border-b font-light flex gap-[3.4375rem]">
           <p>이전글</p>
-          <p>{data[`previous${Field}Title`] || "이전 글이 없습니다."}</p>
+          <Link to={`/bbs/${field}/detail/${data[`previous${Field}Id`]}`}>
+            <p>{data[`previous${Field}Title`] || "이전 글이 없습니다."}</p>
+          </Link>
         </div>
         <div className="flex-row flex gap-2 justify-end">
           <Link to={`/bbs/${field}`} className="mr-auto ">
