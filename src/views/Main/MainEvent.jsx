@@ -2,6 +2,7 @@ import pb from "@/api/pocketbase";
 import Button from "@/components/Button";
 import MainpageTitle from "@/components/Main/MainpageTitle";
 import { usePocketBaseFilteredData } from "@/hooks/usePocektBaseData";
+import LazyImage from "@/utils/LazyImage";
 import { getPbImageURL } from "@/utils/getPbImageURL";
 import { Link } from "react-router-dom";
 

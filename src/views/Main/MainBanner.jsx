@@ -1,16 +1,17 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay, Keyboard } from "swiper/modules";
+import {Swiper, SwiperSlide} from "swiper/react";
+import {Pagination, Autoplay, Keyboard} from "swiper/modules";
 import "swiper/css/pagination";
 import "@/styles/Carousel.css";
 import pb from "@/api/pocketbase";
-import { getPbImageURL } from "@/utils/getPbImageURL";
-import { usePocektBaseDataList } from "@/hooks/usePocektBaseData";
-import { useState, useEffect } from "react";
+import {getPbImageURL} from "@/utils/getPbImageURL";
+import {usePocektBaseDataList} from "@/hooks/usePocektBaseData";
+import {useState, useEffect} from "react";
 import JijoSpinner from "@/components/JijoSpinner";
+import LazyImage from "@/utils/LazyImage";
 
 export default function MainBanner() {
   pb.autoCancellation(false);
-  const { data, status } = usePocektBaseDataList("mainBanner");
+  const {data, status} = usePocektBaseDataList("mainBanner");
   const [mobileView, setMobileView] = useState(window.innerWidth < 760);
 
   const screenChange = (e) => {
@@ -36,16 +37,21 @@ export default function MainBanner() {
       pagination={{
         clickable: true,
       }}
-      keyboard={{ enabled: true }}
+      keyboard={{enabled: true}}
       grabCursor={true}
-      id="mainSwiper"
-    >
+      id="mainSwiper">
       {mobileView
         ? data &&
           data?.map((item) => {
             return (
               <SwiperSlide key={item.id}>
-                <img src={getPbImageURL(item, "mobileImage")} alt={item.title} className="block object-cover w-full h-screen" />
+                <LazyImage
+                  src={getPbImageURL(item, "mobileImage")}
+                  alt={item.title}
+                  className="block object-cover w-full h-screen"
+                />
+
+                {/* <img src={getPbImageURL(item, "mobileImage")} alt={item.title} className="block object-cover w-full h-screen" /> */}
               </SwiperSlide>
             );
           })
@@ -53,7 +59,16 @@ export default function MainBanner() {
           data?.map((item) => {
             return (
               <SwiperSlide key={item.id}>
-                <img src={getPbImageURL(item, "pcTabletImage")} alt={item.title} className="block object-cover w-full h-screen" />
+                <LazyImage
+                  src={getPbImageURL(item, "pcTabletImage")}
+                  alt={item.title}
+                  className="block object-cover w-full h-screen"
+                />
+                {/* <img
+                  src={getPbImageURL(item, "pcTabletImage")}
+                  alt={item.title}
+                  className="block object-cover w-full h-screen"
+                /> */}
               </SwiperSlide>
             );
           })}

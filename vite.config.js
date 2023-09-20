@@ -12,6 +12,7 @@ import {splitVendorChunkPlugin} from "vite";
 import jsconfigPath from "vite-jsconfig-paths";
 import {createHtmlPlugin} from "vite-plugin-html";
 import {loadEnv} from "vite";
+import viteCompression from "vite-plugin-compression";
 const isDev = env.NODE_ENV === "development";
 const envLoad = loadEnv(isDev, process.cwd());
 
@@ -46,6 +47,7 @@ export default defineConfig({
         },
       },
     }),
+    viteCompression(),
   ],
 
   css: {
@@ -63,7 +65,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           react: ["react", "react-dom"],
-          reactRouter: ["react-router-dom", "react-router"],
+          reactRouter: ["react-router-dom"],
           animations: ["framer-motion", "gsap"],
         },
       },

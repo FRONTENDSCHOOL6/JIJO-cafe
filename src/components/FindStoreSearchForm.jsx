@@ -1,37 +1,70 @@
-import {useEffect} from "react";
+import FindStoreSearchFormListWrapper from "@/layout/Wrapper/FindStoreSearchFormListWrapper";
 import Button from "./Button";
 import Input from "./Input";
-import {useRef} from "react";
-import {useState} from "react";
-import debounce from "@/utils/debounce";
-const {kakao} = window;
+import ReadingGlassesButton from "./ReadingGlassesButton";
 
-function FindStoreSearchForm({data, search, submit, inputRef}) {
+function FindStoreSearchForm({
+  searchedResult,
+  handleInputChange,
+  handleSearchSubmit,
+  kakaoPlaceResult,
+}) {
+  /* FormListWrap 메가MGC커피 -> 지조커피로 반환하는 함수 */
+  const modifyAddressName = (addressName) => {
+    return addressName.replace(/메가MGC커피/g, "지조커피");
+  };
+
   return (
     <>
       <form
-        onSubmit={submit}
-        className=" flex flex-col absolute top-0 left-0 p-8">
-        <div className="btnWrap flex">
-          <Button color="primary" className="flex-grow">
-            매장찾기
-          </Button>
-          <Button color="secondary" className="flex-grow">
-            지역검색
-          </Button>
-        </div>
+        className="flex flex-col absolute top-0 left-0 p-8 w-[20rem]"
+        onSubmit={(e) => e.preventDefault()}>
+        <Button
+          color="secondary"
+          className="flex-grow"
+          onClick={handleSearchSubmit}>
+          지역검색
+        </Button>
         <div className="searchWrap flex flex-col text-center bg-primary">
-          <h2>매장찾기</h2>
-          <span>함께하는 카페지조</span>
-          <Input
-            defaultValue={data}
-            onChange={search}
-            ref={inputRef}
-            placeholder="지점명 또는 주소를 입력해주세요"
-            className="w-fit m-[1.25rem]"
-          />
+          <h2 className="font-semibold py-[1.25rem]">매장찾기</h2>
+          <span className="font-thin">함께하는 카페지조</span>
+          <div className="inputWrap relative">
+            <Input
+              autoFocus
+              onKeyDown={(e) => {
+                if (e.key === "Enter") {
+                  handleSearchSubmit();
+                }
+              }}
+              defaultValue={searchedResult}
+              onChange={handleInputChange}
+              placeholder="지역명을 입력해주세요"
+              className="w-min m-[1.25rem] placeholder:text-[12px] placeholder:text-gray-400"
+            />
+            <ReadingGlassesButton
+              onClick={handleSearchSubmit}
+              className="absolute top-1/2 transform -translate-y-1/2 right-10"
+            />
+          </div>
         </div>
-        <div className="bg-white h-fit pb-[15rem]">검색어가 없습니다</div>
+        <FindStoreSearchFormListWrapper>
+          {kakaoPlaceResult?.length === 0 ? (
+            <p>검색결과가 없습니다</p>
+          ) : (
+            <ul className="flex flex-col space-y-2 text-sm">
+              {kakaoPlaceResult?.map((place) => {
+                return (
+                  <li
+                    key={place.id}
+                    className="border-b pb-2 text-gray-500 cursor-pointer">
+                    <p>{modifyAddressName(place.place_name)}</p>
+                    <p>{place.address_name}</p>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </FindStoreSearchFormListWrapper>
       </form>
     </>
   );

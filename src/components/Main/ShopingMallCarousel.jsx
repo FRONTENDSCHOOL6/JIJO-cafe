@@ -5,6 +5,7 @@ import "@/styles/Carousel.css";
 import pb from "@/api/pocketbase";
 import { getPbImageURL } from "@/utils/getPbImageURL";
 import { usePocektBaseDataList } from "@/hooks/usePocektBaseData";
+import LazyImage from "@/utils/LazyImage";
 
 export default function ShopingMallCarousel() {
   pb.autoCancellation(false);
@@ -40,7 +41,7 @@ export default function ShopingMallCarousel() {
             <SwiperSlide key={item.id}>
               {
                 <div className="mb-2 bg-white rounded-2xl">
-                  <img src={getPbImageURL(item, "image")} alt={item.title} className="block object-cover w-full h-auto rounded-2xl" />
+                  <LazyImage src={getPbImageURL(item, "image")} alt={item.title} className="block object-cover w-full h-auto rounded-2xl" />
                   <div className="p-3 shadow-lg bg-slate-200 rounded-b-2xl">
                     <h5 className="overflow-hidden font-medium text-jj_20 mobile:text-jj_16 text-ellipsis break-keep line-clamp-1">{item.title}</h5>
                     <del className="block text-gray-400 text-jj_16 mobile:text-jj_14">{item.price}</del>

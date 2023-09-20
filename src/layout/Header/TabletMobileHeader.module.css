@@ -1,5 +1,5 @@
 .header {
-  @apply bg-white h-[5.625rem] fixed w-full flex items-center justify-between z-50;
+  @apply bg-white h-[5.625rem] sticky w-full flex items-center justify-between z-50;
 }
 
 .closeButton {
@@ -7,11 +7,11 @@
 }
 
 .ul {
-  @apply h-screen fixed w-full top-0 left-0 bg-[#181818] z-10 text-darkGray  px-jj_100 text-2xl gap-12;
+  @apply h-screen fixed w-full top-0 left-0 flex flex-col justify-center bg-[#181818] z-10 text-darkGray  px-jj_100 text-2xl gap-12;
 }
 
 .linkWrap {
-  @apply flex items-center border-b-[1px] p-12 border-darkGray;
+  @apply flex items-center border-b-[1px] p-8 border-darkGray;
 }
 
 .titleLink {

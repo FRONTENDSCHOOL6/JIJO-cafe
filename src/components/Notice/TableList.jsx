@@ -1,19 +1,16 @@
-import yyyymmddDate from "@/utils/yyyymmddDate"
 import pb from "@/api/pocketbase"
 import { Link } from "react-router-dom"
+import yyyymmddDate from "@/utils/yyyymmddDate"
 
-function NoticeList({ data, Collection, field }) {
+function TableList({ collection, data, field }) {
+  // 조회수 증가
   const handleUpViews = async (item) => {
-    console.log(item)
-    // const record = await pb.collection({Collection}).update(item.id, { noticeViews: item.noticeViews + 1 })
-    const record = await pb.collection(`${field}`).update(item.id, { [`${field}Views`]: item[`${field}Views`] + 1 })
-
-    console.log(record)
+    await pb.collection(`${collection}`).update(item.id, { [`${field}Views`]: item[`${field}Views`] + 1 })
   }
 
   return (
     <>
-      <table className="min-w-max w-full table-auto bg-white my-6 border-t">
+      <table className="min-w-max w-full table-auto bg-white my-6 border-t text-deepDarkGray">
         <thead>
           <tr className="text-jj_15 leading-normal">
             <th className="mobile:hidden py-3 px-6 items-center">번호</th>
@@ -34,6 +31,7 @@ function NoticeList({ data, Collection, field }) {
                   <td className="py-3 px-6 text-left">
                     <Link to={`/bbs/${field}/detail/${item.id}`}>
                       <p
+                        className="text-deepDarkGray"
                         onClick={() => {
                           handleUpViews(item)
                         }}
@@ -43,12 +41,12 @@ function NoticeList({ data, Collection, field }) {
                     </Link>
                   </td>
                   <td className="py-3 px-6 mobile:hidden text-center">
-                    <p> {item[field + "Writer"]}</p>
+                    <p className="text-deepDarkGray"> {item[field + "Writer"]}</p>
                   </td>
-                  <td className="py-3 px-6 text-center">
+                  <td className="py-3 px-6 text-center text-deepDarkGray">
                     <time>{yyyymmddDate(item.created)}</time>
                   </td>
-                  <td className=" mobile:hidden py-3 px-6 text-center">
+                  <td className=" mobile:hidden py-3 px-6 text-center text-deepDarkGray">
                     <span>{item[field + "Views"]}</span>
                   </td>
                 </tr>
@@ -60,4 +58,4 @@ function NoticeList({ data, Collection, field }) {
   )
 }
 
-export default NoticeList
+export default TableList
