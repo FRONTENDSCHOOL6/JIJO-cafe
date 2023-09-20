@@ -1,8 +1,7 @@
 import {lazy} from "react";
-
 const RootLayout = lazy(() => import("@/layout/RootLayout"));
 const Cart = lazy(() => import("@/views/Cart"));
-const Customer = lazy(() => import("@/views/Customer"));
+const Customer = lazy(() => import("@/views/Customer/Customer"));
 const Drink = lazy(() => import("@/views/Drink"));
 const Event = lazy(() => import("@/views/Event"));
 const EventDetail = lazy(() => import("@/views/EventDetail"));
@@ -16,6 +15,11 @@ const NoticeDetail = lazy(() => import("@/views/NoticeDetail"));
 const NoticeUpdate = lazy(() => import("@/views/NoticeUpdate"));
 const Product = lazy(() => import("@/views/Product"));
 const SignUp = lazy(() => import("@/views/SignUp"));
+const FaqDetail = lazy(() => import("@/views/FaqDetail"));
+const FaqCreate = lazy(() => import("@/views/FaqCreate"));
+const FaqUpdate = lazy(() => import("@/views/FaqUpdate"));
+const CustomerCreate = lazy(() => import("@/views/Customer/CustomerCreate"));
+
 import {Route} from "react-router-dom";
 import {createRoutesFromElements} from "react-router-dom";
 import {createBrowserRouter} from "react-router-dom";
