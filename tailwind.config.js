@@ -17,9 +17,9 @@ export default {
         yellow: "#FEE500",
       },
       screens: {
-        mobile: { max: "727px" },
-        tablet: { min: "728px", max: "1280px" },
-        desktop: { min: "1281px" },
+        mobile: {min: "390px", max: "727px"},
+        tablet: {min: "728px", max: "1280px"},
+        desktop: {min: "1281px"},
       },
       fontSize: {
         jj_60: "3.75rem",
@@ -48,4 +48,4 @@ export default {
     },
   },
   plugins: [],
-};
+}
