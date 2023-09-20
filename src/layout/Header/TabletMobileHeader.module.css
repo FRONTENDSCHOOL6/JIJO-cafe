@@ -1,5 +1,5 @@
 .header {
-  @apply bg-white h-[5.625rem] fixed w-full flex items-center justify-between z-50;
+  @apply bg-white h-[5.625rem] sticky w-full flex items-center justify-between z-50;
 }
 
 .closeButton {

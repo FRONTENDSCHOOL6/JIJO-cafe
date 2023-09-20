@@ -32,14 +32,17 @@ function KakaoMap({setKakaoPlaceResult, searchedResult}) {
           displayMarker(data[i]);
           bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
         }
-
-        map.setBounds(bounds);
+        if (searchedResult.trim().length > 0) {
+          map.setBounds(bounds);
+        }
       }
     };
 
     /* 검색 키워드 */
     const KEYWORD = `${searchedResult} 메가커피`;
-    places.keywordSearch(KEYWORD, placesSearchCallBack);
+    places.keywordSearch(KEYWORD, placesSearchCallBack, {
+      useMapBounds: searchedResult.trim().length === 0,
+    });
 
     /* 마커와 마커 내부 인포윈도우를 생성하는 함수 */
     let infowindow = null;
@@ -84,11 +87,11 @@ function KakaoMap({setKakaoPlaceResult, searchedResult}) {
         }
       });
     };
-  }, [location, searchedResult]);
+  }, [currentLat, currentLon, searchedResult, setKakaoPlaceResult]);
 
   return (
     <>
-      <div className="my-8 w-full h-[31.25rem] z-0" ref={mapRef}></div>
+      <div className="w-full h-[31.25rem] z-0" ref={mapRef}></div>
     </>
   );
 }
