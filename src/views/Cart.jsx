@@ -12,6 +12,8 @@ function Cart() {
   const [toggleDropDown, setToggleDropDown] = useToggle(true);
   const [isClicked, setIsClicked] = useState(false);
   const {cart} = useCartStore();
+  const removeAll = useCartStore((state) => state.removeAll);
+  const totalPrice = '';
   const handleClick = () => {
     setIsClicked(!isClicked);
   };
@@ -31,7 +33,7 @@ function Cart() {
         <div className="orderListArea w-3/4">
           <div className="selectArea font-semibold">
             <CheckBox text="전체선택(3/3) " defaultChecked="checked" />
-            <button>| 선택삭제</button>
+            <button onClick={removeAll()}>| 전체삭제</button>
           </div>
           <div className="orderListWrap border-t bg-white border-secondary my-4 overflow-hidden">
             <div className="titleButtonArea flex justify-between py-4">
@@ -47,7 +49,7 @@ function Cart() {
           </div>
           <div className="selectArea font-semibold">
             <CheckBox text="전체선택(3/3) " defaultChecked="checked" />
-            <button>| 선택삭제</button>
+            <button onClick={removeAll()}>| 전체삭제</button>
           </div>
         </div>
 
@@ -75,13 +77,13 @@ function Cart() {
               <div className="flex justify-between mb-4">
                 <span>상품금액</span>
                 <span className="font-semibold">
-                  <span>5,000</span>원
+                  <span>5000</span>원
                 </span>
               </div>
               <div className="flex justify-between items-center border-t border-dashed border-gray-200 pt-6 mt-6">
                 <span>결제예정금액</span>
                 <span className="font-semibold flex items-center">
-                  <span className="text-[1.75rem] font-bold">5,000</span>원
+                  <span className="text-[1.75rem] font-bold">5000</span>원
                 </span>
               </div>
             </div>

@@ -31,27 +31,19 @@ function ProductItem({ collection, item, id, name, price, ...restProps }) {
     <li
       key={item.id}
       className="relative cursor-pointer"
-      onClick={handleClick}
       {...restProps}
     >
       <div>
-        <div className="imgFrame relative w-80 h-80 overflow-hidden">
+        <div 
+          className="imgFrame relative w-80 h-80 overflow-hidden"
+          onClick={handleClick}
+          >
           <LazyImage
             src={getPbImageURL(item, "image")}
             className="w-full transition-all ease-in hover:scale-110"
             alt={item.title}
           />
-          <button
-            onClick={() => {
-              handleAddToCart(item);
-            }}
-          >
-            <img
-              src="/src/assets/images/menu/cart.svg"
-              className="absolute bottom-0 right-0"
-              alt=""
-            />
-          </button>
+          {isClicked && <ProductModal key={item.id} item={item} />}
         </div>
         <div className="text py-6">
           <p className="title text-jj_22 pb-5 mb-[.3125rem] border-b overflow-hidden text-ellipsis whitespace-nowrap">
@@ -65,7 +57,17 @@ function ProductItem({ collection, item, id, name, price, ...restProps }) {
           </p>
         </div>
       </div>
-      {isClicked && <ProductModal key={item.id} item={item} />}
+      <button
+        onClick={() => {
+          handleAddToCart(item);
+        }}
+        className="absolute bottom-[11.25rem] right-0"
+      >
+        <img
+          src="/src/assets/images/menu/cart.svg"
+          alt=""
+        />
+      </button>
     </li>
   );
 }

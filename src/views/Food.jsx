@@ -4,6 +4,7 @@ import MenuBubble from "@/components/MenuBubble";
 import MenuTitle from "@/components/MenuTitle";
 import Products from "@/components/Products";
 import { usePocketBaseFilteredData } from "@/hooks/usePocektBaseData";
+import LazyImage from "@/utils/LazyImage";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
 
