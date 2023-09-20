@@ -6,9 +6,9 @@ import {getPbImageURL} from "@/utils/getPbImageURL";
 import ProductModal from "./ProductModal";
 import {numberWithComma} from "@/utils/numberWithComma";
 import {usePocketBaseFilteredData} from "@/hooks/usePocektBaseData";
+import LazyImage from "@/utils/LazyImage";
 
 function Products({collection}) {
-  pb.autoCancellation(false);
   const {data, status} = usePocketBaseFilteredData(collection, 1, 20);
 
   if (data) {
@@ -40,13 +40,13 @@ function ProductItem({item, ...restProps}) {
       onClick={handleClick}>
       <div>
         <div className="imgFrame relative w-80 h-80 overflow-hidden">
-          <img
+          <LazyImage
             src={getPbImageURL(item, "image")}
             className="w-full transition-all ease-in hover:scale-110"
             alt={item.title}
           />
           <a href="/cart">
-            <img
+            <LazyImage
               src="/src/assets/images/menu/cart.svg"
               className="absolute bottom-0 right-0"
               alt=""

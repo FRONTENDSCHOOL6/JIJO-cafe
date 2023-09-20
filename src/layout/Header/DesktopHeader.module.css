@@ -18,7 +18,11 @@
   }
 
   & .LinkWrap {
-    @apply flex flex-col items-center gap-4 hover:bg-primary;
+    @apply flex flex-col items-center gap-4;
     transition: all 0.3s ease-in-out;
+  }
+
+  & .subLinkWrap {
+    @apply flex flex-col gap-3 items-center;
   }
 }

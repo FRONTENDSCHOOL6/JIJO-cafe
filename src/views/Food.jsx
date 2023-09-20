@@ -3,6 +3,7 @@ import MenuTitle from "@/components/MenuTitle";
 import MenuBubble from "@/components/MenuBubble";
 import CheckBox from "@/components/CheckBox/CheckBox";
 import Products from "@/components/Products";
+import LazyImage from "@/utils/LazyImage";
 
 function Food() {
   return (
@@ -34,7 +35,7 @@ function Food() {
           </div>
         </div>
         <figure className="shrink-0 tablet:shrink mobile:w-full">
-          <img
+          <LazyImage
             src="/src/assets/images/menu/food/food_image01.jpg"
             alt="가을을 닮은 풍요로운 보름달 한 상"
           />
@@ -54,7 +55,7 @@ function Food() {
             분류보기
           </p>
           <div className="checkboxWrap flex gap-[.625rem]">
-            <CheckBox text="전체 상품보기" defaultChecked="checked"/>
+            <CheckBox text="전체 상품보기" defaultChecked="checked" />
             <CheckBox text="디저트" />
             <CheckBox text="상품" />
           </div>
