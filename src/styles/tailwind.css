@@ -58,17 +58,12 @@
   /* 메인-mainStor css */
 
   .storeImage {
-    background: url("../assets/images/main/cafe-jj-coffee.jpg") no-repeat 50% / cover;
-  }
-
-  .mobileSection {
-    @apply mobile:gird;
-  }
-  .mobileTitle {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    /* @apply mobile:absolute mobile:top-1/2 mobile:left-1/2; */
+    background-image: url("../assets/images/main/cafe-jj-coffee.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    object-fit: contain;
+    @apply mobile:opacity-10;
   }
 
   /* 이벤트 페이지 tab css */
@@ -80,14 +75,11 @@
     @apply bg-[#F4F6F8] border;
   }
 
-  .fullpageControl {
-    display: flex;
-    flex-direction: column;
-    position: fixed;
-    bottom: 5%;
-    left: 0;
-    font-size: 2rem;
-    line-height: 2rem;
-    z-index: 1;
+  .textEllipsis {
+    @apply overflow-hidden text-ellipsis break-keep line-clamp-2 whitespace-nowrap;
+  }
+
+  .mobileButton {
+    @apply text-jj_16 h-[3rem];
   }
 }

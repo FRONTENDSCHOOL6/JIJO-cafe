@@ -18,7 +18,7 @@ export default {
         yellow: "#FEE500",
       },
       screens: {
-        mobile: { min: "390px", max: "727px" },
+        mobile: { max: "727px" },
         tablet: { min: "728px", max: "1280px" },
         desktop: { min: "1281px" },
       },

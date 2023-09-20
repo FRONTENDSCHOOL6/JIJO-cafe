@@ -22,8 +22,15 @@ export default function MenuCarousel() {
         }}
         grabCursor={true}
         spaceBetween={15}
-        slidesPerView={2}
-        autoHeight={false}
+        autoHeight={true}
+        breakpoints={{
+          390: {
+            slidesPerView: 4,
+          },
+          768: {
+            slidesPerView: 2,
+          },
+        }}
         id="menuSwiper"
       >
         {data &&
@@ -33,8 +40,10 @@ export default function MenuCarousel() {
                 <figure>
                   {<img src={getPbImageURL(item, "image")} alt="" />}
                   <div className="menutitleSection">
-                    <h5 className="font-medium text-jj_24 text-deepDarkGray">{item.title}</h5>
-                    <figcaption className="mt-5 text-gray-400 text-jj_16 max-w-[350px]">{item.description}</figcaption>
+                    <h5 className="font-medium text-jj_24 text-deepDarkGray mobile:text-jj_16 mobile:textEllipsis">{item.title}</h5>
+                    <figcaption className="mt-5 text-gray-400 mobile:text-jj_13 text-jj_16 max-w-[21.875rem] mobile:textEllipsis">
+                      {item.description}
+                    </figcaption>
                   </div>
                 </figure>
               </SwiperSlide>

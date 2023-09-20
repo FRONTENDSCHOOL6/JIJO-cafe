@@ -20,6 +20,7 @@ function Main() {
   const [currentPage, setCurrentPage] = useState(1);
 
   const handleScroll = (e) => {
+    // 세로 스크롤 크기를 담은 변수. 위로 스크롤되면 음수, 아래로 스크롤되면 양수를 반환하고, 멈춰있을 땐 0을 반환
     const deltaY = e.deltaY;
     if (deltaY > 0 && currentPage < 3) {
       setCurrentPage(currentPage + 1);
@@ -37,7 +38,7 @@ function Main() {
   }, [currentPage]);
 
   return (
-    <>
+    <div className="">
       <Helmet>
         <title>카페지조-메인페이지</title>
       </Helmet>
@@ -63,7 +64,7 @@ function Main() {
           <Footer />
         </section>
       </section>
-    </>
+    </div>
   );
 }
 
