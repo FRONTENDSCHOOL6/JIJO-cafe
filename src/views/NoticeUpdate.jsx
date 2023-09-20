@@ -3,14 +3,13 @@ import DataForm from "@/components/Notice/DataForm"
 import MenuTitle from "@/components/MenuTitle"
 import JijoSpinner from "@/components/JijoSpinner"
 import PageMainTitle from "@/components/PageMainTitle"
-import { Helmet } from "react-helmet-async"
+import JiJoHelmet from "@/utils/JiJoHelmet"
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import JiJoHelmet from "@/utils/JiJoHelmet"
 
 function NoticeUpdate() {
-  const { noticeId } = useParams()
   const Navigate = useNavigate()
+  const { noticeId } = useParams()
   const [data, setData] = useState(null)
   const [status, setStatus] = useState("pending")
   const [error, setError] = useState(null)
@@ -56,7 +55,7 @@ function NoticeUpdate() {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
     const data = Object.fromEntries(formData.entries())
-    const record = await pb.collection("notices").update(noticeId, data)
+    await pb.collection("notices").update(noticeId, data)
     Navigate(`/bbs/notice/detail/${noticeId}`)
   }
 

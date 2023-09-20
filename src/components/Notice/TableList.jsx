@@ -1,10 +1,11 @@
-import yyyymmddDate from "@/utils/yyyymmddDate"
 import pb from "@/api/pocketbase"
 import { Link } from "react-router-dom"
+import yyyymmddDate from "@/utils/yyyymmddDate"
 
 function TableList({ collection, data, field }) {
+  // 조회수 증가
   const handleUpViews = async (item) => {
-    const record = await pb.collection(`${collection}`).update(item.id, { [`${field}Views`]: item[`${field}Views`] + 1 })
+    await pb.collection(`${collection}`).update(item.id, { [`${field}Views`]: item[`${field}Views`] + 1 })
   }
 
   return (

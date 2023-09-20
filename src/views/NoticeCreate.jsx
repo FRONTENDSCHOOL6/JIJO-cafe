@@ -1,12 +1,11 @@
 import pb from "@/api/pocketbase"
+import { useState } from "react"
+import { useNavigate } from "react-router-dom"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import JijoSpinner from "@/components/JijoSpinner"
 import MenuTitle from "@/components/MenuTitle"
 import PageMainTitle from "@/components/PageMainTitle"
-import { Helmet } from "react-helmet-async"
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
 import DataForm from "@/components/Notice/DataForm"
-import { useMutation, useQueryClient } from "@tanstack/react-query"
 import JiJoHelmet from "@/utils/JiJoHelmet"
 
 function NoticeCreate() {
@@ -23,7 +22,7 @@ function NoticeCreate() {
         .collection("notices")
         .create(data)
         .then((response) => response.data),
-    onSuccess: (savedTodo) => {
+    onSuccess: () => {
       queryClient.invalidateQueries({
         queryKey: ["notice"],
       })

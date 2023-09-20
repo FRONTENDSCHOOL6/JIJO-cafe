@@ -1,12 +1,11 @@
 import pb from "@/api/pocketbase"
 import DataForm from "@/components/Notice/DataForm"
 import MenuTitle from "@/components/MenuTitle"
+import JiJoHelmet from "@/utils/JiJoHelmet"
 import JijoSpinner from "@/components/JijoSpinner"
 import PageMainTitle from "@/components/PageMainTitle"
-import { Helmet } from "react-helmet-async"
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
-import JiJoHelmet from "@/utils/JiJoHelmet"
 
 function FaqUpdate() {
   const { FaqId } = useParams()
@@ -55,11 +54,8 @@ function FaqUpdate() {
   const handleUpdate = async (e) => {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
-    console.log(formData)
     const data = Object.fromEntries(formData.entries())
-    console.log(data)
-    console.log(FaqId)
-    const record = await pb.collection("faq").update(FaqId, data)
+    await pb.collection("faq").update(FaqId, data)
     Navigate(`/bbs/faq/detail/${FaqId}`)
   }
 

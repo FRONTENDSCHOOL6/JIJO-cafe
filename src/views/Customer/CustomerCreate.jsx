@@ -1,11 +1,10 @@
-import MenuTitle from "@/components/MenuTitle"
-import PageMainTitle from "@/components/PageMainTitle"
-import { useId } from "react"
-import { Helmet } from "react-helmet-async"
-import S from "./CustomerCreate.module.css"
-import Button from "@/components/Button"
-import { useState } from "react"
+import { useId, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import Button from "@/components/Button"
+import MenuTitle from "@/components/MenuTitle"
+import JiJoHelmet from "@/utils/JiJoHelmet"
+import PageMainTitle from "@/components/PageMainTitle"
+import S from "./CustomerCreate.module.css"
 
 function CustomerCreate() {
   const id = useId()
@@ -22,9 +21,7 @@ function CustomerCreate() {
 
   return (
     <>
-      <Helmet>
-        <title>지조소식 - 고객의 소리</title>
-      </Helmet>
+      <JiJoHelmet pageTitle="지조소식 - 고객의 소리" />
       <MenuTitle title="JIJO NEWS"> JIJO 고객의 소리</MenuTitle>
       <section className={S.section}>
         {/* <section> */}

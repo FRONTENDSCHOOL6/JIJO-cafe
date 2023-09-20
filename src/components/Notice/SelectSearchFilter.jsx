@@ -1,15 +1,13 @@
 import { Link } from "react-router-dom"
-import { useId } from "react"
+import { useId, useRef } from "react"
 import Input from "@/components/Input"
 import Button from "@/components/Button"
 import useAuthStore from "@/store/store"
-import { useRef } from "react"
 
 function SelectSearchFilter({ Collection, option, onChangeOption, onChangeText, handleReload }) {
   const id = useId()
   const user = useAuthStore((state) => state.user)
   const isAdmin = user && user.role === "admin"
-
   const searchInputRef = useRef(null)
 
   const handleSearchClick = () => {

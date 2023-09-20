@@ -1,15 +1,13 @@
+import { Link } from "react-router-dom"
 import MenuTitle from "@/components/MenuTitle"
 import PageMainTitle from "@/components/PageMainTitle"
-import { Helmet } from "react-helmet-async"
 import Button from "@/components/Button"
-import { Link } from "react-router-dom"
+import JiJoHelmet from "@/utils/JiJoHelmet"
 
 function Customer() {
   return (
     <>
-      <Helmet>
-        <title>지조소식 - 고객의 소리</title>
-      </Helmet>
+      <JiJoHelmet pageTitle="지조소식 - 고객의 소리" />
       <MenuTitle title="JIJO NEWS"> JIJO 고객의 소리</MenuTitle>
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60 text-deepDarkGray">
         <PageMainTitle pageTitleText="고객의 소리" pageSubTitleText="문의가 많은 사항의 경우 FAQ를 통해 빠르게 확인하실 수 있습니다."></PageMainTitle>
