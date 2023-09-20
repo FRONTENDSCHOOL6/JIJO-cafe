@@ -1,0 +1,15 @@
+/* body {
+  @apply m-0 overflow-y-hidden;
+}
+
+.outer {
+  @apply h-screen overflow-y-auto;
+}
+
+.outer::-webkit-scrollbar {
+  @apply hidden;
+}
+
+.inner {
+  @apply h-screen flex justify-center items-center font-[100px];
+} */
