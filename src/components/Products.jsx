@@ -1,9 +1,9 @@
-import { getPbImageURL } from '@/utils/getPbImageURL';
-import { numberWithComma } from '@/utils/numberWithComma';
-import { useState } from 'react';
-import useCartStore from '@/store/cartStore';
-import ProductModal from './ProductModal';
-import LazyImage from '@/utils/LazyImage';
+import { getPbImageURL } from "@/utils/getPbImageURL"
+import { numberWithComma } from "@/utils/numberWithComma"
+import { useState } from "react"
+import useCartStore from "@/store/cartStore"
+import ProductModal from "./ProductModal"
+import LazyImage from "@/utils/LazyImage"
 
 function Products({ data }) {
   return (
@@ -14,58 +14,39 @@ function Products({ data }) {
         ))}
       </ul>
     </div>
-  );
+  )
 }
 
-export default Products;
+export default Products
 
 function ProductItem({ collection, item, id, name, price, ...restProps }) {
-  const [isClicked, setIsClicked] = useState(false);
+  const [isClicked, setIsClicked] = useState(false)
   const handleClick = () => {
-    setIsClicked(!isClicked);
-  };
+    setIsClicked(!isClicked)
+  }
 
-  const handleAddToCart = useCartStore((state) => state.add);
+  const handleAddToCart = useCartStore((state) => state.add)
 
   return (
-    <li
-      key={item.id}
-      className="relative cursor-pointer"
-      onClick={handleClick}
-      {...restProps}
-    >
+    <li key={item.id} className="relative cursor-pointer" onClick={handleClick} {...restProps}>
       <div>
         <div className="imgFrame relative w-80 h-80 overflow-hidden">
-          <LazyImage
-            src={getPbImageURL(item, "image")}
-            className="w-full transition-all ease-in hover:scale-110"
-            alt={item.title}
-          />
+          <LazyImage src={getPbImageURL(item, "image")} className="w-full transition-all ease-in hover:scale-110" alt={item.title} />
           <button
             onClick={() => {
-              handleAddToCart(item);
+              handleAddToCart(item)
             }}
           >
-            <img
-              src="/src/assets/images/menu/cart.svg"
-              className="absolute bottom-0 right-0"
-              alt=""
-            />
+            <img src="/src/assets/images/menu/cart.svg" className="absolute bottom-0 right-0" alt="" />
           </button>
         </div>
         <div className="text py-6">
-          <p className="title text-jj_22 pb-5 mb-[.3125rem] border-b overflow-hidden text-ellipsis whitespace-nowrap">
-            {item.title}
-          </p>
-          <span className="price text-[#1c1c1b] opacity-70 text-jj_14 leading-none">
-            {numberWithComma(item.price)}
-          </span>
-          <p className="desc text-[#1c1c1b] opacity-70 text-jj_14 mobile:text-sm mt-5 overflow-hidden text-ellipsis line-clamp-2">
-            {item.description}
-          </p>
+          <p className="title text-jj_22 pb-5 mb-[.3125rem] border-b overflow-hidden text-ellipsis whitespace-nowrap">{item.title}</p>
+          <span className="price text-[#1c1c1b] opacity-70 text-jj_14 leading-none">{numberWithComma(item.price)}</span>
+          <p className="desc text-[#1c1c1b] opacity-70 text-jj_14 mobile:text-sm mt-5 overflow-hidden text-ellipsis line-clamp-2">{item.description}</p>
         </div>
       </div>
       {isClicked && <ProductModal key={item.id} item={item} />}
     </li>
-  );
+  )
 }
