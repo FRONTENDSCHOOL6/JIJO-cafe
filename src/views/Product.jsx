@@ -30,7 +30,7 @@ function Product() {
           </div>
         </div>
         <figure className="shrink-0 tablet:shrink mobile:w-full">
-          <img src="/src/assets/images/menu/product/product_image01.jpg" alt="메가로운 일상의 커피" />
+          <LazyImage src="/src/assets/images/menu/product/product_image01.jpg" alt="지조로운 일상의 커피" />
         </figure>
       </section>
       <section className="bg-white mx-auto max-w-7xl mt-[6.25rem] mobile:px-5">

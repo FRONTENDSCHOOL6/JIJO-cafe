@@ -1,11 +1,9 @@
-import {useEffect} from "react";
+import FindStoreSearchFormListWrapper from "@/layout/Wrapper/FindStoreSearchFormListWrapper";
 import Button from "./Button";
 import Input from "./Input";
 import ReadingGlassesButton from "./ReadingGlassesButton";
-const {kakao} = window;
 
 function FindStoreSearchForm({
-  inputRef,
   searchedResult,
   handleInputChange,
   handleSearchSubmit,
@@ -21,20 +19,18 @@ function FindStoreSearchForm({
       <form
         className="flex flex-col absolute top-0 left-0 p-8 w-[20rem]"
         onSubmit={(e) => e.preventDefault()}>
-        <div className="btnWrap flex">
-          <Button
-            color="secondary"
-            className="flex-grow"
-            onClick={handleSearchSubmit}>
-            지역검색
-          </Button>
-        </div>
+        <Button
+          color="secondary"
+          className="flex-grow"
+          onClick={handleSearchSubmit}>
+          지역검색
+        </Button>
         <div className="searchWrap flex flex-col text-center bg-primary">
           <h2 className="font-semibold py-[1.25rem]">매장찾기</h2>
           <span className="font-thin">함께하는 카페지조</span>
           <div className="inputWrap relative">
             <Input
-              ref={inputRef}
+              autoFocus
               onKeyDown={(e) => {
                 if (e.key === "Enter") {
                   handleSearchSubmit();
@@ -51,7 +47,7 @@ function FindStoreSearchForm({
             />
           </div>
         </div>
-        <div className="searchFormListWrap bg-white pb-[15rem] text-center pt-4 h-[20rem] overflow-scroll">
+        <FindStoreSearchFormListWrapper>
           {kakaoPlaceResult?.length === 0 ? (
             <p>검색결과가 없습니다</p>
           ) : (
@@ -68,7 +64,7 @@ function FindStoreSearchForm({
               })}
             </ul>
           )}
-        </div>
+        </FindStoreSearchFormListWrapper>
       </form>
     </>
   );

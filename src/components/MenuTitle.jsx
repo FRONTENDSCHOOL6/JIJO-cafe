@@ -1,4 +1,4 @@
-function MenuTitle({title, children}) {
+function MenuTitle({title, mainMenu, subMenu, children}) {
   return (
     <div className="bg-secondary p-jj_100">
       <div className="max-w-7xl mx-auto text-center">
@@ -10,10 +10,10 @@ function MenuTitle({title, children}) {
               <a href="/">홈<span className="mx-2">&gt;</span></a>
             </li>
             <li className="inline-block">
-              <a href="">메뉴소개<span className="mx-2">&gt;</span></a>
+              <a href="">{mainMenu}<span className="mx-2">&gt;</span></a>
             </li>
             <li className="inline-block">
-              <a href="">음료</a>
+              <a href="">{subMenu}</a>
             </li>
           </ul>
         </div>
