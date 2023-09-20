@@ -3,7 +3,8 @@ import MenuTitle from "@/components/MenuTitle";
 import MenuBubble from "@/components/MenuBubble";
 import CheckBox from "@/components/CheckBox/CheckBox";
 import Products from "@/components/Products";
-import LazyImage from "@/utils/LazyImage";
+
+
 function Product() {
   return (
     <div>

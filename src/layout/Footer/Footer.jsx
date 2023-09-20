@@ -1,19 +1,29 @@
-import styles from "./Footer.module.css";
+import FooterModal from '@/components/FooterModal';
+import styles from './Footer.module.css';
+import {Link} from 'react-router-dom';
+import { useState } from 'react';
 
 function Footer() {
+  const [isClicked, setIsClicked] = useState(false);
+  const handleClick = () => {
+    setIsClicked(!isClicked);
+  }
+
   return (
     <footer className="bg-secondary">
       <div className="terms bg-primary py-5">
         <ul className="flex max-w-7xl mx-auto gap-5 tablet:justify-center mobile:justify-center">
           <li>
-            <a className="font-bold hover:underline" href="#">
+            <button className="font-bold hover:underline" onClick={handleClick}>
               이용약관
-            </a>
+            </button>
+              {isClicked && <FooterModal/>}
+            
           </li>
           <li>
-            <a className="font-bold hover:underline" href="#">
+            <button className="font-bold hover:underline">
               개인정보취급방침
-            </a>
+            </button>
           </li>
         </ul>
       </div>
@@ -30,28 +40,19 @@ function Footer() {
             </figure>
             <ul className="snsIcon flex gap-2 mt-2">
               <li>
-                <a href="https://github.com/FRONTENDSCHOOL6/JIJO-cafe">
-                  <img
-                    src="/src/assets/images/github.svg"
-                    alt="카페지조 깃허브"
-                  />
-                </a>
+                <Link to="https://github.com/FRONTENDSCHOOL6/JIJO-cafe">
+                  <img src="/src/assets/images/github.svg" alt="카페지조 깃허브" />
+                </Link>
               </li>
               <li>
-                <a href="">
-                  <img
-                    src="/src/assets/images/facebook.svg"
-                    alt="카페지조 페이스북"
-                  />
-                </a>
+                <Link to="">
+                  <img src="/src/assets/images/facebook.svg" alt="카페지조 페이스북" />
+                </Link>
               </li>
               <li>
-                <a href="https://mammoth-sassafras-ff5.notion.site/15-bae6c4f5253342a1bf7a7a5e3a23b976?pvs=4">
-                  <img
-                    src="/src/assets/images/notion.svg"
-                    alt="카페지조 노션"
-                  />
-                </a>
+                <Link to="https://mammoth-sassafras-ff5.notion.site/15-bae6c4f5253342a1bf7a7a5e3a23b976?pvs=4">
+                  <img src="/src/assets/images/notion.svg" alt="카페지조 노션" />
+                </Link>
               </li>
             </ul>
           </div>
@@ -86,25 +87,19 @@ function Footer() {
               <strong className="text-light text-jj_17">메뉴소개</strong>
               <ul className="flex flex-col gap-2 mt-3 text-jj_14">
                 <li>
-                  <a
-                    href="/menu/drink"
-                    className="opacity-70 hover:opacity-100 hover:underline">
+                  <Link to="/menu/drink" className="opacity-70 hover:opacity-100 hover:underline">
                     음료
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="/menu/food"
-                    className="opacity-70 hover:opacity-100 hover:underline">
+                  <Link to="/menu/food" className="opacity-70 hover:opacity-100 hover:underline">
                     푸드
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="/menu/product"
-                    className="opacity-70 hover:opacity-100 hover:underline">
+                  <Link to="/menu/product" className="opacity-70 hover:opacity-100 hover:underline">
                     상품
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
@@ -112,11 +107,9 @@ function Footer() {
               <strong className="text-light text-jj_17">매장</strong>
               <ul className="flex flex-col gap-2 mt-3 text-jj_14">
                 <li>
-                  <a
-                    href="/findStore"
-                    className="opacity-70 hover:opacity-100 hover:underline">
+                  <Link to="/findStore" className="opacity-70 hover:opacity-100 hover:underline">
                     매장찾기
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>
@@ -124,32 +117,24 @@ function Footer() {
               <strong className="text-light text-jj_17">지조소식</strong>
               <ul className="flex flex-col gap-2 mt-3 text-jj_14">
                 <li>
-                  <a
-                    href="/bbs/notice"
-                    className="opacity-70 hover:opacity-100 hover:underline">
+                  <Link to="/bbs/notice" className="opacity-70 hover:opacity-100 hover:underline">
                     공지사항
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="/bbs/faq"
-                    className="opacity-70 hover:opacity-100 hover:underline">
+                  <Link to="/bbs/event" className="opacity-70 hover:opacity-100 hover:underline">
                     이벤트
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="/bbs/customer"
-                    className="opacity-70 hover:opacity-100 hover:underline">
+                  <Link to="/bbs/faq" className="opacity-70 hover:opacity-100 hover:underline">
                     FAQ
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a
-                    href="/bbs/event"
-                    className="opacity-70 hover:opacity-100 hover:underline">
+                  <Link to="/bbs/customer" className="opacity-70 hover:opacity-100 hover:underline">
                     고객의 소리
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </li>

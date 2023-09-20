@@ -1,19 +1,25 @@
-import {Helmet} from "react-helmet-async";
-import useToggle from "@/hooks/useToggle";
-import PageMainTitle from "@/components/PageMainTitle";
-import {numberWithComma} from "@/utils/numberWithComma";
-import CheckBox from "@/components/CheckBox/CheckBox";
 import Button from "@/components/Button";
-import {useState} from "react";
 import OrderList from "@/components/Cart/OrderList";
+import StoreChangeModal from "@/components/Cart/StoreChangeModal";
+import CheckBox from "@/components/CheckBox/CheckBox";
+import PageMainTitle from "@/components/PageMainTitle";
+import useToggle from "@/hooks/useToggle";
+import useCartStore from "@/store/cartStore";
+import { useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 function Cart() {
   const [toggleDropDown, setToggleDropDown] = useToggle(true);
-  const [value, setValue] = useState(1);
-  // const handleCount = (e) => {
-  //   e.preventDefault();
-  //   setValue((prev) => prev + 1) ;
-  // }
+  const [isClicked, setIsClicked] = useState(false);
+  const {cart} = useCartStore();
+  const handleClick = () => {
+    setIsClicked(!isClicked);
+  };
+  const handleClose = () => {
+    setIsClicked(false);
+  };
+  
+  
 
   return (
     <>
@@ -37,7 +43,7 @@ function Cart() {
                 />
               </button>
             </div>
-            {toggleDropDown && <OrderList value={value} setValue={setValue} />}
+            {toggleDropDown && <OrderList />}
           </div>
           <div className="selectArea font-semibold">
             <CheckBox text="전체선택(3/3) " defaultChecked="checked" />
@@ -58,19 +64,16 @@ function Cart() {
               </p>
               <Button
                 className="w-full bg-white text-secondary border border-secondary hover:border-primary hover:text-white grow my-4"
-                color="primary">
+                color="primary"
+                onClick={handleClick}
+              >
                 매장변경
               </Button>
+              {isClicked && <StoreChangeModal handleClose={handleClose}/>}
             </div>
             <div className="orderInfoBottom border border-gray-200 bg-gray-100 p-5">
               <div className="flex justify-between mb-4">
                 <span>상품금액</span>
-                <span className="font-semibold">
-                  <span>10,000</span>원
-                </span>
-              </div>
-              <div className="flex justify-between">
-                <span>상품할인금액</span>
                 <span className="font-semibold">
                   <span>5,000</span>원
                 </span>

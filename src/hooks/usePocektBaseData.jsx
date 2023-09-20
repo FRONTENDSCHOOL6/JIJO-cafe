@@ -54,7 +54,7 @@ export const usePocketBaseFilteredData = (
       }
     };
     fetchData();
-  }, [dependency]);
+  }, [collection, page, perPage, filterOption]);//dependency가 있어야 서버에 요청을 할 수 있음.
   return {data, status};
 };
 
