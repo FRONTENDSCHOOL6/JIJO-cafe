@@ -1,15 +1,14 @@
-import {useId} from "react";
-import {useEffect} from "react";
-import {useState} from "react";
-import pb from "@/api/pocketbase";
-import {getPbImageURL} from "@/utils/getPbImageURL";
-import ProductModal from "./ProductModal";
-import {numberWithComma} from "@/utils/numberWithComma";
-import {usePocketBaseFilteredData} from "@/hooks/usePocektBaseData";
+import { useId } from "react"
+import { useEffect } from "react"
+import { useState } from "react"
+import pb from "@/api/pocketbase"
+import { getPbImageURL } from "@/utils/getPbImageURL"
+import ProductModal from "./ProductModal"
+import { numberWithComma } from "@/utils/numberWithComma"
+import { usePocketBaseFilteredData } from "@/hooks/usePocektBaseData"
 
-function Products({collection}) {
-  pb.autoCancellation(false);
-  const {data, status} = usePocketBaseFilteredData(collection, 1, 20);
+function Products({ collection }) {
+  const { data, status } = usePocketBaseFilteredData(collection, 1, 20)
 
   if (data) {
     return (
@@ -20,52 +19,36 @@ function Products({collection}) {
           ))}
         </ul>
       </div>
-    );
+    )
   }
 }
 
-export default Products;
+export default Products
 
-function ProductItem({item, ...restProps}) {
-  const [isClicked, setIsClicked] = useState(false);
+function ProductItem({ item, ...restProps }) {
+  const [isClicked, setIsClicked] = useState(false)
   const handleClick = () => {
-    setIsClicked(!isClicked);
-  };
+    setIsClicked(!isClicked)
+  }
 
   return (
-    <li
-      key={item.id}
-      {...restProps}
-      className="relative cursor-pointer"
-      onClick={handleClick}>
-      <div>
-        <div className="imgFrame relative w-80 h-80 overflow-hidden">
-          <img
-            src={getPbImageURL(item, "image")}
-            className="w-full transition-all ease-in hover:scale-110"
-            alt={item.title}
-          />
-          <a href="/cart">
-            <img
-              src="/src/assets/images/menu/cart.svg"
-              className="absolute bottom-0 right-0"
-              alt=""
-            />
-          </a>
+    <>
+      <li key={item.id} {...restProps} className="relative cursor-pointer" onClick={handleClick}>
+        <div>
+          <div className="imgFrame relative w-80 h-80 overflow-hidden">
+            <img src={getPbImageURL(item, "image")} className="w-full transition-all ease-in hover:scale-110" alt={item.title} />
+            <a href="/cart">
+              <img src="/src/assets/images/menu/cart.svg" className="absolute bottom-0 right-0" alt="" />
+            </a>
+          </div>
+          <div className="text py-6">
+            <p className="title text-jj_22 pb-5 mb-[.3125rem] border-b overflow-hidden text-ellipsis whitespace-nowrap">{item.title}</p>
+            <span className="price text-[#1c1c1b] opacity-70 text-jj_14 leading-none">{numberWithComma(item.price)}</span>
+            <p className="desc text-[#1c1c1b] opacity-70 text-jj_14 mobile:text-sm mt-5 overflow-hidden text-ellipsis line-clamp-2">{item.description}</p>
+          </div>
         </div>
-        <div className="text py-6">
-          <p className="title text-jj_22 pb-5 mb-[.3125rem] border-b overflow-hidden text-ellipsis whitespace-nowrap">
-            {item.title}
-          </p>
-          <span className="price text-[#1c1c1b] opacity-70 text-jj_14 leading-none">
-            {numberWithComma(item.price)}
-          </span>
-          <p className="desc text-[#1c1c1b] opacity-70 text-jj_14 mobile:text-sm mt-5 overflow-hidden text-ellipsis line-clamp-2">
-            {item.description}
-          </p>
-        </div>
-      </div>
-      {isClicked && <ProductModal key={item.id} item={item} />}
-    </li>
-  );
+        {isClicked && <ProductModal key={item.id} item={item} />}
+      </li>
+    </>
+  )
 }
