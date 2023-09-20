@@ -1,17 +1,33 @@
-import { motion } from "framer-motion";
-import { easeIn } from "framer-motion"
+import useAuthStore from "@/store/store";
+import OrderListEmptyItem from "./OrderListEmptyItem";
 import OrderListItem from "./OrderListItem";
+import useCartStore from "@/store/cartStore";
 
-function OrderList({value, setValue}) {
+function OrderList() {
+  /* 인증 정보에 따른 로그인 ➡️ 로그아웃으로 변경 */
+  const isAuth = useAuthStore((state) => state.isAuth);
+  const {add: handleAddToCart} = useCartStore();
+  const { cart } = useCartStore();
+  console.log(cart);
+  //console.log(product);
+  
+
   return (
-    <motion.ul 
-      className="orderList"
-      initial={{ x: 0, y: `-100%` }}
-      animate={{ x: 0, y: 0 }}
-      transition={{ duration: 0.8 }}
-    >
-    <OrderListItem value={value} setValue={setValue}/>
-  </motion.ul>
+    <ul className="orderList">
+      {/* {isAuth ? (
+        {cart.length ? cart.map((product, index) =>
+          <OrderListItem/>
+          ) : (<OrderListEmptyItem/>)}
+        ) : (<OrderListEmptyItem/>)
+      } */}
+
+      
+      {cart.length ? cart && cart.map((product) =>
+        <OrderListItem product={product} />
+        ) : (
+        <OrderListEmptyItem/>
+      )}
+  </ul>
   )
 }
 

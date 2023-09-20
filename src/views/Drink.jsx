@@ -1,18 +1,33 @@
-import {Helmet} from "react-helmet-async";
-import MenuTitle from "@/components/MenuTitle";
-import MenuBubble from "@/components/MenuBubble";
-import Products from "@/components/Products";
 import Categories from "@/components/Categories";
-import { useParams } from "react-router-dom";
+import JijoSpinner from "@/components/JijoSpinner";
+import MenuBubble from "@/components/MenuBubble";
+import MenuTitle from "@/components/MenuTitle";
+import Products from "@/components/Products";
+import { usePocketBaseFilteredData } from "@/hooks/usePocektBaseData";
 import { useState } from "react";
+import { Helmet } from "react-helmet-async";
+
+const collection = 'beverage';
 
 function Drink() {
+  const [category, setCategory] = useState('전체보기');//커피, 티, 에이드&주스, 스무디&프라페, 디카페인, 음료, 신상품
+  const {data, status} = usePocketBaseFilteredData(collection, 1, 20, category !== '전체보기' ? `(category~'${category}')` : '');
+  
+
+  const handleCategory = (newCategory) => {
+    setCategory(newCategory)
+  }
+
+  if (status === "loading") {
+    return <JijoSpinner />
+  }
+
   return (
     <div>
       <Helmet>
         <title>메뉴소개 - 음료</title>
       </Helmet>
-      <MenuTitle title="MEGA MENU">DRINK MENU</MenuTitle>
+      <MenuTitle title="MEGA MENU" mainMenu="메뉴소개" subMenu="음료">DRINK MENU</MenuTitle>
       <MenuBubble>
         <strong>깊고 부드러운 커피 맛의 비밀</strong>
         <br />
@@ -55,10 +70,10 @@ function Drink() {
           <p className="title text-jj_22 leading-tight pb-5 mb-5 border-b border-b-gray-200">
             분류보기
           </p>
-          <Categories />
+          <Categories name={name} category={category} handleCategory={handleCategory}/>
         </div>
 
-        <Products collection="beverage" />
+        <Products data={data}/>
       </section>
     </div>
   );

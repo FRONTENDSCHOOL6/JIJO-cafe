@@ -1,10 +1,27 @@
-import {Helmet} from "react-helmet-async";
-import MenuTitle from "@/components/MenuTitle";
+import Categories from "@/components/Categories";
+import JijoSpinner from "@/components/JijoSpinner";
 import MenuBubble from "@/components/MenuBubble";
-import CheckBox from "@/components/CheckBox/CheckBox";
+import MenuTitle from "@/components/MenuTitle";
 import Products from "@/components/Products";
+import { usePocketBaseFilteredData } from "@/hooks/usePocektBaseData";
+import { useState } from "react";
+import { Helmet } from "react-helmet-async";
+
+const collection = 'food';
 
 function Food() {
+  const [category, setCategory] = useState('전체보기');
+  const {data, status} = usePocketBaseFilteredData(collection, 1, 20, category !== '전체보기' ? `(category~'${category}')` : '');
+  
+
+  const handleCategory = (newCategory) => {
+    setCategory(newCategory)
+  }
+
+  if (status === "loading") {
+    return <JijoSpinner />
+  }
+
   return (
     <div>
       <Helmet>
@@ -53,14 +70,10 @@ function Food() {
           <p className="title text-jj_22 leading-tight pb-5 mb-5 border-b border-b-gray-200">
             분류보기
           </p>
-          <div className="checkboxWrap flex gap-[.625rem]">
-            <CheckBox text="전체 상품보기" defaultChecked="checked"/>
-            <CheckBox text="디저트" />
-            <CheckBox text="상품" />
-          </div>
+          <Categories category={category} handleCategory={handleCategory}/>
         </div>
 
-        <Products collection="foods" />
+        <Products data={data} />
       </section>
     </div>
   );

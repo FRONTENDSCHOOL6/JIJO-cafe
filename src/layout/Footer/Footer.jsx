@@ -1,20 +1,29 @@
+import FooterModal from '@/components/FooterModal';
 import styles from './Footer.module.css';
 import {Link} from 'react-router-dom';
+import { useState } from 'react';
 
 function Footer() {
+  const [isClicked, setIsClicked] = useState(false);
+  const handleClick = () => {
+    setIsClicked(!isClicked);
+  }
+
   return (
     <footer className="bg-secondary">
       <div className="terms bg-primary py-5">
         <ul className="flex max-w-7xl mx-auto gap-5 tablet:justify-center mobile:justify-center">
           <li>
-            <a className="font-bold hover:underline" href="#">
+            <button className="font-bold hover:underline" onClick={handleClick}>
               이용약관
-            </a>
+            </button>
+              {isClicked && <FooterModal/>}
+            
           </li>
           <li>
-            <a className="font-bold hover:underline" href="#">
+            <button className="font-bold hover:underline">
               개인정보취급방침
-            </a>
+            </button>
           </li>
         </ul>
       </div>
@@ -113,17 +122,17 @@ function Footer() {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/bbs/faq" className="opacity-70 hover:opacity-100 hover:underline">
+                  <Link to="/bbs/event" className="opacity-70 hover:opacity-100 hover:underline">
                     이벤트
                   </Link>
                 </li>
                 <li>
-                  <Link to="/bbs/customer" className="opacity-70 hover:opacity-100 hover:underline">
+                  <Link to="/bbs/faq" className="opacity-70 hover:opacity-100 hover:underline">
                     FAQ
                   </Link>
                 </li>
                 <li>
-                  <Link to="/bbs/event" className="opacity-70 hover:opacity-100 hover:underline">
+                  <Link to="/bbs/customer" className="opacity-70 hover:opacity-100 hover:underline">
                     고객의 소리
                   </Link>
                 </li>
