@@ -3,6 +3,7 @@ import { numberWithComma } from '@/utils/numberWithComma';
 import { useState } from 'react';
 import useCartStore from '@/store/cartStore';
 import ProductModal from './ProductModal';
+import LazyImage from '@/utils/LazyImage';
 
 function Products({ data }) {
   return (

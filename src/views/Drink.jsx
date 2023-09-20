@@ -6,6 +6,7 @@ import Products from "@/components/Products";
 import { usePocketBaseFilteredData } from "@/hooks/usePocektBaseData";
 import { useState } from "react";
 import { Helmet } from "react-helmet-async";
+import LazyImage from "@/utils/LazyImage";
 
 const collection = 'beverage';
 

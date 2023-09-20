@@ -15,6 +15,10 @@ function Cart() {
   const handleClick = () => {
     setIsClicked(!isClicked);
   };
+  const handleClose = () => {
+    setIsClicked(false);
+  };
+  
   
 
   return (
@@ -65,7 +69,7 @@ function Cart() {
               >
                 매장변경
               </Button>
-              {isClicked && <StoreChangeModal />}
+              {isClicked && <StoreChangeModal handleClose={handleClose}/>}
             </div>
             <div className="orderInfoBottom border border-gray-200 bg-gray-100 p-5">
               <div className="flex justify-between mb-4">
