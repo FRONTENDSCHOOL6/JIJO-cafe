@@ -8,7 +8,7 @@ function MainShopingMall() {
   return (
     <section className="grid items-center h-screen grid-cols-2 overflow-hidden bg-primary ">
       <h2 className="sr-only">메인페이지 쇼핑몰</h2>
-      <div className="flex justify-center m-auto text-deepDarkGray">
+      <div className="flex justify-center m-auto text-deepDarkGray px-[5rem]">
         <div>
           <MainpageTitle highLight="secondaryHighlight" subHeading="지조 있게 추천하는 제품" mainHeading="CAFE JIJO SHOPING MALL"></MainpageTitle>
           <p className="text-jj_22 mobile:text-jj_18">카페 지조가 추천하는 제품들을 둘러보세요!</p>

@@ -31,22 +31,15 @@
 
 #menuSwiper .swiper-slide {
   border-radius: 10px;
-}
-
-#menuSwiper .swiper-slide-prev,
-#menuSwiper .swiper-slide-next {
-  /* transform: translateY(45%); */
-  height: 100%;
-}
-
-#menuSwiper .swiper-slide-active {
   border: 1px solid #dddddd;
+}
+
+#menuSwiper .swiper-slide-next {
+  margin-top: 20%;
 }
 
 #menuSwiper .swiper-slide-prev img,
 #menuSwiper .swiper-slide-next img {
-  transform: translateY(39%);
-  border: 1px solid #dddddd;
   border-radius: 10px;
 }
 #menuSwiper .swiper-slide-active img {
