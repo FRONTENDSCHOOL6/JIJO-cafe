@@ -3,7 +3,6 @@ import ButtonWrapper from "@/layout/Wrapper/ButtonWrapper";
 import useAuthStore from "@/store/store";
 import {emailReg, pwReg} from "@/utils/Validation";
 import debounce from "@/utils/debounce";
-import {ClientResponseError} from "pocketbase";
 import {useRef, useState} from "react";
 import {toast} from "react-hot-toast";
 import {Link, useNavigate} from "react-router-dom";
@@ -18,7 +17,7 @@ import SignInForm from "./SignInForm";
 import TextHorizen from "./TextHorizen";
 import {useEffect} from "react";
 
-function SignInModal() {
+function SignInModal({setIsClickedSignin}) {
   /* Email과 Password 유효성 검사 및 조건부 렌더링 함수 */
   const [formData, setFormData] = useState({
     email: "",
@@ -44,6 +43,7 @@ function SignInModal() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const handleModalClose = () => {
     setIsModalOpen((prev) => !prev);
+    setIsClickedSignin(false);
   };
   useOutsideClickClose(formRef, handleModalClose);
 
