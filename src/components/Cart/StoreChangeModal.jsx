@@ -1,6 +1,4 @@
-import { useState } from 'react'
-import CloseButton from '@/components/CloseButton'
-import useToggle from '@/hooks/useToggle';
+import CloseButton from '@/components/CloseButton';
 
 function StoreChangeModal({handleClose}) {
 
