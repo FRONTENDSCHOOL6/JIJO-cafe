@@ -29,11 +29,11 @@ function Cart() {
         <title>장바구니</title>
       </Helmet>
       <PageMainTitle pageTitleText="JIJO CART" />
-      <div className="cartWrap mx-auto max-w-7xl flex gap-5 pb-52">
-        <div className="orderListArea w-3/4">
+      <div className="cartWrap mx-auto max-w-7xl flex gap-5 pb-52 mobile:flex-col">
+        <div className="orderListArea w-3/4 mobile:w-full">
           <div className="selectArea font-semibold">
             <CheckBox text="전체선택(3/3) " defaultChecked="checked" />
-            <button onClick={removeAll()}>| 전체삭제</button>
+            <button>| 전체삭제</button>
           </div>
           <div className="orderListWrap border-t bg-white border-secondary my-4 overflow-hidden">
             <div className="titleButtonArea flex justify-between py-4">
@@ -49,11 +49,11 @@ function Cart() {
           </div>
           <div className="selectArea font-semibold">
             <CheckBox text="전체선택(3/3) " defaultChecked="checked" />
-            <button onClick={removeAll()}>| 전체삭제</button>
+            <button>| 전체삭제</button>
           </div>
         </div>
 
-        <div className="orderInfoArea w-1/4 mt-[2.4375rem]">
+        <div className="orderInfoArea w-1/4 mt-[2.4375rem] mobile:w-full">
           <div>
             <div className="orderInfoTop border border-gray-200 p-5">
               <p className="store font-semibold">
