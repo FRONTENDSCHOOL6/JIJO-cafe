@@ -3,14 +3,22 @@ import CloseButton from "@/components/CloseButton";
 import useCartStore from "@/store/cartStore";
 import {getPbImageURL} from "@/utils/getPbImageURL";
 import {numberWithComma} from "@/utils/numberWithComma";
+import {useState} from "react";
+import toast from "react-hot-toast";
 import {Link} from "react-router-dom";
 
 function OrderListItem({product, selectedProdcut}) {
   const remove = useCartStore((state) => state.remove);
   const setCartItemCount = useCartStore((state) => state.setCartItemCount);
-  const {cart} = useCartStore();
+  const cart = useCartStore((state) => state.cart);
 
-  console.log(cart);
+  const handleDecrementItemCount = () => {
+    if (product.count > 1) {
+      setCartItemCount(product.id, -1);
+    } else {
+      toast.error("물품은 0개 이하로 내려갈 수 없습니다!");
+    }
+  };
 
   return (
     <li
@@ -28,7 +36,7 @@ function OrderListItem({product, selectedProdcut}) {
       <div className="countBtn basis-[5.5rem] font-semibold border border-gray-300 px-2 py-1 rounded-sm flex justify-between">
         <button
           type="button"
-          onClick={() => setCartItemCount(product.id, -1)}
+          onClick={handleDecrementItemCount}
           className="text-gray-400">
           -
         </button>
