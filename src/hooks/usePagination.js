@@ -2,17 +2,20 @@ import { useState } from "react"
 import { useSearchParams } from "react-router-dom"
 import { useQueryClient } from "@tanstack/react-query"
 import { useEffect } from "react"
-import { getProducts } from "@/pockets"
-import queryKeys from "@/pockets/queryKeys"
-import useQueryPocketBase from "@/pockets/useQueryPocketBase"
+import queryKeys from "@/api/pockets/queryKeys"
 
-const usePagination = ({ pageKey = "page", perPage = 50, options = {} }) => {
+const usePagination = ({ pageKey = "page", perPage = 50, collections, queryFn, useQueryPocketBase, options = {} }) => {
+  console.log(collections)
+
   const [urlSearchParams, setUrlSearchParams] = useSearchParams()
   const queryClient = useQueryClient()
 
   const [page, setPage] = useState(() => Number(urlSearchParams.get(pageKey)) ?? 1)
 
-  const { isLoading, isPreviousData, data, error } = useQueryPocketBase(queryKeys, page, perPage, options)
+  const queryKey = [queryKeys[collections]] // queryKeys에서 collections에 해당하는 값을 가져옵니다.
+
+  const { isLoading, isPreviousData, data, error } = useQueryPocketBase(queryKey, page, perPage, options)
+  console.log(data)
 
   useEffect(() => {
     if (data) {
@@ -22,15 +25,15 @@ const usePagination = ({ pageKey = "page", perPage = 50, options = {} }) => {
       if (!isPreviousData && hasNextData) {
         const nextPageIndex = page + 1
         queryClient.prefetchQuery({
-          queryKey: [queryKeys.products, nextPageIndex],
-          queryFn: () => getProducts(nextPageIndex, perPage),
+          queryKey: [queryKey, nextPageIndex],
+          queryFn: () => queryFn(nextPageIndex, perPage),
         })
       }
       if (hasPreviousData) {
         const previousPageIndex = page - 1
         queryClient.prefetchQuery({
-          queryKey: [queryKeys.products, previousPageIndex],
-          queryFn: () => getProducts(previousPageIndex, perPage),
+          queryKey: [queryKey, previousPageIndex],
+          queryFn: () => queryFn(previousPageIndex, perPage),
         })
       }
     }
