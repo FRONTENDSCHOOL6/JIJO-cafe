@@ -45,7 +45,7 @@ function EventTab() {
           sort: "updated",
           filter: getFilter(),
         });
-        console.log("events.items->", events.items);
+        // console.log("events.items->", events.items);
         setContentData(events);
         return { events };
       } catch (error) {
@@ -66,7 +66,7 @@ function EventTab() {
   if (isError) {
     return <div role="alert">{error.toString()}</div>;
   }
-  console.log("ContentData->", contentData);
+  // console.log("ContentData->", contentData);
 
   return (
     <>
