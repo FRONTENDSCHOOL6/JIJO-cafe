@@ -23,18 +23,10 @@ function Header() {
         />
       </Desktop>
       <Tablet>
-        <TabletMobileHeader
-          siginInView={isClickedSignin}
-          siginViewHandler={handleClickSignin}
-          setIsClickedSignin={setIsClickedSignin}
-        />
+        <TabletMobileHeader />
       </Tablet>
       <Mobile>
-        <TabletMobileHeader
-          siginInView={isClickedSignin}
-          siginViewHandler={handleClickSignin}
-          setIsClickedSignin={setIsClickedSignin}
-        />
+        <TabletMobileHeader />
       </Mobile>
     </>
   );
