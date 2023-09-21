@@ -1,15 +1,40 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Navigation, Keyboard } from "swiper/modules";
 import "swiper/css/pagination";
 import "@/styles/Carousel.css";
 import pb from "@/api/pocketbase";
-import { getPbImageURL } from "@/utils/getPbImageURL";
-import { usePocektBaseDataList } from "@/hooks/usePocektBaseData";
 import LazyImage from "@/utils/LazyImage";
+import { useQuery } from "@tanstack/react-query";
+import { Swiper, SwiperSlide } from "swiper/react";
+import JijoSpinner from "@/components/JijoSpinner";
+import { Pagination, Keyboard } from "swiper/modules";
+import { getPbImageURL } from "@/utils/getPbImageURL";
 
 export default function ShopingMallCarousel() {
-  pb.autoCancellation(false);
-  const { data } = usePocektBaseDataList("products");
+  const { isLoading, data, isError, error } = useQuery({
+    queryKey: ["mainProduct"],
+    queryFn: async () => {
+      // eslint-disable-next-line no-useless-catch
+      try {
+        const mainProduct = await pb.collection("products").getList(1, 10, {
+          sort: "updated",
+        });
+        return { mainProduct };
+      } catch (error) {
+        throw error;
+      }
+    },
+  });
+
+  if (isLoading) {
+    return (
+      <div>
+        <JijoSpinner />
+      </div>
+    );
+  }
+
+  if (isError) {
+    return <div role="alert">{error.toString()}</div>;
+  }
 
   return (
     <Swiper
@@ -36,7 +61,7 @@ export default function ShopingMallCarousel() {
       id="shopingMallSwiper"
     >
       {data &&
-        data?.map((item) => {
+        data.mainProduct.items?.map((item) => {
           return (
             <SwiperSlide key={item.id}>
               {
