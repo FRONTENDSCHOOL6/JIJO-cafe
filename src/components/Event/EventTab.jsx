@@ -1,9 +1,14 @@
+import { useState } from "react";
 import pb from "@/api/pocketbase";
-import TabContent from "./EventContents";
-import { useState, useEffect } from "react";
+import TabContent from "./TabContents";
+import JijoSpinner from "../JijoSpinner";
 import EventSearchForm from "./EventSearchForm";
+import { useQuery } from "@tanstack/react-query";
 
 function EventTab() {
+  const [select, setSelect] = useState("total");
+  const [contentData, setContentData] = useState([]);
+
   const items = [
     {
       type: "total",
@@ -23,41 +28,45 @@ function EventTab() {
     },
   ];
 
-  pb.autoCancellation(false);
-  const [select, setSelect] = useState("total");
-  const [contentData, setContentData] = useState(null);
-
   // setSelect에 클릭한 type 값을 담는 함수
   const handleClick = (type) => {
     setSelect(type);
   };
 
-  // filter 조건 처리 함수
-  function getFilter() {
-    return select === "total" || undefined || null ? "" : `category = "${select}"`;
+  // filter 조건 처리
+  const getFilter = () => (select === "total" || "" || undefined || null ? "" : `category = "${select}"`);
+
+  const { isLoading, data, isError, error } = useQuery({
+    queryKey: ["events", select],
+    queryFn: async () => {
+      // eslint-disable-next-line no-useless-catch
+      try {
+        const events = await pb.collection("events").getList(1, 20, {
+          sort: "updated",
+          filter: getFilter(),
+        });
+        console.log("events.items->", events.items);
+        setContentData(events);
+        return { events };
+      } catch (error) {
+        throw error;
+      }
+    },
+    refetchOnUpdate: true,
+  });
+
+  if (isLoading) {
+    return (
+      <div>
+        <JijoSpinner />
+      </div>
+    );
   }
 
-  useEffect(() => {
-    const handleData = async () => {
-      const resultList = await pb.collection("events").getList(
-        1,
-        20,
-        {
-          filter: getFilter(),
-        },
-        "events"
-      );
-      setContentData(resultList);
-    };
-
-    if (select) {
-      handleData();
-    }
-    return () => {
-      // 컴포넌트가 언마운트될 때 contentData 상태 변수를 정리
-      setContentData(null);
-    };
-  }, [select]); // select 상태 변수가 변경될 때만 useEffect() 훅이 실행되도록 함
+  if (isError) {
+    return <div role="alert">{error.toString()}</div>;
+  }
+  console.log("ContentData->", contentData);
 
   return (
     <>
@@ -75,6 +84,7 @@ function EventTab() {
         ))}
       </ul>
       <EventSearchForm />
+
       <TabContent data={contentData} />
     </>
   );
