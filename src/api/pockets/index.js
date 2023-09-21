@@ -1,10 +1,7 @@
 import PocketBase from "pocketbase"
 
-// const PB_URL = "https://pb-demo-app.pockethost.io"
 const PB_URL = "https://jijo-cafe.pockethost.io"
-
 const pb = new PocketBase(PB_URL)
-
 pb.autoCancellation(false)
 
 export default pb
@@ -27,4 +24,8 @@ export async function getNotices(page = 1, perPage = 50, options) {
 
 export async function getEvents(page = 1, perPage = 50, options) {
   return await pb.collection("events").getList(page, perPage, options)
+}
+
+export async function getPagination(key, page = 1, perPage = 2, options) {
+  return await pb.collection(key).getList(page, perPage, options)
 }
