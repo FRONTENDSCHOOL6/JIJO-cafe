@@ -1,8 +1,7 @@
-import React from "react";
+import { Link } from "react-router-dom";
 import Button from "@/components/Button";
 import MenuCarousel from "@/components/Main/MenuCarousel";
 import MainpageTitle from "@/components/Main/MainpageTitle";
-import { Link } from "react-router-dom";
 import { MainPageText1, MainPageText2 } from "@/components/Main/MainPageText";
 
 function MainMenu() {
