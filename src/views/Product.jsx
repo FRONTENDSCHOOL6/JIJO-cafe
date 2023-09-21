@@ -2,9 +2,9 @@ import { Helmet } from "react-helmet-async";
 import MenuTitle from "@/components/MenuTitle";
 import MenuBubble from "@/components/MenuBubble";
 import CheckBox from "@/components/CheckBox/CheckBox";
-import Products from "@/components/Products";
+// import Products from "@/components/Products"
+import Pagination from "@/pockets/Pagination";
 import LazyImage from "@/utils/LazyImage";
-
 function Product() {
   return (
     <div>
@@ -49,7 +49,7 @@ function Product() {
           </div>
         </div>
 
-        <Products collection="products" />
+        {/* <Pagination></Pagination> */}
       </section>
     </div>
   );
