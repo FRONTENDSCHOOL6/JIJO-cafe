@@ -11,15 +11,20 @@ import { Helmet } from "react-helmet-async";
 function Cart() {
   const [toggleDropDown, setToggleDropDown] = useToggle(true);
   const [isClicked, setIsClicked] = useState(false);
-  const {cart} = useCartStore();
+  const cart = useCartStore((state) => state.cart);
   const removeAll = useCartStore((state) => state.removeAll);
-  const totalPrice = '';
   const handleClick = () => {
     setIsClicked(!isClicked);
   };
   const handleClose = () => {
     setIsClicked(false);
   };
+  const totalPrice = cart.map((item) => {
+    
+  });
+  console.log(totalPrice);
+
+  
   
   
 
@@ -74,16 +79,10 @@ function Cart() {
               {isClicked && <StoreChangeModal handleClose={handleClose}/>}
             </div>
             <div className="orderInfoBottom border border-gray-200 bg-gray-100 p-5">
-              <div className="flex justify-between mb-4">
-                <span>상품금액</span>
-                <span className="font-semibold">
-                  <span>5000</span>원
-                </span>
-              </div>
-              <div className="flex justify-between items-center border-t border-dashed border-gray-200 pt-6 mt-6">
+              <div className="flex flex-col items-center border-t  border-gray-200 pt-6 mt-6">
                 <span>결제예정금액</span>
                 <span className="font-semibold flex items-center">
-                  <span className="text-[1.75rem] font-bold">5000</span>원
+                  <span className="text-[1.75rem] font-bold">{totalPrice}</span>원
                 </span>
               </div>
             </div>
