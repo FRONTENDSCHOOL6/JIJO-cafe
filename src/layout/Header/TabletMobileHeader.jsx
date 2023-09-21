@@ -123,6 +123,7 @@ function TabletMobileHeader() {
                   {isClickedSignin && (
                     <SignInModal setIsClickedSignin={setIsClickedSignin} />
                   )}
+                  {!isAuth && <LinkList pageLink="/signUp">회원가입</LinkList>}
                 </div>
               </div>
             </ul>
