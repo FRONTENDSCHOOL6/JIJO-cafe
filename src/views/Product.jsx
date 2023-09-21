@@ -1,10 +1,12 @@
-import { Helmet } from "react-helmet-async";
+import {Helmet} from "react-helmet-async";
 import MenuTitle from "@/components/MenuTitle";
 import MenuBubble from "@/components/MenuBubble";
 import CheckBox from "@/components/CheckBox/CheckBox";
-// import Products from "@/components/Products"
-// import Pagination from "@/pockets/Pagination";
+//import Products from "@/components/Products";
 import LazyImage from "@/utils/LazyImage";
+import Pagination from "@/pockets/Pagination"
+
+
 function Product() {
   return (
     <div>

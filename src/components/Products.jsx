@@ -28,17 +28,22 @@ function ProductItem({ collection, item, id, name, price, ...restProps }) {
   const handleAddToCart = useCartStore((state) => state.add)
 
   return (
-    <li key={item.id} className="relative cursor-pointer" onClick={handleClick} {...restProps}>
+    <li
+      key={item.id}
+      className="relative cursor-pointer"
+      {...restProps}
+    >
       <div>
-        <div className="imgFrame relative w-80 h-80 overflow-hidden">
-          <LazyImage src={getPbImageURL(item, "image")} className="w-full transition-all ease-in hover:scale-110" alt={item.title} />
-          <button
-            onClick={() => {
-              handleAddToCart(item)
-            }}
+        <div 
+          className="imgFrame relative w-80 h-80 overflow-hidden"
+          onClick={handleClick}
           >
-            <img src="/src/assets/images/menu/cart.svg" className="absolute bottom-0 right-0" alt="" />
-          </button>
+          <LazyImage
+            src={getPbImageURL(item, "image")}
+            className="w-full transition-all ease-in hover:scale-110"
+            alt={item.title}
+          />
+          {isClicked && <ProductModal key={item.id} item={item} />}
         </div>
         <div className="text py-6">
           <p className="title text-jj_22 pb-5 mb-[.3125rem] border-b overflow-hidden text-ellipsis whitespace-nowrap">{item.title}</p>
@@ -46,7 +51,17 @@ function ProductItem({ collection, item, id, name, price, ...restProps }) {
           <p className="desc text-[#1c1c1b] opacity-70 text-jj_14 mobile:text-sm mt-5 overflow-hidden text-ellipsis line-clamp-2">{item.description}</p>
         </div>
       </div>
-      {isClicked && <ProductModal key={item.id} item={item} />}
+      <button
+        onClick={() => {
+          handleAddToCart(item);
+        }}
+        className="absolute bottom-[11.25rem] right-0"
+      >
+        <img
+          src="/src/assets/images/menu/cart.svg"
+          alt=""
+        />
+      </button>
     </li>
   )
 }

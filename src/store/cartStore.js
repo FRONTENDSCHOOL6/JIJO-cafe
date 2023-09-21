@@ -58,9 +58,9 @@ const useCartStore = create(
 function updateCart(item, cart) {
   let nextCart = [...cart]; // 배열 복제
   const cartItem = { ...item, count: 1 }; //새로운 상품 아이템 생성
-  //const productOnCart = nextCart.map((product) => product.id).includes(item.id);
+  const productOnCart = nextCart.map((product) => product.id).includes(item.id);
 
-  if (!nextCart) {
+  if (!productOnCart) {
     // 장바구니에 상품이 없을 경우 추가
     // nextCart.push(cartItem);
     nextCart = [...nextCart, cartItem];

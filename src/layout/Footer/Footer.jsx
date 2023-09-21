@@ -1,13 +1,15 @@
 import FooterModal from '@/components/FooterModal';
-import styles from './Footer.module.css';
-import {Link} from 'react-router-dom';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Footer() {
   const [isClicked, setIsClicked] = useState(false);
   const handleClick = () => {
     setIsClicked(!isClicked);
   }
+  const handleClose = () => {
+    setIsClicked(false);
+  };
 
   return (
     <footer className="bg-secondary">
@@ -17,13 +19,14 @@ function Footer() {
             <button className="font-bold hover:underline" onClick={handleClick}>
               이용약관
             </button>
-              {isClicked && <FooterModal/>}
+              {isClicked && <FooterModal title="이용약관" handleClose={handleClose}/>}
             
           </li>
           <li>
-            <button className="font-bold hover:underline">
+            <button className="font-bold hover:underline" onClick={handleClick}>
               개인정보취급방침
             </button>
+            {isClicked && <FooterModal title="개인정보취급방침" handleClose={handleClose}/>}
           </li>
         </ul>
       </div>
