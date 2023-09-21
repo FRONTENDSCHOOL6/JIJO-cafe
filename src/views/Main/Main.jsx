@@ -1,5 +1,5 @@
-import { useState, useEffect, Component } from "react";
-import { FullPage, Slide } from "react-full-page";
+import { useState, useEffect } from "react";
+// import { FullPage, Slide } from "react-full-page";
 import { Helmet } from "react-helmet-async";
 import MainBanner from "./MainBanner";
 import MainMenu from "./MainMenu";
