@@ -3722,7 +3722,7 @@ packages:
     dev: false
 
   /react-fast-compare@3.2.2:
-    resolution: { integrity: sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ== }
+    resolution: {integrity: sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ==}
     dev: false
 
   /react-full-page@0.1.12(react-dom@18.2.0)(react@18.2.0):
