@@ -14,6 +14,9 @@ dependencies:
   "@tanstack/react-query-devtools":
     specifier: ^4.33.0
     version: 4.33.0(@tanstack/react-query@4.33.0)(react-dom@18.2.0)(react@18.2.0)
+  aos:
+    specifier: ^2.3.4
+    version: 2.3.4
   framer-motion:
     specifier: ^10.16.2
     version: 10.16.2(react-dom@18.2.0)(react@18.2.0)
@@ -41,6 +44,9 @@ dependencies:
   react-dom:
     specifier: ^18.2.0
     version: 18.2.0(react@18.2.0)
+  react-full-page:
+    specifier: ^0.1.12
+    version: 0.1.12(react-dom@18.2.0)(react@18.2.0)
   react-helmet-async:
     specifier: ^1.3.0
     version: 1.3.0(react-dom@18.2.0)(react@18.2.0)
@@ -883,6 +889,14 @@ packages:
       picomatch: 2.3.1
     dev: true
 
+  /aos@2.3.4:
+    resolution: {integrity: sha512-zh/ahtR2yME4I51z8IttIt4lC1Nw0ktsFtmeDzID1m9naJnWXhCoARaCgNOGXb5CLy3zm+wqmRAEgMYB5E2HUw==}
+    dependencies:
+      classlist-polyfill: 1.2.0
+      lodash.debounce: 4.0.8
+      lodash.throttle: 4.1.1
+    dev: false
+
   /arch@2.2.0:
     resolution: { integrity: sha512-Of/R0wqp83cgHozfIYLbBMnej79U/SVGOOyuB3VVFv1NRM/PSFMK12x9KVtiYzJqmnU5WR2qp0Z5rHb7sWGnFQ== }
     dev: true
@@ -1207,6 +1221,10 @@ packages:
       fsevents: 2.3.3
     dev: true
 
+  /classlist-polyfill@1.2.0:
+    resolution: {integrity: sha512-GzIjNdcEtH4ieA2S8NmrSxv7DfEV5fmixQeyTmqmRmRJPGpRBaSnA2a0VrCjyT8iW8JjEdMbKzDotAJf+ajgaQ==}
+    dev: false
+
   /clean-css@5.3.2:
     resolution: { integrity: sha512-JVJbM+f3d3Q704rF4bqQ5UUyTtuJ0JRKNbTKVEeujCCBoMdkEi+V+e8oktO9qGQNSvHrFTM6JZRXrUvGR1czww== }
     engines: { node: ">= 10.0" }
@@ -1298,9 +1316,14 @@ packages:
       is-what: 4.1.15
     dev: false
 
+<<<<<<< HEAD
   /core-js@2.6.12:
     resolution: { integrity: sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ== }
     deprecated: core-js@<3.23.3 is no longer maintained and not recommended for usage due to the number of issues. Because of the V8 engine whims, feature detection in old core-js versions could cause a slowdown up to 100x even if nothing is polyfilled. Some versions have web compatibility issues. Please, upgrade your dependencies to the actual version of core-js.
+=======
+  /core-js@3.32.2:
+    resolution: {integrity: sha512-pxXSw1mYZPDGvTQqEc5vgIb83jGQKFGYWY76z4a7weZXUolw3G+OvpZqSRcfYOoOVUQJYEPsWeQK8pKEnUtWxQ==}
+>>>>>>> parent of d1f2e2c (🦁 modift : import 에러 수정 및 사용하지 않는 패키지 삭제)
     requiresBuild: true
     dev: false
 
@@ -2960,9 +2983,17 @@ packages:
       p-locate: 5.0.0
     dev: true
 
+  /lodash.debounce@4.0.8:
+    resolution: {integrity: sha512-FT1yDzDYEoYWhnSGnpE/4Kj1fLZkDFyqRb7fNt6FdYOSxlUWAtp42Eh6Wb0rGIv/m9Bgo7x4GhQbm5Ys4SG5ow==}
+    dev: false
+
   /lodash.merge@4.6.2:
     resolution: { integrity: sha512-0KpjqXRVvrYyCsX1swR/XTK0va6VQkQM6MNo7PqW77ByjAhoARA8EfrP1N4+KlKj8YS0ZUCtRT/YUuhyYDujIQ== }
     dev: true
+
+  /lodash.throttle@4.1.1:
+    resolution: {integrity: sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==}
+    dev: false
 
   /loose-envify@1.4.0:
     resolution: { integrity: sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q== }
@@ -3692,6 +3723,17 @@ packages:
 
   /react-fast-compare@3.2.2:
     resolution: { integrity: sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ== }
+    dev: false
+
+  /react-full-page@0.1.12(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-Bk6gcxANuWNkeBNmaTUNRcA05zDBqJaTKxlr78dC59gsXhiWPODa8kcrDHClaRAc6JkH16jzbCOO1mNH9Ta1jQ==}
+    peerDependencies:
+      react: ^0.14.10 || ^15.0.0 || ^16.0.0 || ^17.0.0
+      react-dom: ^0.14.10 || ^15.0.0 || ^16.0.0 || ^17.0.0
+    dependencies:
+      core-js: 3.32.2
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
     dev: false
 
   /react-helmet-async@1.3.0(react-dom@18.2.0)(react@18.2.0):
