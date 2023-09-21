@@ -3,9 +3,16 @@ import { NavLink } from "react-router-dom"
 import { getPbImageURL } from "@/utils/getPbImageURL"
 import cartImage from "@/assets/images/menu/cart.svg" // 상대 경로를 사용하여 이미지 import
 import { numberWithComma } from "@/utils/numberWithComma"
+import { useQueryGetProducts, useQueryGetFoods, useQueryGetBeverage, useQueryGetNotices, useQueryGetEvents } from "@/api/pockets/useQueryPocketBase"
+import { getProducts, getFoods, getBeverage, getNotices, getEvents } from "@/api/pockets"
 
 function Pagination() {
-  const { isLoading, error, page, data, gotoFirstPage, gotoLastPage, gotoPreviousPage, gotoNextPage, changePage } = usePagination({ perPage: 4 })
+  const { isLoading, error, page, data, gotoFirstPage, gotoLastPage, gotoPreviousPage, gotoNextPage, changePage } = usePagination({
+    perPage: 4,
+    queryFn: getProducts,
+    useQueryPocketBase: useQueryGetProducts,
+    collections: "products",
+  })
 
   if (isLoading) {
     return <div className="flex justify-center items-center p-8 min-h-[486px]">로딩 중...</div>
@@ -21,10 +28,10 @@ function Pagination() {
 
   return (
     <>
-      {/* 리스트 */}
+      {/* 각 페이지 JSX 보여줄 리스트  */}
       <ul className="flex gap-3 justify-center p-9 min-h-[398px]">
         {data.items?.map((item) => {
-          console.log(data.items)
+          // console.log(data.items)
           const imageSource = getPbImageURL(item, "image")
           // console.log(imageSource)
           return (
@@ -33,7 +40,6 @@ function Pagination() {
                 <img src={imageSource} className="w-full transition-all ease-in hover:scale-110" alt={item.title} />
               </div>
               <a href="/cart">
-                {/* //a? */}
                 <img src={cartImage} className="absolute bottom-0 right-0" alt="Cart" />
               </a>
               <div className="text py-6">
@@ -49,13 +55,13 @@ function Pagination() {
       {/* 페이지네이션  <- 1,2,3, -> */}
       <ul className="flex gap-6 justify-center my-8">
         <li>
-          <NavLink to="#first" className="grid place-content-center w-9 h-9 border border-transparent rounded text-slate-500 hover:bg-slate-100 hover:border hover:border-slate-200" onClick={gotoFirstPage} aria-label="처음으로 이동" title="처음으로 이동">
-            ←
+          <NavLink to="#first" className="grid place-content-center  px-4 py-2 border border-transparent rounded bg-primary hover:bg-[#C7B08E]" onClick={gotoFirstPage} aria-label="처음으로 이동" title="처음으로 이동">
+            처음
           </NavLink>
         </li>
         <li>
-          <NavLink to="#prev" className="grid place-content-center w-9 h-9 border border-transparent rounded text-slate-500 hover:bg-slate-100 hover:border hover:border-slate-200" onClick={gotoPreviousPage} disabled={page === 1} aria-label="이전 페이지로 이동" title="이전 페이지로 이동">
-            &lt;
+          <NavLink to="#prev" className="grid place-content-center  px-4 py-2  border border-transparent rounded bg-primary hover:bg-[#C7B08E]" onClick={gotoPreviousPage} disabled={page === 1} aria-label="이전 페이지로 이동" title="이전 페이지로 이동">
+            이전
           </NavLink>
         </li>
         {Array(data.totalPages)
@@ -68,7 +74,7 @@ function Pagination() {
                   to="#page"
                   onClick={(e) => changePage(pageIndex, e)}
                   className={() => {
-                    const baseClassNames = "grid place-content-center w-9 h-9 border border-transparent rounded text-slate-500 hover:bg-slate-100 hover:border hover:border-slate-200"
+                    const baseClassNames = "grid place-content-center  px-4 py-2 border border-transparent rounded text-slate-500hove r:bg-[#C7B08E]"
                     const isActive = page - 1 === index
 
                     return !isActive ? baseClassNames : `${baseClassNames} font-black border-current text-slate-600 hover:border-current`
@@ -80,20 +86,13 @@ function Pagination() {
             )
           })}
         <li>
-          <NavLink
-            to="#next"
-            className="disabled:cursor-not-allowed grid place-content-center w-9 h-9 border border-transparent rounded text-slate-500 hover:bg-slate-100 hover:border hover:border-slate-200"
-            onClick={gotoNextPage}
-            disabled={page === data.totalPages}
-            aria-label="다음 페이지로 이동"
-            title="다음 페이지로 이동"
-          >
-            &gt;
+          <NavLink to="#next" className="disabled:cursor-not-allowed grid place-content-center  px-4 py-2  border border-transparent rounded bg-primary hover:bg-[#C7B08E]" onClick={gotoNextPage} disabled={page === data.totalPages} aria-label="다음 페이지로 이동" title="다음 페이지로 이동">
+            다음
           </NavLink>
         </li>
         <li>
-          <NavLink to="#last" className="disabled:cursor-not-allowed grid place-content-center w-9 h-9 border border-transparent rounded text-slate-500 hover:bg-slate-100 hover:border hover:border-slate-200" onClick={gotoLastPage} aria-label="마지막으로 이동" title="마지막으로 이동">
-            →
+          <NavLink to="#last" className="disabled:cursor-not-allowed grid place-content-center px-4 py-2 border border-transparent rounded bg-primary hover:bg-[#C7B08E]" onClick={gotoLastPage} aria-label="마지막으로 이동" title="마지막으로 이동">
+            마지막
           </NavLink>
         </li>
       </ul>
