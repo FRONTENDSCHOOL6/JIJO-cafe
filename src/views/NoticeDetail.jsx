@@ -56,6 +56,7 @@ function NoticeDetail() {
       }
     },
     // staleTime: 1 * 1000 * 60 * 60 * 24 * 7,
+    staleTime: 0,
   })
 
   if (isLoading) {
