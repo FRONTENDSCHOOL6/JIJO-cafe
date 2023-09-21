@@ -19,7 +19,7 @@
 }
 
 .subLinkWrap {
-  @apply text-base text-left pl-16;
+  @apply text-base text-left pl-16 flex flex-col gap-4;
 
   & li {
     @apply hover:text-white;
