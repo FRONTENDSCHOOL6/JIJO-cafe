@@ -1,23 +1,25 @@
-import CheckBox from '@/components/CheckBox/CheckBox';
-import CloseButton from '@/components/CloseButton';
-import useCartStore from '@/store/cartStore';
-import { getPbImageURL } from '@/utils/getPbImageURL';
-import { numberWithComma } from '@/utils/numberWithComma';
-import { Link } from 'react-router-dom';
+import CheckBox from "@/components/CheckBox/CheckBox";
+import CloseButton from "@/components/CloseButton";
+import useCartStore from "@/store/cartStore";
+import {getPbImageURL} from "@/utils/getPbImageURL";
+import {numberWithComma} from "@/utils/numberWithComma";
+import {Link} from "react-router-dom";
 
-function OrderListItem({ product, selectedProdcut }) {
+function OrderListItem({product, selectedProdcut}) {
   const remove = useCartStore((state) => state.remove);
   const setCartItemCount = useCartStore((state) => state.setCartItemCount);
+  const {cart} = useCartStore();
+
+  console.log(cart);
 
   return (
     <li
       key={product.id}
-      className="border-b border-gray-200 flex items-center py-4"
-    >
+      className="border-b border-gray-200 flex items-center py-4">
       <CheckBox className="mr-[1.375rem]" />
       <Link to="/menu/drink" className="flex basis-2/3 items-center shrink-0">
         <figure className="shrink-0">
-          <img src={getPbImageURL(product, 'image')} className="h-24" />
+          <img src={getPbImageURL(product, "image")} className="h-24" />
         </figure>
         <p className="productTitle basis-[32rem] shrink-0 font-semibold ml-6">
           {product.title}
@@ -27,8 +29,7 @@ function OrderListItem({ product, selectedProdcut }) {
         <button
           type="button"
           onClick={() => setCartItemCount(product.id, -1)}
-          className="text-gray-400"
-        >
+          className="text-gray-400">
           -
         </button>
         <span>{product.count}</span>

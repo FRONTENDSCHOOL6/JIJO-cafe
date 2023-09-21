@@ -5,28 +5,23 @@ import CheckBox from "@/components/CheckBox/CheckBox";
 import PageMainTitle from "@/components/PageMainTitle";
 import useToggle from "@/hooks/useToggle";
 import useCartStore from "@/store/cartStore";
-import { useState } from "react";
-import { Helmet } from "react-helmet-async";
+import {useState} from "react";
+import {Helmet} from "react-helmet-async";
 
 function Cart() {
   const [toggleDropDown, setToggleDropDown] = useToggle(true);
   const [isClicked, setIsClicked] = useState(false);
   const cart = useCartStore((state) => state.cart);
-  const removeAll = useCartStore((state) => state.removeAll);
   const handleClick = () => {
     setIsClicked(!isClicked);
   };
   const handleClose = () => {
     setIsClicked(false);
   };
-  const totalPrice = cart.map((item) => {
-    
-  });
-  console.log(totalPrice);
 
-  
-  
-  
+  const totalPrice = cart.map((item) => {
+    return Number(item.count * item.price);
+  });
 
   return (
     <>
@@ -72,17 +67,16 @@ function Cart() {
               <Button
                 className="w-full bg-white text-secondary border border-secondary hover:border-primary hover:text-white grow my-4"
                 color="primary"
-                onClick={handleClick}
-              >
+                onClick={handleClick}>
                 매장변경
               </Button>
-              {isClicked && <StoreChangeModal handleClose={handleClose}/>}
+              {isClicked && <StoreChangeModal handleClose={handleClose} />}
             </div>
             <div className="orderInfoBottom border border-gray-200 bg-gray-100 p-5">
               <div className="flex flex-col items-center border-t  border-gray-200 pt-6 mt-6">
                 <span>결제예정금액</span>
                 <span className="font-semibold flex items-center">
-                  <span className="text-[1.75rem] font-bold">{totalPrice}</span>원
+                  <span className="text-[1.75rem] font-bold">5,000</span>원
                 </span>
               </div>
             </div>

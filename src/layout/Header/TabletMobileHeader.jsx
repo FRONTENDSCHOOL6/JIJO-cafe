@@ -18,7 +18,9 @@ function TabletMobileHeader() {
 
   /* 링크이동 시 해당 탭메뉴가 닫히는 기능 */
   const location = useLocation();
+
   useEffect(() => {
+    if (location.pathname === "/") return;
     setIsToggleTabButton(false);
   }, [location]);
 
