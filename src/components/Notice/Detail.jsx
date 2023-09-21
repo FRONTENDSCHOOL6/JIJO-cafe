@@ -1,13 +1,13 @@
-import {Link} from "react-router-dom";
-import {getPbImageURL} from "@/utils/getPbImageURL";
-import Button from "@/components/Button";
-import yyyymmddDate from "@/utils/yyyymmddDate";
-import LazyImage from "@/utils/LazyImage";
-import useAuthStore from "@/store/store";
+import { Link } from "react-router-dom"
+import { getPbImageURL } from "@/utils/getPbImageURL"
+import Button from "@/components/Button"
+import yyyymmddDate from "@/utils/yyyymmddDate"
+import LazyImage from "@/utils/LazyImage"
+import useAuthStore from "@/store/store"
 
-function Detail({data, handleDelete, field, Field}) {
-  const user = useAuthStore((state) => state.user); // useAuthStore를 통해 user 정보를 가져오기
-  const isAdmin = user && user.role === "admin"; // isAdmin을 user.role이 "admin"일 때 true로 설정
+function Detail({ data, handleDelete, field, Field }) {
+  const user = useAuthStore((state) => state.user) // useAuthStore를 통해 user 정보를 가져오기
+  const isAdmin = user && user.verified // isAdmin을 user.role이 "admin"일 때 true로 설정
 
   return (
     data && (
@@ -21,13 +21,7 @@ function Detail({data, handleDelete, field, Field}) {
           </div>
         </div>
         <div className="my-[1.875rem] font-light text-jj_18">
-          {data[`${field}Image`] && (
-            <LazyImage
-              src={getPbImageURL(data, `${field}Image`)}
-              className="w-auto"
-              alt={data[`${field}Title`]}
-            />
-          )}
+          {data[`${field}Image`] && <LazyImage src={getPbImageURL(data, `${field}Image`)} className="w-auto" alt={data[`${field}Title`]} />}
           {data[`${field}Description`]}
         </div>
 
@@ -65,7 +59,7 @@ function Detail({data, handleDelete, field, Field}) {
         </div>
       </section>
     )
-  );
+  )
 }
 
-export default Detail;
+export default Detail

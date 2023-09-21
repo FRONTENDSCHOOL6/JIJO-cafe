@@ -39,7 +39,7 @@ function FaqDetail() {
         throw error
       }
     },
-    staleTime: 1 * 1000 * 60 * 60 * 24 * 7,
+    // staleTime: 1 * 1000 * 60 * 60 * 24 * 7,
   })
 
   if (isLoading) {
