@@ -82,7 +82,7 @@ function TabletMobileHeader() {
               </div>
 
               <div className={S.linkWrap}>
-                <LinkList pageLink="/bbs/faq" className={S.titleLink}>
+                <LinkList pageLink="/bbs/notice" className={S.titleLink}>
                   지조소식
                 </LinkList>
                 <div className={S.subLinkWrap}>

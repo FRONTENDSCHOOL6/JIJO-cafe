@@ -58,7 +58,7 @@ function TableListPagination({ collection, field, data, page, gotoFirstPage, got
             })}
         </tbody>
       </table>
-      <ul className="flex gap-6 justify-center my-8">
+      <ul className="flex gap-6 justify-center my-20">
         <li>
           <NavLink to="#first" className="grid place-content-center  px-4 py-2 border border-transparent rounded bg-primary hover:bg-[#C7B08E]" onClick={gotoFirstPage} aria-label="처음으로 이동" title="처음으로 이동">
             처음
