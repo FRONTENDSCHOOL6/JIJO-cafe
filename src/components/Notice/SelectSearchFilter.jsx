@@ -7,7 +7,7 @@ import useAuthStore from "@/store/store"
 function SelectSearchFilter({ Collection, option, onChangeOption, onChangeText, handleReload }) {
   const id = useId()
   const user = useAuthStore((state) => state.user)
-  const isAdmin = user && user.verified
+  const isAdmin = user && user.permission === "administrator"
   const searchInputRef = useRef(null)
 
   const handleSearchClick = () => {

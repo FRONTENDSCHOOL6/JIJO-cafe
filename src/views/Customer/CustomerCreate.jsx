@@ -60,7 +60,7 @@ function CustomerCreate() {
               <label htmlFor={id} className={S.label}>
                 방문여부
               </label>
-              <div className="flex">
+              <div className="flex mobile:w-fit">
                 <label htmlFor={id} className={`${S.label} px-3 w-fit border-none font-normal`}>
                   매장주문
                   <input type="checkbox" id={id} className={S.checkbox} />

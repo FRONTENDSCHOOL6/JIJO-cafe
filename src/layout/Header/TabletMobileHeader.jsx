@@ -1,58 +1,55 @@
-import CloseButton from "@/components/CloseButton";
-import Hamburger from "@/components/Hamburger/Hamburger";
-import JijoCafeLogoTitle from "@/components/JijoCafeLogoTitle";
-import LinkList from "@/components/LinkList";
-import useToggle from "@/hooks/useToggle";
-import S from "./TabletMobileHeader.module.css";
-import useAuthStore from "@/store/store";
-import SignInModal from "@/components/SignInModal";
-import toast from "react-hot-toast";
-import {kakaoLogout} from "@/utils/kakaoLogout";
-import {useState} from "react";
-import {useLocation} from "react-router-dom";
-import {useEffect} from "react";
+import CloseButton from "@/components/CloseButton"
+import Hamburger from "@/components/Hamburger/Hamburger"
+import JijoCafeLogoTitle from "@/components/JijoCafeLogoTitle"
+import LinkList from "@/components/LinkList"
+import S from "./TabletMobileHeader.module.css"
+import useAuthStore from "@/store/store"
+import SignInModal from "@/components/SignInModal"
+import toast from "react-hot-toast"
+import { kakaoLogout } from "@/utils/kakaoLogout"
+import { useState } from "react"
+import { useLocation } from "react-router-dom"
+import { useEffect } from "react"
 
 function TabletMobileHeader() {
   /* 마우스 클릭에 따른 햄버거 탭과 닫기 탭 렌더링 여부를 관리하는 상태 */
-  const [isToggleTabButton, setIsToggleTabButton] = useToggle(false);
+  const [isToggleTabButton, setIsToggleTabButton] = useState(false)
+  const handleToggleTabButton = () => {
+    setIsToggleTabButton((prev) => !prev)
+  }
+  const handleCloseTabButton = () => {
+    setIsToggleTabButton(false)
+  }
 
   /* 링크이동 시 해당 탭메뉴가 닫히는 기능 */
-  const location = useLocation();
+  const location = useLocation()
   useEffect(() => {
-    if (location.pathname === "/") return;
-    setIsToggleTabButton(false);
-  }, [location]);
+    if (location.pathname === "/") return
+    setIsToggleTabButton(false)
+  }, [location])
 
   /* 인증 정보에 따른 로그인 ➡️ 로그아웃으로 변경 */
-  const isAuth = useAuthStore((state) => state.isAuth);
+  const isAuth = useAuthStore((state) => state.isAuth)
 
   /* 클릭시 로그인모달 렌더링 */
-  const [isClickedSignin, setIsClickedSignin] = useState(false);
+  const [isClickedSignin, setIsClickedSignin] = useState(false)
   const handleClickSignin = () => {
-    setIsClickedSignin(!isClickedSignin);
-  };
+    setIsClickedSignin(!isClickedSignin)
+  }
 
   /* 일반사용자 로그아웃 및 카카오 사용자 로그아웃 */
-  const signOut = useAuthStore((state) => state.signOut);
+  const signOut = useAuthStore((state) => state.signOut)
   const handleSignOut = () => {
-    toast.success("정상적으로 로그아웃 되었습니다.", {icon: "👋"});
-    signOut();
-    kakaoLogout();
-  };
+    toast.success("정상적으로 로그아웃 되었습니다.", { icon: "👋" })
+    signOut()
+    kakaoLogout()
+  }
 
   return (
     <>
       <header className={S.header}>
         <JijoCafeLogoTitle />
-        {isToggleTabButton ? (
-          <CloseButton
-            fillColor="#fff"
-            className={S.closeButton}
-            onClick={setIsToggleTabButton}
-          />
-        ) : (
-          <Hamburger onClick={setIsToggleTabButton} />
-        )}
+        {isToggleTabButton ? <CloseButton fillColor="#fff" className={S.closeButton} onClick={handleCloseTabButton} /> : <Hamburger onClick={handleToggleTabButton} />}
         {isToggleTabButton && (
           <>
             <ul className={S.ul}>
@@ -121,9 +118,7 @@ function TabletMobileHeader() {
                       로그인
                     </li>
                   )}
-                  {isClickedSignin && (
-                    <SignInModal setIsClickedSignin={setIsClickedSignin} />
-                  )}
+                  {isClickedSignin && <SignInModal setIsClickedSignin={setIsClickedSignin} />}
                   {!isAuth && <LinkList pageLink="/signUp">회원가입</LinkList>}
                 </div>
               </div>
@@ -132,7 +127,7 @@ function TabletMobileHeader() {
         )}
       </header>
     </>
-  );
+  )
 }
 
-export default TabletMobileHeader;
+export default TabletMobileHeader
