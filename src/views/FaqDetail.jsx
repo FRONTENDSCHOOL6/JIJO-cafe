@@ -1,14 +1,27 @@
 import pb from "@/api/pocketbase"
-import JijoSpinner from "@/components/JijoSpinner"
 import MenuTitle from "@/components/MenuTitle"
 import Detail from "@/components/Notice/Detail"
 import JiJoHelmet from "@/utils/JiJoHelmet"
-import { useQuery } from "@tanstack/react-query"
+import JijoSpinner from "@/components/JijoSpinner"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { useNavigate, useParams } from "react-router-dom"
 
 function FaqDetail() {
   const { FaqId } = useParams()
   const Navigate = useNavigate()
+  const queryClient = useQueryClient()
+  const faqDelete = useMutation({
+    mutationFn: (id) =>
+      pb
+        .collection("faq")
+        .delete(id)
+        .then((response) => response.data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["faq"],
+      })
+    },
+  })
 
   const { isLoading, data, isError, error } = useQuery({
     //리액트 쿼리 사용
@@ -54,9 +67,11 @@ function FaqDetail() {
     return <div role="alert">{error.toString()}</div>
   }
 
-  const handleDelete = async () => {
+  const handleDelete = async (e) => {
+    e.preventDefault()
     try {
-      await pb.collection("faq").delete(FaqId) // PocketBase를 사용하여 삭제
+      // await pb.collection("faq").delete(FaqId) // PocketBase를 사용하여 삭제
+      await faqDelete.mutateAsync(FaqId) // 공지사항 삭제 함수
       console.log("게시글이 삭제되었습니다.") // 삭제 완료 메시지 출력 또는 다른 작업 수행 가능
       Navigate("/bbs/faq") // 삭제 후 faq 목록 페이지로 이동
     } catch (error) {
@@ -67,7 +82,9 @@ function FaqDetail() {
   return (
     <>
       <JiJoHelmet pageTitle="지조소식 - FAQ" />
-      <MenuTitle title="JIJO NEWS"> JIJO FAQ</MenuTitle>
+      <MenuTitle title="JIJO NEWS" mainMenu="지조소식" subMenu="FAQ" mainLink="/bbs/Notice" subLink="/bbs/Faq">
+        JIJO FAQ
+      </MenuTitle>
       <Detail field="faq" Field="Faq" handleDelete={handleDelete} data={data}></Detail>
     </>
   )

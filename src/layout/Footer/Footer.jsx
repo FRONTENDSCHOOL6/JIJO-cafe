@@ -1,3 +1,6 @@
+import githubIcon from '@/assets/images/github.svg';
+import facebookIcon from '@/assets/images/facebook.svg';
+import notionIcon from '@/assets/images/notion.svg';
 import FooterModal from '@/components/FooterModal';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
@@ -44,17 +47,17 @@ function Footer() {
             <ul className="snsIcon flex gap-2 mt-2">
               <li>
                 <Link to="https://github.com/FRONTENDSCHOOL6/JIJO-cafe">
-                  <img src="/src/assets/images/github.svg" alt="카페지조 깃허브" />
+                  <img src={githubIcon} alt="카페지조 깃허브" />
                 </Link>
               </li>
               <li>
                 <Link to="">
-                  <img src="/src/assets/images/facebook.svg" alt="카페지조 페이스북" />
+                  <img src={facebookIcon} alt="카페지조 페이스북" />
                 </Link>
               </li>
               <li>
                 <Link to="https://mammoth-sassafras-ff5.notion.site/15-bae6c4f5253342a1bf7a7a5e3a23b976?pvs=4">
-                  <img src="/src/assets/images/notion.svg" alt="카페지조 노션" />
+                  <img src={notionIcon} alt="카페지조 노션" />
                 </Link>
               </li>
             </ul>

@@ -3,7 +3,7 @@ import {useState} from "react";
 import {useEffect} from "react";
 
 /* 콜렉션의 FullList 제공 */
-export const usePocektBaseDataList = (collection) => {
+export const usePocektBaseDataList = (collection, fieldName = "") => {
   const [data, setData] = useState([]);
   const [status, setStatus] = useState("pending");
 
@@ -13,6 +13,7 @@ export const usePocektBaseDataList = (collection) => {
       try {
         const records = await pb.collection(collection).getFullList({
           sort: "-created",
+          fields: fieldName,
         });
         setData(records);
         setStatus("success");
@@ -31,8 +32,7 @@ export const usePocketBaseFilteredData = (
   collection,
   page,
   perPage,
-  filterOption = "",
-  dependency = ""
+  filterOption = ""
 ) => {
   const [data, setData] = useState([]);
   const [status, setStatus] = useState("pending");
@@ -54,7 +54,7 @@ export const usePocketBaseFilteredData = (
       }
     };
     fetchData();
-  }, [collection, page, perPage, filterOption]);//dependency가 있어야 서버에 요청을 할 수 있음.
+  }, [collection, page, perPage, filterOption]); //dependency가 있어야 서버에 요청을 할 수 있음.
   return {data, status};
 };
 

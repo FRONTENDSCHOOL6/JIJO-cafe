@@ -1,3 +1,5 @@
+import location from "@/assets/images/location.svg";
+import arrowDwon from "@/assets/images/arrow_down.svg";
 import Button from "@/components/Button";
 import OrderList from "@/components/Cart/OrderList";
 import StoreChangeModal from "@/components/Cart/StoreChangeModal";
@@ -28,6 +30,11 @@ function Cart() {
     })
     .reduce((acc, cur) => acc + cur, 0);
 
+  /* 전체금액 */
+  const totalCount = cart.map((item) => {
+    return Number(item.count)
+  }).reduce((acc, cur) => acc + cur, 0);
+
   /* 장바구니 내 담겨있는 상품 전체 삭제 */
   const removeAll = useCartStore((state) => state.removeAll);
   const handleClickRemove = () => {
@@ -42,10 +49,10 @@ function Cart() {
     <>
       <JiJoHelmet pageTitle="장바구니" />
       <PageMainTitle pageTitleText="JIJO CART" />
-      <div className="cartWrap mx-auto max-w-7xl flex gap-5 pb-52 mobile:flex-col">
+      <div className="cartWrap mx-auto max-w-7xl flex gap-5 pb-52 mobile:flex-col mobile:px-4 mobile:pb-40">
         <div className="orderListArea w-3/4 mobile:w-full">
           <div className="selectArea font-semibold">
-            <CheckBox text="전체선택(3/3) " defaultChecked="checked" />
+            <CheckBox text={`전체선택(${totalCount}/${totalCount}) `} defaultChecked="checked" />
             <button onClick={handleClickRemove}>| 전체삭제</button>
           </div>
           <div className="orderListWrap border-t bg-white border-secondary my-4 overflow-hidden">
@@ -53,12 +60,16 @@ function Cart() {
               <p className="title font-semibold">주문상품</p>
               <button onClick={setToggleDropDown} className="p-2">
                 <img
-                  src="/src/assets/images/arrow_down.svg"
+                  src={arrowDwon}
                   alt="아래화살표 버튼"
                 />
               </button>
             </div>
             {toggleDropDown && <OrderList />}
+          </div>
+          <div className="selectArea font-semibold">
+            <CheckBox text={`전체선택(${totalCount}/${totalCount}) `} defaultChecked="checked" />
+            <button>| 전체삭제</button>
           </div>
         </div>
 
@@ -68,7 +79,7 @@ function Cart() {
               <p className="store font-semibold">
                 <img
                   className="inline-block"
-                  src="/src/assets/images/location.svg"
+                  src={location}
                   alt="위치 아이콘"
                 />
                 <span className="pl-[.625rem]">강남점</span>
@@ -82,7 +93,7 @@ function Cart() {
               {isClicked && <StoreChangeModal handleClose={handleClose} />}
             </div>
             <div className="orderInfoBottom border border-gray-200 bg-gray-100 p-5">
-              <div className="flex flex-col items-center border-t  border-gray-200 pt-6 mt-6">
+              <div className="flex flex-col justify-center">
                 <span>결제예정금액</span>
                 <span className="font-semibold flex items-center">
                   <span className="text-[1.75rem] font-bold">

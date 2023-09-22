@@ -1,11 +1,10 @@
 import pb from "@/api/pocketbase"
-import { useNavigate } from "react-router-dom"
-import { useParams } from "react-router-dom"
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
-import JijoSpinner from "@/components/JijoSpinner"
+import JiJoHelmet from "@/utils/JiJoHelmet"
 import MenuTitle from "@/components/MenuTitle"
 import Detail from "@/components/Notice/Detail"
-import JiJoHelmet from "@/utils/JiJoHelmet"
+import JijoSpinner from "@/components/JijoSpinner"
+import { useNavigate, useParams } from "react-router-dom"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 
 function NoticeDetail() {
   const { noticeId } = useParams()
@@ -19,7 +18,7 @@ function NoticeDetail() {
         .then((response) => response.data),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["notice"],
+        queryKey: ["notices"],
       })
     },
   })
@@ -55,8 +54,6 @@ function NoticeDetail() {
         throw error
       }
     },
-    // staleTime: 1 * 1000 * 60 * 60 * 24 * 7,
-    staleTime: 0,
   })
 
   if (isLoading) {
@@ -87,7 +84,9 @@ function NoticeDetail() {
   return (
     <>
       <JiJoHelmet pageTitle="지조소식 - 공지사항" />
-      <MenuTitle title="JIJO NEWS"> JIJO NOTICE</MenuTitle>
+      <MenuTitle title="JIJO NEWS" mainMenu="지조소식" subMenu="공지사항" mainLink="/bbs/Notice" subLink="/bbs/Notice">
+        JIJO NOTICE
+      </MenuTitle>
       <Detail field="notice" Field="Notice" handleDelete={handleDelete} data={data}></Detail>
     </>
   )
