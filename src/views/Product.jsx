@@ -44,7 +44,7 @@ function Product() {
   return (
     <div>
       <JiJoHelmet pageTitle="메뉴소개 - 상품" />
-      <MenuTitle title="MEGA MENU" mainMenu="메뉴소개" subMenu="상품" linkTo="/menu/drink">
+      <MenuTitle title="MEGA MENU" mainMenu="메뉴소개" subMenu="상품" mainLink="/menu/drink" subLink="/menu/product">
         PRODUCT MENU
       </MenuTitle>
       <MenuBubble>

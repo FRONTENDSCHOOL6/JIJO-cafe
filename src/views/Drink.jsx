@@ -42,7 +42,7 @@ function Drink() {
   return (
     <div>
       <JiJoHelmet pageTitle="메뉴소개 - 음료" />
-      <MenuTitle title="MEGA MENU" mainMenu="메뉴소개" subMenu="음료" linkTo="/menu/drink">
+      <MenuTitle title="MEGA MENU" mainMenu="메뉴소개" subMenu="음료" mainLink="/menu/drink" linkTo="/menu/drink">
         DRINK MENU
       </MenuTitle>
       <MenuBubble>

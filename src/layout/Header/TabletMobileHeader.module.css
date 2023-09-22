@@ -7,7 +7,7 @@
 }
 
 .ul {
-  @apply w-full  h-screen top-0 left-0 flex flex-col justify-center bg-[#181818] z-10 text-darkGray  px-jj_100 text-2xl gap-12;
+  @apply w-full  h-screen top-0 left-0 flex flex-col justify-center bg-[#181818] z-10 text-darkGray  px-jj_100 mobile:px-6 text-2xl;
 }
 
 .linkWrap {
@@ -15,11 +15,11 @@
 }
 
 .titleLink {
-  @apply text-white font-semibold w-[12.5rem];
+  @apply text-white font-semibold w-[12.5rem] mobile:w-[60%];
 }
 
 .subLinkWrap {
-  @apply text-base text-left pl-16 flex flex-col gap-4;
+  @apply text-base text-left pl-16 flex flex-col gap-4 mobile:w-[40%];
 
   & li {
     @apply hover:text-white;

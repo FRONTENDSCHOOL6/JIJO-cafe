@@ -1,22 +1,22 @@
 .hamburger {
-  @apply relative w-[1.875rem] h-[1.875rem] cursor-pointer m-4 pt-2;
+  @apply relative w-[1.875rem] h-[1.875rem] cursor-pointer m-4 pt-3.5;
 
   & span,
   & span::before,
   & span::after {
-    @apply absolute w-full h-[0.3125rem] bg-[#2d2d2d];
+    @apply absolute w-full h-[0.2125rem] bg-[#2d2d2d];
   }
 }
 
 .hamburger span::before,
 .hamburger span::after {
-  content: "";
+  content: '';
 }
 
 .hamburger span::before {
-  top: -0.9375rem;
+  top: -0.5rem;
 }
 
 .hamburger span::after {
-  top: 0.9375rem;
+  top: 0.5rem;
 }
