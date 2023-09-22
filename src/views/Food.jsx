@@ -3,13 +3,14 @@ import JijoSpinner from "@/components/JijoSpinner";
 import MenuBubble from "@/components/MenuBubble";
 import MenuTitle from "@/components/MenuTitle";
 import Products from "@/components/Products";
-import {usePocketBaseFilteredData} from "@/hooks/usePocektBaseData";
-import JiJoHelmet from "@/utils/JiJoHelmet";
+import { usePocketBaseFilteredData } from "@/hooks/usePocektBaseData";
+import { useState } from "react";
 import LazyImage from "@/utils/LazyImage";
-import {useState} from "react";
-import {Helmet} from "react-helmet-async";
+import MenuSearchForm from "@/components/Menu/MenuSearchForm";
+import JiJoHelmet from "@/utils/JiJoHelmet";
+import foodImage01 from "@/assets/images/menu/food/food_image01.jpg";
 
-const collection = "food";
+const collection = "foods"
 
 function Food() {
   const [category, setCategory] = useState("전체보기");
@@ -32,10 +33,8 @@ function Food() {
 
   return (
     <div>
-      <Helmet>
-        <title>메뉴소개 - 푸드</title>
-      </Helmet>
-      <MenuTitle title="MEGA MENU">FOOD MENU</MenuTitle>
+      <JiJoHelmet pageTitle='메뉴소개 - 푸드' />
+      <MenuTitle title="MEGA MENU" mainMenu="메뉴소개" subMenu="푸드" linkTo="/menu/drink">FOOD MENU</MenuTitle>
       <MenuBubble>
         <strong>음료와 잘 어울리는</strong>
         <br />
@@ -59,10 +58,7 @@ function Food() {
           </div>
         </div>
         <figure className="shrink-0 tablet:shrink mobile:w-full">
-          <LazyImage
-            src="/src/assets/images/menu/food/food_image01.jpg"
-            alt="가을을 닮은 풍요로운 보름달 한 상"
-          />
+          <LazyImage src={foodImage01} alt="가을을 닮은 풍요로운 보름달 한 상" />
         </figure>
       </section>
       <section className="bg-white mx-auto max-w-7xl mt-[6.25rem] mobile:px-5">
@@ -75,10 +71,8 @@ function Food() {
         </div>
 
         <div className="checkboxArea border border-gray-200 p-[1.875rem] my-10">
-          <p className="title text-jj_22 leading-tight pb-5 mb-5 border-b border-b-gray-200">
-            분류보기
-          </p>
-          <Categories category={category} handleCategory={handleCategory} />
+          <p className="title text-jj_22 leading-tight pb-5 mb-5 border-b border-b-gray-200">분류보기</p>
+          <Categories collection="foods" category={category} handleCategory={handleCategory}/>
         </div>
 
         <Products data={data} />

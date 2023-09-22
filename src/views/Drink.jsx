@@ -5,15 +5,16 @@ import MenuTitle from "@/components/MenuTitle";
 import Products from "@/components/Products";
 import { usePocketBaseFilteredData } from "@/hooks/usePocektBaseData";
 import { useState } from "react";
-import { Helmet } from "react-helmet-async";
 import LazyImage from "@/utils/LazyImage";
+import MenuSearchForm from "@/components/Menu/MenuSearchForm";
+import JiJoHelmet from "@/utils/JiJoHelmet";
+import drinkImage01 from "@/assets/images/menu/drink/drink_image01.jpg";
 
 const collection = 'beverage';
 
 function Drink() {
   const [category, setCategory] = useState('전체보기');//커피, 티, 에이드&주스, 스무디&프라페, 디카페인, 음료, 신상품
   const {data, status} = usePocketBaseFilteredData(collection, 1, 20, category !== '전체보기' ? `(category~'${category}')` : '');
-  
 
   const handleCategory = (newCategory) => {
     setCategory(newCategory)
@@ -25,10 +26,8 @@ function Drink() {
 
   return (
     <div>
-      <Helmet>
-        <title>메뉴소개 - 음료</title>
-      </Helmet>
-      <MenuTitle title="MEGA MENU" mainMenu="메뉴소개" subMenu="음료">DRINK MENU</MenuTitle>
+      <JiJoHelmet pageTitle='메뉴소개 - 음료' />
+      <MenuTitle title="MEGA MENU" mainMenu="메뉴소개" subMenu="음료" linkTo="/menu/drink">DRINK MENU</MenuTitle>
       <MenuBubble>
         <strong>깊고 부드러운 커피 맛의 비밀</strong>
         <br />
@@ -53,7 +52,7 @@ function Drink() {
         </div>
         <figure className="shrink-0 tablet:shrink mobile:w-full">
           <LazyImage
-            src="/src/assets/images/menu/drink/drink_image01.jpg"
+            src={drinkImage01}
             alt="가을이 키운 달콤한 청송사과 한 잔"
           />
         </figure>
@@ -68,10 +67,13 @@ function Drink() {
         </div>
 
         <div className="checkboxArea border border-gray-200 p-[1.875rem] my-10">
-          <p className="title text-jj_22 leading-tight pb-5 mb-5 border-b border-b-gray-200">
-            분류보기
-          </p>
-          <Categories name={name} category={category} handleCategory={handleCategory}/>
+          <div className="pb-5 mb-5 border-b border-b-gray-200 flex justify-between items-center">
+            <p className="title text-jj_22 leading-tight">
+              분류보기
+            </p>
+            <MenuSearchForm/>
+          </div>
+          <Categories collection="beverage" category={category} handleCategory={handleCategory}/>
         </div>
 
         <Products data={data}/>

@@ -1,10 +1,21 @@
-import Button from './Button'
-import CloseButton from './CloseButton'
+import { useRef, useState } from 'react';
+import Button from '@/components/Button'
+import CloseButton from '@/components/CloseButton'
+import useOutsideClickClose from '@/hooks/useOutsideClickClose';
 
-function FooterModal({title, handleClose}) {
+function FooterModal({title, handleClose, setIsClicked}) {
+  const modalRef = useRef(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleModalClose = () => {
+    setIsModalOpen((prev) => !prev);
+    setIsClicked(false);
+  };
+  useOutsideClickClose(modalRef, handleModalClose);
+
   return (
+    !isModalOpen && (
     <div className='fixed left-0 top-0 w-full h-screen bg-[rgba(0,0,0,0.5)] flex justify-center items-center z-[100]'>
-      <div className='bg-white w-[45rem] p-5 relative flex flex-col items-center shadow-lg'>
+      <div ref={modalRef} className='bg-white w-[45rem] p-5 relative flex flex-col items-center shadow-lg'>
         <div className='text'>
           <p className='pb-5 mb-5 border-b border-gray-300'>{title}</p>
           <p>개인정보수집 범위 : 이름, 연락처</p>
@@ -16,6 +27,7 @@ function FooterModal({title, handleClose}) {
         <CloseButton onClick={handleClose} className="absolute top-4 right-4 cursor-pointer"/>
       </div>
     </div>
+    )
   )
 }
 

@@ -1,8 +1,9 @@
+import cart from "@/assets/images/menu/cart.svg";
 import {getPbImageURL} from "@/utils/getPbImageURL";
 import {numberWithComma} from "@/utils/numberWithComma";
 import {useState} from "react";
 import useCartStore from "@/store/cartStore";
-import ProductModal from "./ProductModal";
+import ProductDialog from "./ProductDialog";
 import LazyImage from "@/utils/LazyImage";
 import toast from "react-hot-toast";
 
@@ -46,7 +47,7 @@ function ProductItem({item, ...restProps}) {
             className="w-full transition-all ease-in hover:scale-110"
             alt={item.title}
           />
-          {isClicked && <ProductModal key={item.id} item={item} />}
+          {isClicked && <ProductDialog key={item.id} item={item} />}
         </div>
         <div className="text py-6">
           <p className="title text-jj_22 pb-5 mb-[.3125rem] border-b overflow-hidden text-ellipsis whitespace-nowrap">
@@ -64,8 +65,12 @@ function ProductItem({item, ...restProps}) {
         onClick={() => {
           handleAddToCart(item);
         }}
-        className="absolute bottom-[11.25rem] right-0">
-        <img src="/src/assets/images/menu/cart.svg" alt="" />
+        className="absolute bottom-[11.25rem] right-0"
+      >
+        <img
+          src={cart}
+          alt=""
+        />
       </button>
     </li>
   );

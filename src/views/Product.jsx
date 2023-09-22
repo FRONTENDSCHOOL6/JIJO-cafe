@@ -1,17 +1,34 @@
-import {Helmet} from "react-helmet-async";
-import MenuTitle from "@/components/MenuTitle";
+import Categories from "@/components/Categories";
+import JijoSpinner from "@/components/JijoSpinner";
 import MenuBubble from "@/components/MenuBubble";
-import CheckBox from "@/components/CheckBox/CheckBox";
-//import Products from "@/components/Products";
+import MenuTitle from "@/components/MenuTitle";
+import Products from "@/components/Products";
+import { usePocketBaseFilteredData } from "@/hooks/usePocektBaseData";
+import { useState } from "react";
 import LazyImage from "@/utils/LazyImage";
+import MenuSearchForm from "@/components/Menu/MenuSearchForm";
+//import Pagination from "@/pockets/Pagination"
+import JiJoHelmet from "@/utils/JiJoHelmet";
+import productImage01 from "@/assets/images/menu/product/product_image01.jpg"
+
+const collection = 'products';
 
 function Product() {
+  const [category, setCategory] = useState('전체보기');
+  const {data, status} = usePocketBaseFilteredData(collection, 1, 20, category !== '전체보기' ? `(category~'${category}')` : '');
+
+  const handleCategory = (newCategory) => {
+    setCategory(newCategory)
+  }
+
+  if (status === "loading") {
+    return <JijoSpinner />
+  }
+  
   return (
     <div>
-      <Helmet>
-        <title>메뉴소개 - 상품</title>
-      </Helmet>
-      <MenuTitle title="MEGA MENU">PRODUCT MENU</MenuTitle>
+      <JiJoHelmet pageTitle='메뉴소개 - 상품' />
+      <MenuTitle title="MEGA MENU" mainMenu="메뉴소개" subMenu="상품" linkTo="/menu/drink">PRODUCT MENU</MenuTitle>
       <MenuBubble>
         <strong>MEGA DAILY GOODS</strong>
       </MenuBubble>
@@ -33,10 +50,7 @@ function Product() {
           </div>
         </div>
         <figure className="shrink-0 tablet:shrink mobile:w-full">
-          <LazyImage
-            src="/src/assets/images/menu/product/product_image01.jpg"
-            alt="지조로운 일상의 커피"
-          />
+          <LazyImage src={productImage01} alt="지조로운 일상의 커피" />
         </figure>
       </section>
       <section className="bg-white mx-auto max-w-7xl mt-[6.25rem] mobile:px-5">
@@ -49,15 +63,11 @@ function Product() {
         </div>
 
         <div className="checkboxArea border border-gray-200 p-[1.875rem] my-10">
-          <p className="pb-5 mb-5 leading-tight border-b title text-jj_22 border-b-gray-200">
-            분류보기
-          </p>
-          <div className="checkboxWrap flex gap-[.625rem]">
-            <CheckBox text="전체 상품보기" defaultChecked="checked" />
-            <CheckBox text="MD" />
-          </div>
+          <p className="pb-5 mb-5 leading-tight border-b title text-jj_22 border-b-gray-200">분류보기</p>
+          <Categories collection="products" category={category} handleCategory={handleCategory}/>
         </div>
 
+        <Products data={data}/>
         {/* <Pagination></Pagination> */}
       </section>
     </div>
