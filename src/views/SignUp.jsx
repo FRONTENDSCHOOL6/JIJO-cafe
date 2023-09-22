@@ -11,7 +11,6 @@ import debounce from "@/utils/debounce";
 import {useEffect} from "react";
 import {useState} from "react";
 import {useId} from "react";
-import {Helmet} from "react-helmet-async";
 import {toast} from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
 
@@ -109,32 +108,56 @@ function SignUp() {
     }
   }, [user]);
 
-  /* 체크 박스 전체동의 클릭 시 하위 체크박스 전체 선택 */
-  const [checkBoxItems, setCheckBoxItems] = useState([
+  /* 체크 박스 데이터를 담을 배열 */
+  const [checkboxData, setCheckboxData] = useState([
     {
       labelText: "서비스 이용약관 동의 (필수)",
       className: "mr-1",
       required: true,
+      name: "termsOfService",
       checked: false,
     },
     {
       labelText: "개인정보 수집 및 이용 동의 (필수)",
       className: "mr-1",
       required: true,
+      name: "privacyPolicy",
       checked: false,
     },
     {
       labelText: "만 14세 이상 입니다 (필수)",
       className: "mr-1",
       required: true,
+      name: "ageConfirmation",
       checked: false,
     },
     {
       labelText: "광고성 정보 수신 동의 (선택)",
       className: "mr-1",
+      name: "marketingInfo",
       checked: false,
     },
   ]);
+
+  /*체크 박스 단일 선택 시 */
+  const handleSingleCheck = (name) => {
+    setCheckboxData((prevData) =>
+      prevData.map((checkbox) =>
+        checkbox.name === name
+          ? {...checkbox, checked: !checkbox.checked}
+          : checkbox
+      )
+    );
+  };
+
+  /* 체크 박스 전체 선택 */
+  const handleAllCheck = (selectAll) => {
+    const updatedCheckboxData = checkboxData.map((checkbox) => ({
+      ...checkbox,
+      checked: selectAll,
+    }));
+    setCheckboxData(updatedCheckboxData);
+  };
 
   return (
     <>
@@ -164,19 +187,33 @@ function SignUp() {
             })}
           </div>
           <div className="checkBoxWrap pt-[2.9375rem] flex flex-col gap-3 ">
-            <CheckBox className="mr-1" text="전체동의" />
+            <CheckBox
+              text="전체동의"
+              checked={checkboxData.every((checkbox) => checkbox.checked)}
+              onChange={() =>
+                handleAllCheck(
+                  !checkboxData.every((checkbox) => checkbox.checked)
+                )
+              }
+            />
+
             <hr className="w-full" />
-            {checkBoxItems.map(({labelText, className, required}) => {
-              const id = useId();
-              return (
-                <CheckBox
-                  required={required}
-                  className={className}
-                  text={labelText}
-                  key={id}
-                />
-              );
-            })}
+
+            {checkboxData.map(
+              ({labelText, className, required, name, checked}) => {
+                const id = useId();
+                return (
+                  <CheckBox
+                    key={id}
+                    required={required}
+                    text={labelText}
+                    checked={checked}
+                    className={className}
+                    onChange={() => handleSingleCheck(name)}
+                  />
+                );
+              }
+            )}
           </div>
 
           <Button
