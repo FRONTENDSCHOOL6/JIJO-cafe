@@ -7,7 +7,7 @@ import useAuthStore from "@/store/store"
 
 function Detail({ data, handleDelete, field, Field }) {
   const user = useAuthStore((state) => state.user) // useAuthStore를 통해 user 정보를 가져오기
-  const isAdmin = user && user.verified // isAdmin을 user.role이 "admin"일 때 true로 설정
+  const isAdmin = user && user.permission === "administrator" // isAdmin을 user.role이 "admin"일 때 true로 설정
 
   return (
     data && (

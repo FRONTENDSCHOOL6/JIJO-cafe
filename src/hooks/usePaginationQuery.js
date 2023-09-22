@@ -2,17 +2,25 @@ import { useState } from "react"
 import { useSearchParams } from "react-router-dom"
 import { useQueryClient } from "@tanstack/react-query"
 import { useEffect } from "react"
-import queryKeys from "@/api/pockets/queryKeys"
+// import queryKeys from "@/api/pockets/queryKeys"
+// import { useQueryPocketBase } from "@/pockets/useQueryPocketBase"
+import { useQueryPocketBase } from "@/api/pockets/useQueryPocketBase"
+import { getPagination } from "@/api/pockets"
 
-const usePagination = ({ pageKey = "page", perPage = 50, collections, queryFn, useQueryPocketBase, options = {} }) => {
+const usePaginationQuery = ({ pageKey = "page", perPage = 50, queryKey, dependency, options = {} }) => {
   const [urlSearchParams, setUrlSearchParams] = useSearchParams()
   const queryClient = useQueryClient()
 
   const [page, setPage] = useState(() => Number(urlSearchParams.get(pageKey)) ?? 1)
+  // const [page, setPage] = useState(1)
 
-  const queryKey = [queryKeys[collections]] // queryKeys에서 collections에 해당하는 값을 가져옵니다.
+  const { isLoading, isPreviousData, data, error, refetch } = useQueryPocketBase(queryKey, page, perPage, dependency, options)
+  console.log(data)
 
-  const { isLoading, isPreviousData, data, error } = useQueryPocketBase(queryKey, page, perPage, options)
+  // dependency가 바뀌면 page를 1로 초기화
+  useEffect(() => {
+    setPage(1)
+  }, [dependency])
 
   useEffect(() => {
     if (data) {
@@ -23,14 +31,14 @@ const usePagination = ({ pageKey = "page", perPage = 50, collections, queryFn, u
         const nextPageIndex = page + 1
         queryClient.prefetchQuery({
           queryKey: [queryKey, nextPageIndex],
-          queryFn: () => queryFn(nextPageIndex, perPage),
+          queryFn: () => getPagination(queryKey, nextPageIndex, perPage, options),
         })
       }
       if (hasPreviousData) {
         const previousPageIndex = page - 1
         queryClient.prefetchQuery({
           queryKey: [queryKey, previousPageIndex],
-          queryFn: () => queryFn(previousPageIndex, perPage),
+          queryFn: () => getPagination(queryKey, previousPageIndex, perPage, options),
         })
       }
     }
@@ -83,7 +91,8 @@ const usePagination = ({ pageKey = "page", perPage = 50, collections, queryFn, u
     gotoPreviousPage,
     gotoNextPage,
     changePage,
+    refetch,
   }
 }
 
-export default usePagination
+export default usePaginationQuery
