@@ -3,15 +3,17 @@ import MenuTitle from "@/components/MenuTitle"
 import PageMainTitle from "@/components/PageMainTitle"
 import SelectSearchFilter from "@/components/Notice/SelectSearchFilter"
 import JiJoHelmet from "@/utils/JiJoHelmet"
-import usePagination from "@/hooks/usePagination"
+
 import TableListPagination from "@/components/Notice/TableListPagination"
+import usePaginationQuery from "@/hooks/usePaginationQuery"
 
 function Faq() {
   const [searchOption, setSearchOption] = useState("faqTitle") //select 태그
   const [searchText, setSearchText] = useState("") //input 검색어를 입력하세요 창
+
   // 리팩토링전 usepb훅 사용 -> 리액트쿼리 리팩토링
   // const { data, status } = usePocketBaseFilteredData("notices", 1, 20, `(${searchOption} ~ '${searchText}')`, reload)
-  const { error, refetch, ...rest } = usePagination({
+  const { error, refetch, ...rest } = usePaginationQuery({
     perPage: 10,
     queryKey: "faq",
     dependency: searchText,

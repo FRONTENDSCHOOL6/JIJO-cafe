@@ -58,6 +58,6 @@ export const useQueryPocketBase = (key, page, perPage, dependency, options) => {
     queryFn: () => getPagination(key, page, perPage, options),
     keepPreviousData: true,
     // ...options,
-    staleTime: 1000 * 60 * 5,
+    // staleTime: 1000 * 60 * 5,
   })
 }

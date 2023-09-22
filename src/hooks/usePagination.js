@@ -5,8 +5,6 @@ import { useEffect } from "react"
 import queryKeys from "@/api/pockets/queryKeys"
 
 const usePagination = ({ pageKey = "page", perPage = 50, collections, queryFn, useQueryPocketBase, options = {} }) => {
-  console.log(collections)
-
   const [urlSearchParams, setUrlSearchParams] = useSearchParams()
   const queryClient = useQueryClient()
 
@@ -15,7 +13,6 @@ const usePagination = ({ pageKey = "page", perPage = 50, collections, queryFn, u
   const queryKey = [queryKeys[collections]] // queryKeys에서 collections에 해당하는 값을 가져옵니다.
 
   const { isLoading, isPreviousData, data, error } = useQueryPocketBase(queryKey, page, perPage, options)
-  console.log(data)
 
   useEffect(() => {
     if (data) {
