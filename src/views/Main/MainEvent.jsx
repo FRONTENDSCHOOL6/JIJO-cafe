@@ -39,7 +39,7 @@ function MainEvent() {
   }
 
   return (
-    <section className="grid grid-cols-1 place-content-center place-items-center h-screen p-[10%] overflow-hidden">
+    <section className="grid grid-cols-1 place-content-center place-items-center h-screen p-[10%]  overflow-hidden mobile:p-[5%]">
       <h2 className="sr-only">메인페이지 이벤트</h2>
       <div className="text-center">
         <MainpageTitle highLight="primaryHighlight" subHeading="카페지조 소식" mainHeading="JIJO EVENT"></MainpageTitle>
@@ -49,7 +49,7 @@ function MainEvent() {
           data.mainEvent.items?.map((item) => {
             return (
               <figure key={item.id} className="overflow-hidden font-light bg-white border cursor-pointer rounded-2xl text-deepDarkGray mobile:flex">
-                <Link to={`/bbs/event/detail/${item.id}`}>
+                <Link to={`/bbs/event/detail/${item.id}`} className="">
                   <LazyImage
                     src={getPbImageURL(item, "thumbnail")}
                     alt={item.title}

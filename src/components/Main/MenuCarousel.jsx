@@ -7,7 +7,7 @@ import LazyImage from "@/utils/LazyImage";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useQuery } from "@tanstack/react-query";
 import { getPbImageURL } from "@/utils/getPbImageURL";
-import { A11y, Navigation, Pagination } from "swiper/modules";
+import { A11y, Navigation, Pagination, Keyboard } from "swiper/modules";
 
 export default function MenuCarousel() {
   const { isLoading, data, isError, error } = useQuery({
@@ -40,7 +40,7 @@ export default function MenuCarousel() {
   return (
     <>
       <Swiper
-        modules={[Navigation, A11y, Pagination]}
+        modules={[Navigation, A11y, Pagination, Keyboard]}
         navigation
         a11y={{
           prevSlideMessage: "이전 슬라이드",
@@ -51,12 +51,13 @@ export default function MenuCarousel() {
         autoHeight={true}
         breakpoints={{
           390: {
-            slidesPerView: 4,
+            slidesPerView: 5,
           },
           768: {
             slidesPerView: 2,
           },
         }}
+        keyboard={{ enabled: true }}
         id="menuSwiper"
       >
         {data &&
