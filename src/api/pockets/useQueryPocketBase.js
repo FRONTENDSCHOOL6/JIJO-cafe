@@ -9,10 +9,10 @@ export const useQueryGetProducts = (key, page, perPage, options) => {
     queryFn: () => getProducts(page, perPage, options),
     keepPreviousData: true,
     ...options,
-    // staleTime: 1000 * 60 * 5,
-    // refetchOnMount: false,
-    // refetchOnReconnect: false,
-    // refetchOnWindowFocus: false,
+    // staleTime: 1000 * 60 * 5,  //5분 동안 "유효하지 않은(stale)" 상태로 유지되며, 5분 이후에 업데이트
+    // refetchOnMount: false, //컴포넌트가 마운트될 때 데이터를 새로고침 여부
+    // refetchOnReconnect: false,   //인터넷 연결이 다시 활성화될 때 데이터를 자동으로 새로고침 여부
+    // refetchOnWindowFocus: false,  //브라우저 창이 포커스를 얻을 때 데이터 새로고침 여부
   })
 }
 
@@ -58,6 +58,5 @@ export const useQueryPocketBase = (key, page, perPage, dependency, options) => {
     queryFn: () => getPagination(key, page, perPage, options),
     keepPreviousData: true,
     // ...options,
-    // staleTime: 1000 * 60 * 5,
   })
 }
