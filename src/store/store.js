@@ -27,15 +27,12 @@ const authStore = (set) => ({
 
     const {isValid, model, token} = pb.authStore;
 
-    const isAdmin = model.role === "admin";
-
     set(
       (state) => ({
         ...state,
         isAuth: isValid,
         user: model,
         token,
-        isAdmin,
       }),
       false,
       "auth/signin"
@@ -99,6 +96,29 @@ const authStore = (set) => ({
       .update(kakaoAuth.record.id, updateUser);
 
     return kakaoAuth;
+  },
+
+  /* Pb SDK를 사용한 깃허브로 로그인 */
+  SignWithGithub: async () => {
+    try {
+      const githubAuth = await pb
+        .collection(USER_COLLECECTION)
+        .authWithOAuth2({provider: "github"});
+
+      set((state) => ({
+        ...state,
+        isAuth: true,
+        user: {
+          id: githubAuth.record.id,
+          name: githubAuth.record.name,
+          email: githubAuth.record.email,
+          username: githubAuth.record.username,
+        },
+        token: githubAuth.token,
+      }));
+    } catch (error) {
+      console.error("Failed to authenticate with GitHub:", error);
+    }
   },
 });
 

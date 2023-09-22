@@ -65,12 +65,8 @@ function ProductItem({item, ...restProps}) {
         onClick={() => {
           handleAddToCart(item);
         }}
-        className="absolute bottom-[11.25rem] right-0"
-      >
-        <img
-          src={cart}
-          alt=""
-        />
+        className="absolute bottom-[11.25rem] right-0">
+        <LazyImage src={cart} alt="장바구니 아이콘" />
       </button>
     </li>
   );

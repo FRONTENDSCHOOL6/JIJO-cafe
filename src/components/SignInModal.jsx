@@ -16,6 +16,7 @@ import KakaoTalkSignInButton from "./KakaoTalkSignInButton";
 import SignInForm from "./SignInForm";
 import TextHorizen from "./TextHorizen";
 import {useEffect} from "react";
+import GithubSignInButton from "./GithubSignInButton";
 
 function SignInModal({setIsClickedSignin}) {
   /* Email과 Password 유효성 검사 및 조건부 렌더링 함수 */
@@ -76,12 +77,19 @@ function SignInModal({setIsClickedSignin}) {
   /* 회원가입 페이지 이동 */
   const handleMoveSignUp = () => {
     navigate("/signUp");
+    setIsClickedSignin(false);
   };
 
   /* KaKao 사용자 로그인 */
   const kakaoSignIn = useAuthStore((state) => state.SignWithKaKao);
   const handleSigninKakao = async () => {
     await kakaoSignIn();
+  };
+
+  /* GitHub 사용자 로그인 */
+  const githubSignIn = useAuthStore((state) => state.SignWithGithub);
+  const handleSignInGithub = async () => {
+    await githubSignIn();
   };
 
   /* Eye Component 상태에 따른 비밀번호 보이기/보이지 않기 */
@@ -153,6 +161,7 @@ function SignInModal({setIsClickedSignin}) {
           </ButtonWrapper>
           <TextHorizen>간편 로그인</TextHorizen>
           <KakaoTalkSignInButton onClick={handleSigninKakao} />
+          <GithubSignInButton onClick={handleSignInGithub} />
         </SignInForm>
       </div>
     )
