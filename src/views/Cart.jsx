@@ -8,40 +8,47 @@ import PageMainTitle from "@/components/PageMainTitle";
 import useToggle from "@/hooks/useToggle";
 import useCartStore from "@/store/cartStore";
 import JiJoHelmet from "@/utils/JiJoHelmet";
-import { numberWithComma } from "@/utils/numberWithComma";
-import { useState } from "react";
+import {numberWithComma} from "@/utils/numberWithComma";
+import {useState} from "react";
+import toast from "react-hot-toast";
 
 function Cart() {
   const [toggleDropDown, setToggleDropDown] = useToggle(true);
   const [isClicked, setIsClicked] = useState(false);
   const cart = useCartStore((state) => state.cart);
-  const removeAll = useCartStore((state) => state.removeAll);
   const handleClick = () => {
     setIsClicked(!isClicked);
   };
   const handleClose = () => {
     setIsClicked(false);
   };
+
+  /* Cart 배열내 Item들의 가격 총합 */
   const totalPrice = cart
     .map((item) => {
       return Number(item.count * item.price);
     })
     .reduce((acc, cur) => acc + cur, 0);
-  console.log(totalPrice);
-  const totalCount = cart.map((item) => {
-    return Number(item.count)
-  }).reduce((acc, cur) => acc + cur, 0);
 
+  /* 장바구니 내 담겨있는 상품 전체 삭제 */
+  const removeAll = useCartStore((state) => state.removeAll);
+  const handleClickRemove = () => {
+    removeAll();
+    toast.success("장바구니에 담긴 상품이 모두 삭제되었습니다.", {
+      duration: 3000,
+      position: "top-center",
+    });
+  };
 
   return (
     <>
-      <JiJoHelmet pageTitle='장바구니' />
+      <JiJoHelmet pageTitle="장바구니" />
       <PageMainTitle pageTitleText="JIJO CART" />
       <div className="cartWrap mx-auto max-w-7xl flex gap-5 pb-52 mobile:flex-col">
         <div className="orderListArea w-3/4 mobile:w-full">
           <div className="selectArea font-semibold">
             <CheckBox text={`전체선택(3/${totalCount}) `} defaultChecked="checked" />
-            <button>| 전체삭제</button>
+            <button onClick={handleClickRemove}>| 전체삭제</button>
           </div>
           <div className="orderListWrap border-t bg-white border-secondary my-4 overflow-hidden">
             <div className="titleButtonArea flex justify-between py-4">
@@ -75,17 +82,19 @@ function Cart() {
               <Button
                 className="w-full bg-white text-secondary border border-secondary hover:border-primary hover:text-white grow my-4"
                 color="primary"
-                onClick={handleClick}
-              >
+                onClick={handleClick}>
                 매장변경
               </Button>
-              {isClicked && <StoreChangeModal handleClose={handleClose}/>}
+              {isClicked && <StoreChangeModal handleClose={handleClose} />}
             </div>
             <div className="orderInfoBottom border border-gray-200 bg-gray-100 p-5">
               <div className="flex flex-col justify-center">
                 <span>결제예정금액</span>
-                <span className="font-semibold">
-                  <span className="text-[1.75rem] font-bold">{numberWithComma(totalPrice)}</span>원
+                <span className="font-semibold flex items-center">
+                  <span className="text-[1.75rem] font-bold">
+                    {numberWithComma(totalPrice)}
+                  </span>
+                  원
                 </span>
               </div>
             </div>

@@ -13,6 +13,7 @@ import jsconfigPath from "vite-jsconfig-paths";
 import {createHtmlPlugin} from "vite-plugin-html";
 import {loadEnv} from "vite";
 import viteCompression from "vite-plugin-compression";
+import {visualizer} from "rollup-plugin-visualizer";
 const isDev = env.NODE_ENV === "development";
 const envLoad = loadEnv(isDev, process.cwd());
 
@@ -62,11 +63,19 @@ export default defineConfig({
   // 빌드 시, 청크 파일 생성 매뉴얼 구성
   build: {
     rollupOptions: {
+      plugins: [
+        visualizer({
+          open: true,
+          gzipSize: true,
+          brotliSize: true,
+        }),
+      ],
       output: {
         manualChunks: {
-          react: ["react", "react-dom"],
+          react: ["react", "react-dom", "zustand", "@tanstack/react-query"],
           reactRouter: ["react-router-dom"],
-          animations: ["framer-motion", "gsap"],
+          animations: ["framer-motion", "gsap", "aos"],
+          swiperBundle: ["swiper"],
         },
       },
     },

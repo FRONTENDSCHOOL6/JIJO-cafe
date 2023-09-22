@@ -1,4 +1,4 @@
-function PageMainTitle({ pageTitleText, pageSubTitleText }) {
+function PageMainTitle({pageTitleText, pageSubTitleText}) {
   return (
     <>
       <div className="text-center pb-[2.625rem] ">
@@ -6,7 +6,7 @@ function PageMainTitle({ pageTitleText, pageSubTitleText }) {
         <span className="font-light text-[#1c1c1b]">{pageSubTitleText}</span>
       </div>
     </>
-  )
+  );
 }
 
-export default PageMainTitle
+export default PageMainTitle;

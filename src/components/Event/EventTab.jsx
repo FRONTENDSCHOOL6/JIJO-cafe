@@ -1,7 +1,7 @@
 import pb from "@/api/pocketbase";
-import TabContent from "./EventContents";
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
 import EventSearchForm from "./EventSearchForm";
+import {TabContent} from "./TabContent";
 
 function EventTab() {
   const items = [
@@ -23,7 +23,6 @@ function EventTab() {
     },
   ];
 
-  pb.autoCancellation(false);
   const [select, setSelect] = useState("total");
   const [contentData, setContentData] = useState(null);
 
@@ -34,7 +33,9 @@ function EventTab() {
 
   // filter 조건 처리 함수
   function getFilter() {
-    return select === "total" || undefined || null ? "" : `category = "${select}"`;
+    return select === "total" || undefined || null
+      ? ""
+      : `category = "${select}"`;
   }
 
   useEffect(() => {
@@ -67,7 +68,9 @@ function EventTab() {
             key={index}
             onClick={() => handleClick(item.type)}
             // 클릭시 setSelect에 type을 넣어줌
-            className={`${select === item.type ? "select" : "default"} flex-1 py-4 cursor-pointer border-[#DBDDDF] box-content`}
+            className={`${
+              select === item.type ? "select" : "default"
+            } flex-1 py-4 cursor-pointer border-[#DBDDDF] box-content`}
             // type에 따라 클래스 넣기
           >
             {item.title}
@@ -75,7 +78,7 @@ function EventTab() {
         ))}
       </ul>
       <EventSearchForm />
-      <TabContent data={contentData} />
+      <TabContent />
     </>
   );
 }

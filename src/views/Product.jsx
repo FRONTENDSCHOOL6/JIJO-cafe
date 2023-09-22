@@ -35,7 +35,9 @@ function Product() {
       <section className="bg-white mx-auto max-w-7xl mobile:w-full flex mobile:flex-col justify-between items-center mobile:items-start gap-[3.125rem] pt-[6.25rem] mobile:px-5">
         <div>
           <p className="font-light text-jj_24">지조로운 일상의 커피</p>
-          <h2 className="my-10 font-bold leading-tight text-jj_60 break-keep">JIJO STICK</h2>
+          <h2 className="my-10 font-bold leading-tight text-jj_60 break-keep">
+            JIJO STICK
+          </h2>
           <div className="text">
             <p className="pb-5 border-b title text-jj_22">
               하루에 하나로 충분 ! 메가로운 대용량 아메리카노
@@ -55,7 +57,9 @@ function Product() {
         <div className="text-center titleArea">
           <p className="font-light text-jj_24">카페 지조 상품</p>
           <h2 className="font-black text-jj_60">JIJO GOODS</h2>
-          <span className="text-jj_14 font-light text-[#1c1c1b] opacity-70">※메뉴 이미지는 연출컷이라 실물과 다를 수 있습니다.</span>
+          <span className="text-jj_14 font-light text-[#1c1c1b] opacity-70">
+            ※메뉴 이미지는 연출컷이라 실물과 다를 수 있습니다.
+          </span>
         </div>
 
         <div className="checkboxArea border border-gray-200 p-[1.875rem] my-10">
