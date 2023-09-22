@@ -1,4 +1,4 @@
-import {AiFillEyeInvisible} from "@react-icons/all-files/ai/AiFillEyeInvisible";
+import {AiFillEyeInvisible} from "react-icons/ai";
 function EyeClosed({...props}) {
   return (
     <>

@@ -33,15 +33,15 @@ function OrderListItem({product, selectedProdcut}) {
           {product.title}
         </p>
       </Link>
-      <div className="countBtn basis-[5.5rem] font-semibold border border-gray-300 px-2 py-1 rounded-sm flex justify-between">
+      <div className="countBtn basis-[5.5rem] font-semibold border border-gray-300 px-2 rounded-sm flex justify-between items-center">
         <button
           type="button"
           onClick={handleDecrementItemCount}
-          className="text-gray-400">
+          className="text-gray-400 text-[1.5rem]">
           -
         </button>
         <span>{product.count}</span>
-        <button type="button" onClick={() => setCartItemCount(product.id, 1)}>
+        <button type="button" className="text-[1.5rem]" onClick={() => setCartItemCount(product.id, 1)}>
           +
         </button>
       </div>
