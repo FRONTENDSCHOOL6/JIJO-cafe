@@ -105,8 +105,9 @@ function SignInModal({setIsClickedSignin}) {
     !isModalOpen && (
       <div className="w-full h-screen bg-[rgba(0,0,0,0.4)] fixed z-50 left-0 top-0">
         <SignInForm ref={formRef}>
-          <JijoCafeLogoTitle />
+          <JijoCafeLogoTitle className="pr-6" />
           <Input
+            labelClassName="mt-2"
             className={isEmailValid || inValidBorder}
             name="email"
             defaultValue={formData.email}
