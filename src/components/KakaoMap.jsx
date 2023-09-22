@@ -38,7 +38,7 @@ function KakaoMap({setKakaoPlaceResult, searchedResult}) {
       }
     };
 
-    /* 검색 키워드 */
+    /* 검색 키워드 및 keywordSearch() 메서드 */
     const KEYWORD = `${searchedResult} 메가커피`;
     places.keywordSearch(KEYWORD, placesSearchCallBack, {
       useMapBounds: searchedResult.trim().length === 0,
@@ -73,7 +73,7 @@ function KakaoMap({setKakaoPlaceResult, searchedResult}) {
                   }" className="infoWindow__phone">번호: ${
                     place.phone || "N/A"
                   }</a >
-                  <button>자세히 보기</button>
+                  <button className="infoWindow__button">자세히 보기</button>
                 </div>`;
 
         if (infowindow) {

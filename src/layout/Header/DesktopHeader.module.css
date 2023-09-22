@@ -1,12 +1,12 @@
 .header {
-  @apply bg-white py-6 fixed w-full top-0 font-semibold text-[18px] z-50;
+  @apply bg-white py-6 sticky w-full top-0 font-semibold text-[18px] z-50;
 
   & h2 {
     @apply sr-only;
   }
 
   & nav {
-    @apply flex justify-between items-center;
+    @apply flex justify-between items-start;
   }
 
   & .title {

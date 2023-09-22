@@ -1,4 +1,4 @@
-import {AiFillEye} from "react-icons/ai";
+import {AiFillEye} from "@react-icons/all-files/ai/AiFillEye";
 
 function EyeOpen({className, ...props}) {
   return (

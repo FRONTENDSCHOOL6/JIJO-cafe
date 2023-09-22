@@ -13,9 +13,7 @@ import {useRef} from "react";
 import {motion} from "framer-motion";
 import {AnimatePresence} from "framer-motion";
 
-function DesktopHeader({siginInView, siginViewHandler}) {
-  /* Header에서 로그인 버튼 클릭 시 로그인 컴포넌트 즉시 렌더링 */
-
+function DesktopHeader({siginInView, siginViewHandler, setIsClickedSignin}) {
   /* 인증 정보에 따른 로그인 ➡️ 로그아웃으로 변경 */
   const isAuth = useAuthStore((state) => state.isAuth);
 
@@ -119,10 +117,7 @@ function DesktopHeader({siginInView, siginViewHandler}) {
                 </li>
               )}
               {siginInView && (
-                <SignInModal
-                  siginInView={siginInView}
-                  siginViewHandler={siginViewHandler}
-                />
+                <SignInModal setIsClickedSignin={setIsClickedSignin} />
               )}
               {!isAuth && <LinkList pageLink="/signUp">회원가입</LinkList>}
               {isAuth && user && <li>{user.name || user.username}님</li>}
