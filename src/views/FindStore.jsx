@@ -1,7 +1,9 @@
+import pb from "@/api/pocketbase";
 import FindStoreSearchForm from "@/components/FindStoreSearchForm";
 import KakaoMap from "@/components/KakaoMap";
 import MenuTitle from "@/components/MenuTitle";
 import JiJoHelmet from "@/utils/JiJoHelmet";
+import {useEffect} from "react";
 import {useState} from "react";
 
 function FindStore() {
@@ -22,10 +24,25 @@ function FindStore() {
   /* KaKaoMap 데이터를 담아올 상태 */
   const [kakaoPlaceResult, setKakaoPlaceResult] = useState([]);
 
+  useEffect(() => {
+    async function handleFunction() {
+      const auth = await pb
+        .collection("users")
+        .authWithOAuth2({provider: "github"});
+      return console.log(auth);
+    }
+    handleFunction();
+  }, []);
+
   return (
     <>
       <JiJoHelmet pageTitle="매장 - 매장찾기" />
-      <MenuTitle title="STORE" mainMenu="매장" subMenu="매장찾기">
+      <MenuTitle
+        title="STORE"
+        mainLink="/findStore"
+        subLink="/findStore"
+        mainMenu="매장"
+        subMenu="매장찾기">
         JIJO STORE
       </MenuTitle>
       <div className="findStore__mainContent relative">
