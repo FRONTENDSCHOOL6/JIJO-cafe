@@ -38,7 +38,7 @@ function Main() {
   }, [currentPage]);
 
   return (
-    <div className="">
+    <div>
       <Helmet>
         <title>카페지조-메인페이지</title>
       </Helmet>

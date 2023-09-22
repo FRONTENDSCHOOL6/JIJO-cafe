@@ -5,12 +5,11 @@ import JijoError from "../JijoError";
 import LazyImage from "@/utils/LazyImage";
 import { useQuery } from "@tanstack/react-query";
 import { Swiper, SwiperSlide } from "swiper/react";
-import JijoSpinner from "@/components/JijoSpinner";
 import { Pagination, Keyboard } from "swiper/modules";
 import { getPbImageURL } from "@/utils/getPbImageURL";
 
 export default function ShopingMallCarousel() {
-  const { isLoading, data, isError, error } = useQuery({
+  const { data, isError, error } = useQuery({
     queryKey: ["mainProduct"],
     queryFn: async () => {
       // eslint-disable-next-line no-useless-catch
@@ -24,14 +23,6 @@ export default function ShopingMallCarousel() {
       }
     },
   });
-
-  if (isLoading) {
-    return (
-      <div>
-        <JijoSpinner />
-      </div>
-    );
-  }
 
   if (isError) {
     return (

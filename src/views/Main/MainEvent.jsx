@@ -5,12 +5,11 @@ import JijoError from "@/components/JijoError";
 import yyyymmddDate from "@/utils/yyyymmddDate";
 import { useQuery } from "@tanstack/react-query";
 import { Link, NavLink } from "react-router-dom";
-import JijoSpinner from "@/components/JijoSpinner";
 import { getPbImageURL } from "@/utils/getPbImageURL";
 import MainpageTitle from "@/components/Main/MainpageTitle";
 
 function MainEvent() {
-  const { isLoading, data, isError, error } = useQuery({
+  const { data, isError, error } = useQuery({
     queryKey: ["mainEvent"],
     queryFn: async () => {
       // eslint-disable-next-line no-useless-catch
@@ -24,16 +23,6 @@ function MainEvent() {
       }
     },
   });
-
-  // console.log("mainEvent->", data);
-
-  if (isLoading) {
-    return (
-      <div>
-        <JijoSpinner />
-      </div>
-    );
-  }
 
   if (isError) {
     return (

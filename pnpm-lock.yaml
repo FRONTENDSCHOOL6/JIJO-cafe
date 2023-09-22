@@ -1,5 +1,4 @@
 lockfileVersion: '6.0'
-lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -7,10 +6,8 @@ settings:
 
 dependencies:
   '@tanstack/react-query':
-  '@tanstack/react-query':
     specifier: ^4.33.0
     version: 4.33.0(react-dom@18.2.0)(react@18.2.0)
-  '@tanstack/react-query-devtools':
   '@tanstack/react-query-devtools':
     specifier: ^4.33.0
     version: 4.33.0(@tanstack/react-query@4.33.0)(react-dom@18.2.0)(react@18.2.0)
@@ -2554,7 +2551,7 @@ packages:
       he: 1.2.0
       param-case: 3.0.4
       relateurl: 0.2.7
-      terser: 5.20.0
+      terser: 5.19.4
     dev: true
 
   /http-cache-semantics@3.8.1:
@@ -4475,8 +4472,8 @@ packages:
       uuid: 3.4.0
     dev: true
 
-  /terser@5.20.0:
-    resolution: {integrity: sha512-e56ETryaQDyebBwJIWYB2TT6f2EZ0fL0sW/JRXNMN26zZdKi2u/E/5my5lG6jNxym6qsrVXfFRmOdV42zlAgLQ==}
+  /terser@5.19.4:
+    resolution: {integrity: sha512-6p1DjHeuluwxDXcuT9VR8p64klWJKo1ILiy19s6C9+0Bh2+NWTX6nD9EPppiER4ICkHDVB1RkVpin/YW2nQn/g==}
     engines: {node: '>=10'}
     hasBin: true
     dependencies:
