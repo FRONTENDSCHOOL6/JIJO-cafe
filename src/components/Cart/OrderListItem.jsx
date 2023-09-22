@@ -3,14 +3,12 @@ import CloseButton from "@/components/CloseButton";
 import useCartStore from "@/store/cartStore";
 import {getPbImageURL} from "@/utils/getPbImageURL";
 import {numberWithComma} from "@/utils/numberWithComma";
-import {useState} from "react";
 import toast from "react-hot-toast";
 import {Link} from "react-router-dom";
 
-function OrderListItem({product, selectedProdcut}) {
+function OrderListItem({product}) {
   const remove = useCartStore((state) => state.remove);
   const setCartItemCount = useCartStore((state) => state.setCartItemCount);
-  const cart = useCartStore((state) => state.cart);
 
   const handleDecrementItemCount = () => {
     if (product.count > 1) {
@@ -25,7 +23,9 @@ function OrderListItem({product, selectedProdcut}) {
       key={product.id}
       className="border-b border-gray-200 flex items-center py-4">
       <CheckBox className="mr-[1.375rem] mobile:mr-1" />
-      <Link to="/menu/drink" className="flex basis-2/3 mobile:basis-[55%] items-center shrink-0">
+      <Link
+        to="/menu/drink"
+        className="flex basis-2/3 mobile:basis-[55%] items-center shrink-0">
         <figure className="shrink-0">
           <img src={getPbImageURL(product, "image")} className="h-24" />
         </figure>
@@ -41,7 +41,10 @@ function OrderListItem({product, selectedProdcut}) {
           -
         </button>
         <span className="mobile:text-sm">{product.count}</span>
-        <button type="button" className="text-[1.3rem]" onClick={() => setCartItemCount(product.id, 1)}>
+        <button
+          type="button"
+          className="text-[1.3rem]"
+          onClick={() => setCartItemCount(product.id, 1)}>
           +
         </button>
       </div>

@@ -17,7 +17,6 @@ function Products({
   gotoNextPage,
   changePage,
 }) {
-  console.log(data);
   return (
     <>
       <div className="itemWrap">

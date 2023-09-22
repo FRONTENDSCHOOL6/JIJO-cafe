@@ -1,9 +1,5 @@
-import React from 'react'
-
 function RadioButton() {
-  return (
-    <input type="radio" />
-  )
+  return <input type="radio" />;
 }
 
-export default RadioButton
+export default RadioButton;
