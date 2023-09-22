@@ -55,7 +55,11 @@ function SignInModal({setIsClickedSignin}) {
 
   useEffect(() => {
     if (user) {
-      toast.success(`${user.username}님 환영해요😁`, {icon: "👋"});
+      toast.success(`${user.username}님 환영해요😁`, {
+        icon: "👋",
+        duration: 2000,
+      });
+      setIsClickedSignin(false);
       navigate("/");
     }
   }, [user]);
@@ -81,16 +85,23 @@ function SignInModal({setIsClickedSignin}) {
   };
 
   /* KaKao 사용자 로그인 */
+  const isAuth = useAuthStore((state) => state.isAuth);
   const kakaoSignIn = useAuthStore((state) => state.SignWithKaKao);
   const handleSigninKakao = async () => {
     await kakaoSignIn();
+    if (isAuth) {
+      setIsClickedSignin(false);
+    }
   };
 
-  /* GitHub 사용자 로그인 */
-  const githubSignIn = useAuthStore((state) => state.SignWithGithub);
-  const handleSignInGithub = async () => {
-    await githubSignIn();
-  };
+  // /* GitHub 사용자 로그인 */
+  // const githubSignIn = useAuthStore((state) => state.SignWithGithub);
+  // const handleSignInGithub = async () => {
+  //   await githubSignIn();
+  //   if (isAuth) {
+  //     setIsClickedSignin(false);
+  //   }
+  // };
 
   /* Eye Component 상태에 따른 비밀번호 보이기/보이지 않기 */
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -116,6 +127,7 @@ function SignInModal({setIsClickedSignin}) {
             label="이메일"
             type="email"
           />
+
           {!isEmailValid && (
             <InValidErrorMessage errorText="올바른 이메일 형식을 입력해주세요😅" />
           )}
@@ -162,7 +174,7 @@ function SignInModal({setIsClickedSignin}) {
           </ButtonWrapper>
           <TextHorizen>간편 로그인</TextHorizen>
           <KakaoTalkSignInButton onClick={handleSigninKakao} />
-          <GithubSignInButton onClick={handleSignInGithub} />
+          <GithubSignInButton />
         </SignInForm>
       </div>
     )

@@ -82,13 +82,12 @@ function SignUp() {
   const signIn = useAuthStore((state) => state.signIn);
   const navigate = useNavigate();
   const user = useAuthStore((state) => state.user);
-  const handleSignUp = (e) => {
+  const handleSignUp = async (e) => {
     try {
       e.preventDefault();
       validateSignUp();
-      signUp(formState);
-
-      signIn(email, password);
+      await signUp(formState);
+      await signIn(email, password);
     } catch (error) {
       throw new Error(error);
     }

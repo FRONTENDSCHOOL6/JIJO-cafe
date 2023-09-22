@@ -1,9 +1,7 @@
-import pb from "@/api/pocketbase";
 import FindStoreSearchForm from "@/components/FindStoreSearchForm";
 import KakaoMap from "@/components/KakaoMap";
 import MenuTitle from "@/components/MenuTitle";
 import JiJoHelmet from "@/utils/JiJoHelmet";
-import {useEffect} from "react";
 import {useState} from "react";
 
 function FindStore() {
@@ -24,15 +22,8 @@ function FindStore() {
   /* KaKaoMap 데이터를 담아올 상태 */
   const [kakaoPlaceResult, setKakaoPlaceResult] = useState([]);
 
-  useEffect(() => {
-    async function handleFunction() {
-      const auth = await pb
-        .collection("users")
-        .authWithOAuth2({provider: "github"});
-      return console.log(auth);
-    }
-    handleFunction();
-  }, []);
+  /* 카카오맵 마커들을 담아둘 상태 */
+  const [kakaoMarkes, setKakaoMarkes] = useState([]);
 
   return (
     <>
@@ -49,12 +40,15 @@ function FindStore() {
         <KakaoMap
           setKakaoPlaceResult={setKakaoPlaceResult}
           searchedResult={searchedResult}
+          kakaoMarkes={kakaoMarkes}
+          setKakaoMarkes={setKakaoMarkes}
         />
         <FindStoreSearchForm
           searchedResult={searchedResult}
           handleInputChange={handleInputChange}
           handleSearchSubmit={handleSearchSubmit}
           kakaoPlaceResult={kakaoPlaceResult}
+          kakaoMarkes={kakaoMarkes}
         />
       </div>
     </>
