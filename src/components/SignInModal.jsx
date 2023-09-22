@@ -94,14 +94,14 @@ function SignInModal({setIsClickedSignin}) {
     }
   };
 
-  /* GitHub 사용자 로그인 */
-  const githubSignIn = useAuthStore((state) => state.SignWithGithub);
-  const handleSignInGithub = async () => {
-    await githubSignIn();
-    if (isAuth) {
-      setIsClickedSignin(false);
-    }
-  };
+  // /* GitHub 사용자 로그인 */
+  // const githubSignIn = useAuthStore((state) => state.SignWithGithub);
+  // const handleSignInGithub = async () => {
+  //   await githubSignIn();
+  //   if (isAuth) {
+  //     setIsClickedSignin(false);
+  //   }
+  // };
 
   /* Eye Component 상태에 따른 비밀번호 보이기/보이지 않기 */
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
@@ -174,7 +174,7 @@ function SignInModal({setIsClickedSignin}) {
           </ButtonWrapper>
           <TextHorizen>간편 로그인</TextHorizen>
           <KakaoTalkSignInButton onClick={handleSigninKakao} />
-          <GithubSignInButton onClick={handleSignInGithub} />
+          <GithubSignInButton />
         </SignInForm>
       </div>
     )
