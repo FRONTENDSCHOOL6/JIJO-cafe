@@ -48,23 +48,23 @@ function MainEvent() {
         {data &&
           data.mainEvent.items?.map((item) => {
             return (
-              <figure key={item.id} className="font-light bg-white border cursor-pointer rounded-2xl text-deepDarkGray mobile:flex">
+              <figure key={item.id} className="overflow-hidden font-light bg-white border cursor-pointer rounded-2xl text-deepDarkGray mobile:flex">
                 <Link to={`/bbs/event/detail/${item.id}`}>
-                  <div className="overflow-hidden rounded-t-2xl">
-                    <LazyImage
-                      src={getPbImageURL(item, "thumbnail")}
-                      alt={item.title}
-                      className="block object-cover w-full h-auto rounded-t-2xl hover:scale-[1.1] hover:translate-[50%] mobile:w-32 mobile:h-full mobile:rounded-s-2xl mobile:rounded-r-none"
-                    />
-                  </div>
-                  <div className="flex flex-col w-full p-4 overflow-hidden justify-evenly">
-                    <h4 className="text-jj_20 textEllipsis">{item.title}</h4>
-                    <figcaption className="textEllipsis h-[2.89em]">{item.description}</figcaption>
-                    <span className="text-jj_14">
+                  <LazyImage
+                    src={getPbImageURL(item, "thumbnail")}
+                    alt={item.title}
+                    className="block object-cover w-full h-auto rounded-t-2xl hover:scale-[1.1] hover:translate-[50%] mobile:w-32 mobile:h-full mobile:rounded-s-2xl mobile:rounded-r-none"
+                  />
+                </Link>
+                <div className="flex flex-col w-full p-4 overflow-hidden justify-evenly">
+                  <Link to={`/bbs/event/detail/${item.id}`}>
+                    <h4 className="text-jj_20 textEllipsis mobile:text-jj_16">{item.title}</h4>
+                    <figcaption className="textEllipsis h-[2.89em] mobile:text-jj_13">{item.description}</figcaption>
+                    <span className="text-jj_14 mobile:text-jj_13">
                       <time dateTime={`${data.update}`}>{yyyymmddDate(item.update)}</time>
                     </span>
-                  </div>
-                </Link>
+                  </Link>
+                </div>
               </figure>
             );
           })}

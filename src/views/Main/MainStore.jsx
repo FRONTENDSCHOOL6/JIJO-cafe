@@ -1,4 +1,3 @@
-import React from "react";
 import MainpageTitle from "@/components/Main/MainpageTitle";
 import Button from "@/components/Button";
 import { Link } from "react-router-dom";
@@ -12,7 +11,7 @@ function MainStore() {
       <h2 className="sr-only">메인페이지 매장찾기</h2>
       <div className="w-full h-full"></div>
       <div className="w-full storeImage"></div>
-      <div className="absolute -translate-x-1/2 -translate-y-1/2 text-deepDarkGray top-1/2 left-1/4 mobile:left-1/3 tablet:pl-36">
+      <div className="absolute -translate-x-1/2 -translate-y-1/2 text-deepDarkGray top-1/2 left-1/4 mobile:left-1/2 tablet:pl-36">
         <div>
           <MainpageTitle highLight="primaryHighlight" subHeading="카페 지조 매장 찾기" mainHeading="CAFE JIJO STORE"></MainpageTitle>
           <MainPageText1 text={content1} />
