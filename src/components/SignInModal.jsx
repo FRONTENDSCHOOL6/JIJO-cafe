@@ -127,6 +127,7 @@ function SignInModal({setIsClickedSignin}) {
             label="이메일"
             type="email"
           />
+
           {!isEmailValid && (
             <InValidErrorMessage errorText="올바른 이메일 형식을 입력해주세요😅" />
           )}
