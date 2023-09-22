@@ -5,13 +5,18 @@ import LazyImage from "@/utils/LazyImage";
 import {useQueryGetEvents} from "@/api/pockets/useQueryPocketBase";
 import JijoSpinner from "../JijoSpinner";
 import EventPagiNation from "./EventPageNation";
+import {useQuery} from "@tanstack/react-query";
+import pb from "@/api/pocketbase";
 
-function TabContent() {
-  const {isLoading, error, data} = usePagination({
-    perPage: 10,
-    queryFn: getEvents,
-    useQueryPocketBase: useQueryGetEvents,
-    collections: "events",
+export function TabContent() {
+  const getEventsCollectionItems = async () => {
+    return await pb.collection("events").getList(1, 20);
+  };
+
+  const {isLoading, error, data} = useQuery({
+    queryKey: ["events"],
+    queryFn: getEventsCollectionItems,
+    staleTime: 1 * 1000 * 60 * 60,
   });
 
   if (isLoading) {
@@ -32,6 +37,7 @@ function TabContent() {
     <>
       <div className="flex flex-wrap justify-between mb-10 gap-y-5 gap-x-2">
         {data?.items?.map((item) => {
+          console.log(item);
           const imageSource = getPbImageURL(item, "image");
           return (
             <div
@@ -52,9 +58,7 @@ function TabContent() {
           );
         })}
       </div>
-      <EventPagiNation data={data}></EventPagiNation>
+      <EventPagiNation data={data} />
     </>
   );
 }
-
-export default TabContent;
