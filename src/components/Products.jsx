@@ -1,11 +1,12 @@
-import { getPbImageURL } from "@/utils/getPbImageURL"
-import { numberWithComma } from "@/utils/numberWithComma"
-import { useState } from "react"
-import useCartStore from "@/store/cartStore"
-import ProductModal from "./ProductModal"
-import LazyImage from "@/utils/LazyImage"
+import {getPbImageURL} from "@/utils/getPbImageURL";
+import {numberWithComma} from "@/utils/numberWithComma";
+import {useState} from "react";
+import useCartStore from "@/store/cartStore";
+import ProductModal from "./ProductModal";
+import LazyImage from "@/utils/LazyImage";
+import toast from "react-hot-toast";
 
-function Products({ data }) {
+function Products({data}) {
   return (
     <div className="itemWrap">
       <ul className="grid gap-10 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mobile:grid-cols-2">
@@ -14,39 +15,58 @@ function Products({ data }) {
         ))}
       </ul>
     </div>
-  )
+  );
 }
 
-export default Products
+export default Products;
 
-function ProductItem({ collection, item, id, name, price, ...restProps }) {
-  const [isClicked, setIsClicked] = useState(false)
+function ProductItem({item, ...restProps}) {
+  const [isClicked, setIsClicked] = useState(false);
   const handleClick = () => {
-    setIsClicked(!isClicked)
-  }
+    setIsClicked(!isClicked);
+  };
 
-  const handleAddToCart = useCartStore((state) => state.add)
+  /* Cart 배열에 새로운 아이템 */
+  const add = useCartStore((state) => state.add);
+  const handleAddToCart = () => {
+    add(item);
+    toast.success(`장바구니에 ${item.title}가 담겼습니다!`, {
+      icon: "🛒",
+    });
+  };
 
   return (
-    <li key={item.id} className="relative cursor-pointer" onClick={handleClick} {...restProps}>
+    <li key={item.id} className="relative cursor-pointer" {...restProps}>
       <div>
-        <div className="imgFrame relative w-80 h-80 overflow-hidden">
-          <LazyImage src={getPbImageURL(item, "image")} className="w-full transition-all ease-in hover:scale-110" alt={item.title} />
-          <button
-            onClick={() => {
-              handleAddToCart(item)
-            }}
-          >
-            <img src="/src/assets/images/menu/cart.svg" className="absolute bottom-0 right-0" alt="" />
-          </button>
+        <div
+          className="imgFrame relative w-80 h-80 overflow-hidden"
+          onClick={handleClick}>
+          <LazyImage
+            src={getPbImageURL(item, "image")}
+            className="w-full transition-all ease-in hover:scale-110"
+            alt={item.title}
+          />
+          {isClicked && <ProductModal key={item.id} item={item} />}
         </div>
         <div className="text py-6">
-          <p className="title text-jj_22 pb-5 mb-[.3125rem] border-b overflow-hidden text-ellipsis whitespace-nowrap">{item.title}</p>
-          <span className="price text-[#1c1c1b] opacity-70 text-jj_14 leading-none">{numberWithComma(item.price)}</span>
-          <p className="desc text-[#1c1c1b] opacity-70 text-jj_14 mobile:text-sm mt-5 overflow-hidden text-ellipsis line-clamp-2">{item.description}</p>
+          <p className="title text-jj_22 pb-5 mb-[.3125rem] border-b overflow-hidden text-ellipsis whitespace-nowrap">
+            {item.title}
+          </p>
+          <span className="price text-[#1c1c1b] opacity-70 text-jj_14 leading-none">
+            {numberWithComma(item.price)}
+          </span>
+          <p className="desc text-[#1c1c1b] opacity-70 text-jj_14 mobile:text-sm mt-5 overflow-hidden text-ellipsis line-clamp-2">
+            {item.description}
+          </p>
         </div>
       </div>
-      {isClicked && <ProductModal key={item.id} item={item} />}
+      <button
+        onClick={() => {
+          handleAddToCart(item);
+        }}
+        className="absolute bottom-[11.25rem] right-0">
+        <img src="/src/assets/images/menu/cart.svg" alt="" />
+      </button>
     </li>
-  )
+  );
 }

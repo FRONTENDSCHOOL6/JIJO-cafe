@@ -1,4 +1,4 @@
-import pb from "@/pockets";
+import pb from "@/api/pocketbase";
 import { useParams } from "react-router-dom";
 import MenuTitle from "@/components/MenuTitle";
 import { useQuery } from "@tanstack/react-query";

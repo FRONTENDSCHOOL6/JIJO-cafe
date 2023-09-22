@@ -7,10 +7,8 @@ function OrderList() {
   /* 인증 정보에 따른 로그인 ➡️ 로그아웃으로 변경 */
   const isAuth = useAuthStore((state) => state.isAuth);
   const {add: handleAddToCart} = useCartStore();
-  const { cart } = useCartStore();
-  console.log(cart);
+  const {cart} = useCartStore();
   //console.log(product);
-  
 
   return (
     <ul className="orderList">
@@ -21,14 +19,13 @@ function OrderList() {
         ) : (<OrderListEmptyItem/>)
       } */}
 
-      
-      {cart.length ? cart && cart.map((product) =>
-        <OrderListItem product={product} />
-        ) : (
-        <OrderListEmptyItem/>
+      {cart.length ? (
+        cart && cart.map((product) => <OrderListItem product={product} />)
+      ) : (
+        <OrderListEmptyItem />
       )}
-  </ul>
-  )
+    </ul>
+  );
 }
 
-export default OrderList
+export default OrderList;

@@ -1,11 +1,11 @@
-
-
 function ProductModal({item, ...restProps}) {
   return (
-    <div className="absolute top-0 left-0 w-full border bg-white shadow-lg p-[1.875rem]">
+    <div
+      className="absolute top-0 left-0 w-full border bg-white shadow-lg p-[1.875rem]"
+      {...restProps}>
       <div className="modalInner relative">
         <button className="CloseBtn absolute -top-1 right-0">
-          <img src="/src/assets/images/close.svg" alt="닫기 버튼"/>
+          <img src="/src/assets/images/close.svg" alt="닫기 버튼" />
         </button>
         <p className="title text-xl pb-5 mb-5 border-b">{item.title}</p>
         <div className="text text-jj_14 text-[#1c1c1b]">
@@ -15,7 +15,7 @@ function ProductModal({item, ...restProps}) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default ProductModal
+export default ProductModal;

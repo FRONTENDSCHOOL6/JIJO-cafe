@@ -9,7 +9,8 @@
 @layer base {
   html {
     font-family: Pretendard;
-    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
+    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+      format("woff");
     font-size: 1rem;
     font-display: swap;
 
@@ -83,5 +84,47 @@
 
   .mobileButton {
     @apply text-jj_16 h-[3rem];
+  }
+}
+
+/* 카카오 맵 인포윈도우 */
+.infoWindow {
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  & h4 {
+    padding: 0.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    white-space: nowrap;
+  }
+  & p {
+    padding: 0.5rem;
+    width: max-content;
+    font-size: 0.875rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+  & .infoWindow__address {
+    font-size: 0.75rem;
+    font-weight: 200;
+    color: #999999;
+  }
+  & .infoWindow__phone {
+    font-size: 0.75rem;
+    font-weight: 200;
+    color: #999999;
+  }
+
+  & button {
+    width: 100%;
+    background: #3e3526;
+    color: #f8f2e7;
+  }
+
+  & button:hover {
+    background: #dbc8ab;
   }
 }
