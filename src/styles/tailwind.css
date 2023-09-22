@@ -8,8 +8,7 @@
 
 @font-face {
   font-family: Pretendard;
-  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
-    format("woff");
+  src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff") format("woff");
 }
 
 @layer base {
@@ -28,13 +27,14 @@
 }
 
 @layer components {
-  /* .PaginationButton {
-    @apply w-[3.9375rem] h-[2.5rem] border border-[##e0e3e6] rounded ml-[0.375rem];
+  /* 메인 공통  */
+  .textEllipsis {
+    @apply overflow-hidden text-ellipsis break-keep line-clamp-2 whitespace-nowrap;
   }
-  .PaginationButton:hover {
-    @apply bg-[#f4f6f8];
+
+  .mobileButton {
+    @apply text-jj_16 h-[3rem];
   }
-  */
 
   /* 메인페이지 */
 
@@ -79,14 +79,6 @@
   }
   .default {
     @apply bg-[#F4F6F8] border;
-  }
-
-  .textEllipsis {
-    @apply overflow-hidden text-ellipsis break-keep line-clamp-2 whitespace-nowrap;
-  }
-
-  .mobileButton {
-    @apply text-jj_16 h-[3rem];
   }
 }
 

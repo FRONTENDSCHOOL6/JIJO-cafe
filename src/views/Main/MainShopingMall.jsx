@@ -16,7 +16,7 @@ function MainShopingMall() {
           <MainpageTitle highLight="secondaryHighlight" subHeading="지조 있게 추천하는 제품" mainHeading="CAFE JIJO SHOPING MALL"></MainpageTitle>
           <MainPageText1 text={content1} />
           <MainPageText2 text={content2} />
-          <Link to="/menu/product">
+          <Link to="/menu/product" className="outline-white">
             <Button type="button" color="secondary" className="px-[2rem] text-center text-jj_20 font-normal h-[3.4375rem] break-keep mobile:mobileButton">
               상품 더보기
             </Button>
@@ -28,12 +28,12 @@ function MainShopingMall() {
           <div className="pb-6 mobile:flex mobile:gap-5">
             <div className="title">
               <p className="pb-2 font-light text-white text-jj_20 mobile:text-jj_14">카페 지조에서 픽한 MD 전용상품!</p>
-              <h4 className="text-white font-bold leading-[1] break-keep text-jj_34 pb-4 mobile:text-jj_24">지조 MD 전용 상품</h4>
+              <h4 className="text-white font-bold leading-[1] break-keep text-jj_34 pb-4 mobile:text-jj_20">지조 MD 전용 상품</h4>
             </div>
-            <Link to="/menu/product" className="">
-              <button className="flex items-center px-6 py-2 font-bold rounded-full text-deepDarkGray bg-primary text-jj_14 font-pretendard">
+            <Link to="/menu/product">
+              <button className="flex items-center px-6 py-2 font-bold rounded-full text-deepDarkGray bg-primary text-jj_14 font-pretendard mobile:text-jj_14 mobile:px-4">
                 바로가기
-                <img src={nextArrow} alt="" className="block h-auto w-[1.2rem] ml-1" aria-hidden="true" />
+                <img src={nextArrow} alt="" className="block h-auto w-[0.8rem] ml-1" aria-hidden="true" />
               </button>
             </Link>
           </div>

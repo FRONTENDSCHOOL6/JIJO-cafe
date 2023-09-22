@@ -1,21 +1,49 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { A11y, Navigation, Pagination } from "swiper/modules";
-import pb from "@/api/pocketbase";
-import { getPbImageURL } from "@/utils/getPbImageURL";
-import { usePocketBaseFilteredData } from "@/hooks/usePocektBaseData";
 import "swiper/css";
 import "swiper/css/navigation";
 import "@/styles/Carousel.css";
+import pb from "@/api/pocketbase";
+import JijoError from "../JijoError";
+import JijoSpinner from "../JijoSpinner";
 import LazyImage from "@/utils/LazyImage";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { useQuery } from "@tanstack/react-query";
+import { getPbImageURL } from "@/utils/getPbImageURL";
+import { A11y, Navigation, Pagination, Keyboard } from "swiper/modules";
 
 export default function MenuCarousel() {
-  pb.autoCancellation(false);
-  const { data } = usePocketBaseFilteredData("beverage", 1, 5, 'created >= "2023-09-08 00:00:00"', "beverage");
+  const { isLoading, data, isError, error } = useQuery({
+    queryKey: ["mainMenu"],
+    queryFn: async () => {
+      // eslint-disable-next-line no-useless-catch
+      try {
+        const mainMenu = await pb.collection("beverage").getList(1, 7, {
+          sort: "updated",
+        });
+        return { mainMenu };
+      } catch (error) {
+        throw error;
+      }
+    },
+  });
 
+  if (isLoading) {
+    return (
+      <div>
+        <JijoSpinner />
+      </div>
+    );
+  }
+  if (isError) {
+    return (
+      <div role="alert">
+        <JijoError error={error} />
+      </div>
+    );
+  }
   return (
     <>
       <Swiper
-        modules={[Navigation, A11y, Pagination]}
+        modules={[Navigation, A11y, Pagination, Keyboard]}
         navigation
         a11y={{
           prevSlideMessage: "이전 슬라이드",
@@ -26,16 +54,17 @@ export default function MenuCarousel() {
         autoHeight={true}
         breakpoints={{
           390: {
-            slidesPerView: 4,
+            slidesPerView: 5,
           },
           768: {
             slidesPerView: 2,
           },
         }}
+        keyboard={{ enabled: true }}
         id="menuSwiper"
       >
         {data &&
-          data.items?.map((item, el) => {
+          data.mainMenu.items?.map((item) => {
             return (
               <SwiperSlide key={item.id}>
                 <figure>

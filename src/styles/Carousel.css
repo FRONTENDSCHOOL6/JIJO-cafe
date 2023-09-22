@@ -25,8 +25,6 @@
 #menuSwiper {
   z-index: 0;
   max-width: 56.25rem;
-  overflow: visible;
-  /* border: 1px solid #000; */
 }
 
 #menuSwiper .swiper-slide {
@@ -35,13 +33,15 @@
 }
 
 #menuSwiper .swiper-slide-next {
-  margin-top: 20%;
+  margin-top: 19%;
 }
 
+#menuSwiper .swiper-slide img,
 #menuSwiper .swiper-slide-prev img,
 #menuSwiper .swiper-slide-next img {
   border-radius: 10px;
 }
+
 #menuSwiper .swiper-slide-active img {
   border-radius: 10px 10px 0px 0;
 }
