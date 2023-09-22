@@ -34,7 +34,7 @@ function Food() {
   return (
     <div>
       <JiJoHelmet pageTitle='메뉴소개 - 푸드' />
-      <MenuTitle title="MEGA MENU" mainMenu="메뉴소개" subMenu="푸드" linkTo="/menu/drink">FOOD MENU</MenuTitle>
+      <MenuTitle title="MEGA MENU" mainMenu="메뉴소개" subMenu="푸드" mainLink="/menu/drink" linkTo="/menu/food">FOOD MENU</MenuTitle>
       <MenuBubble>
         <strong>음료와 잘 어울리는</strong>
         <br />
