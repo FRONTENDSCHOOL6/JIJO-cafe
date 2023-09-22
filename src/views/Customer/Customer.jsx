@@ -8,7 +8,9 @@ function Customer() {
   return (
     <>
       <JiJoHelmet pageTitle="지조소식 - 고객의 소리" />
-      <MenuTitle title="JIJO NEWS"> JIJO 고객의 소리</MenuTitle>
+      <MenuTitle title="JIJO NEWS" mainMenu="지조소식" subMenu="고객의 소리" mainLink="/bbs/Notice" subLink="/bbs/Customer">
+        JIJO 고객의 소리
+      </MenuTitle>
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60 text-deepDarkGray">
         <PageMainTitle pageTitleText="고객의 소리" pageSubTitleText="문의가 많은 사항의 경우 FAQ를 통해 빠르게 확인하실 수 있습니다."></PageMainTitle>
         <div className="flex flex-col items-center gap-20">

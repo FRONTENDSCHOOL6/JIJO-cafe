@@ -50,7 +50,9 @@ function FaqCreate() {
   return (
     <>
       <JiJoHelmet pageTitle="지조소식 - FAQ" />
-      <MenuTitle title="JIJO NEWS"> JIJO FAQ</MenuTitle>
+      <MenuTitle title="JIJO NEWS" mainMenu="지조소식" subMenu="FAQ" mainLink="/bbs/Notice" subLink="/bbs/Faq">
+        JIJO FAQ
+      </MenuTitle>
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60 text-deepDarkGray">
         <PageMainTitle pageTitleText="FAQ 등록" pageSubTitleText="카페 지조 관리자 페이지 입니다."></PageMainTitle>
         <DataForm collection="faq" data={data} setData={setData} onDataChange={onDataChange} handleSubmit={handleCreate} handleFileChange={handleFileChange} fileName={fileName}>

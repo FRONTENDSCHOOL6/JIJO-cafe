@@ -87,7 +87,9 @@ function NoticeDetail() {
   return (
     <>
       <JiJoHelmet pageTitle="지조소식 - 공지사항" />
-      <MenuTitle title="JIJO NEWS"> JIJO NOTICE</MenuTitle>
+      <MenuTitle title="JIJO NEWS" mainMenu="지조소식" subMenu="공지사항" mainLink="/bbs/Notice" subLink="/bbs/Notice">
+        JIJO NOTICE
+      </MenuTitle>
       <Detail field="notice" Field="Notice" handleDelete={handleDelete} data={data}></Detail>
     </>
   )

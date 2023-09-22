@@ -67,7 +67,9 @@ function FaqDetail() {
   return (
     <>
       <JiJoHelmet pageTitle="지조소식 - FAQ" />
-      <MenuTitle title="JIJO NEWS"> JIJO FAQ</MenuTitle>
+      <MenuTitle title="JIJO NEWS" mainMenu="지조소식" subMenu="FAQ" mainLink="/bbs/Notice" subLink="/bbs/Faq">
+        JIJO FAQ
+      </MenuTitle>
       <Detail field="faq" Field="Faq" handleDelete={handleDelete} data={data}></Detail>
     </>
   )

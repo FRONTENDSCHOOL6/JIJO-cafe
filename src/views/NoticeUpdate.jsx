@@ -62,7 +62,9 @@ function NoticeUpdate() {
   return (
     <>
       <JiJoHelmet pageTitle="지조소식 - 공지사항" />
-      <MenuTitle title="JIJO NEWS"> JIJO NOTICE</MenuTitle>
+      <MenuTitle title="JIJO NEWS" mainMenu="지조소식" subMenu="공지사항" mainLink="/bbs/Notice" subLink="/bbs/Notice">
+        JIJO NOTICE
+      </MenuTitle>
       <section className="max-w-screen-xl mx-auto px-5 py-jj_60 text-deepDarkGray">
         <PageMainTitle pageTitleText="공지사항 수정" pageSubTitleText="카페 지조 관리자 페이지 입니다."></PageMainTitle>
         <DataForm collection="notice" data={data} setData={setData} handleSubmit={handleUpdate} handleFileChange={handleFileChange} fileName={fileName} setFileName={setFileName}>
