@@ -6,7 +6,7 @@ import Products from "@/components/Products";
 import { usePocketBaseFilteredData } from "@/hooks/usePocektBaseData";
 import { useState } from "react";
 import LazyImage from "@/utils/LazyImage";
-import MenuSearchForm from "@/components/Menu/MenuSearchForm";
+//import MenuSearchForm from "@/components/Menu/MenuSearchForm";
 import JiJoHelmet from "@/utils/JiJoHelmet";
 import drinkImage01 from "@/assets/images/menu/drink/drink_image01.jpg";
 
@@ -27,7 +27,7 @@ function Drink() {
   return (
     <div>
       <JiJoHelmet pageTitle='메뉴소개 - 음료' />
-      <MenuTitle title="MEGA MENU" mainMenu="메뉴소개" subMenu="음료" linkTo="/menu/drink">DRINK MENU</MenuTitle>
+      <MenuTitle title="MEGA MENU" mainMenu="메뉴소개" subMenu="음료" mainLink="/menu/drink" linkTo="/menu/drink">DRINK MENU</MenuTitle>
       <MenuBubble>
         <strong>깊고 부드러운 커피 맛의 비밀</strong>
         <br />
@@ -71,7 +71,7 @@ function Drink() {
             <p className="title text-jj_22 leading-tight">
               분류보기
             </p>
-            <MenuSearchForm/>
+            {/* <MenuSearchForm/> */}
           </div>
           <Categories collection="beverage" category={category} handleCategory={handleCategory}/>
         </div>

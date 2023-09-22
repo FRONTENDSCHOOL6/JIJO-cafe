@@ -30,6 +30,11 @@ function Cart() {
     })
     .reduce((acc, cur) => acc + cur, 0);
 
+  /* 전체금액 */
+  const totalCount = cart.map((item) => {
+    return Number(item.count)
+  }).reduce((acc, cur) => acc + cur, 0);
+
   /* 장바구니 내 담겨있는 상품 전체 삭제 */
   const removeAll = useCartStore((state) => state.removeAll);
   const handleClickRemove = () => {
@@ -44,10 +49,10 @@ function Cart() {
     <>
       <JiJoHelmet pageTitle="장바구니" />
       <PageMainTitle pageTitleText="JIJO CART" />
-      <div className="cartWrap mx-auto max-w-7xl flex gap-5 pb-52 mobile:flex-col">
+      <div className="cartWrap mx-auto max-w-7xl flex gap-5 pb-52 mobile:flex-col mobile:px-4 mobile:pb-40">
         <div className="orderListArea w-3/4 mobile:w-full">
           <div className="selectArea font-semibold">
-            <CheckBox text={`전체선택(3/${totalCount}) `} defaultChecked="checked" />
+            <CheckBox text={`전체선택(${totalCount}/${totalCount}) `} defaultChecked="checked" />
             <button onClick={handleClickRemove}>| 전체삭제</button>
           </div>
           <div className="orderListWrap border-t bg-white border-secondary my-4 overflow-hidden">
@@ -63,7 +68,7 @@ function Cart() {
             {toggleDropDown && <OrderList />}
           </div>
           <div className="selectArea font-semibold">
-            <CheckBox text={`전체선택(3/${totalCount}) `} defaultChecked="checked" />
+            <CheckBox text={`전체선택(${totalCount}/${totalCount}) `} defaultChecked="checked" />
             <button>| 전체삭제</button>
           </div>
         </div>
