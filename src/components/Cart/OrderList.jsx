@@ -6,21 +6,19 @@ import useCartStore from "@/store/cartStore";
 function OrderList() {
   /* 인증 정보에 따른 로그인 ➡️ 로그아웃으로 변경 */
   const isAuth = useAuthStore((state) => state.isAuth);
-  const {add: handleAddToCart} = useCartStore();
   const {cart} = useCartStore();
   //console.log(product);
 
   return (
     <ul className="orderList">
-      {/* {isAuth ? (
-        {cart.length ? cart.map((product, index) =>
-          <OrderListItem/>
-          ) : (<OrderListEmptyItem/>)}
-        ) : (<OrderListEmptyItem/>)
-      } */}
-
-      {cart.length ? (
-        cart && cart.map((product) => <OrderListItem product={product} />)
+      {/* 로그인이 되었을 때 상품리스트 렌더링 */}
+      {isAuth ? (
+        // 담긴 상품이 존재할 때 상품리스트 렌더링
+        cart.length ? (
+          cart.map((product) => <OrderListItem key={product.id} product={product} />)
+        ) : (
+          <OrderListEmptyItem />
+        )
       ) : (
         <OrderListEmptyItem />
       )}
