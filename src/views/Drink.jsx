@@ -3,18 +3,29 @@ import JijoSpinner from "@/components/JijoSpinner"
 import MenuBubble from "@/components/MenuBubble"
 import MenuTitle from "@/components/MenuTitle"
 import Products from "@/components/Products"
-import { usePocketBaseFilteredData } from "@/hooks/usePocektBaseData"
 import { useState } from "react"
 import LazyImage from "@/utils/LazyImage"
-import MenuSearchForm from "@/components/Menu/MenuSearchForm"
+// import MenuSearchForm from "@/components/Menu/MenuSearchForm"
 import JiJoHelmet from "@/utils/JiJoHelmet"
 import drinkImage01 from "@/assets/images/menu/drink/drink_image01.jpg"
+import usePaginationQuery from "@/hooks/usePaginationQuery"
 
-const collection = "beverage"
+// const collection = "beverage"
 
 function Drink() {
   const [category, setCategory] = useState("전체보기") //커피, 티, 에이드&주스, 스무디&프라페, 디카페인, 음료, 신상품
-  const { data, status } = usePocketBaseFilteredData(collection, 1, 20, category !== "전체보기" ? `(category~'${category}')` : "")
+
+  const { error, ...rest } = usePaginationQuery({
+    perPage: 20,
+    queryKey: "beverage",
+    dependency: category,
+    options: {
+      sort: "-created",
+      filter: category !== "전체보기" ? `(category~'${category}')` : "",
+    },
+  })
+
+  // const { data, status } = usePocketBaseFilteredData(collection, 1, 20, category !== "전체보기" ? `(category~'${category}')` : "")
 
   const handleCategory = (newCategory) => {
     setCategory(newCategory)
@@ -22,6 +33,10 @@ function Drink() {
 
   if (status === "loading") {
     return <JijoSpinner />
+  }
+
+  if (error) {
+    return <div role="alert">{error.toString()}</div>
   }
 
   return (
@@ -62,12 +77,12 @@ function Drink() {
         <div className="checkboxArea border border-gray-200 p-[1.875rem] my-10">
           <div className="pb-5 mb-5 border-b border-b-gray-200 flex justify-between items-center">
             <p className="title text-jj_22 leading-tight">분류보기</p>
-            <MenuSearchForm />
+            {/* <MenuSearchForm /> */}
           </div>
           <Categories collection="beverage" category={category} handleCategory={handleCategory} />
         </div>
-
-        <Products data={data} />
+        {/* <Products data={data} /> */}
+        <Products {...rest} />
       </section>
     </div>
   )
