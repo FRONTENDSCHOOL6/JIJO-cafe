@@ -8,7 +8,7 @@ function Event() {
     <>
       <JiJoHelmet pageTitle="지조소식 - 이벤트" />
       <h1 className="sr-only">이벤트 페이지</h1>
-      <MenuTitle title="JIJO NEWS" mainMenu="지조소식" subMenu="이벤트">
+      <MenuTitle title="JIJO NEWS" mainMenu="지조소식" subMenu="이벤트" mainLink="/bbs/faq" subLink="/bbs/event">
         JIJO EVENT
       </MenuTitle>
       <div className="max-w-[80rem] mt-20 mb-24 m-auto tablet:px-14 mobile:px-5">

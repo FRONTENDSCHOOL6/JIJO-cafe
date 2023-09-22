@@ -1,13 +1,14 @@
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay, Keyboard } from "swiper/modules";
 import "swiper/css/pagination";
 import "@/styles/Carousel.css";
 import pb from "@/api/pocketbase";
-import { getPbImageURL } from "@/utils/getPbImageURL";
-import { useState, useEffect } from "react";
-import JijoSpinner from "@/components/JijoSpinner";
 import LazyImage from "@/utils/LazyImage";
+import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
+import JijoSpinner from "@/components/JijoSpinner";
+import { Swiper, SwiperSlide } from "swiper/react";
+import JijoError from "./../../components/JijoError";
+import { getPbImageURL } from "@/utils/getPbImageURL";
+import { Pagination, Autoplay, Keyboard } from "swiper/modules";
 
 export default function MainBanner() {
   // const { data, status } = usePocektBaseDataList("mainBanner");
@@ -48,7 +49,11 @@ export default function MainBanner() {
   }
 
   if (isError) {
-    return <div role="alert">{error.toString()}</div>;
+    return (
+      <div role="alert">
+        <JijoError error={error} />
+      </div>
+    );
   }
 
   return (

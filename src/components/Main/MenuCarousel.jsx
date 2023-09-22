@@ -2,6 +2,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "@/styles/Carousel.css";
 import pb from "@/api/pocketbase";
+import JijoError from "../JijoError";
 import JijoSpinner from "../JijoSpinner";
 import LazyImage from "@/utils/LazyImage";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -32,11 +33,13 @@ export default function MenuCarousel() {
       </div>
     );
   }
-
   if (isError) {
-    return <div role="alert">{error.toString()}</div>;
+    return (
+      <div role="alert">
+        <JijoError error={error} />
+      </div>
+    );
   }
-
   return (
     <>
       <Swiper

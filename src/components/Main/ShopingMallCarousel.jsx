@@ -1,6 +1,7 @@
 import "swiper/css/pagination";
 import "@/styles/Carousel.css";
 import pb from "@/api/pocketbase";
+import JijoError from "../JijoError";
 import LazyImage from "@/utils/LazyImage";
 import { useQuery } from "@tanstack/react-query";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -33,7 +34,11 @@ export default function ShopingMallCarousel() {
   }
 
   if (isError) {
-    return <div role="alert">{error.toString()}</div>;
+    return (
+      <div role="alert">
+        <JijoError error={error} />
+      </div>
+    );
   }
 
   return (

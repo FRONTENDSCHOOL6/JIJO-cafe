@@ -1,9 +1,10 @@
 import pb from "@/api/pocketbase";
-import { Link } from "react-router-dom";
 import Button from "@/components/Button";
 import LazyImage from "@/utils/LazyImage";
+import JijoError from "@/components/JijoError";
 import yyyymmddDate from "@/utils/yyyymmddDate";
 import { useQuery } from "@tanstack/react-query";
+import { Link, NavLink } from "react-router-dom";
 import JijoSpinner from "@/components/JijoSpinner";
 import { getPbImageURL } from "@/utils/getPbImageURL";
 import MainpageTitle from "@/components/Main/MainpageTitle";
@@ -35,7 +36,11 @@ function MainEvent() {
   }
 
   if (isError) {
-    return <div role="alert">{error.toString()}</div>;
+    return (
+      <div role="alert">
+        <JijoError error={error} />
+      </div>
+    );
   }
 
   return (
@@ -48,33 +53,33 @@ function MainEvent() {
         {data &&
           data.mainEvent.items?.map((item) => {
             return (
-              <figure key={item.id} className="overflow-hidden font-light bg-white border cursor-pointer rounded-2xl text-deepDarkGray mobile:flex">
-                <Link to={`/bbs/event/detail/${item.id}`} className="">
-                  <LazyImage
-                    src={getPbImageURL(item, "thumbnail")}
-                    alt={item.title}
-                    className="block object-cover w-full h-auto rounded-t-2xl hover:scale-[1.1] hover:translate-[50%] mobile:w-32 mobile:h-full mobile:rounded-s-2xl mobile:rounded-r-none"
-                  />
-                </Link>
-                <div className="flex flex-col w-full p-4 overflow-hidden justify-evenly">
-                  <Link to={`/bbs/event/detail/${item.id}`}>
+              <Link to={`/bbs/event/detail/${item.id}`} key={item.id}>
+                <figure className="overflow-hidden font-light bg-white border cursor-pointer rounded-2xl text-deepDarkGray mobile:flex">
+                  <div className="overflow-hidden">
+                    <LazyImage
+                      src={getPbImageURL(item, "thumbnail")}
+                      alt={item.title}
+                      className="block object-cover w-full h-auto rounded-t-2xl hover:scale-[1.1] hover:translate-[50%] mobile:w-32 mobile:h-full mobile:rounded-s-2xl transition-transform mobile:rounded-r-none"
+                    />
+                  </div>
+                  <div className="flex flex-col w-full p-4 overflow-hidden justify-evenly">
                     <h4 className="text-jj_20 textEllipsis mobile:text-jj_16">{item.title}</h4>
                     <figcaption className="textEllipsis h-[2.89em] mobile:text-jj_13">{item.description}</figcaption>
                     <span className="text-jj_14 mobile:text-jj_13">
                       <time dateTime={`${data.update}`}>{yyyymmddDate(item.update)}</time>
                     </span>
-                  </Link>
-                </div>
-              </figure>
+                  </div>
+                </figure>
+              </Link>
             );
           })}
       </div>
       <p className="mt-10 mb-4 font-light text-center mobile:text-jj_13">전체 매장 및 각 매장에서 다양한 이벤트가 진행중 입니다.</p>
-      <Link to="/bbs/event" className="text-center">
+      <NavLink to="/bbs/event" className="text-center">
         <Button type="button" color="primary" className="mobile:mobileButton text-jj_20 font-normal h-[3.4375rem] px-[1.875rem]">
           이벤트 더보기
         </Button>
-      </Link>
+      </NavLink>
     </section>
   );
 }
