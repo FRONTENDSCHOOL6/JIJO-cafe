@@ -1,7 +1,7 @@
 function FindStoreSearchFormListWrapper({children}) {
   return (
     <>
-      <div className="searchFormListWrap bg-white pb-[15rem] text-center pt-4 h-[20rem] overflow-scroll">
+      <div className="searchFormListWrap bg-white pb-[15rem] text-center pt-4 h-[20rem] overflow-y-scroll">
         {children}
       </div>
     </>

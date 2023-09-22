@@ -8,7 +8,6 @@ import imageminMozjpeg from "imagemin-mozjpeg";
 import imageminPngQuant from "imagemin-pngquant";
 import imageminSvgo from "imagemin-svgo";
 import imageminWebp from "imagemin-webp";
-import {splitVendorChunkPlugin} from "vite";
 import jsconfigPath from "vite-jsconfig-paths";
 import {createHtmlPlugin} from "vite-plugin-html";
 import {loadEnv} from "vite";
@@ -22,8 +21,6 @@ export default defineConfig({
   plugins: [
     react(),
     jsconfigPath(),
-    // 청크(chunk) 파일 생성 플러그인 구성
-    splitVendorChunkPlugin(),
     // 이미지 최적화 플러그인 구성
     viteImagemin({
       plugins: {

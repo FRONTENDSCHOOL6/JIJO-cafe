@@ -25,7 +25,12 @@ function FindStore() {
   return (
     <>
       <JiJoHelmet pageTitle="매장 - 매장찾기" />
-      <MenuTitle title="STORE" mainMenu="매장" subMenu="매장찾기">
+      <MenuTitle
+        title="STORE"
+        mainLink="/findStore"
+        subLink="/findStore"
+        mainMenu="매장"
+        subMenu="매장찾기">
         JIJO STORE
       </MenuTitle>
       <div className="findStore__mainContent relative">
