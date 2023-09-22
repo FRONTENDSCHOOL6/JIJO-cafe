@@ -24,7 +24,7 @@ function NoticeCreate() {
         .then((response) => response.data),
     onSuccess: () => {
       queryClient.invalidateQueries({
-        queryKey: ["notice"],
+        queryKey: ["notices"],
       })
       Navigate("/bbs/notice")
     },

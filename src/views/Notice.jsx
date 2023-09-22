@@ -21,6 +21,7 @@ function Notice() {
       sort: "-created",
       filter: `(${searchOption} ~ '${searchText}')`,
     },
+    staleTime: 0,
   })
   //페이지네이션 사용전 리액트 쿼리
   // const { data, isError, error, refetch } = useQuery({
