@@ -6,6 +6,7 @@ import JijoSpinner from "@/components/JijoSpinner"
 import PageMainTitle from "@/components/PageMainTitle"
 import { useState, useEffect } from "react"
 import { useNavigate, useParams } from "react-router-dom"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 
 function FaqUpdate() {
   const { FaqId } = useParams()
@@ -14,6 +15,22 @@ function FaqUpdate() {
   const [status, setStatus] = useState("pending")
   const [error, setError] = useState(null)
   const [fileName, setFileName] = useState("파일이름")
+
+  //리액트 뮤테이션
+  const queryClient = useQueryClient()
+  const faqUpdate = useMutation({
+    // const record = await pb.collection("notices").create(data) // 기존 SDK방식  -> 리액트쿼리로 변경
+    mutationFn: (data) =>
+      pb
+        .collection("faq")
+        .update(FaqId, data)
+        .then((response) => response.data),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["faqDetail"])
+      queryClient.invalidateQueries(["faq"])
+      Navigate(`/bbs/faq/detail/${FaqId}`)
+    },
+  })
 
   useEffect(() => {
     const fetchData = async () => {
@@ -55,8 +72,7 @@ function FaqUpdate() {
     e.preventDefault()
     const formData = new FormData(e.currentTarget)
     const data = Object.fromEntries(formData.entries())
-    await pb.collection("faq").update(FaqId, data)
-    Navigate(`/bbs/faq/detail/${FaqId}`)
+    faqUpdate.mutate(data)
   }
 
   return (
