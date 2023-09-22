@@ -1,4 +1,3 @@
-import pb from "@/api/pocketbase";
 import Button from "@/components/Button";
 import CheckBox from "@/components/CheckBox/CheckBox";
 import Input from "@/components/Input";

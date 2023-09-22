@@ -1,8 +1,8 @@
 import {Link} from "react-router-dom";
 
-function MenuTitle({title, mainMenu, subMenu, children}) {
+function MenuTitle({title, mainMenu, subMenu, children, mainLink, subLink}) {
   return (
-    <div className="bg-secondary p-jj_100 mt-[5.75rem]">
+    <div className="bg-secondary p-jj_100 desktop:mt-[5.75rem]">
       <div className="max-w-7xl mx-auto text-center">
         <p className="text-white font-thin text-jj_24 tablet:text-xl">
           {title}
@@ -18,13 +18,13 @@ function MenuTitle({title, mainMenu, subMenu, children}) {
               </Link>
             </li>
             <li className="inline-block">
-              <a href="">
+              <Link to={mainLink}>
                 {mainMenu}
                 <span className="mx-2">&gt;</span>
-              </a>
+              </Link>
             </li>
             <li className="inline-block">
-              <a href="">{subMenu}</a>
+              <Link to={subLink}>{subMenu}</Link>
             </li>
           </ul>
         </div>
