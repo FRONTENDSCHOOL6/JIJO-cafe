@@ -46,9 +46,9 @@ function Drink() {
         DRINK MENU
       </MenuTitle>
       <MenuBubble>
-        <strong>깊고 부드러운 커피 맛의 비밀</strong>
+        <strong className=" mobile:text-2xl">깊고 부드러운 커피 맛의 비밀</strong>
         <br />
-        행복을 선사하는 다양한 음료
+        <strong className=" mobile:text-2xl"> 행복을 선사하는 다양한 음료</strong>
       </MenuBubble>
       <section className="bg-white mx-auto max-w-7xl mobile:w-full flex mobile:flex-col justify-between items-center mobile:items-start gap-[3.125rem] pt-[6.25rem] mobile:px-5">
         <div>

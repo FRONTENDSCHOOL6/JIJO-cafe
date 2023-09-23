@@ -7,19 +7,19 @@
 }
 
 .ul {
-  @apply w-full  h-screen top-0 left-0 flex flex-col justify-center bg-[#181818] z-10 text-darkGray  px-jj_100 mobile:px-6 text-2xl;
+  @apply w-full   h-screen top-0 left-0 flex flex-col justify-center bg-[#181818] z-10 text-darkGray  px-jj_100 mobile:px-6 text-2xl;
 }
 
 .linkWrap {
-  @apply flex items-center border-b-[1px] p-8 border-darkGray;
+  @apply flex border-b-[1px] p-8  border-[#373636];
 }
 
 .titleLink {
-  @apply text-white font-semibold w-[12.5rem] mobile:w-[60%];
+  @apply text-white  font-semibold w-[12.5rem] mobile:w-[60%] mobile:text-base;
 }
 
 .subLinkWrap {
-  @apply text-base text-left pl-16 flex flex-col gap-4 mobile:w-[40%];
+  @apply text-base mobile:text-sm text-left pl-16 mobile:p-0 flex flex-col gap-4 mobile:w-[40%];
 
   & li {
     @apply hover:text-white;
