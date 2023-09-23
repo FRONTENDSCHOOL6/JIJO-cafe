@@ -18,7 +18,7 @@ function Product() {
   const [category, setCategory] = useState("전체보기")
 
   const { error, ...rest } = usePaginationQuery({
-    perPage: 20,
+    perPage: 16,
     queryKey: "products",
     dependency: category,
     options: {
