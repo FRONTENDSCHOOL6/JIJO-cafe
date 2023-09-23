@@ -5,6 +5,7 @@ import { useEffect } from "react"
 import { getPbImageURL } from "@/utils/getPbImageURL"
 import pb from "@/api/pocketbase"
 
+//최조1번 image ->imageURL 로 저장
 let mounted = false
 const getFoods = async () => {
   const foods = await pb.collection("foods").getFullList()
