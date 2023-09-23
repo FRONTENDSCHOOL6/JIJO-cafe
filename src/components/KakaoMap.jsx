@@ -4,7 +4,7 @@ import {useEffect} from "react";
 
 const {kakao} = window;
 
-function KakaoMap({setKakaoPlaceResult, searchedResult}) {
+function KakaoMap({setKakaoPlaceResult, searchedResult, setKakaoMarkes}) {
   const {location} = useCurrnetLocation();
 
   const {latitude: currentLat, longitude: currentLon} = location;
@@ -55,6 +55,8 @@ function KakaoMap({setKakaoPlaceResult, searchedResult}) {
         position: new kakao.maps.LatLng(place.y, place.x),
         image: new kakao.maps.MarkerImage(markerImage, markerImageSize),
       });
+
+      setKakaoMarkes((prev) => [...prev, marker]);
 
       kakao.maps.event.addListener(marker, "click", () => {
         const modifedAddressName = place.place_name.replace(

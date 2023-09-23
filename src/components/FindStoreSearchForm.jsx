@@ -8,10 +8,18 @@ function FindStoreSearchForm({
   handleInputChange,
   handleSearchSubmit,
   kakaoPlaceResult,
+  kakaoMarkes,
 }) {
   /* FormListWrap 메가MGC커피 -> 지조커피로 반환하는 함수 */
   const modifyAddressName = (addressName) => {
     return addressName.replace(/메가MGC커피/g, "지조커피");
+  };
+
+  /* 리스트아이템들 클릭 시 카카오 마커로 이동 */
+  const handleListItemClick = (index) => {
+    if (index < kakaoMarkes.length) {
+      window.kakao.maps.event.trigger(kakaoMarkes[index], "click");
+    }
   };
 
   return (
@@ -52,9 +60,10 @@ function FindStoreSearchForm({
             <p>검색결과가 없습니다</p>
           ) : (
             <ul className="flex flex-col space-y-2 text-sm">
-              {kakaoPlaceResult?.map((place) => {
+              {kakaoPlaceResult?.map((place, index) => {
                 return (
                   <li
+                    onClick={() => handleListItemClick(index)}
                     key={place.id}
                     className="border-b pb-2 text-gray-500 cursor-pointer">
                     <p>{modifyAddressName(place.place_name)}</p>
