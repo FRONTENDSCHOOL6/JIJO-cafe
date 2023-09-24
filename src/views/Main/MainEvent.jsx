@@ -8,7 +8,7 @@ import { Link, NavLink } from "react-router-dom";
 import { getPbImageURL } from "@/utils/getPbImageURL";
 import MainpageTitle from "@/components/Main/MainpageTitle";
 
-function MainEvent() {
+function MainEvent({ className }) {
   const { data, isError, error } = useQuery({
     queryKey: ["mainEvent"],
     queryFn: async () => {
@@ -33,7 +33,7 @@ function MainEvent() {
   }
 
   return (
-    <section className="grid grid-cols-1 place-content-center place-items-center h-screen p-[10%]  overflow-hidden mobile:p-[5%]">
+    <section className={`${className}`}>
       <h2 className="sr-only">메인페이지 이벤트</h2>
       <div className="text-center">
         <MainpageTitle highLight="primaryHighlight" subHeading="카페지조 소식" mainHeading="JIJO EVENT"></MainpageTitle>
