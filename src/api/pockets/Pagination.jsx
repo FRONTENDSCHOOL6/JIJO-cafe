@@ -17,6 +17,7 @@ import {
   getNotices,
   getEvents,
 } from "@/api/pockets";
+import LazyImage from "@/utils/LazyImage";
 
 function Pagination() {
   const {
@@ -65,14 +66,14 @@ function Pagination() {
           return (
             <div key={item.id} className="relative cursor-pointer">
               <div className="imgFrame relative w-80 h-80 overflow-hidden">
-                <img
+                <LazyImage
                   src={imageSource}
                   className="w-full transition-all ease-in hover:scale-110"
                   alt={item.title}
                 />
               </div>
               <a href="/cart">
-                <img
+                <LazyImage
                   src={cartImage}
                   className="absolute bottom-0 right-0"
                   alt="Cart"

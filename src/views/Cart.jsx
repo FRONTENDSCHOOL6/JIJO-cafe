@@ -12,8 +12,8 @@ import JiJoHelmet from "@/utils/JiJoHelmet";
 import {numberWithComma} from "@/utils/numberWithComma";
 import {useState} from "react";
 import toast from "react-hot-toast";
-import { useEffect } from "react";
 import SignInModal from "@/components/SignInModal";
+import LazyImage from "@/utils/LazyImage";
 
 function Cart() {
   const [toggleDropDown, setToggleDropDown] = useToggle(true);
@@ -22,7 +22,7 @@ function Cart() {
   const handleClickSignin = () => {
     if (!isAuth) {
       setIsClickedSignin(!isClickedSignin);
-    } 
+    }
   };
   const isAuth = useAuthStore((state) => state.isAuth);
   const cart = useCartStore((state) => state.cart);
@@ -41,9 +41,11 @@ function Cart() {
     .reduce((acc, cur) => acc + cur, 0);
 
   /* 전체갯수 */
-  const totalCount = cart.map((item) => {
-    return Number(item.count)
-  }).reduce((acc, cur) => acc + cur, 0);
+  const totalCount = cart
+    .map((item) => {
+      return Number(item.count);
+    })
+    .reduce((acc, cur) => acc + cur, 0);
 
   /* 장바구니 내 담겨있는 상품 전체 삭제 */
   const removeAll = useCartStore((state) => state.removeAll);
@@ -62,23 +64,26 @@ function Cart() {
       <div className="cartWrap mx-auto max-w-7xl flex gap-5 pb-52 mobile:flex-col mobile:px-4 mobile:pb-40">
         <div className="orderListArea w-3/4 mobile:w-full">
           <div className="selectArea font-semibold">
-            <CheckBox text={`전체선택(${totalCount}/${totalCount}) `} defaultChecked="checked" />
+            <CheckBox
+              text={`전체선택(${totalCount}/${totalCount}) `}
+              defaultChecked="checked"
+            />
             <button onClick={handleClickRemove}>| 전체삭제</button>
           </div>
           <div className="orderListWrap border-t bg-white border-secondary my-4 overflow-hidden">
             <div className="titleButtonArea flex justify-between py-4">
               <p className="title font-semibold">주문상품</p>
               <button onClick={setToggleDropDown} className="p-2">
-                <img
-                  src={arrowDwon}
-                  alt="아래화살표 버튼"
-                />
+                <LazyImage src={arrowDwon} alt="아래화살표 버튼" />
               </button>
             </div>
             {toggleDropDown && <OrderList />}
           </div>
           <div className="selectArea font-semibold">
-            <CheckBox text={`전체선택(${totalCount}/${totalCount}) `} defaultChecked="checked" />
+            <CheckBox
+              text={`전체선택(${totalCount}/${totalCount}) `}
+              defaultChecked="checked"
+            />
             <button>| 전체삭제</button>
           </div>
         </div>
@@ -87,7 +92,7 @@ function Cart() {
           <div>
             <div className="orderInfoTop border border-gray-200 p-5">
               <p className="store font-semibold">
-                <img
+                <LazyImage
                   className="inline-block"
                   src={location}
                   alt="위치 아이콘"
@@ -116,12 +121,13 @@ function Cart() {
 
             <Button
               className="w-full bg-secondary text-white grow my-4"
-              color="primary" 
-              onClick={handleClickSignin}
-            >
+              color="primary"
+              onClick={handleClickSignin}>
               주문하기
             </Button>
-            {isClickedSignin && <SignInModal setIsClickedSignin={setIsClickedSignin} />}
+            {isClickedSignin && (
+              <SignInModal setIsClickedSignin={setIsClickedSignin} />
+            )}
 
             <div className="notice">
               <p className="text-xs text-[#898989] font-semibold">

@@ -1,6 +1,7 @@
 import CheckBox from "@/components/CheckBox/CheckBox";
 import CloseButton from "@/components/CloseButton";
 import useCartStore from "@/store/cartStore";
+import LazyImage from "@/utils/LazyImage";
 import {getPbImageURL} from "@/utils/getPbImageURL";
 import {numberWithComma} from "@/utils/numberWithComma";
 import toast from "react-hot-toast";
@@ -27,7 +28,7 @@ function OrderListItem({product}) {
         to="/menu/drink"
         className="flex basis-2/3 mobile:basis-[55%] items-center shrink-0">
         <figure className="shrink-0">
-          <img src={getPbImageURL(product, "image")} className="h-24" />
+          <LazyImage src={getPbImageURL(product, "image")} className="h-24" />
         </figure>
         <p className="productTitle basis-[32rem] mobile:basis-[50%] shrink-0 mobile:shrink font-semibold mobile:text-sm ml-6">
           {product.title}
