@@ -12,8 +12,8 @@ import JiJoHelmet from "@/utils/JiJoHelmet";
 import {numberWithComma} from "@/utils/numberWithComma";
 import {useState} from "react";
 import toast from "react-hot-toast";
-import {useEffect} from "react";
 import SignInModal from "@/components/SignInModal";
+import LazyImage from "@/utils/LazyImage";
 
 function Cart() {
   const [toggleDropDown, setToggleDropDown] = useToggle(true);
