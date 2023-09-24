@@ -43,14 +43,14 @@
     scroll-snap-type: y mandatory;
     overflow-y: scroll;
     scroll-behavior: smooth;
-  }
 
-  .fullpage::-webkit-scrollbar {
-    display: none;
-  }
+    &::-webkit-scrollbar {
+      display: none;
+    }
 
-  .section {
-    scroll-snap-align: start;
+    & .section {
+      scroll-snap-align: start;
+    }
   }
 
   .primaryHighlight {

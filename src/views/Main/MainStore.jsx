@@ -3,11 +3,11 @@ import Button from "@/components/Button";
 import { Link } from "react-router-dom";
 import { MainPageText1, MainPageText2 } from "@/components/Main/MainPageText";
 
-function MainStore() {
+function MainStore({ className }) {
   const content1 = ["100% 프리미엄 아라비카 원두를 로스팅하여,", "깊고 부드러운 커피와 빅 사이즈로 구성된", "다양한 음료를 합리적인 가격으로 제공합니다."];
   const content2 = ["좋은 품질의 재료를, 합리적인 가격으로 제공하는 카페 지조,", "가까운 곳에 위치한 매장을 확인해보세요!"];
   return (
-    <section className="relative grid justify-between h-screen grid-cols-2 overflow-hidden mobile:grid-cols-1 mobile:grid-rows-2">
+    <section className={`${className}`}>
       <h2 className="sr-only">메인페이지 매장찾기</h2>
       <div className="w-full h-full"></div>
       <div className="w-full storeImage"></div>
