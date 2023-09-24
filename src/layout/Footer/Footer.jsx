@@ -1,15 +1,15 @@
-import githubIcon from '@/assets/images/github.svg';
-import facebookIcon from '@/assets/images/facebook.svg';
-import notionIcon from '@/assets/images/notion.svg';
-import FooterModal from '@/components/FooterModal';
-import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import githubIcon from "@/assets/images/github.svg";
+import facebookIcon from "@/assets/images/facebook.svg";
+import notionIcon from "@/assets/images/notion.svg";
+import FooterModal from "@/components/FooterModal";
+import {useState} from "react";
+import {Link} from "react-router-dom";
 
 function Footer() {
   const [isClicked, setIsClicked] = useState(false);
   const handleClick = () => {
     setIsClicked(!isClicked);
-  }
+  };
   const handleClose = () => {
     setIsClicked(false);
   };
@@ -22,14 +22,17 @@ function Footer() {
             <button className="font-bold hover:underline" onClick={handleClick}>
               이용약관
             </button>
-              {isClicked && <FooterModal title="이용약관" handleClose={handleClose}/>}
-            
+            {isClicked && (
+              <FooterModal title="이용약관" handleClose={handleClose} />
+            )}
           </li>
           <li>
             <button className="font-bold hover:underline" onClick={handleClick}>
               개인정보취급방침
             </button>
-            {isClicked && <FooterModal title="개인정보취급방침" handleClose={handleClose}/>}
+            {isClicked && (
+              <FooterModal title="개인정보취급방침" handleClose={handleClose} />
+            )}
           </li>
         </ul>
       </div>
@@ -47,17 +50,32 @@ function Footer() {
             <ul className="snsIcon flex gap-2 mt-2">
               <li>
                 <Link to="https://github.com/FRONTENDSCHOOL6/JIJO-cafe">
-                  <img src={githubIcon} alt="카페지조 깃허브" />
+                  <img
+                    src={githubIcon}
+                    width="100%"
+                    height="100%"
+                    alt="카페지조 깃허브"
+                  />
                 </Link>
               </li>
               <li>
                 <Link to="">
-                  <img src={facebookIcon} alt="카페지조 페이스북" />
+                  <img
+                    src={facebookIcon}
+                    alt="카페지조 페이스북"
+                    width="100%"
+                    height="100%"
+                  />
                 </Link>
               </li>
               <li>
                 <Link to="https://mammoth-sassafras-ff5.notion.site/15-bae6c4f5253342a1bf7a7a5e3a23b976?pvs=4">
-                  <img src={notionIcon} alt="카페지조 노션" />
+                  <img
+                    width="100%"
+                    height="100%"
+                    src={notionIcon}
+                    alt="카페지조 노션"
+                  />
                 </Link>
               </li>
             </ul>
@@ -93,17 +111,23 @@ function Footer() {
               <strong className="text-light text-jj_17">메뉴소개</strong>
               <ul className="flex flex-col gap-2 mt-3 text-jj_14">
                 <li>
-                  <Link to="/menu/drink" className="opacity-70 hover:opacity-100 hover:underline">
+                  <Link
+                    to="/menu/drink"
+                    className="opacity-70 hover:opacity-100 hover:underline">
                     음료
                   </Link>
                 </li>
                 <li>
-                  <Link to="/menu/food" className="opacity-70 hover:opacity-100 hover:underline">
+                  <Link
+                    to="/menu/food"
+                    className="opacity-70 hover:opacity-100 hover:underline">
                     푸드
                   </Link>
                 </li>
                 <li>
-                  <Link to="/menu/product" className="opacity-70 hover:opacity-100 hover:underline">
+                  <Link
+                    to="/menu/product"
+                    className="opacity-70 hover:opacity-100 hover:underline">
                     상품
                   </Link>
                 </li>
@@ -113,7 +137,9 @@ function Footer() {
               <strong className="text-light text-jj_17">매장</strong>
               <ul className="flex flex-col gap-2 mt-3 text-jj_14">
                 <li>
-                  <Link to="/findStore" className="opacity-70 hover:opacity-100 hover:underline">
+                  <Link
+                    to="/findStore"
+                    className="opacity-70 hover:opacity-100 hover:underline">
                     매장찾기
                   </Link>
                 </li>
@@ -123,22 +149,30 @@ function Footer() {
               <strong className="text-light text-jj_17">지조소식</strong>
               <ul className="flex flex-col gap-2 mt-3 text-jj_14">
                 <li>
-                  <Link to="/bbs/notice" className="opacity-70 hover:opacity-100 hover:underline">
+                  <Link
+                    to="/bbs/notice"
+                    className="opacity-70 hover:opacity-100 hover:underline">
                     공지사항
                   </Link>
                 </li>
                 <li>
-                  <Link to="/bbs/event" className="opacity-70 hover:opacity-100 hover:underline">
+                  <Link
+                    to="/bbs/event"
+                    className="opacity-70 hover:opacity-100 hover:underline">
                     이벤트
                   </Link>
                 </li>
                 <li>
-                  <Link to="/bbs/faq" className="opacity-70 hover:opacity-100 hover:underline">
+                  <Link
+                    to="/bbs/faq"
+                    className="opacity-70 hover:opacity-100 hover:underline">
                     FAQ
                   </Link>
                 </li>
                 <li>
-                  <Link to="/bbs/customer" className="opacity-70 hover:opacity-100 hover:underline">
+                  <Link
+                    to="/bbs/customer"
+                    className="opacity-70 hover:opacity-100 hover:underline">
                     고객의 소리
                   </Link>
                 </li>
