@@ -13,17 +13,23 @@ function EventDetail() {
     queryFn: async () => {
       // eslint-disable-next-line no-useless-catch
       try {
-        const selectContentId = await pb.collection("events").getOne(eventId);
-        const selectContentData = await pb.collection("events").getFullList({
+        const currentEvent = await pb.collection("events").getOne(eventId);
+        const EventContentData = await pb.collection("events").getFullList({
           sort: "-created",
         });
-        return { ...selectContentId, selectContentData };
+
+        const currentEventIndex = EventContentData.findIndex((n) => n.id === currentEvent.id);
+        const previousEventTitle = EventContentData[currentEventIndex + 1]?.title;
+        const previousEventId = EventContentData[currentEventIndex + 1]?.id;
+        const nextEventTitle = EventContentData[currentEventIndex - 1]?.title;
+        const nextEventId = EventContentData[currentEventIndex - 1]?.id;
+
+        return { ...currentEvent, EventContentData, previousEventTitle, previousEventId, nextEventTitle, nextEventId };
       } catch (error) {
         throw error;
       }
     },
   });
-
   if (isLoading) {
     return (
       <div>
