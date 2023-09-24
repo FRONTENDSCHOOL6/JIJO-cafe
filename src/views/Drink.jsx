@@ -16,7 +16,7 @@ function Drink() {
   const [category, setCategory] = useState("전체보기") //커피, 티, 에이드&주스, 스무디&프라페, 디카페인, 음료, 신상품
 
   const { error, ...rest } = usePaginationQuery({
-    perPage: 20,
+    perPage: 16,
     queryKey: "beverage",
     dependency: category,
     options: {
