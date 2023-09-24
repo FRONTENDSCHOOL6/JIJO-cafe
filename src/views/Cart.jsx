@@ -6,15 +6,25 @@ import StoreChangeModal from "@/components/Cart/StoreChangeModal";
 import CheckBox from "@/components/CheckBox/CheckBox";
 import PageMainTitle from "@/components/PageMainTitle";
 import useToggle from "@/hooks/useToggle";
+import useAuthStore from "@/store/store";
 import useCartStore from "@/store/cartStore";
 import JiJoHelmet from "@/utils/JiJoHelmet";
 import {numberWithComma} from "@/utils/numberWithComma";
 import {useState} from "react";
 import toast from "react-hot-toast";
+import { useEffect } from "react";
+import SignInModal from "@/components/SignInModal";
 
 function Cart() {
   const [toggleDropDown, setToggleDropDown] = useToggle(true);
   const [isClicked, setIsClicked] = useState(false);
+  const [isClickedSignin, setIsClickedSignin] = useState(false);
+  const handleClickSignin = () => {
+    if (!isAuth) {
+      setIsClickedSignin(!isClickedSignin);
+    } 
+  };
+  const isAuth = useAuthStore((state) => state.isAuth);
   const cart = useCartStore((state) => state.cart);
   const handleClick = () => {
     setIsClicked(!isClicked);
@@ -30,7 +40,7 @@ function Cart() {
     })
     .reduce((acc, cur) => acc + cur, 0);
 
-  /* 전체금액 */
+  /* 전체갯수 */
   const totalCount = cart.map((item) => {
     return Number(item.count)
   }).reduce((acc, cur) => acc + cur, 0);
@@ -103,11 +113,16 @@ function Cart() {
                 </span>
               </div>
             </div>
+
             <Button
               className="w-full bg-secondary text-white grow my-4"
-              color="primary">
+              color="primary" 
+              onClick={handleClickSignin}
+            >
               주문하기
             </Button>
+            {isClickedSignin && <SignInModal setIsClickedSignin={setIsClickedSignin} />}
+
             <div className="notice">
               <p className="text-xs text-[#898989] font-semibold">
                 쿠폰/적립금은 주문서에서 사용 가능합니다.
