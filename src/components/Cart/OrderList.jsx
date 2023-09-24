@@ -12,7 +12,7 @@ function OrderList() {
   return (
     <ul className="orderList">
       {/* 로그인이 되었을 때 상품리스트 렌더링 */}
-      {isAuth ? (
+      {/* {isAuth ? (
         // 담긴 상품이 존재할 때 상품리스트 렌더링
         cart.length ? (
           cart.map((product) => <OrderListItem key={product.id} product={product} />)
@@ -21,7 +21,13 @@ function OrderList() {
         )
       ) : (
         <OrderListEmptyItem />
-      )}
+      )} */}
+
+      {cart.length ? (
+          cart.map((product) => <OrderListItem key={product.id} product={product} />)
+        ) : (
+          <OrderListEmptyItem />
+        )} 
     </ul>
   );
 }
