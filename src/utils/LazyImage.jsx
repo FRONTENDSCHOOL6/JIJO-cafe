@@ -2,7 +2,7 @@ import {useState} from "react";
 import {useEffect} from "react";
 import {useRef} from "react";
 
-function LazyImage({src, alt, className, width = "100%", height = "auto"}) {
+function LazyImage({src, alt, className, width = "auto", height = "auto"}) {
   const [isLoading, setLoading] = useState(false);
 
   const imgRef = useRef(null);
