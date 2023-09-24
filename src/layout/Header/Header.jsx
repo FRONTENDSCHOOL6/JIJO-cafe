@@ -16,11 +16,10 @@ function Header() {
 
   // mainpage 헤더 스타일
   const location = useLocation();
-  const isFixedHeaderPage = location.pathname === "/";
-  // const headerStyle = ``;
+  const isMainPage = location.pathname === "/";
 
   return (
-    <div className={`${isFixedHeaderPage ? "fixed" : "sticky"} flex justify-between z-50 w-full top-0`}>
+    <div className={`${isMainPage ? "fixed" : "sticky"} flex justify-between z-50 w-full top-0`}>
       <Desktop>
         <DesktopHeader siginInView={isClickedSignin} siginViewHandler={handleClickSignin} setIsClickedSignin={setIsClickedSignin} />
       </Desktop>

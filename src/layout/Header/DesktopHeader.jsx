@@ -117,7 +117,7 @@ function DesktopHeader({ siginInView, siginViewHandler, setIsClickedSignin }) {
                   회원가입
                 </LinkList>
               )}
-              {isAuth && user && <li>{user.name || user.username}님</li>}
+              {isAuth && user && <li className={S.LinkWrap}>{user.name || user.username}님</li>}
               <div className={S.LinkWrap}>
                 <CartLinkList />
               </div>

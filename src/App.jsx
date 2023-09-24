@@ -1,11 +1,11 @@
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
-import { Suspense } from "react"
-import { RouterProvider } from "react-router-dom"
-import { HelmetProvider } from "react-helmet-async"
-import { Toaster } from "react-hot-toast"
-import router from "./routes/routes"
-import JijoSpinner from "./components/JijoSpinner"
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { Suspense } from "react";
+import { RouterProvider } from "react-router-dom";
+import { HelmetProvider } from "react-helmet-async";
+import { Toaster } from "react-hot-toast";
+import router from "./routes/routes";
+import JijoSpinner from "./components/JijoSpinner";
 // 쿼리 클라이언트 객체 생성
 const queryClient = new QueryClient({
   // 모든 쿼리에 사용되는 기본 옵션
@@ -16,7 +16,7 @@ const queryClient = new QueryClient({
       // cacheTime: 1 * 1000 * 60 * 5, // (기본 값: 5분) 캐시된 데이터가 캐시에서 유지되는 시간
     },
   },
-})
+});
 
 function App() {
   return (
@@ -26,12 +26,12 @@ function App() {
           <Suspense fallback={<JijoSpinner />}>
             <RouterProvider router={router}></RouterProvider>
           </Suspense>
-          <ReactQueryDevtools initialIsOpen={true} />
+          {/* <ReactQueryDevtools initialIsOpen={true} /> */}
         </QueryClientProvider>
       </HelmetProvider>
       <Toaster />
     </>
-  )
+  );
 }
 
-export default App
+export default App;
