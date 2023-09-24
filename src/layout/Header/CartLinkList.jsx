@@ -14,7 +14,7 @@ function CartLinkList() {
       <LinkList pageLink="/cart" className="relative">
         <LazyImage src={cartBlack} className="w-7 h-7" alt="" />
         <sup className="cartCount absolute w-5 h-5 -top-4 -right-3 rounded-full  bg-red-500 text-xs text-white flex justify-center items-center p-2">
-          {isAuth ? cart.length : 0}
+          {cart.length}
         </sup>
       </LinkList>
     </>

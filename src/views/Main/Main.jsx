@@ -5,8 +5,17 @@ import MainShopingMall from "./MainShopingMall";
 import MainEvent from "./MainEvent";
 import MainStore from "./MainStore";
 import Footer from "@/layout/Footer/Footer";
+import { useEffect } from "react";
 
 function Main() {
+  useEffect(() => {
+    document.body.style.overflow = "hidden";
+    return () => {
+      // 페이지를 벗어날 때 스타일 제거
+      document.body.style.overflow = "auto";
+    };
+  }, []);
+
   return (
     <>
       <Helmet>
