@@ -45,6 +45,10 @@ export default {
         jj_100: "6.25rem",
         "7%": "7%",
       },
+      backgroundColor: {
+        scrollTop: "transparent",
+        scrolling: "white",
+      },
     },
   },
   plugins: [],
