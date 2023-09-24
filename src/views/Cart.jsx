@@ -57,6 +57,17 @@ function Cart() {
     });
   };
 
+  // const [checkboxData, setCheckboxData] = useState([]);
+
+  // /* 체크 박스 전체 선택 */
+  // const handleAllCheck = (selectAll) => {
+  //   const updatedCheckboxData = checkboxData.map((checkbox) => ({
+  //     ...checkbox,
+  //     checked: selectAll,
+  //   }));
+  //   setCheckboxData(updatedCheckboxData);
+  // };
+
   return (
     <>
       <JiJoHelmet pageTitle="장바구니" />
