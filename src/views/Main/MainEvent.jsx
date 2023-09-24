@@ -5,12 +5,11 @@ import JijoError from "@/components/JijoError";
 import yyyymmddDate from "@/utils/yyyymmddDate";
 import { useQuery } from "@tanstack/react-query";
 import { Link, NavLink } from "react-router-dom";
-import JijoSpinner from "@/components/JijoSpinner";
 import { getPbImageURL } from "@/utils/getPbImageURL";
 import MainpageTitle from "@/components/Main/MainpageTitle";
 
-function MainEvent() {
-  const { isLoading, data, isError, error } = useQuery({
+function MainEvent({ className }) {
+  const { data, isError, error } = useQuery({
     queryKey: ["mainEvent"],
     queryFn: async () => {
       // eslint-disable-next-line no-useless-catch
@@ -25,16 +24,6 @@ function MainEvent() {
     },
   });
 
-  // console.log("mainEvent->", data);
-
-  if (isLoading) {
-    return (
-      <div>
-        <JijoSpinner />
-      </div>
-    );
-  }
-
   if (isError) {
     return (
       <div role="alert">
@@ -44,7 +33,7 @@ function MainEvent() {
   }
 
   return (
-    <section className="grid grid-cols-1 place-content-center place-items-center h-screen p-[10%]  overflow-hidden mobile:p-[5%]">
+    <section className={`${className}`}>
       <h2 className="sr-only">메인페이지 이벤트</h2>
       <div className="text-center">
         <MainpageTitle highLight="primaryHighlight" subHeading="카페지조 소식" mainHeading="JIJO EVENT"></MainpageTitle>

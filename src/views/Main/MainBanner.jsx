@@ -10,8 +10,7 @@ import JijoError from "./../../components/JijoError";
 import { getPbImageURL } from "@/utils/getPbImageURL";
 import { Pagination, Autoplay, Keyboard } from "swiper/modules";
 
-export default function MainBanner() {
-  // const { data, status } = usePocektBaseDataList("mainBanner");
+export default function MainBanner({ className }) {
   const [mobileView, setMobileView] = useState(window.innerWidth < 760);
 
   const screenChange = (e) => {
@@ -42,8 +41,8 @@ export default function MainBanner() {
 
   if (isLoading) {
     return (
-      <div>
-        <JijoSpinner />
+      <div className="relative h-screen">
+        <JijoSpinner className="h-screen" />
       </div>
     );
   }
@@ -70,7 +69,9 @@ export default function MainBanner() {
       }}
       keyboard={{ enabled: true }}
       grabCursor={true}
+      loop={true}
       id="mainSwiper"
+      className={`${className}`}
     >
       {mobileView
         ? data &&
