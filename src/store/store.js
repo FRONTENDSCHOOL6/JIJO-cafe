@@ -3,8 +3,6 @@ import {create} from "zustand";
 import {devtools, persist} from "zustand/middleware";
 
 const USER_COLLECECTION = "users";
-const REDIRECT_URL =
-  "https://github.com/login/oauth/authorize?client_id=d2ad8261512fefaf864b";
 
 const initalAuthState = {
   isAuth: false,
@@ -103,7 +101,7 @@ const authStore = (set) => ({
   SignWithGithub: async () => {
     const githubAuth = await pb
       .collection(USER_COLLECECTION)
-      .authWithOAuth2({provider: "github"}, REDIRECT_URL);
+      .authWithOAuth2({provider: "github"});
 
     set((state) => ({
       ...state,
