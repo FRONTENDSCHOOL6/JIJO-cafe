@@ -40,7 +40,7 @@
 
 ## 화면 플로우
 
-![Alt text](<15-jijo flow-chart.jpg>)
+![화면 플로우](/src/assets/images/readme/15-jijo_flow-chart.jpg)
 
 </br></br>
 
@@ -128,57 +128,61 @@
 
 ### 메인 캐러셀
 
-![Alt text](<2023-09-24 17;28;43.gif>)
+![메인 캐러셀](/src/assets/images/readme/Main_carousel.gif)
 
 ### 메인 풀페이지
 
-![Alt text](<2023-09-24 17;30;58.gif>)
+![메인 풀페이지](/src/assets/images/readme/Main_Fullpage.gif)
 
 ### 메뉴소개 페이지 필터 기능, 상품 데이터 렌더링
 
-![Alt text](<2023-09-24 17;40;16.gif>)
+![메뉴소개 페이지](/src/assets/images/readme/Menu.gif)
 
 ### 매장찾기 페이지 지도 API
 
-![Alt text](<2023-09-24 17;28;43d.gif>)
+![매장찾기 페이지](/src/assets/images/readme/FindStore.gif)
 
 ### 회원가입
 
-![Alt text](<2023-09-24 18;00;31.gif>)
+![회원가입](/src/assets/images/readme/SignUp.gif)
 
 ### 로그인
 
-![Alt text](<2023-09-24 18;16;43.gif>)
+![로그인](/src/assets/images/readme/SignIn.gif)
 
 ### 카카오톡 로그인
 
-![Alt text](<2023-09-24 18;33;04.gif>)
+![카카오톡 로그인](/src/assets/images/readme/KakaotalkSignin.gif)
 
 ### 로그아웃
 
-![Alt text](<2023-09-24 18;01;39.gif>)
+![로그아웃](/src/assets/images/readme/Logout.gif)
 
 ### 장바구니 담기 기능, 장바구니 페이지 수량 추가, 삭제 기능
 
-![Alt text](4eb7e34518885faa.gif)
+![장바구니](/src/assets/images/readme/Cart.gif)
 
 ### 공지사항 페이지 게시판
 
-![Alt text](FAQ.gif)
+![공지사항](/src/assets/images/readme/FAQ.gif)
 
 ### 관리자 권한 로그인시 게시글 등록, 수정, 삭제 기능
 
-![Alt text](CRUD.gif)
+![관리자 권한 로그인시 게시글 등록, 수정, 삭제 기능](/src/assets/images/readme/CRUD.gif)
+
+### 이벤트 페이지 데이터 렌더링 및 탭메뉴 기능
+
+![이벤트](/src/assets/images/readme/Event.gif)
 
 ### 페이지네이션 기능
 
-![Alt text](<2023-09-24 18;29;45.gif>)
+![페이지네이션](/src/assets/images/readme/Pagination.gif)
 
 ## 반응형 구현
 
-![Alt text](image-1.png)
-![Alt text](screencapture-localhost-3000-menu-drink-2023-09-24-19_23_51.png)
-![Alt text](screencapture-localhost-3000-bbs-notice-2023-09-24-19_25_29.png)
-![Alt text](screencapture-localhost-3000-bbs-notice-detail-witlx8l19qfapsh-2023-09-24-19_26_05.png)
-![Alt text](screencapture-localhost-3000-bbs-customer-2023-09-24-19_26_54.png)
-![Alt text](screencapture-localhost-3000-bbs-customer-create-2023-09-24-19_27_11.png)
+![메인페이지 모바일](/src/assets/images/readme/mobile_main.png)
+![메뉴소개 페이지 모바일](/src/assets/images/readme/mobile_menu.png)
+![공지사항 페이지 모바일](/src/assets/images/readme/mobile_FAQ.png)
+![공지사항 상세페이지 모바일](/src/assets/images/readme/mobile_FAQDetail.png)
+![고객의소리 모바일](/src/assets/images/readme/mobile_customer.png)
+![고객의소리 상세페이지 모바일](/src/assets/images/readme/mobile_customerDetail.png)
