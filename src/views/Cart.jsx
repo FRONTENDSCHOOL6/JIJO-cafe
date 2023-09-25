@@ -57,16 +57,26 @@ function Cart() {
     });
   };
 
-  // const [checkboxData, setCheckboxData] = useState([]);
-
-  // /* 체크 박스 전체 선택 */
-  // const handleAllCheck = (selectAll) => {
-  //   const updatedCheckboxData = checkboxData.map((checkbox) => ({
-  //     ...checkbox,
-  //     checked: selectAll,
-  //   }));
-  //   setCheckboxData(updatedCheckboxData);
-  // };
+  /* 체크박스 아이템 상태관리 */
+  const [checkboxData, setCheckboxData] = useState([]);
+  /* 각 체크박스 클릭 시 체크 */
+  const handleCheckBoxClick = (name) => {
+    setCheckboxData((prevData) =>
+      prevData.map((checkbox) =>
+        checkbox.name === name
+          ? {...checkbox, checked: !checkbox.checked}
+          : checkbox
+      )
+    );
+  };
+  /* 전체 선택 체크박스 클릭 시 호출되는 핸들러 함수 */
+  const handleAllCheckBoxClick = (selectAll) => {
+    const updatedCheckboxData = checkboxData.map((checkbox) => ({
+      ...checkbox,
+      checked: selectAll,
+    }));
+    setCheckboxData(updatedCheckboxData);
+  };
 
   return (
     <>
@@ -78,6 +88,12 @@ function Cart() {
             <CheckBox
               text={`전체선택(${totalCount}/${totalCount}) `}
               defaultChecked="checked"
+              isChecked={checkboxData.every((checkbox) => checkbox.checked)}
+              onChange={() =>
+                handleAllCheckBoxClick(
+                  !checkboxData.every((checkbox) => checkbox.checked)
+                )
+              }
             />
             <button onClick={handleClickRemove}>| 전체삭제</button>
           </div>
@@ -88,7 +104,12 @@ function Cart() {
                 <LazyImage src={arrowDwon} alt="아래화살표 버튼" />
               </button>
             </div>
-            {toggleDropDown && <OrderList />}
+            {toggleDropDown && (
+              <OrderList
+                checkboxData={checkboxData}
+                handleCheckBoxClick={handleCheckBoxClick}
+              />
+            )}
           </div>
           <div className="selectArea font-semibold">
             <CheckBox

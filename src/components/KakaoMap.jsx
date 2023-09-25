@@ -56,6 +56,8 @@ function KakaoMap({setKakaoPlaceResult, searchedResult, setKakaoMarkes}) {
         image: new kakao.maps.MarkerImage(markerImage, markerImageSize),
       });
 
+      console.log(place);
+
       setKakaoMarkes((prev) => [...prev, marker]);
 
       kakao.maps.event.addListener(marker, "click", () => {
@@ -89,7 +91,13 @@ function KakaoMap({setKakaoPlaceResult, searchedResult, setKakaoMarkes}) {
         }
       });
     };
-  }, [currentLat, currentLon, searchedResult, setKakaoPlaceResult]);
+  }, [
+    currentLat,
+    currentLon,
+    searchedResult,
+    setKakaoPlaceResult,
+    setKakaoMarkes,
+  ]);
 
   return (
     <>

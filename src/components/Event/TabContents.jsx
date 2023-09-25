@@ -20,7 +20,7 @@ function TabContents({data, searchResult}) {
     <>
       <div className="grid grid-cols-4 gap-6 mobile:grid-cols-2">
         {data &&
-          filteredData.map((item) => {
+          filteredData?.map((item) => {
             return (
               <div
                 key={item.id}

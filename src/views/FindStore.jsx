@@ -24,6 +24,7 @@ function FindStore() {
 
   /* 카카오맵 마커들을 담아둘 상태 */
   const [kakaoMarkes, setKakaoMarkes] = useState([]);
+  console.log(kakaoMarkes);
 
   return (
     <>
@@ -40,7 +41,6 @@ function FindStore() {
         <KakaoMap
           setKakaoPlaceResult={setKakaoPlaceResult}
           searchedResult={searchedResult}
-          kakaoMarkes={kakaoMarkes}
           setKakaoMarkes={setKakaoMarkes}
         />
         <FindStoreSearchForm
