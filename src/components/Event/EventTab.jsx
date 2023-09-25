@@ -1,7 +1,7 @@
 import JijoError from "../JijoError";
 import TabContents from "./TabContents";
 import JijoSpinner from "../JijoSpinner";
-import { useState, useEffect } from "react";
+import {useState, useEffect} from "react";
 import EventSearchForm from "./EventSearchForm";
 import EventPagination from "./EventPagination";
 import usePaginationQuery from "@/hooks/usePaginationQuery";
@@ -9,6 +9,20 @@ import usePaginationQuery from "@/hooks/usePaginationQuery";
 function EventTab() {
   const [select, setSelect] = useState("total");
   const [contentData, setContentData] = useState([]);
+
+  /* 사용자의 입력값을 감지하고 있는 상태 */
+  const [searchText, setSearchText] = useState("");
+  const handleInputSearch = (e) => {
+    const {target} = e;
+    setSearchText(target.value);
+  };
+
+  /* 사용자의 입력값을 최종적으로 담은 상태 */
+  const [searchResult, setSearchResult] = useState("");
+  const handleSearchResult = (e) => {
+    e.preventDefault();
+    setSearchResult(searchText);
+  };
 
   const items = [
     {
@@ -39,7 +53,7 @@ function EventTab() {
     return select === "total" ? "" : `category = "${[select]}"`;
   }
 
-  const { data, isLoading, error, isError, ...rest } = usePaginationQuery({
+  const {data, isLoading, error, isError, ...rest} = usePaginationQuery({
     perPage: 12,
     queryKey: "events",
     dependency: select,
@@ -78,15 +92,21 @@ function EventTab() {
             key={index}
             onClick={() => handleClick(item.type)}
             // 클릭시 setSelect에 type을 넣어줌
-            className={`${select === item.type ? "select" : "default"} flex-1 py-4 cursor-pointer border-[#DBDDDF] box-content`}
+            className={`${
+              select === item.type ? "select" : "default"
+            } flex-1 py-4 cursor-pointer border-[#DBDDDF] box-content`}
             // type에 따라 클래스를 넣어줌
           >
             {item.title}
           </li>
         ))}
       </ul>
-      <EventSearchForm />
-      <TabContents data={contentData} />
+      <EventSearchForm
+        searchText={searchText}
+        handleInputSearch={handleInputSearch}
+        handleSearchResult={handleSearchResult}
+      />
+      <TabContents data={contentData} searchResult={searchResult} />
       <EventPagination error={error} data={contentData} {...rest} />
     </>
   );
