@@ -1,5 +1,5 @@
-<div align=center>
-    <h3>☕ Cafe JIJO ☕</h3>
+<div align=center >
+    <h1>☕ Cafe JIJO ☕</h1>
     <p>메가 커피의 UI를 기반으로 새로운 기능을 추가한 반응형 사이트 입니다.</p>
     <p><b>배포 URL </b>👉 https://cafe-jijo.vercel.app/</p>
       
