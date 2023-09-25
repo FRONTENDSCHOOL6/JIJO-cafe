@@ -1,15 +1,18 @@
 <div align=center>
     <h3>☕ Cafe JIJO ☕</h3>
-    <p>메가 커피의 UI를 기반으로
-      새로운 기능을 추가한 반응형 카페 지조 사이트 입니다.</p>
+    <p>메가 커피의 UI를 기반으로 새로운 기능을 추가한 반응형 사이트 입니다.</p>
+    <p><b>배포 URL </b>👉 https://cafe-jijo.vercel.app/</p>
+      
 </div>
 </br></br>
 
 #### 🩵 프로젝트 소개
 
-☕ 배포 URL: https://cafe-jijo.vercel.app/
-☕ 프로젝트 기간 : 2023.09.04-2023.09.24 (총23일) </br> ☕ [프로젝트 기획 PPT](https://www.canva.com/design/DAFtcjzh-Dc/vdhGlOb7nzCd_khXSBXKuQ/view?utm_content=DAFtcjzh-Dc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink) ☕ [프로젝트 최종 PPT](https://www.canva.com/design/DAFvVyZir9c/HZimAw3Fqs_ycjW9qIgi8Q/view?utm_content=DAFvVyZir9c&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)  
-☕ [피그마 디자인 시안](https://www.figma.com/file/SvFd9BFqFRghwdLQxonPbR/JIJO-Coffee☕?type=design&node-id=0%3A1&mode=dev) ☕ [15지조 노션 문서](https://www.notion.so/15-bae6c4f5253342a1bf7a7a5e3a23b976?pvs=4)
+- 프로젝트 기간 : 2023.09.04-2023.09.24 (총23일)
+- ☕ [프로젝트 기획 PPT](https://www.canva.com/design/DAFtcjzh-Dc/vdhGlOb7nzCd_khXSBXKuQ/view?utm_content=DAFtcjzh-Dc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
+- ☕ [프로젝트 최종 PPT](https://www.canva.com/design/DAFvVyZir9c/HZimAw3Fqs_ycjW9qIgi8Q/view?utm_content=DAFvVyZir9c&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
+- ☕ [피그마 디자인 시안](https://www.figma.com/file/SvFd9BFqFRghwdLQxonPbR/JIJO-Coffee☕?type=design&node-id=0%3A1&mode=dev)
+- ☕ [15지조 노션 문서](https://www.notion.so/15-bae6c4f5253342a1bf7a7a5e3a23b976?pvs=4)
 
 </br></br>
 
