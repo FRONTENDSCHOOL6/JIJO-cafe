@@ -39,6 +39,7 @@
    </tr>
 </table>
 </br></br>
+
 ### 🔖 역할분담
 
 - <a href="https://github.com/suwan98">고수완</a> : 조장 / 로그인 / 회원가입 페이지 / 매장 찾기 페이지 / 헤더
