@@ -1,7 +1,7 @@
-import JiJoHelmet from "./../utils/JiJoHelmet";
-import MenuTitle from "./../components/MenuTitle";
-import EventTab from "./../components/Event/EventTab";
-import PageMainTitle from "../components/PageMainTitle";
+import JiJoHelmet from "@/utils/JiJoHelmet"
+import MenuTitle from "@/components/MenuTitle"
+import EventTab from "@/components/Event/EventTab"
+import PageMainTitle from "@/components/PageMainTitle"
 
 function Event() {
   return (
@@ -16,7 +16,7 @@ function Event() {
         <EventTab />
       </div>
     </>
-  );
+  )
 }
 
-export default Event;
+export default Event
