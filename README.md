@@ -57,6 +57,7 @@
 
 #### 🩵 프로젝트 폴더 구조
 
+```
 📦src
 ┣ 📂api
 ┃ ┣ 📂pockets
@@ -204,6 +205,7 @@
 ┃ ┗ 📜SignUp.jsx
 ┣ 📜App.jsx
 ┗ 📜main.jsx
+```
 
 </br></br>
 
@@ -251,12 +253,14 @@
   - 로그인 시 실제 PocektHost 서버에 있는 User만 로그인
   - 카카오톡 소셜 로그인 기능
   - 깃허브 소셜 로그인 기능
+    </br>
 
 - [회원가입]
 
   - 버튼 클릭 시 제출한 폼 PocektBase의 user 내 생성
   - 이메일/비밀번호 유효성 검사
   - 체크박스 상태 관리
+    </br>
 
 - [매장찾기]
   - 최초 렌더링 시 현 위치 기준으로 카카오맵 렌더링
@@ -274,13 +278,98 @@
 
   - 모바일 반응형 작업
   - 검색어를 입력하면 해당 검색어를 포함하는 제목만 화면에 표시하도록 검색창 구현.
+
+    ```JSX
+    const [searchOption, setSearchOption] = useState("noticeTitle") //select 태그
+    const [searchText, setSearchText] = useState("") //input 검색어를 입력하세요 창
+    const handleClickRefetch = useCallback(() => {refetch()}, [refetch])
+    const handleSearchClick = () => {
+    // 검색 버튼 클릭 시, 입력 필드의 값을 상태로 업데이트하고 handleReload 호출
+    onChangeText(searchInputRef.current.value)
+    handleReload()}
+
+    ```
+
   - 글을 읽을 때마다 조회수를 증가시킴.
+
+    ```JSX
+    const handleUpViews = async (item) => {
+        await pb
+      .collection(`${collection}`)
+      .update(item.id, {[`${field}Views`]: item[`${field}Views`] + 1});
+    };
+
+    ```
+
   - 현재 글의 이전 글과 다음 글을 제공하여 글 간 이동을 가능하게 함.
+
+    ```JSX
+
+       // 현재 공지 인덱스
+       const currentNoticeIndex = noticeList.findIndex((n) => n.id === currentNotice.id)
+       // 이전 공지 제목
+       const previousNoticeTitle = noticeList[currentNoticeIndex + 1]?.noticeTitle
+       // 이전 공지 ID 페이지 이동시 필요
+       const previousNoticeId = noticeList[currentNoticeIndex + 1]?.id
+       // 다음 공지 제목
+       const nextNoticeTitle = noticeList[currentNoticeIndex - 1]?.noticeTitle
+       // 다음 공지 ID 페이지 이동시 필요
+       const nextNoticeId = noticeList[currentNoticeIndex - 1]?.id
+
+    ```
+
   - 관리자 계정으로 로그인하면 게시글을 생성, 수정, 삭제할 수 있는 기능을 제공.
+
+    ```JSX
+    const isAdmin = user && user.permission === "administrator"
+     {isAdmin && (
+        <Link to={`/bbs/${Collection}/create`}>
+          <Button color="primary" className="px-5  mobile:w-full mobile:my-[0.9375rem]">
+            등록
+          </Button>
+        </Link>
+      )}
+
+    ```
+
   - 데이터를 효율적으로 관리하기 위해 리액트 쿼리를 사용하여 데이터 캐싱.
   - 페이지네이션 구현
+
+  ```JSX
+  const { error, refetch, ...rest } = usePaginationQuery({
+  perPage: 10,
+  queryKey: "notices",
+  dependency: searchText,
+  options: {
+    sort: "-created",
+    filter: `(${searchOption} ~ '${searchText}')`,
+  },
+  staleTime: 0,})
+
+  ```
+
   - 데이터 변경 작업을 처리하는 코드를 리액트 쿼리의 뮤테이션을 사용하여 리팩토링.
+
+  ```JSX
+  const queryClient = useQueryClient()
+  const noticeCreate = useMutation({
+    mutationFn: (data) =>
+      pb
+        .collection("notices")
+        .create(data)
+        .then((response) => response.data),
+    onSuccess: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["notices"],
+      })
+      Navigate("/bbs/notice")
+    },
+  })
+
+  ```
+
   - fetch -> SDK -> 커스텀 훅 -> 리액트쿼리 : 데이터 처리 로직을 단계적으로 개선하고 최적화.
+    </br>
 
 - [고객의 소리]
   - 모바일 반응형 작업
@@ -297,6 +386,7 @@
   - 풀페이지 구성
   - 사용자의 스크롤을 감지한 스크롤 이벤트
   - Swiper 라이브러리를 사용한 캐러셀 이미지
+    </br>
 
 - [이벤트]
 
@@ -314,6 +404,7 @@
   - 상품 클릭시 다이알로그창 띄우기
   - 체크박스를 통한 데이터 필터링
   - Zustand를 통한 장바구니 아이템 상태관리
+    </br>
 
 - [장바구니]
 
@@ -324,6 +415,7 @@
 ### 🩵 구현 기능
 
 </br>
+
 #### 메인 캐러셀
 
 ![메인 캐러셀](/src/assets/images/readme/Main_carousel.gif)
@@ -336,79 +428,91 @@
 
 #### 메뉴소개 페이지 필터 기능, 상품 데이터 렌더링
 
+</br>
+
 ![메뉴소개 페이지](/src/assets/images/readme/Menu.gif)
 </br></br>
 
 #### 매장찾기 페이지 지도 API
+
+</br>
 
 ![매장찾기 페이지](/src/assets/images/readme/FindStore.gif)
 </br></br>
 
 #### 회원가입
 
+</br>
+
 ![회원가입](/src/assets/images/readme/SignUp.gif)
 </br></br>
 
 #### 로그인
+
+</br>
 
 ![로그인](/src/assets/images/readme/SignIn.gif)
 </br></br>
 
 #### 카카오톡 로그인
 
+</br>
+
 ![카카오톡 로그인](/src/assets/images/readme/KakaotalkSignin.gif)
 </br></br>
 
 #### 로그아웃
 
+</br>
+
 ![로그아웃](/src/assets/images/readme/Logout.gif)
+
 </br></br>
 
 #### 장바구니 담기 기능, 장바구니 페이지 수량 추가, 삭제 기능
 
+</br>
+
 ![장바구니](/src/assets/images/readme/Cart.gif)
+
 </br></br>
 
 #### 공지사항 페이지 게시판
+
+</br>
 
 ![공지사항](/src/assets/images/readme/FAQ.gif)
 </br></br>
 
 #### 관리자 권한 로그인시 게시글 등록, 수정, 삭제 기능
 
+</br>
+
 ![관리자 권한 로그인시 게시글 등록, 수정, 삭제 기능](/src/assets/images/readme/CRUD.gif)
 </br></br>
 
 #### 이벤트 페이지 데이터 렌더링 및 탭메뉴 기능
+
+</br>
 
 ![이벤트](/src/assets/images/readme/Event.gif)
 </br></br>
 
 #### 페이지네이션 기능
 
+</br>
+
 ![페이지네이션](/src/assets/images/readme/Pagination.gif)
 </br></br></br></br>
 
 ### 🩵 모바일 반응형 구현
 
-- 메인페이지  
-  ![메인페이지 모바일](/src/assets/images/readme/mobile_main.png)
+- 메인 / 공지 / 이벤트 / 고객의 소리 / 음료 / 장바구니
+  ![메인페이지 모바일](/src/assets/images/readme/Figma-3.jpg)
   </br></br>
-
-- 메뉴소개  
-  ![메뉴소개 페이지 모바일](/src/assets/images/readme/mobile_menu.png)
+- 반응형 헤더  
+  ![메인페이지 모바일](/src/assets/images/readme/Figma-4.jpg)
   </br></br>
-
-- 공지사항  
-  ![공지사항 페이지 모바일](/src/assets/images/readme/mobile_FAQ.png)
-  </br></br>
-
-- 공지상세 페이지  
-  ![공지사항 상세페이지 모바일](/src/assets/images/readme/mobile_FAQDetail.png)
-  </br></br>
-
-- 고객의소리  
-  ![고객의소리 상세페이지 모바일](/src/assets/images/readme/mobile_customerDetail.png)
 
 </br></br></br></br>
 
@@ -418,7 +522,7 @@
   보람있는 시간이 되었다고 생각합니다. 15는 15지조 💞
   </br>
 - 윤선영 : 리액트에 대해 조금이나마 익숙해진 시간이었습니다. 리액트에 익숙해지는 것이 개인적인 목표였는데, 리액트를 사용해서 컴포넌트를 만들어보며 실무 시작 전 많이 리액트를 연습할 수 있는 기회였습니다. 또한 팀원분들과 회의하며 보다 좋은 아이디어들이 나오고 해결 방법이 도출되는 과정을 통해, 집단지성의 힘을 크게 느꼈습니다. 함께 고생했던 팀원분들 모두 수고 많으셨습니다💗
-- </br>
+  </br>
 - 송영은 : 짧고도 길었던 프로젝트! 함께한 팀원들에게 감사합니다 💕 프로젝트 개인목표가 제대로 구현하기 였는데, 반응형 작업을 할수있어서 좋았고, SDK, 리액트쿼리 및 뮤테이션 등 CRUD 리팩토링 과정을 거치면서 차근차근 사용법을 익힐수 있어서 좋았습니다!
   </br>
 - 고수완 : 파이널 프로젝트를 진행하면서 다양한 레퍼런스들을 참고해보면서 보는 눈을 키우게 되었고, 개발하면서 다양한 이슈들을 맞닥뜨리면서 다음에 이러한 비슷한 문제가 생기면 조금 더 쉽게 해결할 수 있을 것같습니다. 최적화를 통해 성능검사 시마다 오르는 점수를 확인하면서 뿌듯했습니다😀 마지막으로 한달 남짓 기간동안 같이 고생했던 팀원분들 모두에게도 너무 고생했다고 말하고싶습니다!!
