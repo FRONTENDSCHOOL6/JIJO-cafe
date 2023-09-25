@@ -4,18 +4,23 @@ import yyyymmddDate from "@/utils/yyyymmddDate";
 import {getPbImageURL} from "@/utils/getPbImageURL";
 import pb from "@/api/pocketbase";
 
-function TabContents({data}) {
+function TabContents({data, searchResult}) {
   const handleUpViews = async (item) => {
     await pb
       .collection("events")
       .update(item.id, {[`views`]: item[`views`] + 1});
   };
 
+  /* 사용자의 검색결과에 따라 필터링 된 이벤트 콘텐츠 */
+  const filteredData = searchResult
+    ? data?.items?.filter((item) => item.title.includes(searchResult))
+    : data?.items;
+
   return (
     <>
       <div className="grid grid-cols-4 gap-6 mobile:grid-cols-2">
         {data &&
-          data?.items?.map((item) => {
+          filteredData.map((item) => {
             return (
               <div
                 key={item.id}
