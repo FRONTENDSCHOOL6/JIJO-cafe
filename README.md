@@ -19,6 +19,23 @@
 
 </br></br>
 
+### 😇 팀원소개
+
+<table>
+   <tr>
+      <td align="center"><img src="/src/assets/images/readme/coffee-2.jpg" width="150"> </td>
+       <td align="center"><img src="/src/assets/images/readme/coffee-1.jpg" width="150"> </td>
+       <td align="center"><img src="/src/assets/images/readme/coffee-3.jpg" width="150"> </td>
+        <td align="center"><img src="/src/assets/images/readme/coffee-4.jpg" width="150"> </td>
+   </tr>   
+   <tr>
+    <td align="center"> <a href="https://github.com/suwan98">고수완</a> </td>
+     <td align="center"><a href="https://github.com/youngniiiiii">송영은</a>  </td>
+  <td align="center"> <a href="https://github.com/pionoiq">장다은</a></td>
+        <td align="center"><a href="https://github.com/seonyeongyoon">윤선영</a> </td>
+   </tr>
+</table>
+</br></br>
 ### 🔖 역할분담
 
 - <a href="https://github.com/suwan98">고수완</a> : 조장 / 로그인 / 회원가입 페이지 / 매장 찾기 페이지 / 헤더
