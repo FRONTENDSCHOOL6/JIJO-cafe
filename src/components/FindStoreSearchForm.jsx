@@ -25,7 +25,7 @@ function FindStoreSearchForm({
   return (
     <>
       <form
-        className="flex flex-col absolute top-0 left-0 p-8 w-[20rem] mobile:w-[5rem]"
+        className="flex flex-col absolute top-0 left-0 p-8 w-[20rem] mobile:w-fit"
         onSubmit={(e) => e.preventDefault()}>
         <Button
           color="secondary"

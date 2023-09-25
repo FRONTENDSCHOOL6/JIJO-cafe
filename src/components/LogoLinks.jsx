@@ -6,7 +6,7 @@ import LazyImage from "@/utils/LazyImage";
 function LogoLinks() {
   return (
     <>
-      <div className="flex gap-2 mr-4">
+      <div className="flex gap-2 mr-4 py-6">
         <a
           rel="noreferrer"
           target="_blank"

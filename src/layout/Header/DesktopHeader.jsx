@@ -3,16 +3,16 @@ import LinkList from "@/components/LinkList";
 import LogoLinks from "@/components/LogoLinks";
 import useAuthStore from "@/store/store";
 import debounce from "@/utils/debounce";
-import { useState } from "react";
+import {useState} from "react";
 import CartLinkList from "./CartLinkList";
 import SignInModal from "@/components/SignInModal";
 import toast from "react-hot-toast";
-import { kakaoLogout } from "@/utils/kakaoLogout";
+import {kakaoLogout} from "@/utils/kakaoLogout";
 import S from "./DesktopHeader.module.css";
-import { motion } from "framer-motion";
-import { AnimatePresence } from "framer-motion";
+import {motion} from "framer-motion";
+import {AnimatePresence} from "framer-motion";
 
-function DesktopHeader({ siginInView, siginViewHandler, setIsClickedSignin }) {
+function DesktopHeader({siginInView, siginViewHandler, setIsClickedSignin}) {
   /* 인증 정보에 따른 로그인 ➡️ 로그아웃으로 변경 */
   const isAuth = useAuthStore((state) => state.isAuth);
 
@@ -22,7 +22,7 @@ function DesktopHeader({ siginInView, siginViewHandler, setIsClickedSignin }) {
   /* 일반사용자 로그아웃 및 카카오 사용자 로그아웃 */
   const signOut = useAuthStore((state) => state.signOut);
   const handleSignOut = () => {
-    toast.success("정상적으로 로그아웃 되었습니다.", { icon: "👋" });
+    toast.success("정상적으로 로그아웃 되었습니다.", {icon: "👋"});
     signOut();
     kakaoLogout();
   };
@@ -61,8 +61,7 @@ function DesktopHeader({ siginInView, siginViewHandler, setIsClickedSignin }) {
           animate={isOpen ? "open" : "closed"}
           className={S.header}
           onMouseEnter={debounce(handleMouseEnter)}
-          onMouseLeave={debounce(handleMouseLeave)}
-        >
+          onMouseLeave={debounce(handleMouseLeave)}>
           <h2 className={S.h2}>JIJO-cafe Header</h2>
           <nav className={S.nav}>
             <JijoCafeLogoTitle className={S.title} />
@@ -111,13 +110,17 @@ function DesktopHeader({ siginInView, siginViewHandler, setIsClickedSignin }) {
                   로그인
                 </div>
               )}
-              {siginInView && <SignInModal setIsClickedSignin={setIsClickedSignin} />}
+              {siginInView && (
+                <SignInModal setIsClickedSignin={setIsClickedSignin} />
+              )}
               {!isAuth && (
                 <LinkList pageLink="/signUp" className={S.LinkWrap}>
                   회원가입
                 </LinkList>
               )}
-              {isAuth && user && <li className={S.LinkWrap}>{user.name || user.username}님</li>}
+              {isAuth && user && (
+                <li className={S.LinkWrap}>{user.name || user.username}님</li>
+              )}
               <div className={S.LinkWrap}>
                 <CartLinkList />
               </div>
