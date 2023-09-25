@@ -7,45 +7,43 @@
 #### 🩵 프로젝트 소개
 
 ☕ 배포 URL: https://cafe-jijo.vercel.app/
-☕ 프로젝트 기간 : 2023.09.04-2023.09.24 (총23일) </br>
-☕ [프로젝트 기획 PPT](https://www.canva.com/design/DAFtcjzh-Dc/vdhGlOb7nzCd_khXSBXKuQ/view?utm_content=DAFtcjzh-Dc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)  
-☕ [프로젝트 최종 PPT](https://www.canva.com/design/DAFvVyZir9c/HZimAw3Fqs_ycjW9qIgi8Q/view?utm_content=DAFvVyZir9c&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)  
-☕ [피그마 디자인 시안](https://www.figma.com/file/SvFd9BFqFRghwdLQxonPbR/JIJO-Coffee☕?type=design&node-id=0%3A1&mode=dev)
-☕ [15지조 노션 문서](https://www.notion.so/15-bae6c4f5253342a1bf7a7a5e3a23b976?pvs=4)
+☕ 프로젝트 기간 : 2023.09.04-2023.09.24 (총23일) </br> ☕ [프로젝트 기획 PPT](https://www.canva.com/design/DAFtcjzh-Dc/vdhGlOb7nzCd_khXSBXKuQ/view?utm_content=DAFtcjzh-Dc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink) ☕ [프로젝트 최종 PPT](https://www.canva.com/design/DAFvVyZir9c/HZimAw3Fqs_ycjW9qIgi8Q/view?utm_content=DAFvVyZir9c&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)  
+☕ [피그마 디자인 시안](https://www.figma.com/file/SvFd9BFqFRghwdLQxonPbR/JIJO-Coffee☕?type=design&node-id=0%3A1&mode=dev) ☕ [15지조 노션 문서](https://www.notion.so/15-bae6c4f5253342a1bf7a7a5e3a23b976?pvs=4)
 
 </br></br>
 
-#### 🩵 기술스텍
+#### 📍 기술스텍
 
-<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/tailwind-1572B6?style=for-the-badge&logo=tailwindcss&logoColor=white"> <img src ="https://img.shields.io/badge/react-61DAFB.svg?&style=for-the-badge&logo=react&logoColor=white"/> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/github-181817?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/notion-0000?style=for-the-badge&logo=notion&logoColor=white"> <img src="https://img.shields.io/badge/reactquery-FF4154?style=for-the-badge&logo=reactquery&logoColor=white"> <img src="https://img.shields.io/badge/Zustand-F1124?style=for-the-badge&logo=Zustand&logoColor=white"> <img src="https://img.shields.io/badge/pocketbase-B8DBE4?style=for-the-badge&logo=pocketbase&logoColor=white"> <img src="https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=Prettier&logoColor=white"> <img src="https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=ESLint&logoColor=white"> <img src="https://img.shields.io/badge/framer-0055FF?style=for-the-badge&logo=framer&logoColor=white"> <img src="https://img.shields.io/badge/javascript-9855FF?style=for-the-badge&logo=javascript&logoColor=white"> <img src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white">
+<img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/tailwind-1572B6?style=for-the-badge&logo=tailwindcss&logoColor=white"> <img src ="https://img.shields.io/badge/react-61DAFB.svg?&style=for-the-badge&logo=react&logoColor=white"/> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/github-181817?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/notion-0000?style=for-the-badge&logo=notion&logoColor=white"> <img src="https://img.shields.io/badge/reactquery-FF4154?style=for-the-badge&logo=reactquery&logoColor=white"> <img src="https://img.shields.io/badge/Zustand-F1124?style=for-the-badge&logo=Zustand&logoColor=white"> <img src="https://img.shields.io/badge/pocketbase-B8DBE4?style=for-the-badge&logo=pocketbase&logoColor=white"> <img src="https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=Prettier&logoColor=white"> <img src="https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=ESLint&logoColor=white"> <img src="https://img.shields.io/badge/framer-0055FF?style=for-the-badge&logo=framer&logoColor=white"> <img src="https://img.shields.io/badge/javascript-9855FF?style=for-the-badge&logo=javascript&logoColor=white"> <img src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white"><img src="https://img.shields.io/badge/swiper-6332F6?style=for-the-badge&logo=swiper&logoColor=white"><img src="https://img.shields.io/badge/kakao Map-FFCD00?style=for-the-badge&logo=kakao&logoColor=black">
 
 </br></br>
 
 ### 🔖 역할분담
 
-- <a href="https://github.com/suwan98">고수완</a> : 조장 / 로그인 / 회원가입 페이지 / 매장 찾기 페이지
+- <a href="https://github.com/suwan98">고수완</a> : 조장 / 로그인 / 회원가입 페이지 / 매장 찾기 페이지 / 헤더
 - <a href="https://github.com/youngniiiiii">송영은</a> : 스크럼 마스터 / 공지사항 / FAQ / 고객의소리 / 페이지네이션
-- <a href="https://github.com/pionoiq">장다은</a> : 메인페이지 / 이벤트 페이지
-- <a href="https://github.com/seonyeongyoon">윤선영</a> : 메뉴소개 페이지 / 장바구니 페이지
+- <a href="https://github.com/pionoiq">장다은</a> : 메인페이지 / 이벤트 페이지 / 페이지네이션
+- <a href="https://github.com/seonyeongyoon">윤선영</a> : 메뉴소개 페이지 / 장바구니 페이지 / 푸터
 
 </br></br>
 
-### 🩵 주요 기능
+### 💡 주요 기능
 
 - MEGA COFFEE 웹&앱 UI를 베이스로 새로운 기능을 추가하였습니다.
-- 로그인/ 회원가입 기능을 구현하였습니다.
+- 로그인 / 카카오로그인 / 회원가입 기능을 구현하였습니다.
 - 장바구니 담기 기능, 장바구니 수량 카운트 기능을 구현하였습니다.
 - 카카오맵 API를 사용하여 매장찾기 페이지 내 지도 API를 구현하였습니다.
 - 지조소식 하위 페이지의 게시판 CRUD 기능 구현 및 관리자 권한 기능을 구현하였습니다.
 - Tailwind CSS 기술을 사용해 스타일링 하였습니다.
-- framer mtion을 사용하여 에니메이션 효과를 적용하였습니다.
+- framer motion을 사용하여 에니메이션 효과를 적용하였습니다.
 - pockethost를 사용하여 데이터를 설계하고 렌더링하였습니다.
 - Zustand를 사용하여 상태관리를 하였습니다.
 - React Query를 사용하여 데이터 캐싱 작업을 하였습니다.
+- 반응형 모바일/태블릿/데스크탑 작업하였습니다.
 
 </br></br>
 
-#### 🩵 피그마 시안
+#### 🎨 피그마 시안
 
 - 컴포넌트
   ![화면 플로우](/src/assets/images/readme/component.jpg)
@@ -55,7 +53,7 @@
 
 </br></br>
 
-#### 🩵 프로젝트 폴더 구조
+#### 🗂 프로젝트 폴더 구조
 
 ```
 📦src
@@ -244,7 +242,7 @@
 
 </br>
 
-#### 고수완 : 로그인, 회원가입, 매장찾기
+#### ☕ 고수완 : 로그인, 회원가입, 매장찾기
 
 - [로그인]
 
@@ -270,7 +268,7 @@
 
 </br></br>
 
-#### 송영은 : 공지사항/ FAQ / 고객의소리
+#### ☕ 송영은 : 공지사항/ FAQ / 고객의소리
 
 </br>
 
@@ -335,49 +333,52 @@
   - 데이터를 효율적으로 관리하기 위해 리액트 쿼리를 사용하여 데이터 캐싱.
   - 페이지네이션 구현
 
-  ```JSX
-  const { error, refetch, ...rest } = usePaginationQuery({
-  perPage: 10,
-  queryKey: "notices",
-  dependency: searchText,
-  options: {
-    sort: "-created",
-    filter: `(${searchOption} ~ '${searchText}')`,
-  },
-  staleTime: 0,})
+    ```JSX
+    const { error, refetch, ...rest } = usePaginationQuery({
+    perPage: 10,
+    queryKey: "notices",
+    dependency: searchText,
+    options: {
+      sort: "-created",
+      filter: `(${searchOption} ~ '${searchText}')`,
+    },
+    staleTime: 0,})
 
-  ```
+    ```
 
   - 데이터 변경 작업을 처리하는 코드를 리액트 쿼리의 뮤테이션을 사용하여 리팩토링.
 
-  ```JSX
-  const queryClient = useQueryClient()
-  const noticeCreate = useMutation({
-    mutationFn: (data) =>
-      pb
-        .collection("notices")
-        .create(data)
-        .then((response) => response.data),
-    onSuccess: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["notices"],
-      })
-      Navigate("/bbs/notice")
-    },
-  })
+    ```JSX
+    const queryClient = useQueryClient()
+    const noticeCreate = useMutation({
+      mutationFn: (data) =>
+        pb
+          .collection("notices")
+          .create(data)
+          .then((response) => response.data),
+      onSuccess: () => {
+        queryClient.invalidateQueries({
+          queryKey: ["notices"],
+        })
+        Navigate("/bbs/notice")
+      },
+    })
 
-  ```
+    ```
 
   - fetch -> SDK -> 커스텀 훅 -> 리액트쿼리 : 데이터 처리 로직을 단계적으로 개선하고 최적화.
     </br>
 
+- [관리자 모드 계정]
+  - email: admin@dev.io
+  - pw: 123456789q!
 - [고객의 소리]
   - 모바일 반응형 작업
   - 사용자가 폼을 작성하고 제출한 후에 모달 창을 표시하여 접수 확인을 제공.
 
 </br></br>
 
-#### 장다은 : 메인 / 이벤트
+#### ☕ 장다은 : 메인 / 이벤트
 
 </br>
 
@@ -395,7 +396,7 @@
 
 </br></br>
 
-#### 윤선영 : 메뉴소개 / 장바구니
+#### ☕ 윤선영 : 메뉴소개 / 장바구니
 
 </br>
 
@@ -412,7 +413,7 @@
   - 비로그인 상태에서 주문하기 버튼 글릭시 로그인 모달을 띄워줌
     </br></br></br></br>
 
-### 🩵 구현 기능
+### ⭐ 구현 기능
 
 </br>
 
@@ -505,7 +506,7 @@
 ![페이지네이션](/src/assets/images/readme/Pagination.gif)
 </br></br></br></br>
 
-### 🩵 모바일 반응형 구현
+### 📱 모바일 반응형 구현
 
 - 메인 / 공지 / 이벤트 / 고객의 소리 / 음료 / 장바구니
   ![메인페이지 모바일](/src/assets/images/readme/Figma-3.jpg)
