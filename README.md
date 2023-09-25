@@ -49,15 +49,165 @@
 
 </br></br>
 
-#### 🩵 개발 일정
-
-</br></br>
-
 #### 🩵 피그마 시안
+
+- 컴포넌트
+  ![화면 플로우](/src/assets/images/readme/component.jpg)
+- 디자인 시안 (모바일/태블릿/데스크탑)
+  ![디자인시안](/src/assets/images/readme/Figma-1.jpg)
+  ![디자인시안](/src/assets/images/readme/Figma-2.jpg)
 
 </br></br>
 
 #### 🩵 프로젝트 폴더 구조
+
+📦src
+┣ 📂api
+┃ ┣ 📂pockets
+┃ ┃ ┣ 📜Pagination.jsx
+┃ ┃ ┣ 📜index.js
+┃ ┃ ┣ 📜queryKeys.js
+┃ ┃ ┗ 📜useQueryPocketBase.js
+┃ ┗ 📜pocketbase.js
+┣ 📂assets
+┃ ┣ 📂images
+┃ ┃ ┣ 📂main
+┃ ┃ ┣ 📂menu
+┃ ┃ ┣ 📂readme
+┣ 📂components
+┃ ┣ 📂Cart
+┃ ┃ ┣ 📜OrderList.jsx
+┃ ┃ ┣ 📜OrderListEmptyItem.jsx
+┃ ┃ ┣ 📜OrderListItem.jsx
+┃ ┃ ┗ 📜StoreChangeModal.jsx
+┃ ┣ 📂CheckBox
+┃ ┃ ┣ 📜CheckBox.jsx
+┃ ┃ ┗ 📜CheckBox.module.css
+┃ ┣ 📂Event
+┃ ┃ ┣ 📜EventContent.jsx
+┃ ┃ ┣ 📜EventPagination.jsx
+┃ ┃ ┣ 📜EventSearchForm.jsx
+┃ ┃ ┣ 📜EventTab.jsx
+┃ ┃ ┗ 📜TabContents.jsx
+┃ ┣ 📂Hamburger
+┃ ┃ ┣ 📜Hamburger.jsx
+┃ ┃ ┗ 📜Hamburger.module.css
+┃ ┣ 📂Main
+┃ ┃ ┣ 📜MainPageText.jsx
+┃ ┃ ┣ 📜MainTitleText.jsx
+┃ ┃ ┣ 📜MainpageTitle.jsx
+┃ ┃ ┣ 📜MenuCarousel.jsx
+┃ ┃ ┗ 📜ShopingMallCarousel.jsx
+┃ ┣ 📂Menu
+┃ ┃ ┗ 📜MenuSearchForm.jsx
+┃ ┣ 📂Notice
+┃ ┃ ┣ 📜DataForm.jsx
+┃ ┃ ┣ 📜Detail.jsx
+┃ ┃ ┣ 📜SelectSearchFilter.jsx
+┃ ┃ ┗ 📜TableListPagination.jsx
+┃ ┣ 📂RadioButton
+┃ ┃ ┗ 📜RadioButton.jsx
+┃ ┣ 📜Button.jsx
+┃ ┣ 📜Categories.jsx
+┃ ┣ 📜CloseButton.jsx
+┃ ┣ 📜EyeClosed.jsx
+┃ ┣ 📜EyeOpen.jsx
+┃ ┣ 📜FindStoreSearchForm.jsx
+┃ ┣ 📜FooterModal.jsx
+┃ ┣ 📜GithubSignInButton.jsx
+┃ ┣ 📜InValidErrorMessage.jsx
+┃ ┣ 📜Input.jsx
+┃ ┣ 📜JijoCafeLogoTitle.jsx
+┃ ┣ 📜JijoError.jsx
+┃ ┣ 📜JijoSpinner.jsx
+┃ ┣ 📜KakaoMap.jsx
+┃ ┣ 📜KakaoTalkSignInButton.jsx
+┃ ┣ 📜LinkList.jsx
+┃ ┣ 📜LogoLinks.jsx
+┃ ┣ 📜MenuBubble.jsx
+┃ ┣ 📜MenuTitle.jsx
+┃ ┣ 📜PageMainTitle.jsx
+┃ ┣ 📜Pagination.jsx
+┃ ┣ 📜ProductDialog.jsx
+┃ ┣ 📜Products.jsx
+┃ ┣ 📜ReadingGlassesButton.jsx
+┃ ┣ 📜SignInForm.jsx
+┃ ┣ 📜SignInModal.jsx
+┃ ┗ 📜TextHorizen.jsx
+┣ 📂hooks
+┃ ┣ 📜useCurrnetLocation.jsx
+┃ ┣ 📜useOutsideClickClose.jsx
+┃ ┣ 📜usePagination.js
+┃ ┣ 📜usePaginationQuery.js
+┃ ┣ 📜usePocektBaseData.jsx
+┃ ┣ 📜useToggle.jsx
+┃ ┗ 📜useViewport.jsx
+┣ 📂layout
+┃ ┣ 📂Footer
+┃ ┃ ┣ 📜Footer.jsx
+┃ ┃ ┗ 📜Footer.module.css
+┃ ┣ 📂Header
+┃ ┃ ┣ 📜CartLinkList.jsx
+┃ ┃ ┣ 📜DesktopHeader.jsx
+┃ ┃ ┣ 📜DesktopHeader.module.css
+┃ ┃ ┣ 📜Header.jsx
+┃ ┃ ┣ 📜TabletMobileHeader.jsx
+┃ ┃ ┗ 📜TabletMobileHeader.module.css
+┃ ┣ 📂Wrapper
+┃ ┃ ┣ 📜ButtonWrapper.jsx
+┃ ┃ ┣ 📜FindStoreSearchFormListWrapper.jsx
+┃ ┃ ┗ 📜SignUpFormWrapper.jsx
+┃ ┗ 📜RootLayout.jsx
+┣ 📂routes
+┃ ┗ 📜routes.jsx
+┣ 📂store
+┃ ┣ 📜cartStore.js
+┃ ┗ 📜store.js
+┣ 📂styles
+┃ ┣ 📜Carousel.css
+┃ ┗ 📜tailwind.css
+┣ 📂utils
+┃ ┣ 📜JiJoHelmet.jsx
+┃ ┣ 📜LazyImage.jsx
+┃ ┣ 📜Validation.js
+┃ ┣ 📜debounce.js
+┃ ┣ 📜getPbImageURL.js
+┃ ┣ 📜getSlug.js
+┃ ┣ 📜kakaoLogout.js
+┃ ┣ 📜numberWithComma.js
+┃ ┣ 📜throttle.js
+┃ ┗ 📜yyyymmddDate.js
+┣ 📂views
+┃ ┣ 📂Customer
+┃ ┃ ┣ 📜Customer.jsx
+┃ ┃ ┣ 📜CustomerCreate.jsx
+┃ ┃ ┗ 📜CustomerCreate.module.css
+┃ ┣ 📂Main
+┃ ┃ ┣ 📜Main.jsx
+┃ ┃ ┣ 📜MainBanner.jsx
+┃ ┃ ┣ 📜MainEvent.jsx
+┃ ┃ ┣ 📜MainMenu.jsx
+┃ ┃ ┣ 📜MainShopingMall.jsx
+┃ ┃ ┣ 📜MainStore.jsx
+┃ ┃ ┗ 📜useWheel.jsx
+┃ ┣ 📜Cart.jsx
+┃ ┣ 📜Drink.jsx
+┃ ┣ 📜Event.jsx
+┃ ┣ 📜EventDetail.jsx
+┃ ┣ 📜Faq.jsx
+┃ ┣ 📜FaqCreate.jsx
+┃ ┣ 📜FaqDetail.jsx
+┃ ┣ 📜FaqUpdate.jsx
+┃ ┣ 📜FindStore.jsx
+┃ ┣ 📜Food.jsx
+┃ ┣ 📜Notice.jsx
+┃ ┣ 📜NoticeCreate.jsx
+┃ ┣ 📜NoticeDetail.jsx
+┃ ┣ 📜NoticeUpdate.jsx
+┃ ┣ 📜Product.jsx
+┃ ┗ 📜SignUp.jsx
+┣ 📜App.jsx
+┗ 📜main.jsx
 
 </br></br>
 
@@ -65,14 +215,15 @@
 
 </br></br>
 
-#### 🩵 성능 최적화 일지
+#### 🧙 성능 최적화 일지
 
-🧙 이미지 최적화 : https://github.com/FRONTENDSCHOOL6/JIJO-cafe/wiki/Optimization#15%EC%A7%80%EC%A1%B0-%EC%B5%9C%EC%A0%81%ED%99%94-%EC%9D%BC%EC%A7%80
+[이미지 최적화 Wiki](https://github.com/FRONTENDSCHOOL6/JIJO-cafe/wiki/Optimization#15%EC%A7%80%EC%A1%B0-%EC%B5%9C%EC%A0%81%ED%99%94-%EC%9D%BC%EC%A7%80)
+
 </br></br>
 
-#### 🩵 코딩 컨벤션
+#### 💌 코딩 컨벤션
 
-💌커밋 컨벤션 : https://github.com/FRONTENDSCHOOL6/JIJO-cafe/wiki/Codding-Convention
+커밋 컨벤션 : https://github.com/FRONTENDSCHOOL6/JIJO-cafe/wiki/Codding-Convention
 </br></br>
 
 #### 🩵 User Flow
@@ -262,10 +413,13 @@
 
 </br></br></br></br>
 
-### 😃 느낀점
+### 😇 느낀점
 
-- 장다은 :
-- 윤선영 :
+- 장다은 : 좋은 팀원들과 함께 해서 많이 배우는 시간이 되었습니다 🙇‍♀️ 프로젝트를 시작하기 전에는 과연 내가 할 수 있을까? 하는 두려움이 앞섰는데 막상 프로젝트에 들어가면서 두려움보다는 해내고 싶다는 욕심과 열정을 갖게 되는 시간이 되었습니다. 특히 좋은 팀원들을 만난 덕분에 많은 어려움에도 불구하고 프로젝트를 성공적으로 완성할 수 있어
+  보람있는 시간이 되었다고 생각합니다. 15는 15지조 💞
+  </br>
+- 윤선영 : 리액트에 대해 조금이나마 익숙해진 시간이었습니다. 리액트에 익숙해지는 것이 개인적인 목표였는데, 리액트를 사용해서 컴포넌트를 만들어보며 실무 시작 전 많이 리액트를 연습할 수 있는 기회였습니다. 또한 팀원분들과 회의하며 보다 좋은 아이디어들이 나오고 해결 방법이 도출되는 과정을 통해, 집단지성의 힘을 크게 느꼈습니다. 함께 고생했던 팀원분들 모두 수고 많으셨습니다💗
+- </br>
 - 송영은 : 짧고도 길었던 프로젝트! 함께한 팀원들에게 감사합니다 💕 프로젝트 개인목표가 제대로 구현하기 였는데, 반응형 작업을 할수있어서 좋았고, SDK, 리액트쿼리 및 뮤테이션 등 CRUD 리팩토링 과정을 거치면서 차근차근 사용법을 익힐수 있어서 좋았습니다!
-
+  </br>
 - 고수완 : 파이널 프로젝트를 진행하면서 다양한 레퍼런스들을 참고해보면서 보는 눈을 키우게 되었고, 개발하면서 다양한 이슈들을 맞닥뜨리면서 다음에 이러한 비슷한 문제가 생기면 조금 더 쉽게 해결할 수 있을 것같습니다. 최적화를 통해 성능검사 시마다 오르는 점수를 확인하면서 뿌듯했습니다😀 마지막으로 한달 남짓 기간동안 같이 고생했던 팀원분들 모두에게도 너무 고생했다고 말하고싶습니다!!
