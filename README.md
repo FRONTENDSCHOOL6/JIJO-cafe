@@ -7,7 +7,7 @@
 #### 🩵 프로젝트 소개
 
 ☕ 배포 URL: https://cafe-jijo.vercel.app/
-☕ 프로젝트 기간 : 2023.09.04-2023.09.24 (총23일)  
+☕ 프로젝트 기간 : 2023.09.04-2023.09.24 (총23일) </br>
 ☕ [프로젝트 기획 PPT](https://www.canva.com/design/DAFtcjzh-Dc/vdhGlOb7nzCd_khXSBXKuQ/view?utm_content=DAFtcjzh-Dc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)  
 ☕ [프로젝트 최종 PPT](https://www.canva.com/design/DAFvVyZir9c/HZimAw3Fqs_ycjW9qIgi8Q/view?utm_content=DAFvVyZir9c&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)  
 ☕ [피그마 디자인 시안](https://www.figma.com/file/SvFd9BFqFRghwdLQxonPbR/JIJO-Coffee☕?type=design&node-id=0%3A1&mode=dev)
@@ -18,10 +18,6 @@
 #### 🩵 기술스텍
 
 <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/tailwind-1572B6?style=for-the-badge&logo=tailwindcss&logoColor=white"> <img src ="https://img.shields.io/badge/react-61DAFB.svg?&style=for-the-badge&logo=react&logoColor=white"/> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/github-181817?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/notion-0000?style=for-the-badge&logo=notion&logoColor=white"> <img src="https://img.shields.io/badge/reactquery-FF4154?style=for-the-badge&logo=reactquery&logoColor=white"> <img src="https://img.shields.io/badge/Zustand-F1124?style=for-the-badge&logo=Zustand&logoColor=white"> <img src="https://img.shields.io/badge/pocketbase-B8DBE4?style=for-the-badge&logo=pocketbase&logoColor=white"> <img src="https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=Prettier&logoColor=white"> <img src="https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=ESLint&logoColor=white"> <img src="https://img.shields.io/badge/framer-0055FF?style=for-the-badge&logo=framer&logoColor=white"> <img src="https://img.shields.io/badge/javascript-9855FF?style=for-the-badge&logo=javascript&logoColor=white"> <img src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white">
-
-</br></br>
-
-### 😃 팀원소개
 
 </br></br>
 
@@ -211,32 +207,35 @@
 
 </br></br>
 
-#### 🩵 데이터베이스 ERD 구성
+#### 🗂 데이터베이스 ERD 구성
 
-</br></br>
-
-#### 🧙 성능 최적화 일지
-
-[이미지 최적화 Wiki](https://github.com/FRONTENDSCHOOL6/JIJO-cafe/wiki/Optimization#15%EC%A7%80%EC%A1%B0-%EC%B5%9C%EC%A0%81%ED%99%94-%EC%9D%BC%EC%A7%80)
+- [👉 ERD 구성 Wiki](https://github.com/FRONTENDSCHOOL6/JIJO-cafe/wiki/Flow%E2%80%90Chart----DataBase-ERD)
 
 </br></br>
 
 #### 💌 코딩 컨벤션
 
-커밋 컨벤션 : https://github.com/FRONTENDSCHOOL6/JIJO-cafe/wiki/Codding-Convention
+- [👉 커밋 컨벤션 Wiki](https://github.com/FRONTENDSCHOOL6/JIJO-cafe/wiki/Codding-Convention)
+
 </br></br>
 
-#### 🩵 User Flow
+#### 🧙 성능 최적화 일지
+
+- [👉이미지 최적화 Wiki](https://github.com/FRONTENDSCHOOL6/JIJO-cafe/wiki/Optimization#15%EC%A7%80%EC%A1%B0-%EC%B5%9C%EC%A0%81%ED%99%94-%EC%9D%BC%EC%A7%80)
+
+</br></br>
+
+#### 📍 User Flow
 
 ![화면 플로우](/src/assets/images/readme/15-jijo_flow-chart.jpg)
 
 </br></br>
 
-### 🩵 페이지 코드리뷰
+### 📋 페이지 코드리뷰
 
 </br>
 
-#### 공통 기능
+> 공통 기능
 
 - 포켓베이스 SDK를 통한 데이터 렌더링
 - 해당 패치로직을 Tanstack Query를 사용한 캐싱
