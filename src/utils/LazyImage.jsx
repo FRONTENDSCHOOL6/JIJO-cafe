@@ -23,14 +23,16 @@ function LazyImage({src, alt, className, width = "auto", height = "auto"}) {
   }, []);
 
   return (
-    <img
-      width={width}
-      height={height}
-      ref={imgRef}
-      src={isLoading ? src : null}
-      alt={alt}
-      className={className}
-    />
+    <div className="aspect-video w-full">
+      <img
+        width={width}
+        height={height}
+        ref={imgRef}
+        src={isLoading ? src : null}
+        alt={alt}
+        className={className}
+      />
+    </div>
   );
 }
 
