@@ -57,16 +57,16 @@ function Cart() {
     });
   };
 
-  // const [checkboxData, setCheckboxData] = useState([]);
+  const [checkboxStatus, setCheckboxStatus] = useState(false);
 
-  // /* 체크 박스 전체 선택 */
-  // const handleAllCheck = (selectAll) => {
-  //   const updatedCheckboxData = checkboxData.map((checkbox) => ({
-  //     ...checkbox,
-  //     checked: selectAll,
-  //   }));
-  //   setCheckboxData(updatedCheckboxData);
-  // };
+  /* 체크 박스 전체 선택 */
+  const handleAllCheck = (selectAll) => {
+    // const updatedCheckboxStatus = checkboxStatus.map((checkbox) => ({
+    //   ...checkbox,
+    //   checked: selectAll,
+    // }));
+    setCheckboxStatus('checked');
+  };
 
   return (
     <>
@@ -93,7 +93,8 @@ function Cart() {
           <div className="selectArea font-semibold">
             <CheckBox
               text={`전체선택(${totalCount}/${totalCount}) `}
-              defaultChecked="checked"
+              defaultChecked={checkboxStatus}
+              onChange={handleAllCheck}
             />
             <button>| 전체삭제</button>
           </div>

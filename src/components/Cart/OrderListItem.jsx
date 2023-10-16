@@ -7,7 +7,7 @@ import {numberWithComma} from "@/utils/numberWithComma";
 import toast from "react-hot-toast";
 import {Link} from "react-router-dom";
 
-function OrderListItem({product}) {
+function OrderListItem({product, checkboxStatus}) {
   const remove = useCartStore((state) => state.remove);
   const setCartItemCount = useCartStore((state) => state.setCartItemCount);
 
@@ -23,7 +23,7 @@ function OrderListItem({product}) {
     <li
       key={product.id}
       className="border-b border-gray-200 flex items-center py-4">
-      <CheckBox className="mr-[1.375rem] mobile:mr-1" />
+      <CheckBox className="mr-[1.375rem] mobile:mr-1" checked={checkboxStatus} />
       <Link
         to="/menu/drink"
         className="flex basis-2/3 mobile:basis-[55%] items-center shrink-0">
