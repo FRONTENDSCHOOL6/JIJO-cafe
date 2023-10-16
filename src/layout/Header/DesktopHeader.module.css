@@ -1,5 +1,5 @@
 .header {
-  @apply bg-white sticky w-full top-0 font-semibold text-[16px] z-50;
+  @apply bg-white fixed w-full top-0 font-semibold text-[16px] z-50;
 
   & h2 {
     @apply sr-only;
