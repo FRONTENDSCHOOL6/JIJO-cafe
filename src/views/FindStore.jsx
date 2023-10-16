@@ -40,7 +40,6 @@ function FindStore() {
         <KakaoMap
           setKakaoPlaceResult={setKakaoPlaceResult}
           searchedResult={searchedResult}
-          kakaoMarkes={kakaoMarkes}
           setKakaoMarkes={setKakaoMarkes}
         />
         <FindStoreSearchForm

@@ -89,7 +89,13 @@ function KakaoMap({setKakaoPlaceResult, searchedResult, setKakaoMarkes}) {
         }
       });
     };
-  }, [currentLat, currentLon, searchedResult, setKakaoPlaceResult]);
+  }, [
+    currentLat,
+    currentLon,
+    searchedResult,
+    setKakaoPlaceResult,
+    setKakaoMarkes,
+  ]);
 
   return (
     <>
