@@ -25,7 +25,7 @@ function FindStoreSearchForm({
   return (
     <>
       <form
-        className="flex flex-col absolute top-0 left-0 p-8 w-[20rem] mobile:w-fit"
+        className="flex flex-col absolute top-0 left-0 p-8 w-[20rem] mobile:w-fit mobile:h-5 mobile:p-2"
         onSubmit={(e) => e.preventDefault()}>
         <Button
           color="secondary"
@@ -47,7 +47,7 @@ function FindStoreSearchForm({
               defaultValue={searchedResult}
               onChange={handleInputChange}
               placeholder="지역명을 입력해주세요"
-              className="w-min m-[1.25rem] placeholder:text-[12px] placeholder:text-gray-400"
+              className="w-min m-[1.25rem] placeholder:text-[12px] placeholder:text-gray-400 "
             />
             <ReadingGlassesButton
               onClick={handleSearchSubmit}

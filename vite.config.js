@@ -45,7 +45,10 @@ export default defineConfig({
         },
       },
     }),
-    viteCompression(),
+    viteCompression({
+      algorithm: "gzip",
+      ext: ".gz",
+    }),
   ],
 
   css: {

@@ -34,12 +34,13 @@ export const useQueryGetBeverage = (key, page, perPage, options) => {
   })
 }
 
-export const useQueryGetNotices = (key, page, perPage, options) => {
+export const useQueryGetNotices = (key, page, perPage, dependency, options) => {
   return useQuery({
-    queryKey: [key, page],
+    queryKey: [key, page, dependency],
     queryFn: () => getNotices(page, perPage, options),
     keepPreviousData: true,
     ...options,
+    staleTime: 0,
   })
 }
 
@@ -57,6 +58,7 @@ export const useQueryPocketBase = (key, page, perPage, dependency, options) => {
     queryKey: [key, page, dependency],
     queryFn: () => getPagination(key, page, perPage, options),
     keepPreviousData: true,
-    // ...options,
+    ...options,
+    staleTime: 0,
   })
 }
