@@ -9,23 +9,25 @@ import {engReg, pwReg} from "@/utils/Validation";
 import debounce from "@/utils/debounce";
 import {useEffect} from "react";
 import {useState} from "react";
-import {useId} from "react";
 import {toast} from "react-hot-toast";
 import {useNavigate} from "react-router-dom";
 
 const inputProps = [
   {
+    id: "name",
     label: "닉네임",
     placeholder: "닉네임(영문)을 입력해주세요",
     name: "name",
   },
   {
+    id: "email",
     label: "이메일",
     placeholder: "이메일을 입력해주세요 예)jijocoffee@gmail.com",
     name: "email",
     type: "email",
   },
   {
+    id: "password",
     label: "비밀번호",
     placeholder:
       "비밀번호 10자리 이상, 14자리이하 하나의 알파벳 문자를 포함하는 특수문자",
@@ -33,6 +35,7 @@ const inputProps = [
     type: "password",
   },
   {
+    id: "passwordConfirm",
     label: "비밀번호 확인",
     placeholder: "비밀번호를 다시 한번 입력해주세요",
     name: "passwordConfirm",
@@ -67,7 +70,7 @@ function SignUp() {
         "비밀번호는 10자리 이상, 14자리이하 하나의 알파벳 문자를 포함하는 특수문자를 입력해주세요!"
       );
     }
-    if (name === "name" && !engReg(value)) {
+    if (name === "name" && !engReg(name)) {
       toast.error("닉네임은 영문으로만 입력해주세요!", {icon: "😡"});
       throw new Error("닉네임은 영문으로만 입력해주세요!");
     }
@@ -104,11 +107,12 @@ function SignUp() {
       );
       navigate("/");
     }
-  }, [user]);
+  }, [name, navigate, user]);
 
   /* 체크 박스 데이터를 담을 배열 */
   const [checkboxData, setCheckboxData] = useState([
     {
+      id: "termsOfService",
       labelText: "서비스 이용약관 동의 (필수)",
       className: "mr-1",
       required: true,
@@ -116,6 +120,7 @@ function SignUp() {
       checked: false,
     },
     {
+      id: "privacyPolicy",
       labelText: "개인정보 수집 및 이용 동의 (필수)",
       className: "mr-1",
       required: true,
@@ -123,6 +128,7 @@ function SignUp() {
       checked: false,
     },
     {
+      id: "ageConfirmation",
       labelText: "만 14세 이상 입니다 (필수)",
       className: "mr-1",
       required: true,
@@ -130,6 +136,7 @@ function SignUp() {
       checked: false,
     },
     {
+      id: "marketingInfo",
       labelText: "광고성 정보 수신 동의 (선택)",
       className: "mr-1",
       name: "marketingInfo",
@@ -168,13 +175,12 @@ function SignUp() {
             pageSubTitleText="카페 지조 소식을 알려드립니다"
           />
           <div className="inputWrap flex flex-col gap-2 pt-[2.6rem]">
-            {inputProps?.map(({label, type, placeholder, name}) => {
-              const id = useId();
+            {inputProps?.map(({label, type, placeholder, name, id}) => {
               return (
                 <Input
                   defaultValue={formState[name]}
                   onChange={handleInput}
-                  className="mobile:text-center mobile:placeholder:text-center placeholder:text-[11px]"
+                  className="mobile:text-center mobile:placeholder:text-center placeholder:text-[12px] mobile:placeholder:text-[10px]"
                   label={label}
                   key={id}
                   type={type}
@@ -198,8 +204,7 @@ function SignUp() {
             <hr className="w-full" />
 
             {checkboxData.map(
-              ({labelText, className, required, name, checked}) => {
-                const id = useId();
+              ({labelText, className, required, name, checked, id}) => {
                 return (
                   <CheckBox
                     key={id}

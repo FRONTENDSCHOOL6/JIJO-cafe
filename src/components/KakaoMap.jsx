@@ -56,8 +56,6 @@ function KakaoMap({setKakaoPlaceResult, searchedResult, setKakaoMarkes}) {
         image: new kakao.maps.MarkerImage(markerImage, markerImageSize),
       });
 
-      console.log(place);
-
       setKakaoMarkes((prev) => [...prev, marker]);
 
       kakao.maps.event.addListener(marker, "click", () => {

@@ -23,7 +23,7 @@ function LazyImage({src, alt, className, width = "auto", height = "auto"}) {
   }, []);
 
   return (
-    <div className="aspect-video w-full">
+    <div className="aspect-video w-fit">
       <img
         width={width}
         height={height}
