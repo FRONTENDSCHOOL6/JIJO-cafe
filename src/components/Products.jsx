@@ -26,11 +26,11 @@ function Products({
           ))}
         </ul>
       </div>
-      <ul className="flex gap-6 justify-center my-20">
+      <ul className="flex gap-6 mobile:gap-1 justify-center my-20">
         <li>
           <NavLink
             to="#first"
-            className="grid place-content-center  px-4 py-2 border border-transparent rounded bg-primary hover:bg-[#C7B08E]"
+            className="grid place-content-center px-2 py-2 border border-transparent rounded bg-primary hover:bg-[#C7B08E]"
             onClick={gotoFirstPage}
             aria-label="처음으로 이동"
             title="처음으로 이동">
@@ -40,7 +40,7 @@ function Products({
         <li>
           <NavLink
             to="#prev"
-            className="grid place-content-center  px-4 py-2  border border-transparent rounded bg-primary hover:bg-[#C7B08E]"
+            className="grid place-content-center px-4 py-2  border border-transparent rounded bg-primary hover:bg-[#C7B08E]"
             onClick={gotoPreviousPage}
             disabled={page === 1}
             aria-label="이전 페이지로 이동"
@@ -121,7 +121,7 @@ function ProductItem({item, ...restProps}) {
     <li key={item.id} className="relative cursor-pointer" {...restProps}>
       <div>
         <div
-          className="imgFrame relative w-80 h-80 overflow-hidden"
+          className="imgFrame relative w-80 h-80 mobile:w-full overflow-hidden"
           onClick={handleClick}>
           <LazyImage
             src={item.imageURL ? item.imageURL : getPbImageURL(item, "image")}

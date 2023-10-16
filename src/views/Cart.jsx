@@ -114,7 +114,8 @@ function Cart() {
           <div className="selectArea font-semibold">
             <CheckBox
               text={`전체선택(${totalCount}/${totalCount}) `}
-              defaultChecked="checked"
+              defaultChecked={checkboxStatus}
+              onChange={handleAllCheck}
             />
             <button>| 전체삭제</button>
           </div>
