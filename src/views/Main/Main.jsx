@@ -1,11 +1,11 @@
-import { Helmet } from "react-helmet-async";
+import {Helmet} from "react-helmet-async";
 import MainBanner from "./MainBanner";
 import MainMenu from "./MainMenu";
 import MainShopingMall from "./MainShopingMall";
 import MainEvent from "./MainEvent";
 import MainStore from "./MainStore";
 import Footer from "@/layout/Footer/Footer";
-import { useEffect } from "react";
+import {useEffect} from "react";
 
 function Main() {
   useEffect(() => {

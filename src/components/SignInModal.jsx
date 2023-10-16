@@ -24,6 +24,7 @@ function SignInModal({setIsClickedSignin}) {
     email: "",
     password: "",
   });
+
   const [isEmailValid, setIsEmailValid] = useState(true);
   const [isPasswordValid, setIsPasswordValid] = useState(true);
   const handleInput = debounce((e) => {

@@ -1,9 +1,8 @@
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { Suspense } from "react";
-import { RouterProvider } from "react-router-dom";
-import { HelmetProvider } from "react-helmet-async";
-import { Toaster } from "react-hot-toast";
+import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import {Suspense} from "react";
+import {RouterProvider} from "react-router-dom";
+import {HelmetProvider} from "react-helmet-async";
+import {Toaster} from "react-hot-toast";
 import router from "./routes/routes";
 import JijoSpinner from "./components/JijoSpinner";
 // 쿼리 클라이언트 객체 생성

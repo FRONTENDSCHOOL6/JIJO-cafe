@@ -1,14 +1,18 @@
-<div align=center>
-    <h3>☕ Cafe JIJO ☕</h3>
-    <p>15지조👊</p>
+<div align=center >
+    <h1>☕ Cafe JIJO ☕</h1>
+    <p>메가 커피의 UI를 기반으로 새로운 기능을 추가한 반응형 사이트 입니다.</p>
+    <p><b>배포 URL </b>👉 https://cafe-jijo.vercel.app/</p>
+      
 </div>
 </br></br>
 
 #### 🩵 프로젝트 소개
 
-☕ 배포 URL: https://cafe-jijo.vercel.app/
-☕ 프로젝트 기간 : 2023.09.04-2023.09.24 (총23일) </br> ☕ [프로젝트 기획 PPT](https://www.canva.com/design/DAFtcjzh-Dc/vdhGlOb7nzCd_khXSBXKuQ/view?utm_content=DAFtcjzh-Dc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink) ☕ [프로젝트 최종 PPT](https://www.canva.com/design/DAFvVyZir9c/HZimAw3Fqs_ycjW9qIgi8Q/view?utm_content=DAFvVyZir9c&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)  
-☕ [피그마 디자인 시안](https://www.figma.com/file/SvFd9BFqFRghwdLQxonPbR/JIJO-Coffee☕?type=design&node-id=0%3A1&mode=dev) ☕ [15지조 노션 문서](https://www.notion.so/15-bae6c4f5253342a1bf7a7a5e3a23b976?pvs=4)
+- 프로젝트 기간 : 2023.09.04-2023.09.24 (총23일)
+- ☕ [프로젝트 기획 PPT](https://www.canva.com/design/DAFtcjzh-Dc/vdhGlOb7nzCd_khXSBXKuQ/view?utm_content=DAFtcjzh-Dc&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
+- ☕ [프로젝트 최종 PPT](https://www.canva.com/design/DAFvVyZir9c/HZimAw3Fqs_ycjW9qIgi8Q/view?utm_content=DAFvVyZir9c&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
+- ☕ [피그마 디자인 시안](https://www.figma.com/file/SvFd9BFqFRghwdLQxonPbR/JIJO-Coffee☕?type=design&node-id=0%3A1&mode=dev)
+- ☕ [15지조 노션 문서](https://www.notion.so/15-bae6c4f5253342a1bf7a7a5e3a23b976?pvs=4)
 
 </br></br>
 
@@ -16,6 +20,24 @@
 
 <img src="https://img.shields.io/badge/html5-E34F26?style=for-the-badge&logo=html5&logoColor=white"> <img src="https://img.shields.io/badge/tailwind-1572B6?style=for-the-badge&logo=tailwindcss&logoColor=white"> <img src ="https://img.shields.io/badge/react-61DAFB.svg?&style=for-the-badge&logo=react&logoColor=white"/> <img src="https://img.shields.io/badge/git-F05032?style=for-the-badge&logo=git&logoColor=white"> <img src="https://img.shields.io/badge/github-181817?style=for-the-badge&logo=github&logoColor=white"> <img src="https://img.shields.io/badge/notion-0000?style=for-the-badge&logo=notion&logoColor=white"> <img src="https://img.shields.io/badge/reactquery-FF4154?style=for-the-badge&logo=reactquery&logoColor=white"> <img src="https://img.shields.io/badge/Zustand-F1124?style=for-the-badge&logo=Zustand&logoColor=white"> <img src="https://img.shields.io/badge/pocketbase-B8DBE4?style=for-the-badge&logo=pocketbase&logoColor=white"> <img src="https://img.shields.io/badge/Prettier-F7B93E?style=for-the-badge&logo=Prettier&logoColor=white"> <img src="https://img.shields.io/badge/ESLint-4B32C3?style=for-the-badge&logo=ESLint&logoColor=white"> <img src="https://img.shields.io/badge/framer-0055FF?style=for-the-badge&logo=framer&logoColor=white"> <img src="https://img.shields.io/badge/javascript-9855FF?style=for-the-badge&logo=javascript&logoColor=white"> <img src="https://img.shields.io/badge/vercel-000000?style=for-the-badge&logo=vercel&logoColor=white"><img src="https://img.shields.io/badge/swiper-6332F6?style=for-the-badge&logo=swiper&logoColor=white"><img src="https://img.shields.io/badge/kakao Map-FFCD00?style=for-the-badge&logo=kakao&logoColor=black">
 
+</br></br>
+
+### 😇 팀원소개
+
+<table>
+   <tr>
+      <td align="center"><img src="/src/assets/images/readme/coffee-2.jpg" width="150"> </td>
+       <td align="center"><img src="/src/assets/images/readme/coffee-1.jpg" width="150"> </td>
+       <td align="center"><img src="/src/assets/images/readme/coffee-3.jpg" width="150"> </td>
+        <td align="center"><img src="/src/assets/images/readme/coffee-4.jpg" width="150"> </td>
+   </tr>   
+   <tr>
+    <td align="center"> <a href="https://github.com/suwan98">고수완</a> </td>
+     <td align="center"><a href="https://github.com/youngniiiiii">송영은</a>  </td>
+  <td align="center"> <a href="https://github.com/pionoiq">장다은</a></td>
+        <td align="center"><a href="https://github.com/seonyeongyoon">윤선영</a> </td>
+   </tr>
+</table>
 </br></br>
 
 ### 🔖 역할분담
@@ -246,7 +268,7 @@
 
 - [로그인]
 
-  - 로그인 페이지가 아닌 모달로 설계
+  - 로그인 페이지가 아닌 모달 다이얼로그로 설계
   - 이메일/비밀번호 유효성 검사
   - 로그인 시 실제 PocektHost 서버에 있는 User만 로그인
   - 카카오톡 소셜 로그인 기능
@@ -372,9 +394,10 @@
 - [관리자 모드 계정]
   - email: admin@dev.io
   - pw: 123456789q!
+    </br>
 - [고객의 소리]
   - 모바일 반응형 작업
-  - 사용자가 폼을 작성하고 제출한 후에 모달 창을 표시하여 접수 확인을 제공.
+  - 사용자가 폼을 작성하고 제출한 후에 모달 다이얼로그 사용하여 접수 확인을 제공.
 
 </br></br>
 
@@ -519,8 +542,7 @@
 
 ### 😇 느낀점
 
-- 장다은 : 좋은 팀원들과 함께 해서 많이 배우는 시간이 되었습니다 🙇‍♀️ 프로젝트를 시작하기 전에는 과연 내가 할 수 있을까? 하는 두려움이 앞섰는데 막상 프로젝트에 들어가면서 두려움보다는 해내고 싶다는 욕심과 열정을 갖게 되는 시간이 되었습니다. 특히 좋은 팀원들을 만난 덕분에 많은 어려움에도 불구하고 프로젝트를 성공적으로 완성할 수 있어
-  보람있는 시간이 되었다고 생각합니다. 15는 15지조 💞
+- 장다은 : 좋은 팀원들과 함께 해서 많이 배우는 시간이 되었습니다 🙇‍♀️ 프로젝트를 시작하기 전에는 과연 내가 할 수 있을까? 하는 두려움이 앞섰는데 막상 프로젝트에 들어가면서 두려움보다는 해내고 싶다는 욕심과 열정을 갖게 되는 시간이 되었습니다. 특히 좋은 팀원들을 만난 덕분에 많은 어려움에도 불구하고 프로젝트를 성공적으로 완성할 수 있어 보람있는 시간이 되었다고 생각합니다. 15는 15지조 💞
   </br>
 - 윤선영 : 리액트에 대해 조금이나마 익숙해진 시간이었습니다. 리액트에 익숙해지는 것이 개인적인 목표였는데, 리액트를 사용해서 컴포넌트를 만들어보며 실무 시작 전 많이 리액트를 연습할 수 있는 기회였습니다. 또한 팀원분들과 회의하며 보다 좋은 아이디어들이 나오고 해결 방법이 도출되는 과정을 통해, 집단지성의 힘을 크게 느꼈습니다. 함께 고생했던 팀원분들 모두 수고 많으셨습니다💗
   </br>

@@ -3,7 +3,7 @@ import OrderListEmptyItem from "./OrderListEmptyItem";
 import OrderListItem from "./OrderListItem";
 import useCartStore from "@/store/cartStore";
 
-function OrderList({checkboxStatus}) {
+function OrderList({checkboxData, handleCheckBoxClick}) {
   /* 인증 정보에 따른 로그인 ➡️ 로그아웃으로 변경 */
   const isAuth = useAuthStore((state) => state.isAuth);
   const {cart} = useCartStore();
@@ -24,10 +24,17 @@ function OrderList({checkboxStatus}) {
       )} */}
 
       {cart.length ? (
-          cart.map((product) => <OrderListItem key={product.id} product={product} />)
-        ) : (
-          <OrderListEmptyItem checkboxStatus={checkboxStatus}/>
-        )} 
+        cart.map((product) => (
+          <OrderListItem
+            handleCheckBoxClick={handleCheckBoxClick}
+            checkboxData={checkboxData}
+            key={product.id}
+            product={product}
+          />
+        ))
+      ) : (
+        <OrderListEmptyItem />
+      )}
     </ul>
   );
 }

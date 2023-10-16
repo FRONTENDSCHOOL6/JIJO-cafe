@@ -2,7 +2,6 @@ import useViewport from "@/hooks/useViewport";
 import DesktopHeader from "./DesktopHeader";
 import TabletMobileHeader from "./TabletMobileHeader";
 import { useState } from "react";
-import { useLocation } from "react-router-dom";
 
 function Header() {
   // useViewport hook을 사용한 반응형 웹
@@ -14,12 +13,8 @@ function Header() {
     setIsClickedSignin(!isClickedSignin);
   };
 
-  // mainpage 헤더 스타일
-  const location = useLocation();
-  const isMainPage = location.pathname === "/";
-
   return (
-    <div className={`${isMainPage ? "fixed" : "sticky"} flex justify-between z-50 w-full top-0`}>
+    <div>
       <Desktop>
         <DesktopHeader siginInView={isClickedSignin} siginViewHandler={handleClickSignin} setIsClickedSignin={setIsClickedSignin} />
       </Desktop>
